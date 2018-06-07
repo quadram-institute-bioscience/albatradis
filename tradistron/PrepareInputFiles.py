@@ -1,0 +1,43 @@
+'''Take in the input files, parse them to create new files.'''
+from tempfile import mkstemp
+from tradistron.EMBLGenerator import EMBLGenerator
+from tradistron.PlotParser import PlotParser
+from tradistron.WindowGenerator import WindowGenerator
+from tradistron.PlotGenerator import PlotGenerator
+
+class PrepareInputFiles:
+	def __init__(self, plotfile, minimum_threshold, window_size, window_interval):
+		self.plotfile = plotfile
+		self.minimum_threshold = minimum_threshold
+		self.window_size = window_size
+		self.window_interval = window_interval
+		
+	def plot_parser(self):
+		return PlotParser(self.plotfile,self.minimum_threshold)
+		
+	def windows(self):
+		w = WindowGenerator(self.plot_parser_obj.genome_length, self.window_size, self.window_interval)
+		return w.create_windows()
+		
+	def create_embl_file(self):
+		e = EMBLGenerator(self.windows(), self.plot_parser_obj.genome_length)
+
+		fd, embl_filename = mkstemp()
+		e.filename(embl_filename)
+		return embl_filename
+
+	def create_split_plot_file(self, forward, reverse):
+		fd, filename = mkstemp()
+		p = PlotGenerator(forward, reverse, filename)
+		p.construct_file()
+		return filename
+		
+	def create_all_files:
+		self.plot_parser_obj = self.plot_parser()
+		embl_filename = self.create_embl_file()
+		
+		forward_plot_filename = self.create_split_plot_file(self.plot_parser_obj.forward, [])
+		reverse_plot_filename = self.create_split_plot_file([], self.plot_parser_obj.reverse)
+		combined_plot_filename = self.create_split_plot_file(self.plot_parser_obj.forward,  self.plot_parser_obj.reverse)
+		
+		
