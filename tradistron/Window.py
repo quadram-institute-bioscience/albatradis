@@ -3,5 +3,5 @@ class Window:
 		self.start = start
 		self.end = end
 		
-	def name(self):
-		return str(self.start) + "_" + str(self.end)
+	def name_start_one(self):
+		return str(self.start + 1) + "_" + str(self.end)

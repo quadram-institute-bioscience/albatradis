@@ -4,19 +4,19 @@ FH   Key             Location/Qualifiers
 FH
 FT   source          1..20
 FT                   /organism="Bacteria"
-FT   CDS             0..5
-FT                   /gene="0_5"
-FT                   /locus_tag="0_5"
+FT   CDS             1..5
+FT                   /gene="1_5"
+FT                   /locus_tag="1_5"
 FT                   /product="product"
-FT   CDS             5..10
-FT                   /gene="5_10"
-FT                   /locus_tag="5_10"
+FT   CDS             6..10
+FT                   /gene="6_10"
+FT                   /locus_tag="6_10"
 FT                   /product="product"
-FT   CDS             10..15
-FT                   /gene="10_15"
-FT                   /locus_tag="10_15"
+FT   CDS             11..15
+FT                   /gene="11_15"
+FT                   /locus_tag="11_15"
 FT                   /product="product"
-FT   CDS             15..20
-FT                   /gene="15_20"
-FT                   /locus_tag="15_20"
+FT   CDS             16..20
+FT                   /gene="16_20"
+FT                   /locus_tag="16_20"
 FT                   /product="product"

@@ -28,5 +28,5 @@ FT                   /organism="Bacteria"
 FT                   /gene="{gene_name}"
 FT                   /locus_tag="{gene_name}"
 FT                   /product="product"
-""".format(gene_name=window.name(), window_start=str(window.start), window_end=str(window.end))
+""".format(gene_name=window.name_start_one(), window_start=str(window.start + 1), window_end=str(window.end))
 

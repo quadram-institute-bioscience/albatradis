@@ -1,0 +1,18 @@
+ID   ABC; SV 1; circular; genomic DNA; STD; PRO; 8 BP.
+XX
+FH   Key             Location/Qualifiers
+FH
+FT   source          1..8
+FT                   /organism="Bacteria"
+FT   CDS             1..4
+FT                   /gene="1_4"
+FT                   /locus_tag="1_4"
+FT                   /product="product"
+FT   CDS             3..6
+FT                   /gene="3_6"
+FT                   /locus_tag="3_6"
+FT                   /product="product"
+FT   CDS             5..8
+FT                   /gene="5_8"
+FT                   /locus_tag="5_8"
+FT                   /product="product"

@@ -12,6 +12,11 @@ class PrepareInputFiles:
 		self.window_size = window_size
 		self.window_interval = window_interval
 		
+		self.forward_plot_filename = ""
+		self.reverse_plot_filename = ""
+		self.combined_plot_filename = ""
+		self.embl_filename = ""
+		
 	def plot_parser(self):
 		return PlotParser(self.plotfile,self.minimum_threshold)
 		
@@ -34,11 +39,11 @@ class PrepareInputFiles:
 		
 	def create_all_files(self):
 		self.plot_parser_obj = self.plot_parser()
-		embl_filename = self.create_embl_file()
+		self.embl_filename = self.create_embl_file()
 		
-		forward_plot_filename = self.create_split_plot_file(self.plot_parser_obj.forward, [])
-		reverse_plot_filename = self.create_split_plot_file([], self.plot_parser_obj.reverse)
-		combined_plot_filename = self.create_split_plot_file(self.plot_parser_obj.forward,  self.plot_parser_obj.reverse)
+		self.forward_plot_filename = self.create_split_plot_file(self.plot_parser_obj.forward, [])
+		self.reverse_plot_filename = self.create_split_plot_file([], self.plot_parser_obj.reverse)
+		self.combined_plot_filename = self.create_split_plot_file(self.plot_parser_obj.forward,  self.plot_parser_obj.reverse)
 		return self
 		
 		
