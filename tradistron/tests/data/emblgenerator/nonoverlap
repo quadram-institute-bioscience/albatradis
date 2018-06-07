@@ -1,0 +1,22 @@
+ID   ABC; SV 1; circular; genomic DNA; STD; PRO; 20 BP.
+XX
+FH   Key             Location/Qualifiers
+FH
+FT   source          1..20
+FT                   /organism="Bacteria"
+FT   CDS             0..5
+FT                   /gene="0_5"
+FT                   /locus_tag="0_5"
+FT                   /product="product"
+FT   CDS             5..10
+FT                   /gene="5_10"
+FT                   /locus_tag="5_10"
+FT                   /product="product"
+FT   CDS             10..15
+FT                   /gene="10_15"
+FT                   /locus_tag="10_15"
+FT                   /product="product"
+FT   CDS             15..20
+FT                   /gene="15_20"
+FT                   /locus_tag="15_20"
+FT                   /product="product"
