@@ -23,7 +23,7 @@ class PrepareInputFiles:
 		e = EMBLGenerator(self.windows(), self.plot_parser_obj.genome_length)
 
 		fd, embl_filename = mkstemp()
-		e.filename(embl_filename)
+		e.construct_file(embl_filename)
 		return embl_filename
 
 	def create_split_plot_file(self, forward, reverse):
@@ -32,12 +32,13 @@ class PrepareInputFiles:
 		p.construct_file()
 		return filename
 		
-	def create_all_files:
+	def create_all_files(self):
 		self.plot_parser_obj = self.plot_parser()
 		embl_filename = self.create_embl_file()
 		
 		forward_plot_filename = self.create_split_plot_file(self.plot_parser_obj.forward, [])
 		reverse_plot_filename = self.create_split_plot_file([], self.plot_parser_obj.reverse)
 		combined_plot_filename = self.create_split_plot_file(self.plot_parser_obj.forward,  self.plot_parser_obj.reverse)
+		return self
 		
 		
