@@ -36,6 +36,7 @@ class PlotParser:
 	def read_file(self):
 		f = self.get_filehandle()
 		lines = [line.strip() for line in f]
+		f.close()
 
 		return lines
 		
