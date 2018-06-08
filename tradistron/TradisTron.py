@@ -7,6 +7,9 @@ import time
 from tradistron.TradisGeneInsertSites import TradisGeneInsertSites
 from tradistron.PrepareInputFiles import PrepareInputFiles
 from tradistron.TradisEssentiality import TradisEssentiality
+from tradistron.TradisComparison import TradisComparison
+
+from tradistron.PlotLog import PlotLog
 
 class PlotEssentiality:
 	def __init__(self, plotfile_obj,gene_insert_sites_filename, tradis_essentiality_filename, type):
@@ -30,6 +33,8 @@ class TradisTron:
 		self.window_interval   = options.window_interval
 		self.verbose           = options.verbose
 		
+		self.genome_length = 0
+		
 		if self.verbose:
 			self.logger.setLevel(logging.DEBUG)
 		else:
@@ -37,7 +42,8 @@ class TradisTron:
 		
 	def run(self):
 		plotfile_objects = self.prepare_input_files()
-		self.run_essentiality(plotfile_objects)
+		essentiality_files = self.run_essentiality(plotfile_objects)
+		self.run_comparisons(essentiality_files)
 		return self
 		
 	def prepare_input_files(self):
@@ -51,6 +57,8 @@ class TradisTron:
 			print("reverse plot:\t" + p.reverse_plot_filename)
 			print("combined plot:\t" + p.combined_plot_filename)
 			print("Embl:\t" + p.embl_filename)
+			
+			self.genome_length = p.genome_length()
 		return plotfile_objects
 	
 	def essentiality(self, plotfile_objects, plotfile, filetype):
@@ -74,4 +82,38 @@ class TradisTron:
 			essentiality_files[plotfile] = PlotAllEssentiality(f,r,c)
 
 		return essentiality_files
+		
+	def run_comparisons(self, essentiality_files):
+		
+		files = [essentiality_files[plotfile].forward.tradis_essentiality_filename for plotfile in essentiality_files]
+		t = TradisComparison([files[0]],[files[1]])
+		t.run()
+		print("Comprison\t"+t.output_filename)
+		
+		p = PlotLog(t.output_filename, self.genome_length)
+		p.construct_plot_file()
+		print("Plot log:\t"+ p.output_filename)
+		
+		files = [essentiality_files[plotfile].reverse.tradis_essentiality_filename for plotfile in essentiality_files]
+		t = TradisComparison([files[0]],[files[1]])
+		t.run()
+		print("Comprison\t"+t.output_filename)
+		
+		p = PlotLog(t.output_filename, self.genome_length)
+		p.construct_plot_file()
+		print("Plot log:\t"+ p.output_filename)
+		
+		files = [essentiality_files[plotfile].combined.tradis_essentiality_filename for plotfile in essentiality_files]
+		t = TradisComparison([files[0]],[files[1]])
+		t.run()
+		print("Comprison\t"+t.output_filename)
+		
+		p = PlotLog(t.output_filename, self.genome_length)
+		p.construct_plot_file()
+		print("Plot log:\t"+ p.output_filename)
+		
+		
+		
+		
+	
 		

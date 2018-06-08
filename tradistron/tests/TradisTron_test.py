@@ -22,3 +22,9 @@ class TestTradisTron(unittest.TestCase):
 		t = TradisTron(TestOptions([case, control], 3, 100, 100, False))
 		self.assertTrue(t.run())
 		
+	def test_big_real(self):
+		case = os.path.join(data_dir, 'big_case.insert_site_plot.gz')
+		control = os.path.join(data_dir, 'big_control.insert_site_plot.gz')
+		t = TradisTron(TestOptions([case, control], 3, 100, 100, False))
+		self.assertTrue(t.run())
+	
