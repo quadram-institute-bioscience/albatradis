@@ -9,9 +9,12 @@ class LogFC:
 		self.logfc_value = logfc_value
 
 class PlotLog:
-	def __init__(self, comparison_filename, genome_length):
+	def __init__(self, comparison_filename, genome_length, minimum_logfc, pvalue):
 		self.comparison_filename = comparison_filename
 		self.genome_length = genome_length
+		self.minimum_logfc = minimum_logfc
+		self.pvalue = pvalue
+		
 		fd, self.output_filename = mkstemp()
 
 	def construct_plot_file(self):
@@ -25,23 +28,25 @@ class PlotLog:
 		
 	def construct_line(self, i):
 		line = ""
-		if i >= 1:
+		if i >= 0:
 			line += str(int(i))+ "\t"
 		else:
 			line += "0\t"
 		
-		line += "0\n"
+		if i < 0:
+			line += str(int(i))+ "\n"
+		else:
+			line += "0\n"
+
 		return line
 		
 	def genome_wide_logfc(self,logfc_coord_values):
-		#logfc_to_bases = numpy.zeros(self.genome_length)
-		logfc_to_bases = []
-		for a in range(0,self.genome_length):
-			logfc_to_bases.append(0)
+		logfc_to_bases = numpy.zeros(self.genome_length)
 		
 		for l in logfc_coord_values:
 			for i in range(l.start -1, l.end):
-				if logfc_to_bases[i] < l.logfc_value:
+				
+				if logfc_to_bases[i] < numpy.absolute(l.logfc_value):
 					logfc_to_bases[i] = l.logfc_value
 		return logfc_to_bases
 			
@@ -58,7 +63,10 @@ class PlotLog:
 					 
 				logfc = int(float(row[3]))
 				
-				if logfc < 1:
+				if numpy.absolute(logfc) < self.minimum_logfc:
+					logfc = 0
+					
+				if int(float(row[5])) >= self.pvalue:
 					logfc = 0
 					
 				# encodes coordinates

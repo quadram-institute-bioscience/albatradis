@@ -20,10 +20,12 @@ parser = argparse.ArgumentParser(
 	usage = 'tradistron [options] plotfiles', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('plotfiles', help='Input plot files (optionally gzipped)', nargs='+', type=str)
 
-parser.add_argument('--minimum_threshold', '-m', help='Only include insert sites with this number or greater insertions', type=int, default=3)
+parser.add_argument('--minimum_threshold', '-m', help='Only include insert sites with this number or greater insertions', type=int, default=4)
 parser.add_argument('--window_size',	 '-w', help='Window size', type=int, default= 100)
 parser.add_argument('--window_interval', '-i',  help='Window interval', type=int, default=100)
-
+parser.add_argument('--minimum_logfc', '-f',  help='Minimum log fold change', type=float, default=3.0)
+parser.add_argument('--prefix', '-o',  help='Output filename prefix', type=str, default='tradistron')
+parser.add_argument('--pvalue', '-p',  help='Dont report anything above this p-value', type=float, default=0.05)
 parser.add_argument('--verbose', '-v', action='store_true', help='Turn on debugging [%(default)s]', default = False)
 parser.add_argument('--version', action='version', version=str(version))
 

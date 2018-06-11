@@ -18,6 +18,7 @@ class PlotEssentiality:
 		self.tradis_essentiality_filename = tradis_essentiality_filename
 		self.type = type
 		
+		
 class PlotAllEssentiality:
 	def __init__(self, forward, reverse, combined):
 		self.forward = forward
@@ -32,6 +33,9 @@ class TradisTron:
 		self.window_size       = options.window_size
 		self.window_interval   = options.window_interval
 		self.verbose           = options.verbose
+		self.minimum_logfc     = options.minimum_logfc
+		self.pvalue            = options.pvalue
+		self.prefix            = options.prefix
 		
 		self.genome_length = 0
 		
@@ -88,30 +92,37 @@ class TradisTron:
 		files = [essentiality_files[plotfile].forward.tradis_essentiality_filename for plotfile in essentiality_files]
 		t = TradisComparison([files[0]],[files[1]])
 		t.run()
-		print("Comprison\t"+t.output_filename)
 		
-		p = PlotLog(t.output_filename, self.genome_length)
+		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue)
 		p.construct_plot_file()
-		print("Plot log:\t"+ p.output_filename)
+		os.rename(t.output_filename, os.path.join(self.prefix,"forward.csv"))
+		os.rename(p.output_filename, os.path.join(self.prefix,"forward.plot"))
+		print("Comprison\t"+ os.path.join(self.prefix,"forward.csv"))
+		print("Plot log:\t"+ os.path.join(self.prefix,"forward.plot"))
 		
 		files = [essentiality_files[plotfile].reverse.tradis_essentiality_filename for plotfile in essentiality_files]
 		t = TradisComparison([files[0]],[files[1]])
 		t.run()
-		print("Comprison\t"+t.output_filename)
 		
-		p = PlotLog(t.output_filename, self.genome_length)
+		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue)
 		p.construct_plot_file()
-		print("Plot log:\t"+ p.output_filename)
+		os.rename(t.output_filename, os.path.join(self.prefix,"reverse.csv"))
+		os.rename(p.output_filename, os.path.join(self.prefix,"reverse.plot"))
+		print("Comprison\t"+ os.path.join(self.prefix,"reverse.csv"))
+		print("Plot log:\t"+ os.path.join(self.prefix,"reverse.plot"))
 		
 		files = [essentiality_files[plotfile].combined.tradis_essentiality_filename for plotfile in essentiality_files]
 		t = TradisComparison([files[0]],[files[1]])
 		t.run()
-		print("Comprison\t"+t.output_filename)
 		
-		p = PlotLog(t.output_filename, self.genome_length)
+
+		
+		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue)
 		p.construct_plot_file()
-		print("Plot log:\t"+ p.output_filename)
-		
+		os.rename(t.output_filename, os.path.join(self.prefix,"combined.csv"))
+		os.rename(p.output_filename, os.path.join(self.prefix,"combined.plot"))
+		print("Comprison\t"+ os.path.join(self.prefix,"combined.csv"))
+		print("Plot log:\t"+ os.path.join(self.prefix,"combined.plot"))
 		
 		
 		
