@@ -9,11 +9,12 @@ class LogFC:
 		self.logfc_value = logfc_value
 
 class PlotLog:
-	def __init__(self, comparison_filename, genome_length, minimum_logfc, pvalue):
+	def __init__(self, comparison_filename, genome_length, minimum_logfc, pvalue, minimum_logcpm):
 		self.comparison_filename = comparison_filename
 		self.genome_length = genome_length
 		self.minimum_logfc = minimum_logfc
 		self.pvalue = pvalue
+		self.minimum_logcpm = minimum_logcpm
 		
 		fd, self.output_filename = mkstemp()
 
@@ -67,6 +68,9 @@ class PlotLog:
 					logfc = 0
 					
 				if int(float(row[5])) >= self.pvalue:
+					logfc = 0
+					
+				if numpy.absolute(int(float(row[4]))) < self.minimum_logcpm:
 					logfc = 0
 					
 				# encodes coordinates

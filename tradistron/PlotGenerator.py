@@ -16,9 +16,9 @@ class PlotGenerator:
 	def construct_line(self, i):
 		line = ""
 		if len(self.forward) > i:
-			line += str(self.forward[i])+ "\t"
+			line += str(self.forward[i])+ " "
 		else:
-			line += "0\t"
+			line += "0 "
 		
 		if len(self.reverse) > i:
 			line += str(self.reverse[i])+ "\n"
