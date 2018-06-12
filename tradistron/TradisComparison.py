@@ -3,10 +3,11 @@ from tempfile import mkstemp
 import os
 
 class TradisComparison:
-	def __init__(self, condition_files, control_files, exec="tradis_comparison.R"):
+	def __init__(self, condition_files, control_files, verbose, exec="tradis_comparison.R"):
 		self.condition_files = condition_files
 		self.control_files = control_files
 		self.exec     = exec
+		self.verbose  = verbose
 		
 		fd, self.output_filename = mkstemp()
 		fd, self.conditions_fofn = mkstemp()
@@ -36,7 +37,8 @@ class TradisComparison:
 	def run(self):
 		self.create_fofn()
 		
-		print(self.construct_command())
+		if self.verbose:
+			print(self.construct_command())
 		subprocess.check_output(self.construct_command(), shell=True)
 		os.rename(".output.csv", self.output_filename)
 

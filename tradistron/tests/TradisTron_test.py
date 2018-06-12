@@ -31,10 +31,21 @@ class TestTradisTron(unittest.TestCase):
 		self.assertTrue(os.path.exists('testoutput_1'))
 		shutil.rmtree("testoutput_1")
 		
-	def test_big_real(self):
-		case = os.path.join(data_dir, 'big_case.insert_site_plot.gz')
-		control = os.path.join(data_dir, 'big_control.insert_site_plot.gz')
-		t = TradisTron(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1,1,1 ))
+		
+	def test_small_2iterations(self):
+		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
+		control = os.path.join(data_dir, 'small_control.insert_site_plot.gz')
+		t = TradisTron(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 2))
 		self.assertTrue(t.run())
 		self.assertTrue(os.path.exists('testoutput_1'))
 		shutil.rmtree("testoutput_1")
+		self.assertTrue(os.path.exists('testoutput_2'))
+		shutil.rmtree("testoutput_2")
+		
+	#def test_big_real(self):
+	#	case = os.path.join(data_dir, 'big_case.insert_site_plot.gz')
+	#	control = os.path.join(data_dir, 'big_control.insert_site_plot.gz')
+	#	t = TradisTron(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1,1,1 ))
+	#	self.assertTrue(t.run())
+	#	self.assertTrue(os.path.exists('testoutput_1'))
+	#	shutil.rmtree("testoutput_1")

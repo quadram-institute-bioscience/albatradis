@@ -73,9 +73,9 @@ class BlockInsertions:
 		return plotfile_objects
 	
 	def essentiality(self, plotfile_objects, plotfile, filetype):
-		g = TradisGeneInsertSites(plotfile_objects[plotfile].embl_filename, getattr(plotfile_objects[plotfile], filetype + "_plot_filename"))
+		g = TradisGeneInsertSites(plotfile_objects[plotfile].embl_filename, getattr(plotfile_objects[plotfile], filetype + "_plot_filename"), self.verbose)
 		g.run()
-		e = TradisEssentiality(g.output_filename)
+		e = TradisEssentiality(g.output_filename, self.verbose)
 		e.run()
 		pe = PlotEssentiality(plotfile, g.output_filename, e.output_filename, filetype)
 		
@@ -95,7 +95,7 @@ class BlockInsertions:
 		
 	def run_comparisons(self, essentiality_files):
 		files = [essentiality_files[plotfile].forward.tradis_essentiality_filename for plotfile in essentiality_files]
-		t = TradisComparison([files[0]],[files[1]])
+		t = TradisComparison([files[0]],[files[1]], self.verbose)
 		t.run()
 		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm)
 		p.construct_plot_file()
@@ -106,7 +106,7 @@ class BlockInsertions:
 			print("Plot log:\t"+ os.path.join(self.prefix,"forward.plot"))
 		
 		files = [essentiality_files[plotfile].reverse.tradis_essentiality_filename for plotfile in essentiality_files]
-		t = TradisComparison([files[0]],[files[1]])
+		t = TradisComparison([files[0]],[files[1]], self.verbose)
 		t.run()
 		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm)
 		p.construct_plot_file()
@@ -117,7 +117,7 @@ class BlockInsertions:
 			print("Plot log:\t"+ os.path.join(self.prefix,"reverse.plot"))
 		
 		files = [essentiality_files[plotfile].combined.tradis_essentiality_filename for plotfile in essentiality_files]
-		t = TradisComparison([files[0]],[files[1]])
+		t = TradisComparison([files[0]],[files[1]], self.verbose)
 		t.run()
 		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm)
 		p.construct_plot_file()
@@ -130,12 +130,19 @@ class BlockInsertions:
 		
 	def mask_plots(self):
 		pm = PlotMasking(self.plotfiles, self.combined_plotfile )
+		renamed_plot_files = {}
 		
 		for pfile in pm.output_plot_files:
-			os.rename(pm.output_plot_files[pfile], os.path.join(self.prefix, os.path.basename(pfile) ))
+			original_basefile  = os.path.join(self.prefix, os.path.basename(pfile) )
+			renamed_file = original_basefile.replace('.gz','')
+			
+			os.rename(pm.output_plot_files[pfile], renamed_file)
+			
+			renamed_plot_files[pfile] = renamed_file
+			
 			if self.verbose:
-				print("Masked: " + os.path.join(self.prefix, os.path.basename(pfile) ))
-		return pm.output_plot_files
+				print("Masked: " + renamed_file )
+		return renamed_plot_files
 		
 		
 		
