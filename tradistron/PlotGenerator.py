@@ -5,7 +5,6 @@ class PlotGenerator:
 		self.reverse = reverse
 		self.filename = filename
 		
-		
 	def plot_length(self):
 		total_length = len(self.forward)
 		if len(self.reverse) > total_length:

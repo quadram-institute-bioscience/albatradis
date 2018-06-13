@@ -18,7 +18,7 @@ class PlotParser:
 		
 		self.split_lines()
 		
-		self.genome_length = len(self.combined)
+		self.total_reads = sum(self.combined)
 		
 
 	def get_filehandle(self):
@@ -46,27 +46,25 @@ class PlotParser:
 		return lines
 		
 	def split_lines(self):
-		for i,l in enumerate(self.read_file()):	
-			insertion_count = re.split(r"[\s\t,]+",l )
+		lines = self.read_file()
+		self.genome_length =  len(lines)
+		self.forward = numpy.zeros(self.genome_length )
+		self.reverse = numpy.zeros(self.genome_length )
+		self.combined = numpy.zeros(self.genome_length )
+		
+		for i,l in enumerate(lines):	
+			insertion_count_clean = l.split()
 
-			# sanitise input
-			insertion_count_clean = [s for s in insertion_count if s.lstrip("-").isnumeric()]
-			if len(insertion_count_clean) != 2:
-				raise InvalidFileFormat("Invalid line in file: " + str(l))
-			
-			if numpy.absolute(int(insertion_count_clean[0])) >= self.minimum_threshold:
-				self.forward.append(int(insertion_count_clean[0])) 
-			else:
-				self.forward.append(0)
+			f = int(float(insertion_count_clean[0]))
+			r = int(float(insertion_count_clean[1]))
+			if numpy.absolute(f) >= self.minimum_threshold:
+				self.forward[i] = f
 				
-			if numpy.absolute(int(insertion_count_clean[1])) >= self.minimum_threshold:
-				self.reverse.append(int(insertion_count_clean[1])) 
-			else:
-				self.reverse.append(0)
-			
-			if numpy.absolute(int(insertion_count_clean[0])) + numpy.absolute(int( insertion_count_clean[1])) >= self.minimum_threshold:
-				self.combined.append(int(insertion_count_clean[0]) + int( insertion_count_clean[1]))
-			else:
-				self.combined.append(0)
+			if numpy.absolute(r) >= self.minimum_threshold:
+				self.reverse[i] = r
+
+			if numpy.absolute(f) + numpy.absolute(r) >= self.minimum_threshold:
+				self.combined[i] = f + r
+
 		return self
 			

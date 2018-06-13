@@ -63,10 +63,7 @@ class BlockIdentifier:
 		
 		return blocks
 		
-	def direction_for_block(self, block):
-		forward_masking_plot = PlotParser(self.forward_mask_file)
-		reverse_masking_plot = PlotParser(self.reverse_mask_file)
-		
+	def direction_for_block(self, block, forward_masking_plot, reverse_masking_plot):
 		forward_max_logfc = 0 
 		for i in range(block.start -1, block.end):
 			if numpy.absolute(forward_masking_plot.combined[i]) > forward_max_logfc:
@@ -96,8 +93,10 @@ class BlockIdentifier:
 		masking_plot = PlotParser(self.combined_mask_file)
 		blocks = self.overexpressed_blocks(masking_plot) + self.underexpressed_blocks(masking_plot)
 		
+		forward_masking_plot = PlotParser(self.forward_mask_file)
+		reverse_masking_plot = PlotParser(self.reverse_mask_file)
 		for b in blocks:
-			b.direction = self.direction_for_block(b)
+			b.direction = self.direction_for_block(b, forward_masking_plot, reverse_masking_plot)
 		
 		return blocks
 
