@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+.output.pdf
+output_*
+
 .Rhistory
 # C extensions
 *.so
