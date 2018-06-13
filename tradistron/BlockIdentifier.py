@@ -4,8 +4,10 @@ import numpy
 
 class BlockIdentifier:
 	
-	def __init__(self, mask_file):
-		self.mask_file = mask_file
+	def __init__(self, combined_mask_file, forward_mask_file, reverse_mask_file):
+		self.combined_mask_file = combined_mask_file
+		self.forward_mask_file = forward_mask_file
+		self.reverse_mask_file = reverse_mask_file
 		self.logfc_direction_change = 2
 	
 	def overexpressed_blocks(self, masking_plot):
@@ -26,12 +28,12 @@ class BlockIdentifier:
 			elif mask <= 0 and inblock:
 				inblock = False
 				end = i
-				blocks.append(Block(start +1, end, end-start, max_logfc, 'overexpressed', 1))
+				blocks.append(Block(start +1, end, end-start, max_logfc, 'overexpressed'))
 				max_logfc = 0 
 				
 		# Check for block at end
 		if inblock:
-			blocks.append(Block(start +1, len(masking_plot.combined), len(masking_plot.combined)-start, max_logfc, 'overexpressed', 1))
+			blocks.append(Block(start +1, len(masking_plot.combined), len(masking_plot.combined)-start, max_logfc, 'overexpressed'))
 		return blocks
 		
 	def underexpressed_blocks(self, masking_plot):
@@ -52,25 +54,28 @@ class BlockIdentifier:
 			elif mask >= 0 and inblock:
 				inblock = False
 				end = i
-				blocks.append(Block(start +1, end, end-start, max_logfc, 'underexpressed', -1 ))
+				blocks.append(Block(start +1, end, end-start, max_logfc, 'underexpressed' ))
 				max_logfc = 0 
 
 		# Check for block at end
 		if inblock:
-			blocks.append(Block(start +1, len(masking_plot.combined), len(masking_plot.combined)-start, max_logfc, 'underexpressed', -1))
+			blocks.append(Block(start +1, len(masking_plot.combined), len(masking_plot.combined)-start, max_logfc, 'underexpressed'))
 		
 		return blocks
 		
-	def direction_for_block(self, block, masking_plot):
+	def direction_for_block(self, block):
+		forward_masking_plot = PlotParser(self.forward_mask_file)
+		reverse_masking_plot = PlotParser(self.reverse_mask_file)
+		
 		forward_max_logfc = 0 
 		for i in range(block.start -1, block.end):
-			if numpy.absolute(masking_plot.forward[i]) > forward_max_logfc:
-				forward_max_logfc = numpy.absolute(masking_plot.forward[i])
+			if numpy.absolute(forward_masking_plot.combined[i]) > forward_max_logfc:
+				forward_max_logfc = numpy.absolute(forward_masking_plot.combined[i])
 				
 		reverse_max_logfc = 0 
 		for i in range(block.start -1, block.end):
-			if numpy.absolute(masking_plot.reverse[i]) > reverse_max_logfc:
-				reverse_max_logfc = numpy.absolute(masking_plot.reverse[i])
+			if numpy.absolute(reverse_masking_plot.combined[i]) > reverse_max_logfc:
+				reverse_max_logfc = numpy.absolute(reverse_masking_plot.combined[i])
 		
 		if forward_max_logfc > reverse_max_logfc:
 			if reverse_max_logfc == 0:
@@ -88,15 +93,14 @@ class BlockIdentifier:
 				return 'nodirection'
 
 	def block_generator(self):
-		masking_plot = PlotParser(self.mask_file)
+		masking_plot = PlotParser(self.combined_mask_file)
 		blocks = self.overexpressed_blocks(masking_plot) + self.underexpressed_blocks(masking_plot)
 		
 		for b in blocks:
-			b.direction = self.direction_for_block(b, masking_plot)
+			b.direction = self.direction_for_block(b)
 		
 		return blocks
 
-# is it in 1 direction or both
 # is it beside an essential region
 # number of reads in block
 # number of insertions

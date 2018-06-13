@@ -10,6 +10,7 @@ from tradistron.TradisEssentiality    import TradisEssentiality
 from tradistron.TradisComparison      import TradisComparison
 from tradistron.PlotLog               import PlotLog
 from tradistron.PlotMasking           import PlotMasking
+from tradistron.BlockIdentifier       import BlockIdentifier
 
 class PlotEssentiality:
 	def __init__(self, plotfile_obj,gene_insert_sites_filename, tradis_essentiality_filename, type):
@@ -38,6 +39,8 @@ class BlockInsertions:
 		self.minimum_logcpm    = minimum_logcpm
 		
 		self.genome_length = 0
+		self.forward_plotfile = ""
+		self.reverse_plotfile = ""
 		self.combined_plotfile = ""
 		self.output_plots = {}
 		
@@ -54,6 +57,8 @@ class BlockInsertions:
 		essentiality_files = self.run_essentiality(plotfile_objects)
 		self.run_comparisons(essentiality_files)
 		self.output_plots = self.mask_plots()
+		blocks = self.block_statistics(self.forward_plotfile, self.reverse_plotfile, self.combined_plotfile)
+		
 		return self
 		
 	def prepare_input_files(self):
@@ -83,7 +88,7 @@ class BlockInsertions:
 			print("Essentiality:\t" + filetype + "\t" + e.output_filename)
 		return pe
 		
-	def run_essentiality(self,plotfile_objects):
+	def run_essentiality(self, plotfile_objects):
 		essentiality_files = {}
 		for plotfile in plotfile_objects:
 			f = self.essentiality(plotfile_objects, plotfile, 'forward')
@@ -94,13 +99,16 @@ class BlockInsertions:
 		return essentiality_files
 		
 	def run_comparisons(self, essentiality_files):
-		self.generate_logfc_plot('forward')
-		self.generate_logfc_plot('reverse')
-		self.combined_plotfile = self.generate_logfc_plot('combined')
+		self.forward_plotfile = self.generate_logfc_plot('forward',essentiality_files)
+		self.reverse_plotfile = self.generate_logfc_plot('reverse',essentiality_files)
+		self.combined_plotfile = self.generate_logfc_plot('combined',essentiality_files)
 			
-	def generate_logfc_plot(self, analysis_type):
-		files = [getattr(essentiality_files[plotfile], analysis_type).tradis_essentiality_filename for plotfile in essentiality_files]
-		t = TradisComparison([files[0::2]],[files[1::2]], self.verbose)
+	def generate_logfc_plot(self, analysis_type, essentiality_files):
+		files = [getattr(essentiality_files[plotfile], analysis_type).tradis_essentiality_filename for plotfile in self.plotfiles]
+		
+		mid = int(len(files)  / 2)
+		
+		t = TradisComparison(files[:mid],files[mid:], self.verbose)
 		t.run()
 		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm)
 		p.construct_plot_file()
@@ -114,6 +122,17 @@ class BlockInsertions:
 			print("Plot log:\t"+ renamed_plot_file)
 		return renamed_plot_file
 		
+		
+	def block_statistics(self,forward_plotfile, reverse_plotfile, combined_plotfile):
+		b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile)
+		blocks = b.block_generator()
+		
+		print(blocks[0].header())
+		for i in blocks:
+			print(i)
+		
+		return blocks
+		
 	def mask_plots(self):
 		pm = PlotMasking(self.plotfiles, self.combined_plotfile )
 		renamed_plot_files = {}
@@ -121,9 +140,7 @@ class BlockInsertions:
 		for pfile in pm.output_plot_files:
 			original_basefile  = os.path.join(self.prefix, os.path.basename(pfile) )
 			renamed_file = original_basefile.replace('.gz','')
-			
 			os.rename(pm.output_plot_files[pfile], renamed_file)
-			
 			renamed_plot_files[pfile] = renamed_file
 			
 			if self.verbose:
