@@ -48,9 +48,9 @@ class PlotParser:
 	def split_lines(self):
 		lines = self.read_file()
 		self.genome_length =  len(lines)
-		self.forward = numpy.zeros(self.genome_length )
-		self.reverse = numpy.zeros(self.genome_length )
-		self.combined = numpy.zeros(self.genome_length )
+		self.forward = numpy.zeros(self.genome_length, dtype=int )
+		self.reverse = numpy.zeros(self.genome_length, dtype=int )
+		self.combined = numpy.zeros(self.genome_length, dtype=int )
 		
 		for i,l in enumerate(lines):	
 			insertion_count_clean = l.split()

@@ -33,6 +33,8 @@ class TradisTron:
 			
 		if not os.path.exists(self.prefix ):
 			os.makedirs(self.prefix )
+			
+		self.blocks = []
 	
 	def run(self):
 		plotfiles = self.plotfiles
@@ -42,6 +44,7 @@ class TradisTron:
 		for i in range(1,self.iterations+1):
 			bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.prefix + "_" +str(i), self.minimum_logcpm )
 			bi.run()
+			self.blocks = bi.blocks
 			plotfiles = bi.output_plots.values()
 		
 		return self

@@ -64,10 +64,7 @@ class PlotLog:
 					 
 				logfc = int(float(row[3]))
 				
-				if numpy.absolute(logfc) < self.minimum_logfc:
-					logfc = 0
-					
-				if int(float(row[5])) >= self.pvalue:
+				if numpy.absolute(logfc) < self.minimum_logfc or int(float(row[5])) >= self.pvalue:
 					logfc = 0
 					
 				if numpy.absolute(int(float(row[4]))) < self.minimum_logcpm:

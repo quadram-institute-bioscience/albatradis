@@ -43,6 +43,7 @@ class BlockInsertions:
 		self.reverse_plotfile = ""
 		self.combined_plotfile = ""
 		self.output_plots = {}
+		self.blocks = []
 		
 		if self.verbose:
 			self.logger.setLevel(logging.DEBUG)
@@ -57,7 +58,7 @@ class BlockInsertions:
 		essentiality_files = self.run_essentiality(plotfile_objects)
 		self.run_comparisons(essentiality_files)
 		self.output_plots = self.mask_plots()
-		blocks = self.block_statistics(self.forward_plotfile, self.reverse_plotfile, self.combined_plotfile)
+		self.blocks = self.block_statistics(self.forward_plotfile, self.reverse_plotfile, self.combined_plotfile)
 		
 		return self
 		
@@ -124,12 +125,13 @@ class BlockInsertions:
 		
 		
 	def block_statistics(self,forward_plotfile, reverse_plotfile, combined_plotfile):
-		b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile)
+		b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile, )
 		blocks = b.block_generator()
 		
-		print(blocks[0].header())
-		for i in blocks:
-			print(i)
+		if self.verbose:
+			print(blocks[0].header())
+			for i in blocks:
+				print(i)
 		
 		return blocks
 		
