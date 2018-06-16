@@ -1,5 +1,6 @@
 import unittest
 import os
+import sys
 import logging
 from tradistron.BlockInsertions import BlockInsertions
 import shutil
@@ -113,7 +114,7 @@ class TestGent(unittest.TestCase):
 		control = os.path.join(data_dir, 'controlrep1.'+ str(start_coord) +'.plot.gz')
 		
 		logger = logging.getLogger(__name__)
-		b = BlockInsertions(logger,[case, control], 6, 100, 25, False, 2, 0.05, 'testoutput', 5, 50)
+		b = BlockInsertions(logger,[case, control], 6, 100, 25, False, 2, 0.05, 'testoutput', 8, 50)
 		self.assertTrue(b.run())
 		self.assertTrue(os.path.exists('testoutput'))
 
@@ -123,6 +124,7 @@ class TestGent(unittest.TestCase):
 	def is_in_block(self,blocks,coord):
 		for block in blocks:
 			if block.start <= coord and block.end >= coord:
+				print("max,len" + str(block.max_logfc) +"\t"+str(block.block_length), file=sys.stderr)
 				return True
 		return False
 		
