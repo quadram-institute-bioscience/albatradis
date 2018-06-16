@@ -1,6 +1,8 @@
 import csv
 import numpy
 from tempfile import mkstemp
+from tradistron.Block import Block
+
 
 class LogFC:
 	def __init__(self, start, end, logfc_value):
@@ -9,12 +11,13 @@ class LogFC:
 		self.logfc_value = logfc_value
 
 class PlotLog:
-	def __init__(self, comparison_filename, genome_length, minimum_logfc, pvalue, minimum_logcpm):
+	def __init__(self, comparison_filename, genome_length, minimum_logfc, pvalue, minimum_logcpm, window_size):
 		self.comparison_filename = comparison_filename
 		self.genome_length = genome_length
 		self.minimum_logfc = minimum_logfc
 		self.pvalue = pvalue
 		self.minimum_logcpm = minimum_logcpm
+		self.window_size = window_size
 		
 		fd, self.output_filename = mkstemp()
 
@@ -41,6 +44,34 @@ class PlotLog:
 
 		return line
 		
+		
+	def blocks(self, logfc_values):
+		blocks = []
+		inblock = False		
+		start = 0
+		end = 0
+		max_logfc = 0 
+		
+		for i, mask in enumerate(logfc_values):
+			lfc = numpy.absolute(mask)
+			if lfc > 0 and not inblock:
+				inblock = True
+				start = i
+				max_logfc = lfc
+			elif lfc > 0 and inblock:
+				if max_logfc < lfc:
+					max_logfc = lfc
+			elif lfc <= 0 and inblock:
+				inblock = False
+				end = i
+				blocks.append(Block(start +1, end, end-start, max_logfc, 'x'))
+				max_logfc = 0 
+				
+		# Check for block at end
+		if inblock:
+			blocks.append(Block(start +1, len(logfc_values), len(logfc_values)-start, max_logfc, 'x'))
+		return blocks	
+	
 	def genome_wide_logfc(self,logfc_coord_values):
 		logfc_to_bases = numpy.zeros(self.genome_length)
 		
@@ -49,6 +80,13 @@ class PlotLog:
 				
 				if logfc_to_bases[i] < numpy.absolute(l.logfc_value):
 					logfc_to_bases[i] = l.logfc_value
+			
+		logfc_blocks = self.blocks(logfc_to_bases)
+		for b in logfc_blocks:
+			if b.block_length < self.window_size:
+				for i in range(b.start -1, b.end):
+					logfc_to_bases[i] = 0
+
 		return logfc_to_bases
 			
 		

@@ -3,11 +3,12 @@ from tempfile import mkstemp
 import os
 
 class TradisComparison:
-	def __init__(self, condition_files, control_files, verbose, exec="tradis_comparison.R"):
+	def __init__(self, condition_files, control_files, verbose, minimum_block, exec="tradis_comparison.R"):
 		self.condition_files = condition_files
 		self.control_files = control_files
 		self.exec     = exec
 		self.verbose  = verbose
+		self.minimum_block = minimum_block
 		
 		fd, self.output_filename = mkstemp()
 		fd, self.conditions_fofn = mkstemp()
@@ -32,7 +33,7 @@ class TradisComparison:
 		return self
 		
 	def construct_command(self):
-		return " ".join([self.exec, '--controls', self.controls_fofn, '--conditions', self.conditions_fofn])
+		return " ".join([self.exec, '-f', '-t', str(self.minimum_block), '--controls', self.controls_fofn, '--conditions', self.conditions_fofn])
 		
 	def run(self):
 		self.create_fofn()

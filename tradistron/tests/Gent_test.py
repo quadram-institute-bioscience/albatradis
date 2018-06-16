@@ -113,7 +113,7 @@ class TestGent(unittest.TestCase):
 		control = os.path.join(data_dir, 'controlrep1.'+ str(start_coord) +'.plot.gz')
 		
 		logger = logging.getLogger(__name__)
-		b = BlockInsertions(logger,[case, control], 3, 100, 25, False, 2, 0.05, 'testoutput', 1)
+		b = BlockInsertions(logger,[case, control], 6, 100, 25, False, 2, 0.05, 'testoutput', 5, 50)
 		self.assertTrue(b.run())
 		self.assertTrue(os.path.exists('testoutput'))
 

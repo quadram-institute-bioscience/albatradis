@@ -9,7 +9,7 @@ data_dir = os.path.join(test_modules_dir, 'data','blockidentifier')
 class TestBlockIdentifier(unittest.TestCase):
 
 	def test_block_identifier_normal_case(self):
-		b = BlockIdentifier(os.path.join(data_dir, 'normalcase'),os.path.join(data_dir, 'normalcase_forward'),os.path.join(data_dir, 'normalcase_reverse'))
+		b = BlockIdentifier(os.path.join(data_dir, 'normalcase'),os.path.join(data_dir, 'normalcase_forward'),os.path.join(data_dir, 'normalcase_reverse'), 1)
 		blocks = b.block_generator()
 		self.assertEqual(2, len(blocks))
 		
@@ -21,12 +21,12 @@ class TestBlockIdentifier(unittest.TestCase):
 		self.assertEqual(['overexpressed', 'underexpressed'], [ x.expression for x in blocks] )
 
 	def test_noblocks(self):
-		b = BlockIdentifier(os.path.join(data_dir, 'noblocks'),os.path.join(data_dir, 'noblocks_forward'),os.path.join(data_dir, 'noblocks_reverse'))
+		b = BlockIdentifier(os.path.join(data_dir, 'noblocks'),os.path.join(data_dir, 'noblocks_forward'),os.path.join(data_dir, 'noblocks_reverse'), 1)
 		blocks = b.block_generator()
 		self.assertEqual(0, len(blocks))
 		
 	def test_blocks_at_end(self):
-		b = BlockIdentifier(os.path.join(data_dir, 'blocksatends'),os.path.join(data_dir, 'blocksatends_forward'),os.path.join(data_dir, 'blocksatends_reverse'))
+		b = BlockIdentifier(os.path.join(data_dir, 'blocksatends'),os.path.join(data_dir, 'blocksatends_forward'),os.path.join(data_dir, 'blocksatends_reverse'), 1)
 		blocks = b.block_generator()
 		self.assertEqual(2, len(blocks))
 		

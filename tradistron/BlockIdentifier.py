@@ -4,10 +4,11 @@ import numpy
 
 class BlockIdentifier:
 	
-	def __init__(self, combined_mask_file, forward_mask_file, reverse_mask_file):
+	def __init__(self, combined_mask_file, forward_mask_file, reverse_mask_file, window_size):
 		self.combined_mask_file = combined_mask_file
 		self.forward_mask_file = forward_mask_file
 		self.reverse_mask_file = reverse_mask_file
+		self.window_size = window_size
 		self.logfc_direction_change = 2
 	
 	def overexpressed_blocks(self, masking_plot):
@@ -23,7 +24,7 @@ class BlockIdentifier:
 				start = i
 				max_logfc = mask
 			elif mask > 0 and inblock:
-				if max_logfc > mask:
+				if max_logfc < mask:
 					max_logfc = mask
 			elif mask <= 0 and inblock:
 				inblock = False
@@ -49,7 +50,7 @@ class BlockIdentifier:
 				start = i
 				max_logfc = mask
 			elif mask < 0 and inblock:
-				if max_logfc < mask:
+				if max_logfc > mask:
 					max_logfc = mask
 			elif mask >= 0 and inblock:
 				inblock = False
@@ -93,12 +94,15 @@ class BlockIdentifier:
 		masking_plot = PlotParser(self.combined_mask_file)
 		blocks = self.overexpressed_blocks(masking_plot) + self.underexpressed_blocks(masking_plot)
 		
+		'''Filter out blocks which are less than the window size'''
+		filtered_blocks = [b for b in blocks if b.block_length >= self.window_size]
+		
 		forward_masking_plot = PlotParser(self.forward_mask_file)
 		reverse_masking_plot = PlotParser(self.reverse_mask_file)
-		for b in blocks:
+		for b in filtered_blocks:
 			b.direction = self.direction_for_block(b, forward_masking_plot, reverse_masking_plot)
 		
-		return blocks
+		return filtered_blocks
 
 # is it beside an essential region
 # number of reads in block

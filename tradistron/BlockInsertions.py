@@ -26,7 +26,7 @@ class PlotAllEssentiality:
 		self.combined = combined
 
 class BlockInsertions:
-	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm):
+	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm, minimum_block):
 		self.logger            = logger
 		self.plotfiles         = plotfiles
 		self.minimum_threshold = minimum_threshold
@@ -37,6 +37,7 @@ class BlockInsertions:
 		self.pvalue            = pvalue
 		self.prefix            = prefix
 		self.minimum_logcpm    = minimum_logcpm
+		self.minimum_block     = minimum_block
 		
 		self.genome_length = 0
 		self.forward_plotfile = ""
@@ -56,9 +57,10 @@ class BlockInsertions:
 	def run(self):
 		plotfile_objects = self.prepare_input_files()
 		essentiality_files = self.run_essentiality(plotfile_objects)
+		
 		self.run_comparisons(essentiality_files)
 		self.output_plots = self.mask_plots()
-		self.blocks = self.block_statistics(self.forward_plotfile, self.reverse_plotfile, self.combined_plotfile)
+		self.blocks = self.block_statistics(self.forward_plotfile, self.reverse_plotfile, self.combined_plotfile, self.window_size)
 		
 		return self
 		
@@ -109,9 +111,9 @@ class BlockInsertions:
 		
 		mid = int(len(files)  / 2)
 		
-		t = TradisComparison(files[:mid],files[mid:], self.verbose)
+		t = TradisComparison(files[:mid],files[mid:], self.verbose, self.minimum_block)
 		t.run()
-		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm)
+		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm, self.window_size)
 		p.construct_plot_file()
 		renamed_csv_file  = os.path.join(self.prefix, analysis_type + ".csv")
 		renamed_plot_file = os.path.join(self.prefix, analysis_type + ".plot")
@@ -124,8 +126,8 @@ class BlockInsertions:
 		return renamed_plot_file
 		
 		
-	def block_statistics(self,forward_plotfile, reverse_plotfile, combined_plotfile):
-		b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile, )
+	def block_statistics(self,forward_plotfile, reverse_plotfile, combined_plotfile, window_size):
+		b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile, window_size)
 		blocks = b.block_generator()
 		
 		if self.verbose:
