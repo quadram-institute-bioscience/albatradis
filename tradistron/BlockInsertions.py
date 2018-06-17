@@ -26,7 +26,7 @@ class PlotAllEssentiality:
 		self.combined = combined
 
 class BlockInsertions:
-	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm, minimum_block):
+	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm, minimum_block,span_gaps):
 		self.logger            = logger
 		self.plotfiles         = plotfiles
 		self.minimum_threshold = minimum_threshold
@@ -38,6 +38,7 @@ class BlockInsertions:
 		self.prefix            = prefix
 		self.minimum_logcpm    = minimum_logcpm
 		self.minimum_block     = minimum_block
+		self.span_gaps         = span_gaps
 		
 		self.genome_length = 0
 		self.forward_plotfile = ""
@@ -113,7 +114,7 @@ class BlockInsertions:
 		
 		t = TradisComparison(files[:mid],files[mid:], self.verbose, self.minimum_block)
 		t.run()
-		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm, self.window_size)
+		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm, self.window_size, self.span_gaps)
 		p.construct_plot_file()
 		renamed_csv_file  = os.path.join(self.prefix, analysis_type + ".csv")
 		renamed_plot_file = os.path.join(self.prefix, analysis_type + ".plot")

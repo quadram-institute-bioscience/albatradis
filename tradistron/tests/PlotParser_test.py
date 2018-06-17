@@ -13,21 +13,28 @@ class TestPlotParser(unittest.TestCase):
 
 	def test_valid_unziped(self):
 		d = PlotParser(os.path.join(data_dir,'valid'), 0)
-		
-		self.assertEqual(d.forward, [0,0,0,0,0,1,1,3])
-		self.assertEqual(d.reverse, [0,1,4,5,0,0,0,0])
-		self.assertEqual(d.combined, [0,1,4,5,0,1,1,3])
+
+		self. assertTrue(self.check_arrays_equal(d.forward, [0,0,0,0,0,1,1,3]))
+		self. assertTrue(self.check_arrays_equal(d.reverse, [0,1,4,5,0,0,0,0]))
+		self. assertTrue(self.check_arrays_equal(d.combined, [0,1,4,5,0,1,1,3]))
 		
 	def test_valid_ziped(self):
 		d = PlotParser(os.path.join(data_dir,'valid.gz'),0)
 
-		self.assertEqual(d.forward, [0,0,0,0,0,1,1,3])
-		self.assertEqual(d.reverse, [0,1,4,5,0,0,0,0])
-		self.assertEqual(d.combined, [0,1,4,5,0,1,1,3])
+		self. assertTrue(self.check_arrays_equal(d.forward, [0,0,0,0,0,1,1,3]))
+		self. assertTrue(self.check_arrays_equal(d.reverse, [0,1,4,5,0,0,0,0]))
+		self. assertTrue(self.check_arrays_equal(d.combined, [0,1,4,5,0,1,1,3]))
 
 	def test_valid_threshold(self):
 		d = PlotParser(os.path.join(data_dir,'valid'), 3)
 
-		self.assertEqual(d.forward, [0,0,0,0,0,0,0,3])
-		self.assertEqual(d.reverse, [0,0,4,5,0,0,0,0])
-		self.assertEqual(d.combined, [0,0,4,5,0,0,0,3])
+		self. assertTrue(self.check_arrays_equal(d.forward, [0,0,0,0,0,0,0,3]))
+		self. assertTrue(self.check_arrays_equal(d.reverse, [0,0,4,5,0,0,0,0]))
+		self. assertTrue(self.check_arrays_equal(d.combined, [0,0,4,5,0,0,0,3]))
+		
+	def check_arrays_equal(self, array1, array2):
+		for i, val in enumerate(array1):
+			if array1[i] != array2[i]:
+				return False
+		return True
+		

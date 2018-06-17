@@ -11,13 +11,14 @@ class LogFC:
 		self.logfc_value = logfc_value
 
 class PlotLog:
-	def __init__(self, comparison_filename, genome_length, minimum_logfc, pvalue, minimum_logcpm, window_size):
+	def __init__(self, comparison_filename, genome_length, minimum_logfc, pvalue, minimum_logcpm, window_size, span_gaps):
 		self.comparison_filename = comparison_filename
-		self.genome_length = genome_length
-		self.minimum_logfc = minimum_logfc
-		self.pvalue = pvalue
+		self.genome_length  = genome_length
+		self.minimum_logfc  = minimum_logfc
+		self.pvalue         = pvalue
 		self.minimum_logcpm = minimum_logcpm
-		self.window_size = window_size
+		self.window_size    = window_size
+		self.span_gaps      = span_gaps
 		
 		fd, self.output_filename = mkstemp()
 
@@ -81,14 +82,39 @@ class PlotLog:
 				if logfc_to_bases[i] < numpy.absolute(l.logfc_value):
 					logfc_to_bases[i] = l.logfc_value
 			
+		return self.span_block_gaps(self.filter_out_small_blocks(logfc_to_bases))
+			
+	def span_block_gaps(self,logfc_to_bases):
 		logfc_blocks = self.blocks(logfc_to_bases)
+		# span blocks if they are close together
+		if self.span_gaps > 0:
+			for b in logfc_blocks:
+				span_index = b.end + (self.window_size * self.span_gaps)
+				if span_index >= self.genome_length:
+					continue
+				
+				span_value = numpy.absolute(logfc_to_bases[span_index])
+				if span_value >= self.minimum_logfc:
+					for a in range(b.end, span_index):
+						if numpy.absolute(logfc_to_bases[a]) > self.minimum_logfc:
+							continue
+						
+						if logfc_to_bases[b.end -1 ] < 0:
+							logfc_to_bases[a] = -1 * self.minimum_logfc	
+						elif logfc_to_bases[b.end -1 ] > 0:
+							logfc_to_bases[a] = self.minimum_logfc
+					
+		return logfc_to_bases
+		
+	def filter_out_small_blocks(self, logfc_to_bases):
+		logfc_blocks = self.blocks(logfc_to_bases)
+		# filter out small blocks
 		for b in logfc_blocks:
 			if b.block_length < self.window_size:
 				for i in range(b.start -1, b.end):
 					logfc_to_bases[i] = 0
-
+					
 		return logfc_to_bases
-			
 		
 	def read_comparison_file(self):
 		logfc_coord_values = []

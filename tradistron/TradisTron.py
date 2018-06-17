@@ -24,6 +24,7 @@ class TradisTron:
 		self.iterations        = options.iterations
 		self.normalise_plots   = options.normalise_plots
 		self.minimum_block     = options.minimum_block
+		self.span_gaps         = options.span_gaps
 		
 		self.genome_length = 0
 		
@@ -43,7 +44,7 @@ class TradisTron:
 			plotfiles = NormalisePlots(self.plotfiles).create_normalised_files()
 		
 		for i in range(1,self.iterations+1):
-			bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.prefix + "_" +str(i), self.minimum_logcpm, self.minimum_block )
+			bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.prefix + "_" +str(i), self.minimum_logcpm, self.minimum_block, self.span_gaps )
 			bi.run()
 			self.blocks = bi.blocks
 			plotfiles = bi.output_plots.values()
