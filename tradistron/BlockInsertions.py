@@ -11,6 +11,7 @@ from tradistron.TradisComparison      import TradisComparison
 from tradistron.PlotLog               import PlotLog
 from tradistron.PlotMasking           import PlotMasking
 from tradistron.BlockIdentifier       import BlockIdentifier
+from tradistron.BlockAnnotator        import BlockAnnotator
 
 class PlotEssentiality:
 	def __init__(self, plotfile_obj,gene_insert_sites_filename, tradis_essentiality_filename, type):
@@ -26,7 +27,7 @@ class PlotAllEssentiality:
 		self.combined = combined
 
 class BlockInsertions:
-	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm, minimum_block,span_gaps):
+	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm, minimum_block,span_gaps, emblfile):
 		self.logger            = logger
 		self.plotfiles         = plotfiles
 		self.minimum_threshold = minimum_threshold
@@ -39,6 +40,7 @@ class BlockInsertions:
 		self.minimum_logcpm    = minimum_logcpm
 		self.minimum_block     = minimum_block
 		self.span_gaps         = span_gaps
+		self.emblfile          = emblfile  
 		
 		self.genome_length = 0
 		self.forward_plotfile = ""
@@ -130,12 +132,14 @@ class BlockInsertions:
 	def block_statistics(self,forward_plotfile, reverse_plotfile, combined_plotfile, window_size):
 		b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile, window_size)
 		blocks = b.block_generator()
+		BlockAnnotator(self.emblfile, blocks).annotate_blocks()
 		
 		if self.verbose:
-			print(blocks[0].header())
-			for i in blocks:
-				print(i)
-		
+			block_filename = os.path.join(self.prefix, + "gene_report.tsv")
+			with open(block_filename, 'w') as bf:
+				bf.write(blocks[0].header())
+				for i in blocks:
+					print(i)
 		return blocks
 		
 	def mask_plots(self):

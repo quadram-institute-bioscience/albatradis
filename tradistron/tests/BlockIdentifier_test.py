@@ -18,7 +18,7 @@ class TestBlockIdentifier(unittest.TestCase):
 		self.assertEqual([2, -3], [ x.max_logfc for x in blocks] )
 		self.assertEqual([3, 6], [ x.block_length for x in blocks] )
 		self.assertEqual(['forward', 'reverse'], [ x.direction for x in blocks] )
-		self.assertEqual(['overexpressed', 'underexpressed'], [ x.expression for x in blocks] )
+		self.assertEqual(['increased_insertions', 'decreased_insertions'], [ x.expression for x in blocks] )
 
 	def test_noblocks(self):
 		b = BlockIdentifier(os.path.join(data_dir, 'noblocks'),os.path.join(data_dir, 'noblocks_forward'),os.path.join(data_dir, 'noblocks_reverse'), 1)
@@ -35,5 +35,5 @@ class TestBlockIdentifier(unittest.TestCase):
 		self.assertEqual([2, -3], [ x.max_logfc for x in blocks] )
 		self.assertEqual([3, 6], [ x.block_length for x in blocks] )
 		self.assertEqual(['forward', 'reverse'], [ x.direction for x in blocks] )
-		self.assertEqual(['overexpressed', 'underexpressed'], [ x.expression for x in blocks] )
+		self.assertEqual(['increased_insertions', 'decreased_insertions'], [ x.expression for x in blocks] )
 		

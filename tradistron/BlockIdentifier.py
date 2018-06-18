@@ -11,7 +11,7 @@ class BlockIdentifier:
 		self.window_size = window_size
 		self.logfc_direction_change = 2
 	
-	def overexpressed_blocks(self, masking_plot):
+	def increased_insertions_blocks(self, masking_plot):
 		blocks = []
 		inblock = False		
 		start = 0
@@ -29,15 +29,15 @@ class BlockIdentifier:
 			elif mask <= 0 and inblock:
 				inblock = False
 				end = i
-				blocks.append(Block(start +1, end, end-start, max_logfc, 'overexpressed'))
+				blocks.append(Block(start +1, end, end-start, max_logfc, 'increased_insertions'))
 				max_logfc = 0 
 				
 		# Check for block at end
 		if inblock:
-			blocks.append(Block(start +1, len(masking_plot.combined), len(masking_plot.combined)-start, max_logfc, 'overexpressed'))
+			blocks.append(Block(start +1, len(masking_plot.combined), len(masking_plot.combined)-start, max_logfc, 'increased_insertions'))
 		return blocks
 		
-	def underexpressed_blocks(self, masking_plot):
+	def decreased_insertions_blocks(self, masking_plot):
 		blocks = []
 		inblock = False		
 		start = 0
@@ -55,12 +55,12 @@ class BlockIdentifier:
 			elif mask >= 0 and inblock:
 				inblock = False
 				end = i
-				blocks.append(Block(start +1, end, end-start, max_logfc, 'underexpressed' ))
+				blocks.append(Block(start +1, end, end-start, max_logfc, 'decreased_insertions' ))
 				max_logfc = 0 
 
 		# Check for block at end
 		if inblock:
-			blocks.append(Block(start +1, len(masking_plot.combined), len(masking_plot.combined)-start, max_logfc, 'underexpressed'))
+			blocks.append(Block(start +1, len(masking_plot.combined), len(masking_plot.combined)-start, max_logfc, 'decreased_insertions'))
 		
 		return blocks
 		
@@ -92,7 +92,7 @@ class BlockIdentifier:
 
 	def block_generator(self):
 		masking_plot = PlotParser(self.combined_mask_file)
-		blocks = self.overexpressed_blocks(masking_plot) + self.underexpressed_blocks(masking_plot)
+		blocks = self.increased_insertions_blocks(masking_plot) + self.decreased_insertions_blocks(masking_plot)
 		
 		'''Filter out blocks which are less than the window size'''
 		filtered_blocks = [b for b in blocks if b.block_length >= self.window_size]

@@ -17,9 +17,9 @@ except pkg_resources.DistributionNotFound:
 
 parser = argparse.ArgumentParser(
 	description = 'Tradis analysis',
-	usage = 'tradistron [options] plotfiles', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+	usage = 'tradistron [options] EMBLfile plotfiles', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument('emblfile', help='Annotation file in EMBL format', type=str)
 parser.add_argument('plotfiles', help='Input plot files (optionally gzipped)', nargs='+', type=str)
-
 
 parser.add_argument('--span_gaps', '-s',  help='Span a gap if it is this multiple of a window size', type=int, default=1)
 parser.add_argument('--iterations', '-i',  help='No. of times to rescan', type=int, default=1)

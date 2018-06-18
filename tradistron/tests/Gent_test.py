@@ -8,7 +8,6 @@ import shutil
 test_modules_dir = os.path.dirname(os.path.realpath(__file__))
 data_dir = os.path.join(test_modules_dir, 'data','gent')
 
-
 class TestGent(unittest.TestCase):
 	
 	#def test_gent_small_block_13800(self):
@@ -112,9 +111,10 @@ class TestGent(unittest.TestCase):
 		print("Testing:\t"+ str(start_coord))
 		case = os.path.join(data_dir, 'gent-5MIC.'+ str(start_coord) +'.plot.gz')
 		control = os.path.join(data_dir, 'controlrep1.'+ str(start_coord) +'.plot.gz')
+		emblfile = os.path.join(data_dir, 'annotation.embl')
 		
 		logger = logging.getLogger(__name__)
-		b = BlockInsertions(logger,[case, control], 6, 100, 25, False, 2, 0.05, 'testoutput', 8, 50, 1)
+		b = BlockInsertions(logger,[case, control], 6, 100, 25, False, 2, 0.05, 'testoutput', 8, 50, 1, emblfile)
 		self.assertTrue(b.run())
 		self.assertTrue(os.path.exists('testoutput'))
 
@@ -124,7 +124,6 @@ class TestGent(unittest.TestCase):
 	def is_in_block(self,blocks,coord):
 		for block in blocks:
 			if block.start <= coord and block.end >= coord:
-				print("max,len" + str(block.max_logfc) +"\t"+str(block.block_length), file=sys.stderr)
 				return True
 		return False
 		
