@@ -133,15 +133,18 @@ class BlockInsertions:
 		b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile, window_size)
 		blocks = b.block_generator()
 		BlockAnnotator(self.emblfile, blocks).annotate_blocks()
-		for i in blocks:
-			print(i)
 		
+		block_filename = os.path.join(self.prefix, "gene_report.csv")
+		with open(block_filename, 'w') as bf:
+			bf.write(str(blocks[0].header())+"\n")
+			for i in blocks:
+				bf.write(str(i)+"\n")
+				
 		if self.verbose:
-			block_filename = os.path.join(self.prefix, "gene_report.csv")
-			with open(block_filename, 'w') as bf:
-				bf.write(blocks[0].header())
-				for i in blocks:
-					print(i)
+			print(blocks[0].header())		
+			for i in blocks:
+				print(i)
+		
 		return blocks
 		
 	def mask_plots(self):

@@ -41,6 +41,7 @@ options = parser.parse_args()
 
 if options.debug:
 	options.verbose = True
+	import cProfile, pstats, io
 	pr = cProfile.Profile()
 	pr.enable()
 		

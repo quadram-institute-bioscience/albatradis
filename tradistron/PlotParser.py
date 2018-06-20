@@ -52,19 +52,18 @@ class PlotParser:
 		self.reverse = numpy.zeros(self.genome_length, dtype=int )
 		self.combined = numpy.zeros(self.genome_length, dtype=int )
 		
-		for i,l in enumerate(lines):	
-			insertion_count_clean = l.split()
+		split_lines = [l.split() for l in lines]
+		int_split_lines = [ [int(float(l[0])), int(float(l[1]))] for l in split_lines]
 
-			f = int(float(insertion_count_clean[0]))
-			r = int(float(insertion_count_clean[1]))
-			if numpy.absolute(f) >= self.minimum_threshold:
-				self.forward[i] = f
+		for i,l in enumerate(int_split_lines):	
+			if numpy.absolute(l[0]) >= self.minimum_threshold:
+				self.forward[i] = l[0]
 				
-			if numpy.absolute(r) >= self.minimum_threshold:
-				self.reverse[i] = r
+			if numpy.absolute(l[1]) >= self.minimum_threshold:
+				self.reverse[i] = l[1]
 
-			if numpy.absolute(f) + numpy.absolute(r) >= self.minimum_threshold:
-				self.combined[i] = f + r
+			if numpy.absolute(l[0]) + numpy.absolute(l[1]) >= self.minimum_threshold:
+				self.combined[i] = l[0] + l[1]
 
 		return self
 			

@@ -21,12 +21,12 @@ class TestBlockAnnotator(unittest.TestCase):
 		self.assertEqual(1, len(blocks[0].genes))
 		self.assertEqual('total_inactivation', blocks[0].genes[0].category)
 		
-	def test_fully_contained_two(self):
+	def test_fully_contained_three(self):
 		embl_file = os.path.join(data_dir,'annotation.embl')
 		blocks = [Block(1,200, 110, 10, 'x')]
 		a = BlockAnnotator(embl_file, blocks)
 		a.annotate_blocks()
-		self.assertEqual(2, len(blocks[0].genes))
+		self.assertEqual(3, len(blocks[0].genes))
 		self.assertEqual('total_inactivation', blocks[0].genes[0].category)
 
 	def test_total_file_in_block(self):

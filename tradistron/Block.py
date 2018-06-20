@@ -7,6 +7,7 @@ class Block:
 		self.expression = expression
 		self.direction = 'unknown'
 		self.genes = []
+		self.intergenic = False
 		
 	def __str__(self):
 		output_strs = []
@@ -17,8 +18,12 @@ class Block:
 				gene_name = gene.feature.qualifiers["gene"][0]
 			
 			output_strs.append("\t".join([str(gene_name), str(gene.category),str(self.start), str(self.end), str(self.block_length), str(self.max_logfc),  str(self.expression), str(self.direction)] ))
-		else:
+
+		if len(self.genes) == 0:
 			output_strs.append("\t".join(['unknown', '',str(self.start), str(self.end), str(self.block_length), str(self.max_logfc),  str(self.expression), str(self.direction)] ))
+		elif self.intergenic:
+			output_strs.append("\t".join(['intergenic', '',str(self.start), str(self.end), str(self.block_length), str(self.max_logfc),  str(self.expression), str(self.direction)] ))
+			
 		return "\n".join( output_strs)
 		
 	def header(self):

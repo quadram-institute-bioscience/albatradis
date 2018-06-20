@@ -18,7 +18,7 @@ class PrepareInputFiles:
 		self.embl_filename = ""
 		
 	def genome_length(self):
-		return self.plot_parser().genome_length
+		return self.plot_parser_obj.genome_length
 		
 	def plot_parser(self):
 		return PlotParser(self.plotfile,self.minimum_threshold)

@@ -4,16 +4,24 @@ from tradistron.Gene import Gene
 class BlockAnnotator:
 	def __init__(self, annotation_file, blocks):
 		self.annotation_file = annotation_file
-		self.blocks = blocks
+		self.blocks = self.sort_blocks_by_start_coord(blocks)
 		self.knockout_proportion_start = 0.5
 		self.increased_expression_proportion_end= 0.3
 		
 		self.features = self.read_annotation_features()
+		
+	def sort_blocks_by_start_coord(self, blocks):
+		return sorted((b for b in blocks ), key=lambda x: x.start)
 	
 	def annotate_blocks(self):
 		for b in self.blocks:
 			overlapping_feature = self.features_overlapping_block(b) 
 			
+			# intergenic
+			if len(overlapping_feature) == 0:
+				b.intergenic = True
+				continue
+			 
 			# only consider 1 gene at a time
 			for f in overlapping_feature:
 				if self.is_feature_contained_within_block(b, f):
@@ -30,9 +38,10 @@ class BlockAnnotator:
 						b.genes.append(Gene(f, 'increased_mutants_at_start_of_gene'))
 					else:
 						b.genes.append(Gene(f, 'decreased_mutants_at_start_of_gene'))
-					continue
-					
-				
+					continue	
+				else:
+						b.genes.append(Gene(f, 'unclassified'))
+
 		return self 
 		
 	'''Assumption is that there is only 1 sequence in the annotation file'''
@@ -47,7 +56,11 @@ class BlockAnnotator:
 			if f.type in ['source','gene']:
 				continue
 			
-			for i in range(block.start -1 , block.end):
+			if f.location.end < (block.start -1) or f.location.start > block.end:
+				continue
+				
+			# genes are big so you are bound to hit one. Smallest in ecoli is 45bp so half it.
+			for i in range(block.start -1 , block.end, 22):
 				if i in f:
 					overlapping_features.append(f)
 					break
