@@ -36,5 +36,32 @@ class TestBlockAnnotator(unittest.TestCase):
 		a.annotate_blocks()
 		self.assertEqual(4, len(blocks[0].genes))
 		self.assertEqual('total_inactivation', blocks[0].genes[0].category)
+
+	def test_block_near_end(self):
+		embl_file = os.path.join(data_dir,'annotation.embl')
+		blocks = [Block(90,110, 20, 10, 'x')]
+		blocks[0].direction = 'reverse'
+		a = BlockAnnotator(embl_file, blocks)
+		a.annotate_blocks()
+		self.assertEqual(1, len(blocks[0].genes))
+		self.assertEqual('increased_mutants_at_end_of_gene', blocks[0].genes[0].category)
 		
+	def test_block_near_end_reverse(self):
+		embl_file = os.path.join(data_dir,'reverse.embl')
+		blocks = [Block(1,20, 20, 10, 'x')]
+		blocks[0].direction = 'forward'
+		a = BlockAnnotator(embl_file, blocks)
+		a.annotate_blocks()
+		self.assertEqual(1, len(blocks[0].genes))
+		self.assertEqual('increased_mutants_at_end_of_gene', blocks[0].genes[0].category)
+		
+	def test_block_near_end_decrease(self):
+		embl_file = os.path.join(data_dir,'annotation.embl')
+		blocks = [Block(90,110, 20, -10, 'x')]
+		blocks[0].direction = 'reverse'
+		a = BlockAnnotator(embl_file, blocks)
+		a.annotate_blocks()
+		self.assertEqual(1, len(blocks[0].genes))
+		self.assertEqual('decreased_mutants_at_end_of_gene', blocks[0].genes[0].category)
+		self.assertEqual(['1_100'], blocks[0].genes[0].feature.qualifiers["gene"])
 	

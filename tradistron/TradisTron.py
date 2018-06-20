@@ -22,7 +22,7 @@ class TradisTron:
 		self.prefix            = options.prefix
 		self.minimum_logcpm    = options.minimum_logcpm
 		self.iterations        = options.iterations
-		self.normalise_plots   = options.normalise_plots
+		self.dont_normalise_plots   = options.dont_normalise_plots
 		self.minimum_block     = options.minimum_block
 		self.span_gaps         = options.span_gaps
 		self.emblfile          = options.emblfile
@@ -41,7 +41,7 @@ class TradisTron:
 	
 	def run(self):
 		plotfiles = self.plotfiles
-		if self.normalise_plots:
+		if self.dont_normalise_plots:
 			plotfiles = NormalisePlots(self.plotfiles).create_normalised_files()
 		
 		for i in range(1,self.iterations+1):

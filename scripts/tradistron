@@ -21,21 +21,38 @@ parser = argparse.ArgumentParser(
 parser.add_argument('emblfile', help='Annotation file in EMBL format', type=str)
 parser.add_argument('plotfiles', help='Input plot files (optionally gzipped)', nargs='+', type=str)
 
-parser.add_argument('--span_gaps', '-s',  help='Span a gap if it is this multiple of a window size', type=int, default=1)
+parser.add_argument('--span_gaps', '-s',  help='Span a gap if it is this multiple of a window size', type=int, default=3)
 parser.add_argument('--iterations', '-i',  help='No. of times to rescan', type=int, default=1)
 parser.add_argument('--minimum_block', '-b',  help='Minimum number of reads which must be in 1 block in comparison', type=int, default=50)
 parser.add_argument('--minimum_logfc', '-f',  help='Minimum log fold change +/-', type=float, default=8.0)
 parser.add_argument('--minimum_logcpm', '-c',  help='Minimum log counts per million +/-', type=float, default=2.0)
 parser.add_argument('--minimum_threshold', '-m', help='Only include insert sites with this number or greater insertions', type=int, default=6)
-parser.add_argument('--normalise_plots', '-n', action='store_true', help='Normalise input plots', default = False)
+parser.add_argument('--dont_normalise_plots', '-n', action='store_true', help='Dont normalise input plots', default = False)
 parser.add_argument('--prefix', '-o',  help='Output directory prefix', type=str, default='output')
 parser.add_argument('--pvalue', '-p',  help='Dont report anything above this p-value', type=float, default=0.05)
 parser.add_argument('--window_interval', '-l',  help='Window interval', type=int, default=25)
 parser.add_argument('--window_size',	 '-w', help='Window size', type=int, default= 100)
-parser.add_argument('--verbose', '-v', action='store_true', help='Turn on debugging [%(default)s]', default = False)
+parser.add_argument('--verbose', '-v', action='store_true', help='Print out more information about the analysis while it runs', default = False)
+parser.add_argument('--debug', action='store_true', help='Turn on debugging', default = False)
 parser.add_argument('--version', action='version', version=str(version))
+
 
 options = parser.parse_args()
 
-tradistron = TradisTron(options)
-tradistron.run()
+if options.debug:
+	options.verbose = True
+	pr = cProfile.Profile()
+	pr.enable()
+		
+	tradistron = TradisTron(options)
+	tradistron.run()
+		
+	pr.disable()
+	s = io.StringIO()
+	sortby = 'cumulative'
+	ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+	ps.print_stats()
+	print(s.getvalue())
+else:
+	tradistron = TradisTron(options)
+	tradistron.run()
