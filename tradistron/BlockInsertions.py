@@ -11,7 +11,7 @@ from tradistron.TradisComparison      import TradisComparison
 from tradistron.PlotLog               import PlotLog
 from tradistron.PlotMasking           import PlotMasking
 from tradistron.BlockIdentifier       import BlockIdentifier
-from tradistron.BlockAnnotator        import BlockAnnotator
+from tradistron.GeneAnnotator        import GeneAnnotator
 
 class PlotEssentiality:
 	def __init__(self, plotfile_obj,gene_insert_sites_filename, tradis_essentiality_filename, type):
@@ -63,7 +63,7 @@ class BlockInsertions:
 		
 		self.run_comparisons(essentiality_files)
 		self.output_plots = self.mask_plots()
-		self.blocks = self.block_statistics(self.forward_plotfile, self.reverse_plotfile, self.combined_plotfile, self.window_size)
+		self.genes = self.gene_statistics(self.forward_plotfile, self.reverse_plotfile, self.combined_plotfile, self.window_size)
 		
 		return self
 		
@@ -129,23 +129,33 @@ class BlockInsertions:
 		return renamed_plot_file
 		
 		
-	def block_statistics(self,forward_plotfile, reverse_plotfile, combined_plotfile, window_size):
+	def gene_statistics(self,forward_plotfile, reverse_plotfile, combined_plotfile, window_size):
 		b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile, window_size)
 		blocks = b.block_generator()
-		BlockAnnotator(self.emblfile, blocks).annotate_blocks()
+		genes = GeneAnnotator(self.emblfile, blocks).annotate_genes()
+		intergenic_blocks = [block for block in blocks if block.intergenic]
+		
+		if len(genes) == 0:
+			return []
 		
 		block_filename = os.path.join(self.prefix, "gene_report.csv")
 		with open(block_filename, 'w') as bf:
-			bf.write(str(blocks[0].header())+"\n")
-			for i in blocks:
+			bf.write(str(genes[0].header())+"\n")
+			for i in genes:
 				bf.write(str(i)+"\n")
 				
+			for b in intergenic_blocks:
+				bf.write(str(b)+"\n")
+				
 		if self.verbose:
-			print(blocks[0].header())		
-			for i in blocks:
+			print(genes[0].header())		
+			for i in genes:
 				print(i)
+				
+			for b in intergenic_blocks:
+				print(b)
 		
-		return blocks
+		return genes
 		
 	def mask_plots(self):
 		pm = PlotMasking(self.plotfiles, self.combined_plotfile )

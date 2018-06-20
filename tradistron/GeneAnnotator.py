@@ -1,7 +1,7 @@
 from Bio import SeqIO
 from tradistron.Gene import Gene
 
-class BlockAnnotator:
+class GeneAnnotator:
 	def __init__(self, annotation_file, blocks):
 		self.annotation_file = annotation_file
 		self.blocks = self.sort_blocks_by_start_coord(blocks)
@@ -12,59 +12,64 @@ class BlockAnnotator:
 		
 	def sort_blocks_by_start_coord(self, blocks):
 		return sorted((b for b in blocks ), key=lambda x: x.start)
-	
-	def annotate_blocks(self):
-		for b in self.blocks:
-			overlapping_feature = self.features_overlapping_block(b) 
+		
+	def annotate_genes(self):
+		genes = []
+		for f in self.features:
+			overlapping_blocks = self.blocks_overlapping_feature(f) 
 			
-			# intergenic
-			if len(overlapping_feature) == 0:
-				b.intergenic = True
+			if len(overlapping_blocks) == 0:
+				# no hits to any blocks so move to next feature
 				continue
+
+			g = Gene(f, overlapping_blocks)
 			 
-			# only consider 1 gene at a time
-			for f in overlapping_feature:
+			# only consider block at a time
+			for b in overlapping_blocks:
 				if self.is_feature_contained_within_block(b, f):
-					b.genes.append(Gene(f, 'total_inactivation'))
-					continue
+					g.categories.append('total_inactivation')
 				elif self.is_block_near_end_of_feature(b, f):
 					if b.max_logfc > 0 :
-						b.genes.append(Gene(f, 'increased_mutants_at_end_of_gene'))
+						g.categories.append('increased_mutants_at_end_of_gene')
 					else:
-						b.genes.append(Gene(f, 'decreased_mutants_at_end_of_gene'))
-					continue
+						g.categories.append('decreased_mutants_at_end_of_gene')
 				elif self.is_block_near_start_of_feature(b,f):
 					if b.max_logfc > 0 :
-						b.genes.append(Gene(f, 'increased_mutants_at_start_of_gene'))
+						g.categories.append('increased_mutants_at_start_of_gene')
 					else:
-						b.genes.append(Gene(f, 'decreased_mutants_at_start_of_gene'))
-					continue	
-				else:
-						b.genes.append(Gene(f, 'unclassified'))
+						g.categories.append('decreased_mutants_at_start_of_gene')
+			
+			if len(g.categories) == 0:
+				g.categories.append('unclassified')
+			genes.append(g)
 
-		return self 
+		# intergenic test
+		intergenic_blocks = [block for block in self.blocks if block.num_genes == 0]
+		for block in intergenic_blocks:
+			block.intergenic = True
+
+		return genes 
 		
 	'''Assumption is that there is only 1 sequence in the annotation file'''
 	def read_annotation_features(self):
 		record =  SeqIO.read(self.annotation_file, "embl")
+		return [f for f in record.features if f.type not in ['source','gene']]
 		
-		return record.features
+	def blocks_overlapping_feature(self, feature):
+		overlapping_blocks = []
 		
-	def features_overlapping_block(self,block):
-		overlapping_features = []
-		for f in self.features:
-			if f.type in ['source','gene']:
-				continue
-			
-			if f.location.end < (block.start -1) or f.location.start > block.end:
+		for block in self.blocks:
+
+			if (block.start -1) > feature.location.end  or feature.location.start > block.end:
 				continue
 				
 			# genes are big so you are bound to hit one. Smallest in ecoli is 45bp so half it.
 			for i in range(block.start -1 , block.end, 22):
-				if i in f:
-					overlapping_features.append(f)
+				if i in feature:
+					overlapping_blocks.append(block)
+					block.num_genes += 1
 					break
-		return overlapping_features
+		return overlapping_blocks
 			
 	def is_feature_contained_within_block(self, block, feature):
 		if feature.location.start >= block.start -1 and feature.location.end <= block.end:
