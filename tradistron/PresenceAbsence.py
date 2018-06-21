@@ -1,6 +1,8 @@
 import os
 import sys
 import numpy
+import dendropy
+from dendropy.utility.textprocessing import StringIO
 from tradistron.EMBLReader import EMBLReader
 from tradistron.GeneReport import GeneReport
 
@@ -40,6 +42,7 @@ class PresenceAbsence:
 		self.create_gene_logfc_spreadsheet(os.path.join(self.prefix, 'filtered_logfc.csv'), self.filtered_gene_names, self.filtered_reports_to_gene_logfc)
 		
 		self.plot_distance_matrix(os.path.join(self.prefix, 'distance_matrix_dendrogram.png'))
+		self.create_nj_newick(os.path.join(self.prefix, 'nj_tree.newick'))
 		return self
 
 	def create_gene_logfc_spreadsheet(self, filename, gene_names, reports_to_gene_logfc):
@@ -92,6 +95,29 @@ class PresenceAbsence:
 		plt.title("Distance matrix")
 		plt.savefig(outputfile)
 		
+		return self
+		
+		
+	def nj_distance_matrix_str(self):
+		output = "\t".join(['.'] + self.genereports) + "\n"
+		
+		dm = self.distance_matrix()
+		for i,g in enumerate(self.genereports):
+			
+			output += "\t".join([g] + [str(d) for d in dm[i]]) + "\n"
+			
+		return output
+			
+		
+	def create_nj_newick(self,outputfile):
+		pdm = dendropy.PhylogeneticDistanceMatrix.from_csv(
+		       src=StringIO(self.nj_distance_matrix_str()),
+		        delimiter="\t")
+		nj_tree = pdm.nj_tree()
+		
+		with open(outputfile, 'w') as fh:
+			fh.write(nj_tree.as_string("newick"))
+			
 		return self
 			
 				
