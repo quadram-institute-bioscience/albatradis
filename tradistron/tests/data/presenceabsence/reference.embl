@@ -42,7 +42,7 @@ CC   ##Genome-Assembly-Data-END##
 XX
 FH   Key             Location/Qualifiers
 FH
-FT   source          1..4631469
+FT   source          1..480
 FT                   /organism="Escherichia coli BW25113"
 FT                   /strain="K-12"
 FT                   /sub_strain="BW25113"
@@ -16036,4 +16036,14 @@ FT                   /translation="MLKRIIWILFLLGLTWGCELFAHDGTVNISGSFRRNTCVLAQDSK
 FT                   QINVQLGDVSLTRFSHGNYGPEKSFIINLQDCGTDVSTVDVTFSGTPDGVQSEMLSIES
 FT                   GTDAASGLAIAILDDAKILIPLNQASKDYSLHSGKVPLTFYAQLRPVNSDVQSGKVNAS
 FT                   ATFVLHYD"
+XX
+SQ   Sequence 480 BP; 1140509 A; 1177154 C; 1174646 G; 1139160 T; 0 other;
+     agcttttcat tctgactgca acgggcaata tgtctctgtg tggattaaaa aaagagtgtc        60
+     tgatagcagc ttctgaactg gttacctgcc gtgagtaaat taaaatttta ttgacttagg       120
+     tcactaaata ctttaaccaa tataggcata gcgcacagac agataaaaat tacagagtac       180
+     acaacatcca tgaaacgcat tagcaccacc attaccacca ccatcaccat taccacaggt       240
+     aacggtgcgg gctgacgcgt acaggaaaca cagaaaaaag cccgcacctg acagtgcggg       300
+     cttttttttt cgaccaaagg taacgaggta acaaccatgc gagtgttgaa gttcggcggt       360
+     acatcagtgg caaatgcaga acgttttctg cgtgttgccg atattctgga aagcaatgcc       420
+     aggcaggggc aggtggccac cgtcctctct gcccccgcca aaatcaccaa ccacctggtg       480
 //
