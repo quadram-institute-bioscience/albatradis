@@ -15,7 +15,7 @@ class Gene:
 		if 'total_inactivation' in self.categories:
 			return 'total_inactivation'
 		else:
-			return "/".join(self.categories)
+			return "/".join(list(set(self.categories)))
 
 	def max_logfc_from_blocks(self):
 		highest_logfc = 0

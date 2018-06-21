@@ -40,6 +40,19 @@ class GeneAnnotator:
 						g.categories.append('decreased_mutants_at_start_of_gene')
 			
 			if len(g.categories) == 0:
+				p = self.proportion_blocks_overlap_with_gene(f, overlapping_blocks)
+				if p > 0.9:
+					g.categories.append('over_90_perc_inactivation')
+				elif p > 0.8:
+					g.categories.append('over_80_perc_inactivation')	
+				elif p > 0.7:
+					g.categories.append('over_70_perc_inactivation')
+				elif p > 0.6:
+					g.categories.append('over_60_perc_inactivation')
+				elif p > 0.5:
+					g.categories.append('over_50_perc_inactivation')	
+			
+			if len(g.categories) == 0:
 				g.categories.append('unclassified')
 			genes.append(g)
 
@@ -49,6 +62,17 @@ class GeneAnnotator:
 			block.intergenic = True
 
 		return genes 
+		
+	def proportion_blocks_overlap_with_gene(self,gene, blocks):
+		base_coverage = 0
+		for b in blocks:
+			for b_index in range (b.start -1, b.end):
+				if b_index >= gene.location.start and b_index < gene.location.end:
+					base_coverage += 1
+				
+		gene_length = gene.location.end - gene.location.start
+		return base_coverage/gene_length
+			
 		
 	'''Assumption is that there is only 1 sequence in the annotation file'''
 	def read_annotation_features(self):
