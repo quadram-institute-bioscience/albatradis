@@ -9,7 +9,7 @@ class GeneAnnotator:
 		self.knockout_proportion_start = 0.5
 		self.increased_expression_proportion_end= 0.3
 		
-		self.features = EMBLReader(self.emblfile).read_annotation_features()
+		self.features = EMBLReader(self.annotation_file).read_annotation_features()
 		
 	def sort_blocks_by_start_coord(self, blocks):
 		return sorted((b for b in blocks ), key=lambda x: x.start)
