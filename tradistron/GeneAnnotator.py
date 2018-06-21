@@ -1,5 +1,6 @@
 from Bio import SeqIO
 from tradistron.Gene import Gene
+from tradistron.EMBLReader import EMBLReader
 
 class GeneAnnotator:
 	def __init__(self, annotation_file, blocks):
@@ -8,7 +9,7 @@ class GeneAnnotator:
 		self.knockout_proportion_start = 0.5
 		self.increased_expression_proportion_end= 0.3
 		
-		self.features = self.read_annotation_features()
+		self.features = EMBLReader(self.emblfile).read_annotation_features()
 		
 	def sort_blocks_by_start_coord(self, blocks):
 		return sorted((b for b in blocks ), key=lambda x: x.start)
@@ -73,11 +74,6 @@ class GeneAnnotator:
 		gene_length = gene.location.end - gene.location.start
 		return base_coverage/gene_length
 			
-		
-	'''Assumption is that there is only 1 sequence in the annotation file'''
-	def read_annotation_features(self):
-		record =  SeqIO.read(self.annotation_file, "embl")
-		return [f for f in record.features if f.type not in ['source','gene']]
 		
 	def blocks_overlapping_feature(self, feature):
 		overlapping_blocks = []
