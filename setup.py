@@ -25,7 +25,9 @@ setup(
     tests_require=['nose >= 1.3'],
     install_requires=[
            'biopython >= 1.68',
-		   'pyfastaq >= 3.12.0'
+		   'pyfastaq >= 3.12.0',
+		   'scipy',
+		   'numpy'
        ],
     license='GPLv3',
     classifiers=[

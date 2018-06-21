@@ -20,6 +20,7 @@ parser = argparse.ArgumentParser(
 	usage = 'tradistron [options] EMBLfile gene_reports', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('emblfile', help='Annotation file in EMBL format', type=str)
 parser.add_argument('genereports', help='Gene report spreadsheets', nargs='+', type=str)
+parser.add_argument('--prefix', '-o',  help='Output directory prefix', type=str, default='output')
 
 parser.add_argument('--verbose', '-v', action='store_true', help='Print out more information about the analysis while it runs', default = False)
 parser.add_argument('--debug', action='store_true', help='Turn on debugging', default = False)

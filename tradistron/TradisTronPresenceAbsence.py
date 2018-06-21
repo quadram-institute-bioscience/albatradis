@@ -12,13 +12,17 @@ class TradisTronPresenceAbsence:
 		self.genereports       = options.genereports
 		self.verbose           = options.verbose
 		self.emblfile          = options.emblfile
-		self.filter_no_data    = options.filter_no_data
+		self.prefix            = options.prefix
 
 		if self.verbose:
 			self.logger.setLevel(logging.DEBUG)
 		else:
 			self.logger.setLevel(logging.ERROR)
+			
+		if not os.path.exists(self.prefix ):
+			os.makedirs(self.prefix )
 
 	def run(self):
-		PresenceAbsence(self.genereports, self.emblfile, self.filter_no_data ,self.verbose ).run()
+		p = PresenceAbsence(self.genereports, self.emblfile, self.verbose, self.prefix )
+		p.create_output_files()
 		return self

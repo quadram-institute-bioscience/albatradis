@@ -34,9 +34,6 @@ class TradisTron:
 		else:
 			self.logger.setLevel(logging.ERROR)
 			
-		if not os.path.exists(self.prefix ):
-			os.makedirs(self.prefix )
-			
 		self.blocks = []
 	
 	def run(self):
