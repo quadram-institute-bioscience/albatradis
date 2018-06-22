@@ -22,7 +22,5 @@ class TradisEssentiality:
 		os.rename(self.tabfile +".all.csv", self.output_filename)
 		os.rename(self.tabfile +".essen.csv", self.essential_filename)
 		os.rename(self.tabfile +".ambig.csv", self.ambig_filename)
-		return self
 		
-
-
+		return self

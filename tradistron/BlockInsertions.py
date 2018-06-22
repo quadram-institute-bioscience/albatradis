@@ -14,10 +14,11 @@ from tradistron.BlockIdentifier       import BlockIdentifier
 from tradistron.GeneAnnotator        import GeneAnnotator
 
 class PlotEssentiality:
-	def __init__(self, plotfile_obj,gene_insert_sites_filename, tradis_essentiality_filename, type):
+	def __init__(self, plotfile_obj,gene_insert_sites_filename, tradis_essentiality_filename, type, only_essential_filename):
 		self.plotfile_obj = plotfile_obj
 		self.gene_insert_sites_filename = gene_insert_sites_filename
 		self.tradis_essentiality_filename = tradis_essentiality_filename
+		self.only_essential_filename = only_essential_filename
 		self.type = type
 		
 class PlotAllEssentiality:
@@ -88,7 +89,7 @@ class BlockInsertions:
 		g.run()
 		e = TradisEssentiality(g.output_filename, self.verbose)
 		e.run()
-		pe = PlotEssentiality(plotfile, g.output_filename, e.output_filename, filetype)
+		pe = PlotEssentiality(plotfile, g.output_filename, e.output_filename, filetype, e.essential_filename)
 		
 		if self.verbose:
 			print("Essentiality:\t" + filetype + "\t" + e.output_filename)
@@ -112,9 +113,11 @@ class BlockInsertions:
 	def generate_logfc_plot(self, analysis_type, essentiality_files):
 		files = [getattr(essentiality_files[plotfile], analysis_type).tradis_essentiality_filename for plotfile in self.plotfiles]
 		
+		only_ess_files = [getattr(essentiality_files[plotfile], analysis_type).only_essential_filename for plotfile in self.plotfiles]
+		
 		mid = int(len(files)  / 2)
 		
-		t = TradisComparison(files[:mid],files[mid:], self.verbose, self.minimum_block)
+		t = TradisComparison(files[:mid],files[mid:], self.verbose, self.minimum_block, only_ess_files[:mid], only_ess_files[mid:])
 		t.run()
 		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm, self.window_size, self.span_gaps)
 		p.construct_plot_file()
