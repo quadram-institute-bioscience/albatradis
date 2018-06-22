@@ -28,7 +28,9 @@ setup(
 		   'pyfastaq >= 3.12.0',
 		   'scipy',
 		   'numpy',
-		   'dendropy'
+		   'dendropy',
+		   'seaborn',
+		   'pandas'
        ],
     license='GPLv3',
     classifiers=[

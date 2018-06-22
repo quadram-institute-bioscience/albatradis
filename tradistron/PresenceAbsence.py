@@ -2,14 +2,15 @@ import os
 import sys
 import numpy
 import dendropy
-from dendropy.utility.textprocessing import StringIO
-from tradistron.EMBLReader import EMBLReader
-from tradistron.GeneReport import GeneReport
 
+from dendropy.utility.textprocessing import StringIO
 from scipy.cluster.hierarchy import dendrogram, linkage
 from scipy.spatial.distance import squareform
 import matplotlib.pyplot as plt
 
+from tradistron.EMBLReader import EMBLReader
+from tradistron.GeneReport import GeneReport
+from tradistron.HeatMap import HeatMap
 
 class PresenceAbsence:
 	def __init__(self, genereports, emblfile, verbose, prefix):
@@ -42,7 +43,11 @@ class PresenceAbsence:
 		self.create_gene_logfc_spreadsheet(os.path.join(self.prefix, 'filtered_logfc.csv'), self.filtered_gene_names, self.filtered_reports_to_gene_logfc)
 		
 		self.plot_distance_matrix(os.path.join(self.prefix, 'distance_matrix_dendrogram.png'))
-		self.create_nj_newick(os.path.join(self.prefix, 'nj_tree.newick'))
+		self.create_nj_newick(os.path.join(self.prefix, 'nj_newick_tree.tre'))
+		
+		HeatMap(self.reports_to_gene_logfc, self.gene_names,os.path.join(self.prefix, 'full_heatmap.png')).create_heat_map()
+		HeatMap(self.filtered_reports_to_gene_logfc, self.filtered_gene_names, os.path.join(self.prefix, 'filtered_heatmap.png')).create_heat_map()
+		
 		return self
 
 	def create_gene_logfc_spreadsheet(self, filename, gene_names, reports_to_gene_logfc):
