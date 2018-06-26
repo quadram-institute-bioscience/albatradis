@@ -1,6 +1,7 @@
 import subprocess
 from tempfile import mkstemp
 import os
+import shutil
 
 class TradisEssentiality:
 	def __init__(self, tabfile, verbose, exec="tradis_essentiality.R"):
@@ -19,8 +20,17 @@ class TradisEssentiality:
 		if self.verbose:
 			print(self.construct_command())
 		subprocess.check_output(self.construct_command(), shell=True)
-		os.rename(self.tabfile +".all.csv", self.output_filename)
-		os.rename(self.tabfile +".essen.csv", self.essential_filename)
-		os.rename(self.tabfile +".ambig.csv", self.ambig_filename)
+		shutil.copy(self.tabfile +".all.csv", self.output_filename)
+		shutil.copy(self.tabfile +".essen.csv", self.essential_filename)
+		shutil.copy(self.tabfile +".ambig.csv", self.ambig_filename)
+		
+		if self.verbose:
+			print("all.csv\t" + self.output_filename)
+			print("essen.csv\t" + self.essential_filename)
+			print("ambig.csv\t" + self.ambig_filename)
+		
+		os.remove(self.tabfile +".all.csv")
+		os.remove(self.tabfile +".essen.csv")
+		os.remove(self.tabfile +".ambig.csv")
 		
 		return self

@@ -4,6 +4,7 @@ class Gene:
 		self.feature  = feature
 		self.blocks = blocks
 		self.categories = []
+		self.upstream = []
 
 	def gene_name(self):
 		gene_name_val = 'unknown'
@@ -16,6 +17,9 @@ class Gene:
 			return 'total_inactivation'
 		else:
 			return "/".join(list(set(self.categories)))
+			
+	def upstream_gene(self):
+			return "/".join(list(set(self.upstream)))
 
 	def max_logfc_from_blocks(self):
 		highest_logfc = 0
@@ -31,8 +35,8 @@ class Gene:
 		return "/".join(list(set([b.direction for b in self.blocks])))
 
 	def __str__(self):
-		return "\t".join([str(self.gene_name()), str(self.category()), str(self.feature.location.start), str(self.feature.location.end), str(self.max_logfc_from_blocks()),  str(self.expression_from_blocks()), str(self.direction_from_blocks())] )
+		return "\t".join([str(self.gene_name()), str(self.category()), str(self.feature.location.start), str(self.feature.location.end), str(self.max_logfc_from_blocks()),  str(self.expression_from_blocks()), str(self.direction_from_blocks()), str(self.upstream_gene())] )
 		
 	def header(self):
-		return "\t".join(['Gene', 'Category', 'Start', 'End', 'MaxLogFC', 'Expression', 'Direction'])
+		return "\t".join(['Gene', 'Category', 'Start', 'End', 'MaxLogFC', 'Expression', 'Direction', 'Upstream'])
 		

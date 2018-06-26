@@ -16,9 +16,9 @@ class GeneAnnotator:
 		
 	def annotate_genes(self):
 		genes = []
-		for f in self.features:
+		for gene_number, f in enumerate(self.features):
 			overlapping_blocks = self.blocks_overlapping_feature(f) 
-			
+
 			if len(overlapping_blocks) == 0:
 				# no hits to any blocks so move to next feature
 				continue
@@ -27,6 +27,7 @@ class GeneAnnotator:
 			 
 			# only consider block at a time
 			for b in overlapping_blocks:
+				g.upstream.append(self.find_upstream_gene(b,gene_number))
 				if self.is_feature_contained_within_block(b, f):
 					g.categories.append('total_inactivation')
 				elif self.is_block_near_end_of_feature(b, f):
@@ -60,9 +61,38 @@ class GeneAnnotator:
 		# intergenic test
 		intergenic_blocks = [block for block in self.blocks if block.num_genes == 0]
 		for block in intergenic_blocks:
+			block.upstream  = self.find_nearest_upstream_gene(block)
 			block.intergenic = True
 
 		return genes 
+		
+	def feature_to_gene_name(self, feature):
+		gene_name_val = 'unknown'
+		if "gene" in feature.qualifiers:
+			gene_name_val = feature.qualifiers["gene"][0]
+		return gene_name_val
+		
+	def find_nearest_upstream_gene(self, block):
+		if block.direction == 'forward':
+			for f in self.features:
+				if f.location.start -1 > block.end and f.strand == 1:
+					return self.feature_to_gene_name(f)
+		elif block.direction == 'reverse':
+			for f in reversed(self.features):
+				if f.location.end < block.start and f.strand == -1:
+					return self.feature_to_gene_name(f)
+		return "NA"
+		
+	def find_upstream_gene(self, block, gene_number):
+		if block.direction  == 'reverse':
+			for upstream_i in range(gene_number -1, 0, -1):
+				if self.features[upstream_i].strand == -1 and block.start -1  > self.features[upstream_i].location.end:
+					return self.feature_to_gene_name(self.features[upstream_i])
+		elif block.direction  == 'forward':
+			for upstream_i in range(gene_number +1, len(self.features)):
+				if self.features[upstream_i].strand == 1 and block.end < self.features[upstream_i].location.start:
+					return self.feature_to_gene_name(self.features[upstream_i])
+		return "NA"
 		
 	def proportion_blocks_overlap_with_gene(self,gene, blocks):
 		base_coverage = 0

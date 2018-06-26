@@ -4,6 +4,7 @@ import logging
 import os
 import sys
 import time
+import shutil
 from tradistron.TradisGeneInsertSites import TradisGeneInsertSites
 from tradistron.PrepareInputFiles     import PrepareInputFiles
 from tradistron.TradisEssentiality    import TradisEssentiality
@@ -124,8 +125,11 @@ class BlockInsertions:
 		renamed_csv_file  = os.path.join(self.prefix, analysis_type + ".csv")
 		renamed_plot_file = os.path.join(self.prefix, analysis_type + ".plot")
 		
-		os.rename(t.output_filename, renamed_csv_file)
-		os.rename(p.output_filename, renamed_plot_file)
+		shutil.copy(t.output_filename, renamed_csv_file)
+		shutil.copy(p.output_filename, renamed_plot_file)
+		os.remove(t.output_filename)
+		os.remove(p.output_filename)
+		
 		if self.verbose:
 			print("Comprison:\t"+ renamed_csv_file)
 			print("Plot log:\t"+ renamed_plot_file)
@@ -167,7 +171,8 @@ class BlockInsertions:
 		for pfile in pm.output_plot_files:
 			original_basefile  = os.path.join(self.prefix, os.path.basename(pfile) )
 			renamed_file = original_basefile.replace('.gz','')
-			os.rename(pm.output_plot_files[pfile], renamed_file)
+			shutil.copy(pm.output_plot_files[pfile], renamed_file)
+			os.remove(pm.output_plot_files[pfile])
 			renamed_plot_files[pfile] = renamed_file
 			
 			if self.verbose:
