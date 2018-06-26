@@ -1,6 +1,7 @@
 import subprocess
 from tempfile import mkstemp
 import os
+import csv
 
 class GeneEssentiality:
 	def __init__(self):
@@ -41,25 +42,27 @@ class TradisComparison:
 	def gene_names_from_essentiality_file(self,filename):
 		gene_names = []
 		with open(filename, 'r') as fileh:
-			rows = [line.split(',') for line in fileh]
+			reader = csv.reader(fileh, delimiter=',', quotechar='"')
+			gene_names =  [r[1] for r in reader if r[1] != 'gene_name']
 			
-			gene_names = [ r[1] for r in rows if r[1] != 'gene_name']
 		return gene_names
 		
-	def all_gene_essentiality(self):
-		all_gene_names = self.gene_names_from_essentiality_file(self.output_filename)
+	def all_gene_essentiality(self, input_filename):
+		all_gene_names = self.gene_names_from_essentiality_file(input_filename)
 		
 		genes_ess = {g: GeneEssentiality() for g in all_gene_names}
 
 		for f in self.only_ess_files_condition:
 			ess_gene_names = self.gene_names_from_essentiality_file(f)
 			for e in ess_gene_names:
-				genes_ess[e].condition += 1
+				if e in genes_ess:
+					genes_ess[e].condition += 1
 				
 		for f in self.only_ess_files_control:
 			ess_gene_names = self.gene_names_from_essentiality_file(f)
 			for e in ess_gene_names:
-				genes_ess[e].control += 1
+				if e in genes_ess:
+					genes_ess[e].control += 1
 		return genes_ess
 	
 	def create_fofn(self):
@@ -83,20 +86,21 @@ class TradisComparison:
 	def add_gene_essentiality_to_file(self, input_filename,output_filename, genes_ess):
 		with open(input_filename, 'r') as inputfh:
 			output_content = []
-			input_content = inputfh.read().splitlines()
-			for i,line in enumerate(input_content):
-				cell = line.split("\t")
+			
+			reader = csv.reader(inputfh, delimiter=',', quotechar='"')
+			input_content =  [r for r in reader]
+			for i,cells in enumerate(input_content):
 				if i == 0:
-					cell.append("Essentiality")
-				elif cell[0] in genes_ess:
-					cell.append(genes_ess[cell[0]].status)
+					cells.append("Essentiality")
+				elif cells[0] in genes_ess:
+					cells.append(genes_ess[cells[0]].status())
 				else:
-					cell.append('unknown')
-				output_content.append(cell)
+					cells.append('unknown')
+				output_content.append(cells)
 					
 			with open(output_filename, 'w') as outputfh:
 				for line in output_content:
-					outputfh.write("\t".join(line)+"\n")
+					outputfh.write(",".join(line)+"\n")
 		return self
 
 		
@@ -109,7 +113,7 @@ class TradisComparison:
 		if self.verbose:
 			print(self.construct_command())
 		subprocess.check_output(self.construct_command(), shell=True)
-		genes_ess = self.all_gene_essentiality()
+		genes_ess = self.all_gene_essentiality(".output.csv")
 		self.add_gene_essentiality_to_file(".output.csv", self.output_filename, genes_ess)
 		
 
