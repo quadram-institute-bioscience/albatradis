@@ -116,6 +116,19 @@ class TradisComparison:
 		genes_ess = self.all_gene_essentiality(".output.csv")
 		self.add_gene_essentiality_to_file(".output.csv", self.output_filename, genes_ess)
 		
+		self.cleanup()
 
 		return self
+		
+	def cleanup(self):
+		os.remove(self.controls_fofn)
+		os.remove(self.conditions_fofn)
 	
+		for f in self.only_ess_files_condition:
+			os.remove(f)
+			
+		for f in self.only_ess_files_control:
+			os.remove(f)
+
+
+

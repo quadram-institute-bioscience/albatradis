@@ -1,5 +1,4 @@
 '''Driver class'''
-from tradistron.PrepareInputFiles import PrepareInputFiles
 import logging
 import os
 import sys
@@ -66,6 +65,7 @@ class BlockInsertions:
 		self.run_comparisons(essentiality_files)
 		self.output_plots = self.mask_plots()
 		self.genes = self.gene_statistics(self.forward_plotfile, self.reverse_plotfile, self.combined_plotfile, self.window_size)
+		self.cleanup(plotfile_objects, essentiality_files)
 		
 		return self
 		
@@ -135,7 +135,6 @@ class BlockInsertions:
 			print("Plot log:\t"+ renamed_plot_file)
 		return renamed_plot_file
 		
-		
 	def gene_statistics(self,forward_plotfile, reverse_plotfile, combined_plotfile, window_size):
 		b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile, window_size)
 		blocks = b.block_generator()
@@ -180,7 +179,12 @@ class BlockInsertions:
 		return renamed_plot_files
 		
 		
+	def cleanup(self, plotfile_objects, essentiality_files):
 		
-		
-	
+		# initial plot files 
+		for p in plotfile_objects.values():
+			os.remove(p.forward_plot_filename)
+			os.remove(p.reverse_plot_filename)
+			os.remove(p.combined_plot_filename)
+			os.remove(p.embl_filename)
 		

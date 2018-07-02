@@ -11,7 +11,6 @@ class TradisEssentiality:
 		
 		fd, self.output_filename = mkstemp()
 		fd, self.essential_filename = mkstemp()
-		fd, self.ambig_filename = mkstemp()
 
 	def construct_command(self):
 		return " ".join([self.exec,  self.tabfile])
@@ -22,15 +21,15 @@ class TradisEssentiality:
 		subprocess.check_output(self.construct_command(), shell=True)
 		shutil.copy(self.tabfile +".all.csv", self.output_filename)
 		shutil.copy(self.tabfile +".essen.csv", self.essential_filename)
-		shutil.copy(self.tabfile +".ambig.csv", self.ambig_filename)
 		
 		if self.verbose:
 			print("all.csv\t" + self.output_filename)
 			print("essen.csv\t" + self.essential_filename)
-			print("ambig.csv\t" + self.ambig_filename)
 		
 		os.remove(self.tabfile +".all.csv")
 		os.remove(self.tabfile +".essen.csv")
 		os.remove(self.tabfile +".ambig.csv")
+		os.remove(self.tabfile +".QC_and_changepoint_plots.pdf")
+		os.remove(self.tabfile )
 		
 		return self
