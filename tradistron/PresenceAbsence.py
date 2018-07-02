@@ -7,6 +7,7 @@ from dendropy.utility.textprocessing import StringIO
 from scipy.cluster.hierarchy import dendrogram, linkage
 from scipy.spatial.distance import squareform
 import matplotlib.pyplot as plt
+from graphviz import Digraph
 
 from tradistron.EMBLReader import EMBLReader
 from tradistron.GeneReport import GeneReport
@@ -42,12 +43,35 @@ class PresenceAbsence:
 		self.create_gene_logfc_spreadsheet(os.path.join(self.prefix, 'all_logfc.csv'), self.gene_names, self.reports_to_gene_logfc)
 		self.create_gene_logfc_spreadsheet(os.path.join(self.prefix, 'filtered_logfc.csv'), self.filtered_gene_names, self.filtered_reports_to_gene_logfc)
 		
+		self.create_dot_graph_genes(os.path.join(self.prefix, 'filtered_logfc.csv'), self.filtered_gene_names, self.filtered_reports_to_gene_logfc)
+		
 		self.plot_distance_matrix(os.path.join(self.prefix, 'distance_matrix_dendrogram.png'))
 		self.create_nj_newick(os.path.join(self.prefix, 'nj_newick_tree.tre'))
 		
 		HeatMap(self.reports_to_gene_logfc, self.gene_names,os.path.join(self.prefix, 'full_heatmap.png')).create_heat_map()
 		HeatMap(self.filtered_reports_to_gene_logfc, self.filtered_gene_names, os.path.join(self.prefix, 'filtered_heatmap.png')).create_heat_map()
 		
+		return self
+		
+		
+	def create_dot_graph_genes(self, filename, gene_names, reports_to_gene_logfc):
+		dot = Digraph(comment='Gene Graph')
+		
+		# Antibiotics
+		for g in self.genereports:
+			dot.node(g, g)
+		
+		# gene names
+		for g in gene_names:
+			dot.node(g, g)
+			
+		for anti in self.genereports:
+			for i,logfc in enumerate(reports_to_gene_logfc[anti]):
+				dot.edge(g, gene_names[i])
+				
+		with open(filename, 'w') as fh:
+			fh.write(dot.source)
+			
 		return self
 
 	def create_gene_logfc_spreadsheet(self, filename, gene_names, reports_to_gene_logfc):

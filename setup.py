@@ -30,7 +30,8 @@ setup(
 		   'numpy',
 		   'dendropy',
 		   'seaborn',
-		   'pandas'
+		   'pandas',
+		   'graphviz'
        ],
     license='GPLv3',
     classifiers=[
