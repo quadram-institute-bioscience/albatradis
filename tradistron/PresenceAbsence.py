@@ -43,7 +43,7 @@ class PresenceAbsence:
 		self.create_gene_logfc_spreadsheet(os.path.join(self.prefix, 'all_logfc.csv'), self.gene_names, self.reports_to_gene_logfc)
 		self.create_gene_logfc_spreadsheet(os.path.join(self.prefix, 'filtered_logfc.csv'), self.filtered_gene_names, self.filtered_reports_to_gene_logfc)
 		
-		self.create_dot_graph_genes(os.path.join(self.prefix, 'filtered_logfc.csv'), self.filtered_gene_names, self.filtered_reports_to_gene_logfc)
+		self.create_dot_graph_genes(os.path.join(self.prefix, 'logfc.dot'), self.filtered_gene_names, self.filtered_reports_to_gene_logfc)
 		
 		self.plot_distance_matrix(os.path.join(self.prefix, 'distance_matrix_dendrogram.png'))
 		self.create_nj_newick(os.path.join(self.prefix, 'nj_newick_tree.tre'))
@@ -67,7 +67,8 @@ class PresenceAbsence:
 			
 		for anti in self.genereports:
 			for i,logfc in enumerate(reports_to_gene_logfc[anti]):
-				dot.edge(g, gene_names[i])
+				if numpy.absolute(int(logfc)) > 0:
+					dot.edge(anti, gene_names[i])
 				
 		with open(filename, 'w') as fh:
 			fh.write(dot.source)
