@@ -6,6 +6,9 @@ import dendropy
 from dendropy.utility.textprocessing import StringIO
 from scipy.cluster.hierarchy import dendrogram, linkage
 from scipy.spatial.distance import squareform
+
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from graphviz import Digraph
 
