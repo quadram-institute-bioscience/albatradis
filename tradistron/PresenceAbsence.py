@@ -16,6 +16,7 @@ from tradistron.EMBLReader import EMBLReader
 from tradistron.GeneReport import GeneReport
 from tradistron.HeatMap import HeatMap
 from tradistron.GeneToFiles import GeneToFiles
+from tradistron.ReorderGenes import ReorderGenes
 
 class PresenceAbsence:
 	def __init__(self, genereports, emblfile, verbose, prefix):
@@ -31,7 +32,7 @@ class PresenceAbsence:
 		self.gene_names = self.generate_gene_names()
 		self.reports_to_gene_logfc = self.create_reports_to_gene_logfc(self.gene_names)
 		
-		self.filtered_gene_names = self.filter_genes_with_no_changes()
+		self.filtered_gene_names = ReorderGenes(self.gene_names, self.genereports, self.reports_to_gene_logfc).reorder_genes()
 		self.filtered_reports_to_gene_logfc = self.create_reports_to_gene_logfc(self.filtered_gene_names)
 		
 	def generate_gene_names(self):

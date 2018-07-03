@@ -17,14 +17,55 @@ class ReorderGenes:
 			logfc = []
 			for report_file in self.genereports:
 				logfc.append(int(self.reports_to_gene_logfc[report_file][i]))
-			genes_to_files[g] = GeneToFiles(g, gene_to_files = logfc)	
+
+			gf = GeneToFiles(g, gene_to_files = logfc)
+			if gf.number_of_files > 0:
+				genes_to_files[g] = gf
 				
 		return genes_to_files
 	
 	def get_highest_freq(self, genes_to_files):
-		sorted_freq = sorted([g.number_of_files for g in genes_to_files.values()], reverse=True)
+		sorted_freq = sorted(genes_to_files.items(), key=lambda kv: kv[1].number_of_files, reverse=True)
+		return sorted_freq[0][0]
+		
+		
+	def files_in_common(self, first_gene, second_gene):
+		common = 0 
+		for i in range(len(first_gene.gene_to_files)):
+			if first_gene.gene_to_files[i] != 0 and second_gene.gene_to_files[i] != 0:
+				common += 1
+		return common
+		
+	def find_closest_gene(self, gene_name, genes_to_files):
+		genes_to_num_common = {}
+		for gf in genes_to_files.values():
+			if gene_name == gf.gene_name:
+				continue
+			genes_to_num_common[gf.gene_name] = self.files_in_common(genes_to_files[gene_name], gf)
+		
+		sorted_genes_by_common = sorted(genes_to_num_common.items(), key=lambda kv: kv[1], reverse=True)	
+		num_in_common = sorted_genes_by_common[0][1]
+		
+		all_genes_with_highest_num_in_common = { k:v for k,v in genes_to_num_common.items() if v == num_in_common }
+		gene_names_to_num_files = { g: genes_to_files[g].number_of_files for g in all_genes_with_highest_num_in_common.keys() }
+		
+		sorted_gene_names_to_num_files = sorted(genes_to_num_common.items(), key=lambda kv: kv[1], reverse=True)
+		return sorted_gene_names_to_num_files[0][0]
+		
+		
+	def reorder_genes(self):
+		highest_freq_gene_name = self.get_highest_freq(self.genes_to_files)
+		reordered_genes = [] 
 
-		return sorted_freq[0]
-		
-		
+		while len(self.genes_to_files) > 0:	
+			if len(self.genes_to_files) == 1:
+				reordered_genes.append(self.genes_to_files.pop(highest_freq_gene_name))
+				break
 			
+			closest_gene = self.find_closest_gene(highest_freq_gene_name, self.genes_to_files)
+			
+			reordered_genes.append(self.genes_to_files.pop(highest_freq_gene_name))
+			highest_freq_gene_name = closest_gene
+			
+		return [r.gene_name for r in reordered_genes]
+		
