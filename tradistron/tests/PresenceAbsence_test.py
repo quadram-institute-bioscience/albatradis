@@ -32,5 +32,5 @@ class TestPresenceAbsence(unittest.TestCase):
 		self.assertTrue(filtered_outputfile)
 		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_logfc.csv'), all_outputfile))
 		
-		shutil.rmtree('testoutput')
+		#shutil.rmtree('testoutput')
 		

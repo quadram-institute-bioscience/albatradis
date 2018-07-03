@@ -15,6 +15,7 @@ from graphviz import Digraph
 from tradistron.EMBLReader import EMBLReader
 from tradistron.GeneReport import GeneReport
 from tradistron.HeatMap import HeatMap
+from tradistron.GeneToFiles import GeneToFiles
 
 class PresenceAbsence:
 	def __init__(self, genereports, emblfile, verbose, prefix):
@@ -91,7 +92,27 @@ class PresenceAbsence:
 		
 	def filter_genes_with_no_changes(self):
 		genes_with_changes = []
+		
+		gene_to_freq = {}
 		for i,g in enumerate(self.gene_names):
+			for report_file in self.genereports:
+				cell_logfc = numpy.absolute(int(self.reports_to_gene_logfc[report_file][i]))
+				if cell_logfc > 0:
+					if g in gene_to_freq:
+						gene_to_freq[g] += 1 
+					else:
+						gene_to_freq[g] = 1
+		
+		# sort by value descending, then by gene name asc	
+		sorted_genes = sorted(gene_to_freq.items(), key=lambda x: (-x[1], x[0]))
+		gene_name_index = { g:i for i,g in enumerate(self.gene_names) }
+		sorted_gene_index = []
+		for s in sorted_genes:
+			ordered_gene = s[0]
+			sorted_gene_index.append(gene_name_index[ordered_gene])
+			
+		for i in sorted_gene_index:
+			g = self.gene_names[i]
 			for report_file in self.genereports:
 				if numpy.absolute(int(self.reports_to_gene_logfc[report_file][i])) > 0:
 					genes_with_changes.append(g)
