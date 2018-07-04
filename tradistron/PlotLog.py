@@ -11,7 +11,7 @@ class LogFC:
 		self.logfc_value = logfc_value
 
 class PlotLog:
-	def __init__(self, comparison_filename, genome_length, minimum_logfc, pvalue, minimum_logcpm, window_size, span_gaps):
+	def __init__(self, comparison_filename, genome_length, minimum_logfc, pvalue, minimum_logcpm, window_size, span_gaps, report_decreased_insertions):
 		self.comparison_filename = comparison_filename
 		self.genome_length  = genome_length
 		self.minimum_logfc  = minimum_logfc
@@ -19,6 +19,7 @@ class PlotLog:
 		self.minimum_logcpm = minimum_logcpm
 		self.window_size    = window_size
 		self.span_gaps      = span_gaps
+		self.report_decreased_insertions = report_decreased_insertions
 		
 		fd, self.output_filename = mkstemp()
 
@@ -128,6 +129,9 @@ class PlotLog:
 					 
 				logfc = int(float(row[3]))
 				
+				if not self.report_decreased_insertions and logfc < 0:
+					logfc = 0
+				
 				if numpy.absolute(logfc) < self.minimum_logfc or int(float(row[5])) >= self.pvalue:
 					logfc = 0
 					
@@ -141,3 +145,4 @@ class PlotLog:
 				logfc_coord_values.append(LogFC(int(start), int(end), logfc))
 				
 		return logfc_coord_values
+		

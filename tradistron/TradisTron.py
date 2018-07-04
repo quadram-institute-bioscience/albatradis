@@ -26,6 +26,7 @@ class TradisTron:
 		self.minimum_block     = options.minimum_block
 		self.span_gaps         = options.span_gaps
 		self.emblfile          = options.emblfile
+		self.minimum_proportion_insertions = options.minimum_proportion_insertions
 		
 		self.genome_length = 0
 		
@@ -38,11 +39,14 @@ class TradisTron:
 	
 	def run(self):
 		plotfiles = self.plotfiles
+		report_decreased_insertions = True
 		if self.dont_normalise_plots:
-			plotfiles = NormalisePlots(self.plotfiles).create_normalised_files()
+			n = NormalisePlots(self.plotfiles, self.minimum_proportion_insertions)
+			report_decreased_insertions = n.decreased_insertion_reporting()
+			plotfiles = n.create_normalised_files()
 		
 		for i in range(1,self.iterations+1):
-			bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.prefix + "_" +str(i), self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile)
+			bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.prefix + "_" +str(i), self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions)
 			bi.run()
 			self.blocks = bi.blocks
 			plotfiles = bi.output_plots.values()

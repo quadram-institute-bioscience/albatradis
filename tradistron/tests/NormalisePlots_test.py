@@ -13,7 +13,7 @@ data_dir = os.path.join(test_modules_dir, 'data','normaliseplots')
 class TestNormalisePlots(unittest.TestCase):
 
 	def test_big_differences(self):
-		p = NormalisePlots([os.path.join(data_dir,'sample1'), os.path.join(data_dir,'sample2')])
+		p = NormalisePlots([os.path.join(data_dir,'sample1'), os.path.join(data_dir,'sample2')], 0.1)
 		output_files = p.create_normalised_files()
 		self.assertEqual(2, len(output_files))
 		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'sample2'), output_files[1]))

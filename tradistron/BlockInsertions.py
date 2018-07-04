@@ -28,7 +28,7 @@ class PlotAllEssentiality:
 		self.combined = combined
 
 class BlockInsertions:
-	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm, minimum_block,span_gaps, emblfile):
+	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm, minimum_block,span_gaps, emblfile, report_decreased_insertions):
 		self.logger            = logger
 		self.plotfiles         = plotfiles
 		self.minimum_threshold = minimum_threshold
@@ -42,6 +42,7 @@ class BlockInsertions:
 		self.minimum_block     = minimum_block
 		self.span_gaps         = span_gaps
 		self.emblfile          = emblfile  
+		self.report_decreased_insertions = report_decreased_insertions
 		
 		self.genome_length = 0
 		self.forward_plotfile = ""
@@ -120,7 +121,7 @@ class BlockInsertions:
 		
 		t = TradisComparison(files[:mid],files[mid:], self.verbose, self.minimum_block, only_ess_files[:mid], only_ess_files[mid:])
 		t.run()
-		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm, self.window_size, self.span_gaps)
+		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm, self.window_size, self.span_gaps, self.report_decreased_insertions)
 		p.construct_plot_file()
 		renamed_csv_file  = os.path.join(self.prefix, analysis_type + ".csv")
 		renamed_plot_file = os.path.join(self.prefix, analysis_type + ".plot")

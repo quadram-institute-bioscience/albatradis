@@ -17,11 +17,14 @@ class HeatMap:
 		common_prefix = os.path.commonpath(filenames)
 		
 		for n in self.reports_to_gene_logfc.keys():
-			updated_name = n.replace("/gene_report.csv","")
+			updated_name = n
+			if len(common_prefix) > 1:
+				updated_name = updated_name.replace(common_prefix,"")
+				updated_name = updated_name.strip("/")
+			updated_name = updated_name.replace("/gene_report.csv","")
 			updated_name = updated_name.replace(".csv","")
 			updated_name = updated_name.replace("_"," ")
-			if len(common_prefix) > 1:
-				updated_name = updated_name.replace(common_prefix,"").strip("/")
+
 			cleaned_names.append(updated_name)
 			
 		return cleaned_names
@@ -35,7 +38,7 @@ class HeatMap:
 
 		heatmap = sns.heatmap(data.T,ax = ax, cmap="RdBu_r", center=0, yticklabels= False)
 		
-		ax.set_xticklabels(ax.get_xticklabels(), rotation=40, ha="right")
+		ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
 		plt.tight_layout()
 		
 		plt.savefig(self.outputfile , dpi=100)

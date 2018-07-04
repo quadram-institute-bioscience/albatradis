@@ -114,7 +114,7 @@ class TestGent(unittest.TestCase):
 		emblfile = os.path.join(data_dir, 'annotation.embl')
 		
 		logger = logging.getLogger(__name__)
-		b = BlockInsertions(logger,[case, control], 6, 100, 25, False, 2, 0.05, 'testoutput', 8, 50, 1, emblfile)
+		b = BlockInsertions(logger,[case, control], 6, 100, 25, False, 2, 0.05, 'testoutput', 8, 50, 1, emblfile, True)
 		self.assertTrue(b.run())
 		self.assertTrue(os.path.exists('testoutput'))
 

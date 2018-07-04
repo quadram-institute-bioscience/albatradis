@@ -25,9 +25,11 @@ class ReorderGenes:
 		return genes_to_files
 	
 	def get_highest_freq(self, genes_to_files):
+		if len(genes_to_files) == 0:
+			return None
+		
 		sorted_freq = sorted(genes_to_files.items(), key=lambda kv: kv[1].number_of_files, reverse=True)
 		return sorted_freq[0][0]
-		
 		
 	def files_in_common(self, first_gene, second_gene):
 		common = 0 
@@ -54,6 +56,8 @@ class ReorderGenes:
 		
 		
 	def reorder_genes(self):
+		if len(self.genes_to_files) == 0:
+			return []
 		highest_freq_gene_name = self.get_highest_freq(self.genes_to_files)
 		reordered_genes = [] 
 
@@ -66,6 +70,8 @@ class ReorderGenes:
 			
 			reordered_genes.append(self.genes_to_files.pop(highest_freq_gene_name))
 			highest_freq_gene_name = closest_gene
+			if len(self.genes_to_files) == 0:
+				return []
 			
 		return [r.gene_name for r in reordered_genes]
 		

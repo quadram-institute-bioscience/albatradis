@@ -24,6 +24,7 @@ class TestOptions:
 		self.minimum_block = minimum_block
 		self.span_gaps = span_gaps
 		self.emblfile = emblfile
+		self.minimum_proportion_insertions = 0.1
 
 class TestTradisTron(unittest.TestCase):
 	
@@ -31,20 +32,9 @@ class TestTradisTron(unittest.TestCase):
 		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
 		control = os.path.join(data_dir, 'small_control.insert_site_plot.gz')
 		emblfile = os.path.join(data_dir, 'annotation.embl')
-		
-		#pr = cProfile.Profile()
-		#pr.enable()
-		
+
 		t = TradisTron(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 1, True,1,0, emblfile))
 		self.assertTrue(t.run())
-		
-		#pr.disable()
-		#s = io.StringIO()
-		#sortby = 'cumulative'
-		#ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
-		#ps.print_stats()
-		#print(s.getvalue())
-		
 		
 		self.assertTrue(os.path.exists('testoutput_1'))
 		shutil.rmtree("testoutput_1")
