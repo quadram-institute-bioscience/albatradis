@@ -1,0 +1,2 @@
+Drug,Pathway,DetailedPathway,Impact,MIC,Induction,Rep1,Rep2
+Drug,X,X,X,0.25,0,tradistron/tests/experimentcollection/condition1,tradistron/tests/experimentcollection/condition2
