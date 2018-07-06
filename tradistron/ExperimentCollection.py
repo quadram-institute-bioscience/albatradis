@@ -7,7 +7,8 @@ class ExperimentCollection:
 		self.experiments = experiments
 		self.controls  = controls
 		self.reference = reference
-		self.property_names = ['drug', 'target', 'detailed_target', 'impact', 'mic', 'induction']
+		# 'target', 'detailed_target', 'impact',
+		self.property_names = ['drug',  'mic', 'induction']
 		self.in_common = self.properties_in_common()
 		self.project_name = self.generate_project_name(self.in_common)
 		
