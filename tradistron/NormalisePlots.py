@@ -53,7 +53,13 @@ class NormalisePlots:
 		
 		
 	def plot_total_reads(self, plot_objs):
-		return [plot_objs[p].total_reads for p in plot_objs]
+		reads = [plot_objs[p].total_reads for p in plot_objs]
+		reads = []
+		for p in plot_objs:
+			reads.append(plot_objs[p].total_reads)	
+			print(p + "\t"+str(plot_objs[p].total_reads))
+		
+		return reads
 	
 	def max_reads(self, plot_objs):
 		return max(self.plot_total_reads(plot_objs))
