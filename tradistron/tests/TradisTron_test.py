@@ -4,6 +4,7 @@ import logging
 from tradistron.TradisTron import TradisTron
 import shutil
 import cProfile, pstats, io
+import filecmp
 
 test_modules_dir = os.path.dirname(os.path.realpath(__file__))
 data_dir = os.path.join(test_modules_dir, 'data','tradistron')
@@ -32,7 +33,7 @@ class TestTradisTron(unittest.TestCase):
 		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
 		control = os.path.join(data_dir, 'small_control.insert_site_plot.gz')
 		emblfile = os.path.join(data_dir, 'annotation.embl')
-
+    
 		t = TradisTron(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 1, True,1,0, emblfile))
 		self.assertTrue(t.run())
 		
@@ -50,6 +51,17 @@ class TestTradisTron(unittest.TestCase):
 		shutil.rmtree("testoutput_1")
 		self.assertTrue(os.path.exists('testoutput_2'))
 		shutil.rmtree("testoutput_2")
+		
+	def test_ignore_decreased_insertions(self):
+		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
+		control = os.path.join(data_dir, 'small_control_high_insertions.insert_site_plot.gz')
+		emblfile = os.path.join(data_dir, 'annotation.embl')
+
+		t = TradisTron(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 1, True,1,0, emblfile))
+		self.assertTrue(t.run())
+		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_no_decrease.plot'), os.path.join('testoutput_1', 'combined.plot') ))
+		
+		shutil.rmtree("testoutput_1")
 		
 	#def test_big_real(self):
 	#	case = os.path.join(data_dir, 'big_case.insert_site_plot.gz')
