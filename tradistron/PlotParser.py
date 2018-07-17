@@ -19,6 +19,7 @@ class PlotParser:
 		self.split_lines()
 		
 		self.total_reads = sum(self.combined)
+		self.total_insertions = sum([1 for a in self.combined if a > 0 ])
 		
 
 	def get_filehandle(self):

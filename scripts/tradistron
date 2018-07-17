@@ -32,7 +32,7 @@ parser.add_argument('--dont_normalise_plots',  '-n', action='store_true', help='
 parser.add_argument('--prefix',                '-o',  help='Output directory prefix', type=str, default='output')
 parser.add_argument('--pvalue',                '-p',  help='Dont report anything above this p-value', type=float, default=0.05)
 parser.add_argument('--window_interval',       '-l',  help='Window interval', type=int, default=25)
-parser.add_argument('--window_size',	       '-w', help='Window size', type=int, default= 100)
+parser.add_argument('--window_size',	       '-w', help='Window size', type=int, default= 50)
 parser.add_argument('--verbose',               '-v', action='store_true', help='Print out more information about the analysis while it runs', default = False)
 parser.add_argument('--debug', action='store_true', help='Turn on debugging', default = False)
 parser.add_argument('--version', action='version', version=str(version))
