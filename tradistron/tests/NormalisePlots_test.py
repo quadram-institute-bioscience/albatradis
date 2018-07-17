@@ -24,3 +24,7 @@ class TestNormalisePlots(unittest.TestCase):
 		p = NormalisePlots([os.path.join(data_dir,'lowinsertions'), os.path.join(data_dir,'highinsertions')], 0.1)
 		self.assertFalse(p.decreased_insertion_reporting())
 	
+	
+	def test_ignore_decreased_insertions_insert_sites(self):
+		p = NormalisePlots([os.path.join(data_dir,'fewinsertions'), os.path.join(data_dir,'manyinsertions')], 0.1)
+		self.assertFalse(p.decreased_insertion_reporting())
