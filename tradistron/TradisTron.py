@@ -40,7 +40,7 @@ class TradisTron:
 	def run(self):
 		plotfiles = self.plotfiles
 		report_decreased_insertions = True
-		if self.dont_normalise_plots:
+		if not self.dont_normalise_plots:
 			n = NormalisePlots(self.plotfiles, self.minimum_proportion_insertions)
 			plotfiles = n.create_normalised_files()
 			report_decreased_insertions = n.decreased_insertion_reporting()
