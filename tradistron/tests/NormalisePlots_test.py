@@ -18,4 +18,9 @@ class TestNormalisePlots(unittest.TestCase):
 		self.assertEqual(2, len(output_files))
 		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'sample2'), output_files[1]))
 		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_sample1'), output_files[0]))
+		self.assertTrue(p.decreased_insertion_reporting())
 		
+	def test_ignore_decreased_insertions(self):
+		p = NormalisePlots([os.path.join(data_dir,'lowinsertions'), os.path.join(data_dir,'highinsertions')], 0.1)
+		self.assertFalse(p.decreased_insertion_reporting())
+	

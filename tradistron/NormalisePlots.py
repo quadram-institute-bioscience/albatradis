@@ -57,7 +57,7 @@ class NormalisePlots:
 		reads = []
 		for p in plot_objs:
 			reads.append(plot_objs[p].total_reads)	
-			print(p + "\t"+str(plot_objs[p].total_reads))
+			#print(p + "\t"+str(plot_objs[p].total_reads))
 		
 		return reads
 	

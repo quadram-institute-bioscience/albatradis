@@ -42,8 +42,8 @@ class TradisTron:
 		report_decreased_insertions = True
 		if self.dont_normalise_plots:
 			n = NormalisePlots(self.plotfiles, self.minimum_proportion_insertions)
-			report_decreased_insertions = n.decreased_insertion_reporting()
 			plotfiles = n.create_normalised_files()
+			report_decreased_insertions = n.decreased_insertion_reporting()
 		
 		for i in range(1,self.iterations+1):
 			bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.prefix + "_" +str(i), self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions)
