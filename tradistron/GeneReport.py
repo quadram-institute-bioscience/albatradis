@@ -4,14 +4,18 @@ import csv
 class GeneReport:
 	def __init__(self, filename):
 		self.filename = filename
-		self.gene_data = self.read_csv()
+		self.gene_all_data = self.read_all_data_csv()
+		self.gene_data = self.read_csv(self.gene_all_data)
 		
-	def read_csv(self):
-		data = {}
+	def read_all_data_csv(self):
+		all_data = []
 		with open(self.filename) as csvfile:
 			reader = csv.reader(csvfile, delimiter='	')
-			data =  {r[0]: r[4] for r in reader}
-		return data
+			all_data =  [r for r in reader if r[0] != 'Gene']
+		return all_data
+		
+	def read_csv(self, gene_all_data):
+		return {r[0]: r[4] for r in gene_all_data}
 		
 	def genes_to_logfc(self, gene_names):
 		row = []
