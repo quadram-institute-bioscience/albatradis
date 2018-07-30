@@ -4,7 +4,7 @@ import os
 import sys
 
 from tradistron.PresenceAbsence import PresenceAbsence
-
+from tradistron.GeneReportSets import GeneReportSets
 
 class TradisTronPresenceAbsence:
 	def __init__(self, options):
@@ -25,4 +25,7 @@ class TradisTronPresenceAbsence:
 	def run(self):
 		p = PresenceAbsence(self.genereports, self.emblfile, self.verbose, self.prefix )
 		p.create_output_files()
+		
+		p = GeneReportSets(self.genereports, self.prefix )
+		p.write_union_file()
 		return self
