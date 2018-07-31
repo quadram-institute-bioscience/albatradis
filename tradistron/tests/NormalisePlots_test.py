@@ -9,6 +9,7 @@ class InvalidFileFormat (Exception): pass
 
 test_modules_dir = os.path.dirname(os.path.realpath(__file__))
 data_dir = os.path.join(test_modules_dir, 'data','normaliseplots')
+plotparser_dir = os.path.join(test_modules_dir, 'data','plotparser')
 
 class TestNormalisePlots(unittest.TestCase):
 
@@ -27,4 +28,21 @@ class TestNormalisePlots(unittest.TestCase):
 	
 	def test_ignore_decreased_insertions_insert_sites(self):
 		p = NormalisePlots([os.path.join(data_dir,'fewinsertions'), os.path.join(data_dir,'manyinsertions')], 0.1)
+		self.assertFalse(p.decreased_insertion_reporting())
+		
+	def test_large_file_zipped(self):
+		import cProfile, pstats, io
+		pr = cProfile.Profile()
+		pr.enable()
+		
+		p = NormalisePlots([os.path.join(plotparser_dir,'Control2.out.CP009273.insert_site_plot.gz'), os.path.join(plotparser_dir,'Chloramrep2-MICpool.out.CP009273.insert_site_plot.gz')], 0.1)
+		output_files = p.create_normalised_files()
+		
+		pr.disable()
+		s = io.StringIO()
+		sortby = 'cumulative'
+		ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+		ps.print_stats()
+		print(s.getvalue())
+		
 		self.assertFalse(p.decreased_insertion_reporting())

@@ -3,6 +3,7 @@
 from tradistron.PlotParser import PlotParser
 from tradistron.PlotGenerator import PlotGenerator
 from tempfile import mkstemp
+import numpy
 
 class NormalisePlots:
 	
@@ -42,11 +43,10 @@ class NormalisePlots:
 		
 		for p in self.plotfiles:
 			current_plot_reads = self.plot_objs[p].total_reads
-			scaling_factor = max_plot_reads/current_plot_reads
-			for i,insertion_reads in enumerate(self.plot_objs[p].forward):
-				self.plot_objs[p].forward[i] = int(self.plot_objs[p].forward[i]*scaling_factor)
-			for i,insertion_reads in enumerate(self.plot_objs[p].reverse):
-				self.plot_objs[p].reverse[i] = int(self.plot_objs[p].reverse[i]*scaling_factor)
+			scaling_factor = int(max_plot_reads/current_plot_reads)
+			
+			self.plot_objs[p].forward = numpy.multiply(self.plot_objs[p].forward, scaling_factor, dtype = int, casting = 'unsafe')
+			self.plot_objs[p].reverse = numpy.multiply(self.plot_objs[p].reverse, scaling_factor, dtype = int, casting = 'unsafe')
 				
 		return self.plot_objs
 
