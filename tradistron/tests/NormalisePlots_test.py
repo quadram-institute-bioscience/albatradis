@@ -45,4 +45,4 @@ class TestNormalisePlots(unittest.TestCase):
 		ps.print_stats()
 		print(s.getvalue())
 		
-		self.assertFalse(p.decreased_insertion_reporting())
+		self.assertTrue(p.decreased_insertion_reporting())

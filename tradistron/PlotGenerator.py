@@ -1,4 +1,5 @@
 import numpy
+import pandas
 
 '''Takes in arrays for forward and reverse integers and creates a new file'''
 class PlotGenerator:
@@ -10,19 +11,19 @@ class PlotGenerator:
 		self.forward_length = len(self.forward)
 		self.reverse_length = len(self.reverse)
 		
-	def create_body(self):
-		self.normalised_forward = numpy.zeros( self.plot_length(), dtype=int )
-		self.normalised_reverse = numpy.zeros( self.plot_length(), dtype=int )
-		
-		for i,val in enumerate(self.forward):
-			if val != 0:
-				self.normalised_forward[i]  = val
-				
-		for i,val in enumerate(self.reverse):
-			if val != 0:
-				self.normalised_reverse[i]  = val
-		
-		return "\n".join([str(self.normalised_forward[i]) + " " + str(self.normalised_reverse[i]) for i in range(self.plot_length()) ]) + "\n"
+	def construct_file(self):
+		p_len = self.plot_length()
+		if len(self.forward) == 0:
+			self.forward = numpy.zeros( p_len, dtype=int )
+
+		if len(self.reverse) == 0:
+			self.reverse = numpy.zeros( p_len, dtype=int )
+
+		df = pandas.DataFrame({'forward': self.forward, 'reverse': self.reverse}, dtype = int)
+		#df.transpose()
+
+		df.to_csv(self.filename, header=None, index = False, sep = ' ', chunksize=100000)
+		return self
 		
 	def plot_length(self):
 		total_length = self.forward_length
@@ -30,8 +31,3 @@ class PlotGenerator:
 			total_length = self.reverse_length
 			
 		return total_length
-		
-	def construct_file(self):
-		with open(self.filename, 'w') as plotfile:
-			plotfile.write(self.create_body())
-		return self
