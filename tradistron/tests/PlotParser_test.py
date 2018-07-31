@@ -34,7 +34,6 @@ class TestPlotParser(unittest.TestCase):
 	def test_large_file_zipped(self):
 		d = PlotParser(os.path.join(data_dir,'Control2.out.CP009273.insert_site_plot.gz'),3)
 		self.assertEqual(d.total_reads, 7684360)
-
 		
 	def check_arrays_equal(self, array1, array2):
 		for i, val in enumerate(array1):
