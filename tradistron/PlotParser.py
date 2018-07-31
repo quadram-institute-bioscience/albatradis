@@ -3,13 +3,14 @@ import sys
 import re
 import numpy
 import subprocess
+import pandas
 
 class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass
 
 class PlotParser:
 	
-	def __init__(self, filename, minimum_threshold = 1):
+	def __init__(self, filename, minimum_threshold = 0):
 		self.filename = filename
 		self.minimum_threshold = minimum_threshold
 		self.forward = []
@@ -21,50 +22,23 @@ class PlotParser:
 		self.total_reads = sum(self.combined)
 		self.total_insertions = sum([1 for a in self.combined if a > 0 ])
 		
-
-	def get_filehandle(self):
-		if not os.path.exists(self.filename):
-			raise ErrorReadingFile("Error opening for reading file '" + self.filename + "'")
-		
-		if self.filename == '-':
-			f = sys.stdin
-		elif self.filename.endswith('.gz'):
-			retcode = subprocess.call('gunzip -t ' + self.filename, shell=True)
-			f = os.popen('gunzip -c ' + self.filename)
-		else:
-			try:
-				f = open(self.filename)
-			except:
-				raise ErrorReadingFile("Error opening for reading file '" + self.filename + "'")
-		
-		return f
-
-	def read_file(self):
-		f = self.get_filehandle()
-		lines = [line.strip() for line in f]
-		f.close()
-
-		return lines
-		
 	def split_lines(self):
-		lines = self.read_file()
-		self.genome_length =  len(lines)
-		self.forward = numpy.zeros(self.genome_length, dtype=int )
-		self.reverse = numpy.zeros(self.genome_length, dtype=int )
-		self.combined = numpy.zeros(self.genome_length, dtype=int )
+		insert_site_array = pandas.read_csv(self.filename, delim_whitespace=True, dtype=int, engine='c', header=None).values
+
+		self.genome_length =  len(insert_site_array)
 		
-		split_lines = [l.split() for l in lines]
-		int_split_lines = [ [int(float(l[0])), int(float(l[1]))] for l in split_lines]
-
-		for i,l in enumerate(int_split_lines):	
-			if numpy.absolute(l[0]) >= self.minimum_threshold:
-				self.forward[i] = l[0]
-				
-			if numpy.absolute(l[1]) >= self.minimum_threshold:
-				self.reverse[i] = l[1]
-
-			if numpy.absolute(l[0]) + numpy.absolute(l[1]) >= self.minimum_threshold:
-				self.combined[i] = l[0] + l[1]
-
+		self.forward = insert_site_array[:,0]
+		self.reverse = insert_site_array[:,1]
+		
+		if self.minimum_threshold != 0:
+			self.forward = self.filter_column(self.forward, self.genome_length)
+			self.reverse = self.filter_column(self.reverse, self.genome_length)
+		
+		self.combined = [ self.forward[i] + self.reverse[i] for i in range(0, self.genome_length)]
+		
 		return self
-			
+	
+	def filter_column(self,ins_array,genome_length ):
+		abs_ins_values = numpy.absolute(ins_array)
+		return [ ins_array[i] if  abs_ins_values[i] >= self.minimum_threshold else 0  for i in range(0, genome_length)]
+		
