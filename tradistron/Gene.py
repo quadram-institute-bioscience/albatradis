@@ -22,12 +22,9 @@ class Gene:
 			return "/".join(list(set(self.upstream)))
 
 	def max_logfc_from_blocks(self):
-		highest_logfc = 0
-		for b in self.blocks:
-			if numpy.absolute(b.max_logfc) > numpy.absolute(highest_logfc):
-				highest_logfc = b.max_logfc
-		return highest_logfc
-		
+		all_logfc = [b.max_logfc for b in self.blocks]
+		return numpy.max(numpy.absolute(all_logfc))
+
 	def expression_from_blocks(self):
 		return "/".join(list(set([b.expression for b in self.blocks])))
 		
