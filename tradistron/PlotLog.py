@@ -54,15 +54,15 @@ class PlotLog:
 		max_logfc = 0
 		
 		abs_logfc_values = numpy.absolute(logfc_values)
-		for i, mask in enumerate(logfc_values):
+		for i in range(0,self.genome_length):
 			lfc = abs_logfc_values[i]
 			if lfc > 0 and not inblock:
 				inblock = True
 				start = i
-				max_logfc = lfc
+				max_logfc = logfc_values[i]
 			elif lfc > 0 and inblock:
-				if max_logfc < lfc:
-					max_logfc = lfc
+				if numpy.absolute(max_logfc) < lfc:
+					max_logfc = logfc_values[i]
 			elif lfc <= 0 and inblock:
 				inblock = False
 				end = i
