@@ -1,5 +1,6 @@
 import csv
 import numpy
+import pandas
 from tempfile import mkstemp
 from tradistron.Block import Block
 
@@ -27,35 +28,34 @@ class PlotLog:
 		logfc_coord_values = self.read_comparison_file()
 		logfc_to_bases = self.genome_wide_logfc(logfc_coord_values)
 		
-		with open(self.output_filename, 'w') as plotfile:
-			for i in logfc_to_bases:
-				plotfile.write(self.construct_line(i))
+		
+		forward_logfc = [i if i >= 0 else 0 for i in logfc_to_bases]
+		reverse_logfc = [i if i < 0 else 0 for i in logfc_to_bases]
+		
+		self.create_csv(forward_logfc, reverse_logfc)
+
 		return self
 		
-	def construct_line(self, i):
-		line = ""
-		if i >= 0:
-			line += str(int(i))+ "\t"
-		else:
-			line += "0\t"
+	def create_csv(self, forward_logfc, reverse_logfc):
+		output = []
+		for i in range(0,len(forward_logfc)):
+			output.append('{} {}\n'.format(forward_logfc[i], reverse_logfc[i]))
 		
-		if i < 0:
-			line += str(int(i))+ "\n"
-		else:
-			line += "0\n"
+		with open(self.output_filename, 'w', buffering=1000000) as plotfile:
+			plotfile.write(''.join(output))
 
-		return line
+		return self
 		
-		
-	def blocks(self, logfc_values):
+	def blocks_create(self, logfc_values):
 		blocks = []
 		inblock = False		
 		start = 0
 		end = 0
-		max_logfc = 0 
+		max_logfc = 0
 		
+		abs_logfc_values = numpy.absolute(logfc_values)
 		for i, mask in enumerate(logfc_values):
-			lfc = numpy.absolute(mask)
+			lfc = abs_logfc_values[i]
 			if lfc > 0 and not inblock:
 				inblock = True
 				start = i
@@ -75,18 +75,19 @@ class PlotLog:
 		return blocks	
 	
 	def genome_wide_logfc(self,logfc_coord_values):
-		logfc_to_bases = numpy.zeros(self.genome_length)
+		logfc_to_bases = numpy.zeros(self.genome_length, dtype = int)
 		
 		for l in logfc_coord_values:
+			abs_logfc_value = numpy.absolute(l.logfc_value)
+			
 			for i in range(l.start -1, l.end):
-				
-				if logfc_to_bases[i] < numpy.absolute(l.logfc_value):
+				if logfc_to_bases[i] < abs_logfc_value:
 					logfc_to_bases[i] = l.logfc_value
 			
 		return self.span_block_gaps(self.filter_out_small_blocks(logfc_to_bases))
 			
 	def span_block_gaps(self,logfc_to_bases):
-		logfc_blocks = self.blocks(logfc_to_bases)
+		logfc_blocks = self.blocks_create(logfc_to_bases)
 		# span blocks if they are close together
 		if self.span_gaps > 0:
 			for b in logfc_blocks:
@@ -108,7 +109,7 @@ class PlotLog:
 		return logfc_to_bases
 		
 	def filter_out_small_blocks(self, logfc_to_bases):
-		logfc_blocks = self.blocks(logfc_to_bases)
+		logfc_blocks = self.blocks_create(logfc_to_bases)
 		# filter out small blocks
 		for b in logfc_blocks:
 			if b.block_length < self.window_size:

@@ -31,18 +31,6 @@ class TestNormalisePlots(unittest.TestCase):
 		self.assertFalse(p.decreased_insertion_reporting())
 		
 	def test_large_file_zipped(self):
-		import cProfile, pstats, io
-		pr = cProfile.Profile()
-		pr.enable()
-		
 		p = NormalisePlots([os.path.join(plotparser_dir,'Control2.out.CP009273.insert_site_plot.gz'), os.path.join(plotparser_dir,'Chloramrep2-MICpool.out.CP009273.insert_site_plot.gz')], 0.1)
 		output_files = p.create_normalised_files()
-		
-		pr.disable()
-		s = io.StringIO()
-		sortby = 'cumulative'
-		ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
-		ps.print_stats()
-		print(s.getvalue())
-		
 		self.assertTrue(p.decreased_insertion_reporting())

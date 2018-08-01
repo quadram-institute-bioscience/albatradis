@@ -20,8 +20,7 @@ class PlotGenerator:
 			self.reverse = numpy.zeros( p_len, dtype=int )
 
 		df = pandas.DataFrame({'forward': self.forward, 'reverse': self.reverse}, dtype = int)
-		#df.transpose()
-
+		
 		df.to_csv(self.filename, header=None, index = False, sep = ' ', chunksize=100000)
 		return self
 		
