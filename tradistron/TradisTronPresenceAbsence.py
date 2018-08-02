@@ -28,4 +28,5 @@ class TradisTronPresenceAbsence:
 		
 		p = GeneReportSets(self.genereports, self.prefix )
 		p.write_union_file()
+		p.write_intersection_file()
 		return self
