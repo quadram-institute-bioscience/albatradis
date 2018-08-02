@@ -59,6 +59,7 @@ class TestTradisTron(unittest.TestCase):
 
 		t = TradisTron(TestOptions([case, control], 3, 100, 100, False, 'testoutputx', 1, 1, 1, 1, False,1,0, emblfile, 0.9999))
 		self.assertTrue(t.run())
+		
 		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_no_decrease.plot'), os.path.join('testoutputx_1', 'combined.plot') ))
 		
 		shutil.rmtree("testoutputx_1")
