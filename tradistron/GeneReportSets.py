@@ -21,7 +21,7 @@ class GeneReportSets:
 	def intersection(self):
 		combined = {}
 		candidate_genes = {}
-		first_filename = self.filenames
+		first_filename = self.filenames[0]
 		# get all the gene names that are present in the 1st file
 		for row in self.gene_reports[first_filename].gene_all_data:
 			gene = self.row_to_gene_name(row)
