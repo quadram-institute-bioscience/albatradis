@@ -82,5 +82,9 @@ class GeneReportSets:
 				bf.write(str(Gene(None,[]).header())+"\n")
 				for row in sorted(self.intersection().values(), key=lambda x: int(x[2])):
 					bf.write( "\t".join([str(i) for i in row]) +"\n")
+		else:
+			print("No intersecting genes")
+			
+
 				
 		return self
