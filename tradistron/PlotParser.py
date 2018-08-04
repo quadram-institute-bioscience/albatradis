@@ -42,3 +42,6 @@ class PlotParser:
 		abs_ins_values = numpy.absolute(ins_array)
 		return [ ins_array[i] if  abs_ins_values[i] >= self.minimum_threshold else 0  for i in range(0, genome_length)]
 		
+	def __str__(self):
+		return "\t".join((self.filename, str(len(self.combined)), str(self.total_reads), str(self.total_insertions), str(self.total_reads/self.total_insertions) ))
+		

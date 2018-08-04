@@ -18,5 +18,7 @@ class TestScatterPlot(unittest.TestCase):
 	#	self.assertTrue(s.create_scatter_plot())
 		
 	def test_controls(self):
-		s = ScatterPlot(['/Users/pagea/analysis/tradis/controls/controlrep1bothpools.out.gz.CP009273.insert_site_plot.gz', '/Users/pagea/analysis/tradis/controls/controlrep2bothpools.out.gz.CP009273.insert_site_plot.gz'], ['/Users/pagea/analysis/tradis/controls/controlrep3bothpools.out.gz.CP009273.insert_site_plot.gz', '/Users/pagea/analysis/tradis/controls/controlrep4bothpools.out.gz.CP009273.insert_site_plot.gz'], 10, 'scatterplot.png')
+		s = ScatterPlot(['/Users/pagea/analysis/tradis/mero/rep1/MIC.insert_site_plot.gz','/Users/pagea/analysis/tradis/mero/rep2/MICrep2.insert_site_plot.gz'], ['/Users/pagea/analysis/tradis/controls/controlrep1bothpools.out.gz.CP009273.insert_site_plot.gz', '/Users/pagea/analysis/tradis/controls/controlrep2bothpools.out.gz.CP009273.insert_site_plot.gz', '/Users/pagea/analysis/tradis/controls/controlrep3bothpools.out.gz.CP009273.insert_site_plot.gz', '/Users/pagea/analysis/tradis/controls/controlrep4bothpools.out.gz.CP009273.insert_site_plot.gz'], 100, 'scatterplot.png', verbose = True)
 		self.assertTrue(s.create_scatter_plot())
+		
+		
