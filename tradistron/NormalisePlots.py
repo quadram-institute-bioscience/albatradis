@@ -7,11 +7,11 @@ import numpy
 
 class NormalisePlots:
 	
-	def __init__(self, plotfiles, minimum_proportion_insertions):
+	def __init__(self, plotfiles, minimum_proportion_insertions, verbose = False):
 		self.plotfiles = plotfiles
+		self.verbose = verbose
 		self.minimum_proportion_insertions = minimum_proportion_insertions
 		self.plot_objs = self.read_plots()
-		
 		
 	def create_normalised_files(self):
 		plot_objs = self.normalise()
@@ -43,10 +43,12 @@ class NormalisePlots:
 		
 		for p in self.plotfiles:
 			current_plot_reads = self.plot_objs[p].total_reads
-			scaling_factor = int(max_plot_reads/current_plot_reads)
+			scaling_factor = max_plot_reads/current_plot_reads
+			if self.verbose:
+				print("\t".join(("Normalise", p, str(current_plot_reads), str(max_plot_reads), str(scaling_factor))))
 			
-			self.plot_objs[p].forward = numpy.multiply(self.plot_objs[p].forward, scaling_factor, dtype = int, casting = 'unsafe')
-			self.plot_objs[p].reverse = numpy.multiply(self.plot_objs[p].reverse, scaling_factor, dtype = int, casting = 'unsafe')
+			self.plot_objs[p].forward = numpy.multiply(self.plot_objs[p].forward, scaling_factor, dtype = float, casting = 'unsafe')
+			self.plot_objs[p].reverse = numpy.multiply(self.plot_objs[p].reverse, scaling_factor, dtype = float, casting = 'unsafe')
 				
 		return self.plot_objs
 

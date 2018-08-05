@@ -22,7 +22,10 @@ parser = argparse.ArgumentParser(
 parser.add_argument('--control', '-c',  help='control files (use 2 or more)', type=str, action='append')
 parser.add_argument('--condition', '-d',  help='condition files (use 2 or more)', type=str, action='append')
 parser.add_argument('--window_size',	       '-w', help='Window size', type=int, default= 100)
-parser.add_argument('--outputfile', '-o',  help='Output filename', type=str, default='scatter.png')
+parser.add_argument('--outputfile', '-o',  help='Output filename prefix', type=str, default='scatter')
+
+parser.add_argument('--normalise', '-n', action='store_true', help='normalise the files', default = False)
+
 parser.add_argument('--verbose', '-v', action='store_true', help='Print out more information while it runs', default = False)
 parser.add_argument('--debug', action='store_true', help='Turn on debugging', default = False)
 parser.add_argument('--version', action='version', version=str(version))
