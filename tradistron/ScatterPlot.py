@@ -39,20 +39,34 @@ class ScatterPlot:
 		return plot_objs
 		
 		
-	def create_linear_plot(self):
-		df = pandas.DataFrame(self.plot_pairs_scatter_coords(self.conditions_plot_objs,1), columns=['rep1','rep2','test_type','coord'], dtype=int)
-
-		ax1 = df.plot.line(x='coord',y='rep1', color= 'red',  label='Condition Rep1')
-		df.plot.line(x='coord',y='rep2', color= 'blue',  label='Condition Rep2', ax=ax1)
 		
-		df = pandas.DataFrame(self.plot_pairs_scatter_coords(self.conditions_plot_objs,2), columns=['rep1','rep2','test_type','coord'], dtype=int)
-		df.plot.line(x='coord',y='rep1', color= 'green',  label='Control Rep1', ax=ax1)
-		df.plot.line(x='coord',y='rep2', color= 'yellow',  label='Control Rep2', ax=ax1)
+		
+		
+	def create_linear_plot(self):
+		cond = self.plot_pairs_scatter_coords(self.conditions_plot_objs,'Condition')
+		cont = self.plot_pairs_scatter_coords(self.conditions_plot_objs,'Control')
+		
+		raw_data = numpy.append(cond, cont, axis=0) 
+		
+		df = pandas.DataFrame(raw_data , columns=['rep1','rep2','test_type','coord'])
+		df =df.astype({'rep1':int,'rep2':int,'test_type':str,'coord':int})
+		print(df)
+		ax1 = df.plot.line(x='coord',y='rep1', colormap='cubehelix')
+		df.plot.line(x='coord',y='rep2', ax=ax1)
 
+		ax1.set_xlabel("Genome (base position)")
+		ax1.set_ylabel("No. of insertions")
+		plt.title("Insertions binned into Windows of "+str(self.window_size)+" bases")
 		plt.savefig(self.output_filename +"_linear.png" , dpi=100)
+		plt.show()
 		plt.close()
 		return self
 
+	#>> df = pd.DataFrame({
+	#...    'pig': [20, 18, 489, 675, 1776],
+	#...    'horse': [4, 25, 281, 600, 1900]
+	#...    }, index=[1990, 1997, 2003, 2009, 2014])
+	#>>> lines = df.plot.line()
 	
 	def create_scatter_plot(self):
 		df = pandas.DataFrame(self.plot_pairs_scatter_coords(self.conditions_plot_objs,1), columns=['rep1','rep2','test_type','coord'], dtype=int)
@@ -66,12 +80,29 @@ class ScatterPlot:
 		
 		return self
 		
+		
+	def create_abs_scatter_plot(self):
+		df = pandas.DataFrame(self.abs_change_axis(self.plot_pairs_scatter_coords(self.conditions_plot_objs,1)), columns=['rep1','rep2'], dtype=int)
+		ax1 = df.plot.scatter(x='rep1', y='rep2',color= 'r',  label='Condition')
+
+		df = pandas.DataFrame(self.abs_change_axis(self.plot_pairs_scatter_coords(self.controls_plot_objs,2)), columns=['rep1','rep2'], dtype=int)
+		df.plot.scatter(x='rep1', y='rep2',color = 'b',   label='Control', ax=ax1)
+		plt.savefig(self.output_filename +"_absscatter.png", dpi=100)
+		plt.close()
+		return self
+		
+	def abs_change_axis(self, coords):
+		abs_vals = numpy.array([numpy.absolute(numpy.subtract(coords[:,1],coords[:,0]), dtype = int)])
+		index_array = numpy.array([coords[:,0]])
+		return numpy.append(abs_vals,index_array, axis=0).T
+
+		
 	def plot_pairs_scatter_coords(self, plot_objs, type_int ):
 		all_coordsout = []
 		for plot_obj_pair in itertools.combinations(plot_objs,2):
 			window_counts = [self.windows_count(plot_objs[p]) for p in plot_obj_pair] 
 			type_values = numpy.full( (1, len(window_counts[0])), type_int)
-			range_vals = [numpy.arange(1, len(window_counts[0]) +1, dtype = int)]
+			range_vals = [numpy.multiply(self.window_size, numpy.arange(0, len(window_counts[0]) ), dtype = int)]
 
 			coords = numpy.array(window_counts )
 			transformed_coords = numpy.append(coords, type_values, axis=0)

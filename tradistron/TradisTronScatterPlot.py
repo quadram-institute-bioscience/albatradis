@@ -25,7 +25,7 @@ class TradisTronScatterPlot:
 		p = ScatterPlot(self.conditions, self.controls, self.window_size, self.outputfile, self.normalise, verbose = self.verbose)
 		
 		# High level windows
-		for ws in [1000,10000,100000]:
+		for ws in [10000,100000]:
 			if self.verbose:
 				print("Running Sliding window size:\t"+str(ws))
 			p.output_filename = self.outputfile+'_'+str(ws)
@@ -33,10 +33,12 @@ class TradisTronScatterPlot:
 			p.set_num_windows()
 			p.create_scatter_plot()
 			p.create_linear_plot()
+			p.create_abs_scatter_plot()
 
 		p.output_filename = self.outputfile
 		p.window_size = self.window_size
 		p.set_num_windows()
 		p.create_scatter_plot()
 		p.create_linear_plot()
+		p.create_abs_scatter_plot()
 		return self
