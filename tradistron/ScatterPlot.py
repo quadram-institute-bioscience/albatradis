@@ -38,22 +38,14 @@ class ScatterPlot:
 				print(plot_objs[f])
 		return plot_objs
 		
-		
-		
-		
-		
 	def create_linear_plot(self):
 		cond = self.plot_pairs_scatter_coords(self.conditions_plot_objs,'Condition')
-		cont = self.plot_pairs_scatter_coords(self.conditions_plot_objs,'Control')
-		
-		raw_data = numpy.append(cond, cont, axis=0) 
-		
-		df = pandas.DataFrame(raw_data , columns=['rep1','rep2','test_type','coord'])
-		df =df.astype({'rep1':int,'rep2':int,'test_type':str,'coord':int})
-		print(df)
-		ax1 = df.plot.line(x='coord',y='rep1', colormap='cubehelix')
-		df.plot.line(x='coord',y='rep2', ax=ax1)
+		cont = self.plot_pairs_scatter_coords(self.controls_plot_objs,'Control')
 
+		df = pandas.DataFrame({'Condition-Rep1': cond[:,0], 'Condition-Rep2': cond[:,1], 'Control-Rep1': cont[:,0], 'Control-Rep2': cont[:,1]}, index = cond[:,3])
+		
+		df = df.astype(int)
+		ax1 = df.plot(colormap='summer')
 		ax1.set_xlabel("Genome (base position)")
 		ax1.set_ylabel("No. of insertions")
 		plt.title("Insertions binned into Windows of "+str(self.window_size)+" bases")
@@ -61,12 +53,6 @@ class ScatterPlot:
 		plt.show()
 		plt.close()
 		return self
-
-	#>> df = pd.DataFrame({
-	#...    'pig': [20, 18, 489, 675, 1776],
-	#...    'horse': [4, 25, 281, 600, 1900]
-	#...    }, index=[1990, 1997, 2003, 2009, 2014])
-	#>>> lines = df.plot.line()
 	
 	def create_scatter_plot(self):
 		df = pandas.DataFrame(self.plot_pairs_scatter_coords(self.conditions_plot_objs,1), columns=['rep1','rep2','test_type','coord'], dtype=int)
