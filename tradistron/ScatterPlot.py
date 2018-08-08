@@ -1,6 +1,8 @@
 import numpy
 import itertools
 import pandas
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from tradistron.PlotParser import PlotParser
 from tradistron.NormalisePlots import NormalisePlots

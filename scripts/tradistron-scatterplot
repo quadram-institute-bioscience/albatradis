@@ -21,7 +21,7 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument('--control', '-c',  help='control files (use 2 or more)', type=str, action='append')
 parser.add_argument('--condition', '-d',  help='condition files (use 2 or more)', type=str, action='append')
-parser.add_argument('--window_size',	       '-w', help='Window size', type=int, default= 100)
+parser.add_argument('--window_size',	       '-w', help='Window size', type=int, default= 50)
 parser.add_argument('--outputfile', '-o',  help='Output filename prefix', type=str, default='scatter')
 
 parser.add_argument('--normalise', '-n', action='store_true', help='normalise the files', default = False)
