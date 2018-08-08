@@ -39,28 +39,35 @@ class ScatterPlot:
 		return plot_objs
 		
 	def create_linear_plot(self):
-		cond = self.plot_pairs_scatter_coords(self.conditions_plot_objs,'Condition')
-		cont = self.plot_pairs_scatter_coords(self.controls_plot_objs,'Control')
+		cond = self.plot_pairs_scatter_coords(self.conditions_plot_objs)
+		cont = self.plot_pairs_scatter_coords(self.controls_plot_objs)
 
-		df = pandas.DataFrame({'Condition-Rep1': cond[:,0], 'Condition-Rep2': cond[:,1], 'Control-Rep1': cont[:,0], 'Control-Rep2': cont[:,1]}, index = cond[:,3])
+		df = pandas.DataFrame({'Condition-Rep1': cond[:,0], 'Condition-Rep2': cond[:,1], 'Control-Rep1': cont[:,0], 'Control-Rep2': cont[:,1]}, index = cond[:,2].astype(int))
 		
 		df = df.astype(int)
-		ax1 = df.plot(colormap='summer')
+
+		ax1 = df.plot.line(colormap='summer')
 		ax1.set_xlabel("Genome (base position)")
 		ax1.set_ylabel("No. of insertions")
 		plt.title("Insertions binned into Windows of "+str(self.window_size)+" bases")
 		plt.savefig(self.output_filename +"_linear.png" , dpi=100)
-		plt.show()
+		
 		plt.close()
 		return self
 	
 	def create_scatter_plot(self):
-		df = pandas.DataFrame(self.plot_pairs_scatter_coords(self.conditions_plot_objs,1), columns=['rep1','rep2','test_type','coord'], dtype=int)
-		ax1 = df.plot.scatter(x='rep1', y='rep2',color= 'r',  label='Condition')
-
-		df = pandas.DataFrame(self.plot_pairs_scatter_coords(self.controls_plot_objs,2), columns=['rep1','rep2','test_type','coord'], dtype=int)
-		#logx=True, logy=True , loglog=True
-		df.plot.scatter(x='rep1', y='rep2',color = 'b',   label='Control', ax=ax1)
+		cond = self.plot_pairs_scatter_coords(self.conditions_plot_objs)
+		cont = self.plot_pairs_scatter_coords(self.controls_plot_objs)
+		
+		df = pandas.DataFrame({'Condition-Rep1': cond[:,0], 'Condition-Rep2': cond[:,1], 'Control-Rep1': cont[:,0], 'Control-Rep2': cont[:,1]}, index = cond[:,1].astype(int))
+		df = df.astype(int)
+		
+		ax1 = df.plot.scatter(x='Condition-Rep1', y='Condition-Rep2',color= 'r',  label='Condition',  loglog=True)
+		df.plot.scatter(x='Control-Rep1', y='Control-Rep2',color = 'b',   label='Control', ax=ax1, loglog=True)
+		
+		ax1.set_xlabel("No. of insertions (Rep 2)")
+		ax1.set_ylabel("No. of insertions (Rep 1)")
+		plt.title("No of insertions in Rep 1 vs Rep 2 for a window of "+str(self.window_size)+" bases")
 		plt.savefig(self.output_filename +"_scatter.png", dpi=100)
 		plt.close()
 		
@@ -68,11 +75,19 @@ class ScatterPlot:
 		
 		
 	def create_abs_scatter_plot(self):
-		df = pandas.DataFrame(self.abs_change_axis(self.plot_pairs_scatter_coords(self.conditions_plot_objs,1)), columns=['rep1','rep2'], dtype=int)
-		ax1 = df.plot.scatter(x='rep1', y='rep2',color= 'r',  label='Condition')
-
-		df = pandas.DataFrame(self.abs_change_axis(self.plot_pairs_scatter_coords(self.controls_plot_objs,2)), columns=['rep1','rep2'], dtype=int)
-		df.plot.scatter(x='rep1', y='rep2',color = 'b',   label='Control', ax=ax1)
+		cond = self.abs_change_axis(self.plot_pairs_scatter_coords(self.conditions_plot_objs))
+		cont = self.abs_change_axis(self.plot_pairs_scatter_coords(self.controls_plot_objs))
+		
+		df = pandas.DataFrame({'Condition-Rep1': cond[:,0], 'Condition-Rep2': cond[:,1], 'Control-Rep1': cont[:,0], 'Control-Rep2': cont[:,1]}, index = cond[:,1].astype(int))
+		df = df.astype(int)
+		
+		ax1 = df.plot.scatter(x='Condition-Rep2', y='Condition-Rep1',color= 'r',  label='Condition',  loglog=True)
+		df.plot.scatter(x='Control-Rep2', y='Control-Rep1',color = 'b',   label='Control', ax=ax1, loglog=True)
+		
+		ax1.set_xlabel("No. of insertions (Rep 2)")
+		ax1.set_ylabel("Normalised No. of insertions (Rep 1)")
+		plt.title("Normalised insertions Rep 1 vs Rep 2 for a window of "+str(self.window_size)+" bases")
+		
 		plt.savefig(self.output_filename +"_absscatter.png", dpi=100)
 		plt.close()
 		return self
@@ -83,16 +98,14 @@ class ScatterPlot:
 		return numpy.append(abs_vals,index_array, axis=0).T
 
 		
-	def plot_pairs_scatter_coords(self, plot_objs, type_int ):
+	def plot_pairs_scatter_coords(self, plot_objs ):
 		all_coordsout = []
 		for plot_obj_pair in itertools.combinations(plot_objs,2):
 			window_counts = [self.windows_count(plot_objs[p]) for p in plot_obj_pair] 
-			type_values = numpy.full( (1, len(window_counts[0])), type_int)
 			range_vals = [numpy.multiply(self.window_size, numpy.arange(0, len(window_counts[0]) ), dtype = int)]
 
 			coords = numpy.array(window_counts )
-			transformed_coords = numpy.append(coords, type_values, axis=0)
-			transformed_coords_index = numpy.append(transformed_coords, range_vals, axis=0).T
+			transformed_coords_index = numpy.append(coords, range_vals, axis=0).T
 			
 			if len(all_coordsout) == 0:
 				all_coordsout = transformed_coords_index
