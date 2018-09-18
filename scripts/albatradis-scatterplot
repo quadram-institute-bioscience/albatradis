@@ -6,18 +6,18 @@ import os
 import pkg_resources
 sys.path.append('../')
 sys.path.append('./')
-from tradistron.TradisTronScatterPlot import TradisTronScatterPlot
+from albatradis.AlbaTraDISScatterPlot import AlbaTraDISScatterPlot
 
 
 version = ''
 try:
-	version = pkg_resources.get_distribution("tradistron").version
+	version = pkg_resources.get_distribution("albatradis").version
 except pkg_resources.DistributionNotFound:
 	version = 'x.y.z'
 
 parser = argparse.ArgumentParser(
 	description = 'Create scatter plot of controls vs conditions',
-	usage = 'tradistron [options] --control control1.plot --control control2.plot --condition condition1.plot --condition condition2.plot', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+	usage = 'albatradis [options] --control control1.plot --control control2.plot --condition condition1.plot --condition condition2.plot', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
 parser.add_argument('--control', '-c',  help='control files (use 2 or more)', type=str, action='append')
 parser.add_argument('--condition', '-d',  help='condition files (use 2 or more)', type=str, action='append')
@@ -39,8 +39,8 @@ if options.debug:
 	pr = cProfile.Profile()
 	pr.enable()
 		
-	tradistron = TradisTronScatterPlot(options)
-	tradistron.run()
+	albatradis = AlbaTraDISScatterPlot(options)
+	albatradis.run()
 		
 	pr.disable()
 	s = io.StringIO()
@@ -49,5 +49,5 @@ if options.debug:
 	ps.print_stats()
 	print(s.getvalue())
 else:
-	tradistron = TradisTronScatterPlot(options)
-	tradistron.run()
+	albatradis = AlbaTraDISScatterPlot(options)
+	albatradis.run()

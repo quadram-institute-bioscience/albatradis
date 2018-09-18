@@ -6,18 +6,18 @@ import os
 import pkg_resources
 sys.path.append('../')
 sys.path.append('./')
-from tradistron.TradisTronTree import TradisTronTree
+from albatradis.AlbaTraDISTree import AlbaTraDISTree
 
 
 version = ''
 try:
-	version = pkg_resources.get_distribution("tradistron").version
+	version = pkg_resources.get_distribution("albatradis").version
 except pkg_resources.DistributionNotFound:
 	version = 'x.y.z'
 
 parser = argparse.ArgumentParser(
 	description = 'Tradis Tree analysis',
-	usage = 'tradistron [options] EMBLfile plotfiles', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+	usage = 'albatradis [options] EMBLfile plotfiles', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('emblfile', help='Annotation file in EMBL format', type=str)
 parser.add_argument('plotfiles', help='Input plot files (optionally gzipped)', nargs='+', type=str)
 
@@ -35,8 +35,8 @@ if options.debug:
 	pr = cProfile.Profile()
 	pr.enable()
 		
-	tradistron = TradisTron(options)
-	tradistron.run()
+	albatradis = AlbaTraDIS(options)
+	albatradis.run()
 		
 	pr.disable()
 	s = io.StringIO()
@@ -45,5 +45,5 @@ if options.debug:
 	ps.print_stats()
 	print(s.getvalue())
 else:
-	tradistron = TradisTron(options)
-	tradistron.run()
+	albatradis = AlbaTraDIS(options)
+	albatradis.run()

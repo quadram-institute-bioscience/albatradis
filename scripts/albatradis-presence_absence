@@ -6,18 +6,18 @@ import os
 import pkg_resources
 sys.path.append('../')
 sys.path.append('./')
-from tradistron.TradisTronPresenceAbsence import TradisTronPresenceAbsence
+from albatradis.AlbaTraDISPresenceAbsence import AlbaTraDISPresenceAbsence
 
 
 version = ''
 try:
-	version = pkg_resources.get_distribution("tradistron").version
+	version = pkg_resources.get_distribution("albatradis").version
 except pkg_resources.DistributionNotFound:
 	version = 'x.y.z'
 
 parser = argparse.ArgumentParser(
 	description = 'Tradis analysis',
-	usage = 'tradistron [options] EMBLfile gene_reports', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+	usage = 'albatradis [options] EMBLfile gene_reports', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('emblfile', help='Annotation file in EMBL format', type=str)
 parser.add_argument('genereports', help='Gene report spreadsheets', nargs='+', type=str)
 parser.add_argument('--prefix', '-o',  help='Output directory prefix', type=str, default='output')
@@ -35,8 +35,8 @@ if options.debug:
 	pr = cProfile.Profile()
 	pr.enable()
 		
-	tradistron = TradisTronPresenceAbsence(options)
-	tradistron.run()
+	albatradis = AlbaTraDISPresenceAbsence(options)
+	albatradis.run()
 		
 	pr.disable()
 	s = io.StringIO()
@@ -45,5 +45,5 @@ if options.debug:
 	ps.print_stats()
 	print(s.getvalue())
 else:
-	tradistron = TradisTronPresenceAbsence(options)
-	tradistron.run()
+	albatradis = AlbaTraDISPresenceAbsence(options)
+	albatradis.run()
