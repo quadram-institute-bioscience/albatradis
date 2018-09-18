@@ -2,12 +2,12 @@ import unittest
 import os
 import filecmp
 import shutil
-from tradistron.PresenceAbsence import PresenceAbsence
+from albatradis.PresenceAbsence import PresenceAbsence
 
 class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass
 
-data_dir = os.path.join('tradistron','tests', 'data','presenceabsence')
+data_dir = os.path.join('albatradis','tests', 'data','presenceabsence')
 
 class TestPresenceAbsence(unittest.TestCase):
 

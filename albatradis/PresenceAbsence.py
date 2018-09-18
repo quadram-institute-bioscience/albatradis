@@ -12,11 +12,11 @@ matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from graphviz import Digraph
 
-from tradistron.EMBLReader import EMBLReader
-from tradistron.GeneReport import GeneReport
-from tradistron.HeatMap import HeatMap
-from tradistron.GeneToFiles import GeneToFiles
-from tradistron.ReorderGenes import ReorderGenes
+from albatradis.EMBLReader import EMBLReader
+from albatradis.GeneReport import GeneReport
+from albatradis.HeatMap import HeatMap
+from albatradis.GeneToFiles import GeneToFiles
+from albatradis.ReorderGenes import ReorderGenes
 
 class PresenceAbsence:
 	def __init__(self, genereports, emblfile, verbose, prefix):

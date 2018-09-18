@@ -4,8 +4,8 @@ import pandas
 import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
-from tradistron.PlotParser import PlotParser
-from tradistron.NormalisePlots import NormalisePlots
+from albatradis.PlotParser import PlotParser
+from albatradis.NormalisePlots import NormalisePlots
 
 class ScatterPlot:
 	#assumption is that there are 2 or more conditions, and 2 or more controls.

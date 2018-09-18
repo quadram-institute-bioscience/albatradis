@@ -1,15 +1,15 @@
 '''Driver class'''
-from tradistron.PrepareInputFiles import PrepareInputFiles
+from albatradis.PrepareInputFiles import PrepareInputFiles
 import logging
 import os
 import sys
 import time
 
-from tradistron.BlockInsertions import BlockInsertions
-from tradistron.NormalisePlots import NormalisePlots
+from albatradis.BlockInsertions import BlockInsertions
+from albatradis.NormalisePlots import NormalisePlots
 
 
-class TradisTron:
+class AlbaTraDIS:
 	def __init__(self, options):
 		self.logger            = logging.getLogger(__name__)
 		self.plotfiles         = options.plotfiles

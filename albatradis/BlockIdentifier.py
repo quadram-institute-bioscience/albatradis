@@ -1,5 +1,5 @@
-from tradistron.PlotParser import PlotParser
-from tradistron.Block import Block
+from albatradis.PlotParser import PlotParser
+from albatradis.Block import Block
 import numpy
 
 class BlockIdentifier:

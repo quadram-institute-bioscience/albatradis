@@ -2,7 +2,7 @@ import unittest
 import os
 import sys
 import logging
-from tradistron.BlockInsertions import BlockInsertions
+from albatradis.BlockInsertions import BlockInsertions
 import shutil
 
 test_modules_dir = os.path.dirname(os.path.realpath(__file__))

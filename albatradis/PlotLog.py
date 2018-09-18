@@ -2,7 +2,7 @@ import csv
 import numpy
 import pandas
 from tempfile import mkstemp
-from tradistron.Block import Block
+from albatradis.Block import Block
 
 
 class LogFC:

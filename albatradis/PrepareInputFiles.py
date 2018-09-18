@@ -1,9 +1,9 @@
 '''Take in the input files, parse them to create new files.'''
 from tempfile import mkstemp
-from tradistron.EMBLGenerator import EMBLGenerator
-from tradistron.PlotParser import PlotParser
-from tradistron.WindowGenerator import WindowGenerator
-from tradistron.PlotGenerator import PlotGenerator
+from albatradis.EMBLGenerator import EMBLGenerator
+from albatradis.PlotParser import PlotParser
+from albatradis.WindowGenerator import WindowGenerator
+from albatradis.PlotGenerator import PlotGenerator
 
 class PrepareInputFiles:
 	def __init__(self, plotfile, minimum_threshold, window_size, window_interval):

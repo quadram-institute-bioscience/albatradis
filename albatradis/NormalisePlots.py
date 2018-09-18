@@ -1,7 +1,7 @@
 '''Given a set of plot files, find the one with the highest number of reads and normalise all the rest into new files'''
 
-from tradistron.PlotParser import PlotParser
-from tradistron.PlotGenerator import PlotGenerator
+from albatradis.PlotParser import PlotParser
+from albatradis.PlotGenerator import PlotGenerator
 from tempfile import mkstemp
 import numpy
 

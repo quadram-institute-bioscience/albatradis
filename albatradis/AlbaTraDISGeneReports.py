@@ -3,9 +3,9 @@ import logging
 import os
 import sys
 
-from tradistron.GeneReportSets import GeneReportSets
+from albatradis.GeneReportSets import GeneReportSets
 
-class TradisTronGeneReports:
+class AlbaTraDISGeneReports:
 	def __init__(self, options):
 		self.logger            = logging.getLogger(__name__)
 		self.genereports       = options.genereports

@@ -12,7 +12,7 @@ if os.path.exists('VERSION'):
   version = open('VERSION').read().strip()
 
 setup(
-    name='tradistron',
+    name='albatradis',
     version=version,
     description='TraDIStron',
 	long_description=read('README.md'),

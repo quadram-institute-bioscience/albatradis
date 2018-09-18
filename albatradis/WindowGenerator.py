@@ -1,4 +1,4 @@
-from tradistron.Window import Window
+from albatradis.Window import Window
 
 class WindowGenerator:
 	def __init__(self, genome_length, window_size, window_interval):

@@ -2,8 +2,8 @@ import unittest
 import os
 import logging
 import filecmp
-from tradistron.ReorderGenes import ReorderGenes
-from tradistron.GeneToFiles import GeneToFiles
+from albatradis.ReorderGenes import ReorderGenes
+from albatradis.GeneToFiles import GeneToFiles
 
 class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass

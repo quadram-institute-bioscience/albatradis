@@ -4,14 +4,14 @@ import os
 import sys
 import time
 import shutil
-from tradistron.TradisGeneInsertSites import TradisGeneInsertSites
-from tradistron.PrepareInputFiles     import PrepareInputFiles
-from tradistron.TradisEssentiality    import TradisEssentiality
-from tradistron.TradisComparison      import TradisComparison
-from tradistron.PlotLog               import PlotLog
-from tradistron.PlotMasking           import PlotMasking
-from tradistron.BlockIdentifier       import BlockIdentifier
-from tradistron.GeneAnnotator        import GeneAnnotator
+from albatradis.TradisGeneInsertSites import TradisGeneInsertSites
+from albatradis.PrepareInputFiles     import PrepareInputFiles
+from albatradis.TradisEssentiality    import TradisEssentiality
+from albatradis.TradisComparison      import TradisComparison
+from albatradis.PlotLog               import PlotLog
+from albatradis.PlotMasking           import PlotMasking
+from albatradis.BlockIdentifier       import BlockIdentifier
+from albatradis.GeneAnnotator        import GeneAnnotator
 
 class PlotEssentiality:
 	def __init__(self, plotfile_obj,gene_insert_sites_filename, tradis_essentiality_filename, type, only_essential_filename):

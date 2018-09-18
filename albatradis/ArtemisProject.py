@@ -4,9 +4,9 @@ import re
 import csv
 import numpy
 
-from tradistron.PresenceAbsence import PresenceAbsence
-from tradistron.ExperimentMetaData import ExperimentMetaData
-from tradistron.ExperimentCollection import ExperimentCollection
+from albatradis.PresenceAbsence import PresenceAbsence
+from albatradis.ExperimentMetaData import ExperimentMetaData
+from albatradis.ExperimentCollection import ExperimentCollection
 
 class ArtemisProject:
 	def __init__(self, outputfile, verbose, experiments_metadata, reference, controls):

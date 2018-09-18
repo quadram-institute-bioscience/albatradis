@@ -1,8 +1,8 @@
 import logging
 
-from tradistron.ArtemisProject import ArtemisProject
+from albatradis.ArtemisProject import ArtemisProject
 
-class TradisTronArtemisProject:
+class AlbaTraDISArtemisProject:
 	def __init__(self, options):
 		self.logger               = logging.getLogger(__name__)
 		self.outputfile           = options.outputfile

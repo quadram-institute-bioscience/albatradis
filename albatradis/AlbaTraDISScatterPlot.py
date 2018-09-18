@@ -3,9 +3,9 @@ import logging
 import os
 import sys
 
-from tradistron.ScatterPlot import ScatterPlot
+from albatradis.ScatterPlot import ScatterPlot
 
-class TradisTronScatterPlot:
+class AlbaTraDISScatterPlot:
 	def __init__(self, options):
 		self.logger            = logging.getLogger(__name__)
 		self.window_size       = options.window_size

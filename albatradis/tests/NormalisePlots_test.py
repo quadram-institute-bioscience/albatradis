@@ -2,7 +2,7 @@ import unittest
 import os
 import logging
 import filecmp
-from tradistron.NormalisePlots import NormalisePlots
+from albatradis.NormalisePlots import NormalisePlots
 
 class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass

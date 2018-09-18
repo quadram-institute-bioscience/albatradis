@@ -1,7 +1,7 @@
 import os
 import numpy
 
-from tradistron.GeneToFiles import GeneToFiles
+from albatradis.GeneToFiles import GeneToFiles
 
 class ReorderGenes:
 	def __init__(self, gene_names, genereports, reports_to_gene_logfc):

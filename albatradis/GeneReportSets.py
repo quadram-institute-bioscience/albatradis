@@ -1,5 +1,5 @@
-from tradistron.GeneReport import GeneReport
-from tradistron.Gene import Gene
+from albatradis.GeneReport import GeneReport
+from albatradis.Gene import Gene
 import os
 
 

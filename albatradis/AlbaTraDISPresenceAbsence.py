@@ -3,10 +3,10 @@ import logging
 import os
 import sys
 
-from tradistron.PresenceAbsence import PresenceAbsence
-from tradistron.GeneReportSets import GeneReportSets
+from albatradis.PresenceAbsence import PresenceAbsence
+from albatradis.GeneReportSets import GeneReportSets
 
-class TradisTronPresenceAbsence:
+class AlbaTraDISPresenceAbsence:
 	def __init__(self, options):
 		self.logger            = logging.getLogger(__name__)
 		self.genereports       = options.genereports

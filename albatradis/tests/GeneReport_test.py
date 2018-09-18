@@ -1,7 +1,7 @@
 import unittest
 import os
 import logging
-from tradistron.GeneReport import GeneReport
+from albatradis.GeneReport import GeneReport
 
 class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass

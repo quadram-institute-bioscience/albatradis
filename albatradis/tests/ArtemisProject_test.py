@@ -2,12 +2,12 @@ import unittest
 import os
 import logging
 import filecmp
-from tradistron.ArtemisProject import ArtemisProject
+from albatradis.ArtemisProject import ArtemisProject
 
 class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass
 
-data_dir = os.path.join('tradistron','tests', 'data','experimentcollection')
+data_dir = os.path.join('albatradis','tests', 'data','experimentcollection')
 
 class TestArtemisProject(unittest.TestCase):
 

@@ -1,6 +1,6 @@
 from Bio import SeqIO
-from tradistron.Gene import Gene
-from tradistron.EMBLReader import EMBLReader
+from albatradis.Gene import Gene
+from albatradis.EMBLReader import EMBLReader
 
 class GeneAnnotator:
 	def __init__(self, annotation_file, blocks):

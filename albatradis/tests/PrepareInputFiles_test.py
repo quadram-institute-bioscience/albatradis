@@ -2,7 +2,7 @@ import unittest
 import os
 import logging
 import filecmp
-from tradistron.PrepareInputFiles import PrepareInputFiles
+from albatradis.PrepareInputFiles import PrepareInputFiles
 
 test_modules_dir = os.path.dirname(os.path.realpath(__file__))
 data_dir = os.path.join(test_modules_dir, 'data','prepareinputfiles')

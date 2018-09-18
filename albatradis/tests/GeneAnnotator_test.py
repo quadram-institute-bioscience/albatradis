@@ -2,8 +2,8 @@ import unittest
 import os
 import logging
 import filecmp
-from tradistron.GeneAnnotator import GeneAnnotator
-from tradistron.Block import Block
+from albatradis.GeneAnnotator import GeneAnnotator
+from albatradis.Block import Block
 
 class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass

@@ -3,7 +3,7 @@ import os
 import logging
 import filecmp
 import shutil
-from tradistron.GeneReportSets import GeneReportSets
+from albatradis.GeneReportSets import GeneReportSets
 
 class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass

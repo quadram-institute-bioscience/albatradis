@@ -1,13 +1,13 @@
 import unittest
 import os
 import logging
-from tradistron.TradisTron import TradisTron
+from albatradis.AlbaTraDIS import AlbaTraDIS
 import shutil
 import cProfile, pstats, io
 import filecmp
 
 test_modules_dir = os.path.dirname(os.path.realpath(__file__))
-data_dir = os.path.join(test_modules_dir, 'data','tradistron')
+data_dir = os.path.join(test_modules_dir, 'data','albatradis')
 
 class TestOptions:
 	def __init__(self, plotfiles, minimum_threshold, window_size,window_interval, verbose, prefix, minimum_logcpm, minimum_logfc, pvalue, iterations, dont_normalise_plots,minimum_block,span_gaps, emblfile, minimum_proportion_insertions ):
@@ -27,14 +27,14 @@ class TestOptions:
 		self.emblfile = emblfile
 		self.minimum_proportion_insertions = minimum_proportion_insertions
 
-class TestTradisTron(unittest.TestCase):
+class TestAlbaTraDIS(unittest.TestCase):
 	
 	def test_small_real(self):
 		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
 		control = os.path.join(data_dir, 'small_control.insert_site_plot.gz')
 		emblfile = os.path.join(data_dir, 'annotation.embl')
     
-		t = TradisTron(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 1, True,1,0, emblfile, 0.1))
+		t = AlbaTraDIS(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 1, True,1,0, emblfile, 0.1))
 		self.assertTrue(t.run())
 		
 		self.assertTrue(os.path.exists('testoutput_1'))
@@ -45,7 +45,7 @@ class TestTradisTron(unittest.TestCase):
 		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
 		control = os.path.join(data_dir, 'small_control.insert_site_plot.gz')
 		emblfile = os.path.join(data_dir, 'annotation.embl')
-		t = TradisTron(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 2, False,1,0, emblfile, 0.1))
+		t = AlbaTraDIS(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 2, False,1,0, emblfile, 0.1))
 		self.assertTrue(t.run())
 		self.assertTrue(os.path.exists('testoutput_1'))
 		shutil.rmtree("testoutput_1")
@@ -57,7 +57,7 @@ class TestTradisTron(unittest.TestCase):
 		control = os.path.join(data_dir, 'small_control_high_insertions.insert_site_plot.gz')
 		emblfile = os.path.join(data_dir, 'annotation.embl')
 
-		t = TradisTron(TestOptions([case, control], 3, 100, 100, False, 'testoutputx', 1, 1, 1, 1, False,1,0, emblfile, 0.9999))
+		t = AlbaTraDIS(TestOptions([case, control], 3, 100, 100, False, 'testoutputx', 1, 1, 1, 1, False,1,0, emblfile, 0.9999))
 		self.assertTrue(t.run())
 		
 		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_no_decrease.plot'), os.path.join('testoutputx_1', 'combined.plot') ))

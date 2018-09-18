@@ -2,7 +2,7 @@ import unittest
 import os
 import logging
 import filecmp
-from tradistron.HeatMap import HeatMap
+from albatradis.HeatMap import HeatMap
 
 class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass

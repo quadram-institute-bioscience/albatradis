@@ -1,7 +1,7 @@
 import unittest
 import os
 import logging
-from tradistron.PlotParser import PlotParser
+from albatradis.PlotParser import PlotParser
 
 class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass

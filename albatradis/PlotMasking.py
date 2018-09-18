@@ -1,5 +1,5 @@
-from tradistron.PlotParser import PlotParser
-from tradistron.PlotGenerator import PlotGenerator
+from albatradis.PlotParser import PlotParser
+from albatradis.PlotGenerator import PlotGenerator
 from tempfile import mkstemp
 
 class PlotMasking:
