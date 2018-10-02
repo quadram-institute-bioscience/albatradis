@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+
+import argparse
+import sys
+import os
+import pkg_resources
+sys.path.append('../')
+sys.path.append('./')
+from albatradis.EMBLExpandGenes import EMBLExpandGenes
+
+version = ''
+try:
+	version = pkg_resources.get_distribution("albatradis").version
+except pkg_resources.DistributionNotFound:
+	version = 'x.y.z'
+
+parser = argparse.ArgumentParser(
+	description = 'Take in an EMBL file and add flanking 3 prime and 5 prime annotation',
+	usage = 'albatradis-annotation [options] EMBLfile', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument('emblfile', help='Annotation file in EMBL format', type=str)
+
+parser.add_argument('--feature_size',             '-s', help='Feature size', type=int, default=100)
+parser.add_argument('--outputfile',                '-o',  help='Output file', type=str, default='output.embl')
+parser.add_argument('--verbose',               '-v', action='store_true', help='Print out more information about the analysis while it runs', default = False)
+parser.add_argument('--debug', action='store_true', help='Turn on debugging', default = False)
+parser.add_argument('--version', action='version', version=str(version))
+
+options = parser.parse_args()
+
+albatradis = EMBLExpandGenes(options.emblfile, options.feature_size)
+albatradis.construct_file(options.outputfile)
