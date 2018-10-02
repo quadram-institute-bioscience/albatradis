@@ -1,18 +1,34 @@
-ID   ABC; SV 1; circular; genomic DNA; STD; PRO; 20 BP.
+ID   ABC; SV 1; circular; genomic DNA; STD; PRO; 600 BP.
 XX
 FH   Key             Location/Qualifiers
 FH
-FT   source          1..20
+FT   source          1..600
 FT                   /organism="Bacteria"
-FT   CDS             6..11
-FT                   /gene="abc__3_prime"
-FT                   /locus_tag="abc__3_prime"
+FT   CDS             1..100
+FT                   /gene="1_100"
+FT                   /locus_tag="1_100"
 FT                   /product="product"
-FT   CDS             11..15
-FT                   /gene="abc"
-FT                   /locus_tag="abc"
+FT   CDS             101..115
+FT                   /gene="1_100__5prime"
+FT                   /locus_tag="1_100__5prime"
 FT                   /product="product"
-FT   CDS             15..20
-FT                   /gene="abc__5_prime"
-FT                   /locus_tag="abc__5_prime"
+FT   CDS             complement(180..350)
+FT                   /gene="180_350"
+FT                   /locus_tag="180_350"
+FT                   /product="product"
+FT   CDS             complement(351..365)
+FT                   /gene="180_350__3prime"
+FT                   /locus_tag="180_350__3prime"
+FT                   /product="product"
+FT   CDS             complement(165..179)
+FT                   /gene="180_350__5prime"
+FT                   /locus_tag="180_350__5prime"
+FT                   /product="product"
+FT   CDS             500..600
+FT                   /gene="500_600"
+FT                   /locus_tag="500_600"
+FT                   /product="product"
+FT   CDS             485..499
+FT                   /gene="500_600__3prime"
+FT                   /locus_tag="500_600__3prime"
 FT                   /product="product"

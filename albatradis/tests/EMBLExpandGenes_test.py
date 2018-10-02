@@ -10,7 +10,7 @@ data_dir = os.path.join(test_modules_dir, 'data','emblexpandgenes')
 class TestEMBLExpandGenes(unittest.TestCase):
 
 	def test_embl_expand_genes(self):
-		e = EMBLExpandGenes(os.path.join(data_dir, 'one_gene') , 5)
+		e = EMBLExpandGenes(os.path.join(data_dir, 'one_gene') , 15)
 		
 		output_file = os.path.join(data_dir, 'actual_one_gene')
 		e.construct_file(output_file)

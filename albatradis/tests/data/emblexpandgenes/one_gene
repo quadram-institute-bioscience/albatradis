@@ -1,10 +1,31 @@
-ID   ABC; SV 1; circular; genomic DNA; STD; PRO; 20 BP.
+ID   ABC; SV 1; circular; genomic DNA; STD; PRO; 600 BP.
 XX
 FH   Key             Location/Qualifiers
 FH
-FT   source          1..20
+FT   source          1..600
 FT                   /organism="Bacteria"
-FT   CDS             11..15
-FT                   /gene="abc"
-FT                   /locus_tag="abc"
+FT   CDS             1..100
+FT                   /gene="1_100"
+FT                   /locus_tag="1_100"
 FT                   /product="product"
+FT   CDS             complement(180..350)
+FT                   /gene="180_350"
+FT                   /locus_tag="180_350"
+FT                   /product="product"
+FT   CDS             500..600
+FT                   /gene="500_600"
+FT                   /locus_tag="500_600"
+FT                   /product="product"
+XX
+SQ   Sequence 600 BP; 150 A; 150 C; 150 G; 150 T; 0 other;
+     agcttttcat tctgactgca acgggcaata tgtctctgtg tggattaaaa aaagagtgtc        60
+     tgatagcagc ttctgaactg gttacctgcc gtgagtaaat taaaatttta ttgacttagg       120
+     tcactaaata ctttaaccaa tataggcata gcgcacagac agataaaaat tacagagtac       180
+     acaacatcca tgaaacgcat tagcaccacc attaccacca ccatcaccat taccacaggt       240
+     aacggtgcgg gctgacgcgt acaggaaaca cagaaaaaag cccgcacctg acagtgcggg       300
+     cttttttttt cgaccaaagg taacgaggta acaaccatgc gagtgttgaa gttcggcggt       360
+     acatcagtgg caaatgcaga acgttttctg cgtgttgccg atattctgga aagcaatgcc       420
+     aggcaggggc aggtggccac cgtcctctct gcccccgcca aaatcaccaa ccacctggtg       480
+     gcgatgattg aaaaaaccat tagcggccag gatgctttac ccaatatcag cgatgccgaa       540
+     cgtatttttg ccgaactttt gacgggactc gccgccgccc agccggggtt cccgctggcg       600
+//
