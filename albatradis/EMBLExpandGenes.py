@@ -84,7 +84,6 @@ FT   source          1..{length}
 FT                   /organism="Bacteria"
 """.format(length=str(self.genome_length))
 
-
 	def construct_feature_forward(self, feature):
 		return """FT   CDS             {window_start}..{window_end}
 FT                   /gene="{gene_name}"
