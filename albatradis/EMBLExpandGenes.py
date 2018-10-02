@@ -1,5 +1,6 @@
 ''' Given an annotation file, take each gene, and create a new feature at the start and end to capture promotors'''
 from albatradis.EMBLReader import EMBLReader
+from albatradis.EMBLSequence import EMBLSequence
 
 class FeatureProperties:
 	def __init__(self, 	start, end, direction, gene_name):
@@ -12,9 +13,9 @@ class EMBLExpandGenes:
 	def __init__(self, embl_file, feature_size):
 		self.embl_file = embl_file
 		self.feature_size = feature_size
-		er = EMBLReader(self.embl_file)
-		self.features = er.read_annotation_features()
-		self.genome_length = er.genome_length
+		self.er = EMBLReader(self.embl_file)
+		self.features = self.er.read_annotation_features()
+		self.genome_length = self.er.genome_length
 	
 	def create_3_5_prime_features(self):
 		new_features = []
@@ -67,6 +68,8 @@ class EMBLExpandGenes:
 					emblfile.write(self.construct_feature_forward(f))
 				else:
 					emblfile.write(self.construct_feature_reverse(f))
+					
+			emblfile.write(EMBLSequence(str(self.er.record.seq)).format())
 		return self
 		
 	def feature_to_gene_name(self, feature):
@@ -97,4 +100,6 @@ FT                   /gene="{gene_name}"
 FT                   /locus_tag="{gene_name}"
 FT                   /product="product"
 """.format(gene_name=feature.gene_name, window_start=str(feature.start +1), window_end=str(feature.end))
+
+
 

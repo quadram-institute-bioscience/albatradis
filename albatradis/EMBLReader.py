@@ -7,8 +7,8 @@ class EMBLReader:
 		self.genome_length = 0
 
 	def read_annotation_features(self):
-		record =  SeqIO.read(self.filename, "embl")
-		self.genome_length = len(record.seq)
+		self.record =  SeqIO.read(self.filename, "embl")
+		self.genome_length = len(self.record.seq)
 		
-		return [f for f in record.features if f.type not in self.features_to_ignore]
+		return [f for f in self.record.features if f.type not in self.features_to_ignore]
 	

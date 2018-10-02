@@ -47,6 +47,4 @@ class PrepareInputFiles:
 		self.forward_plot_filename = self.create_split_plot_file(self.plot_parser_obj.forward, [])
 		self.reverse_plot_filename = self.create_split_plot_file([], self.plot_parser_obj.reverse)
 		self.combined_plot_filename = self.create_split_plot_file(self.plot_parser_obj.forward,  self.plot_parser_obj.reverse)
-		return self
-		
-		
+		return self		
