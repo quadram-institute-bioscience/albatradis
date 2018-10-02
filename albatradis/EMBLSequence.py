@@ -10,7 +10,7 @@ class EMBLSequence(object):
     self.length = len(sequence_string)
 
   def format(self):
-    return self.header + '\n' + self.body
+    return self.header + '\n' + self.body + '//'+ '\n'
 
   def calculate_nucleotide_counts(self, sequence):
     sequence = sequence.lower()
