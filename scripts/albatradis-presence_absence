@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-import warnings
-warnings.filterwarnings("always")
 import argparse
 import sys
 import os
@@ -17,8 +15,8 @@ except pkg_resources.DistributionNotFound:
 	version = 'x.y.z'
 
 parser = argparse.ArgumentParser(
-	description = 'Tradis analysis',
-	usage = 'albatradis [options] EMBLfile gene_reports', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+	description = 'Take in gene report files and produce a heatmap',
+	usage = 'albatradis-presence_absence [options] EMBLfile gene_reports', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('emblfile', help='Annotation file in EMBL format', type=str)
 parser.add_argument('genereports', help='Gene report spreadsheets', nargs='+', type=str)
 parser.add_argument('--prefix', '-o',  help='Output directory prefix', type=str, default='output')
