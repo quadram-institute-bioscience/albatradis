@@ -1,16 +1,20 @@
 '''Take in the input files, parse them to create new files.'''
 from tempfile import mkstemp
 from albatradis.EMBLGenerator import EMBLGenerator
+from albatradis.EMBLExpandGenes import EMBLExpandGenes
 from albatradis.PlotParser import PlotParser
 from albatradis.WindowGenerator import WindowGenerator
 from albatradis.PlotGenerator import PlotGenerator
 
 class PrepareInputFiles:
-	def __init__(self, plotfile, minimum_threshold, window_size, window_interval):
+	def __init__(self, plotfile, minimum_threshold, window_size, window_interval, use_annotation, prime_feature_size,emblfile):
 		self.plotfile = plotfile
 		self.minimum_threshold = minimum_threshold
 		self.window_size = window_size
 		self.window_interval = window_interval
+		self.use_annotation    = use_annotation
+		self.prime_feature_size = prime_feature_size
+		self.emblfile = emblfile
 		
 		self.forward_plot_filename = ""
 		self.reverse_plot_filename = ""
@@ -34,6 +38,13 @@ class PrepareInputFiles:
 		e.construct_file(embl_filename)
 		return embl_filename
 
+	def embl_file_expand_genes(self):
+		fd, embl_filename = mkstemp()
+		
+		eg = EMBLExpandGenes(self.emblfile, self.prime_feature_size)
+		eg.construct_file(embl_filename)
+		return embl_filename
+
 	def create_split_plot_file(self, forward, reverse):
 		fd, filename = mkstemp()
 		p = PlotGenerator(forward, reverse, filename)
@@ -42,7 +53,13 @@ class PrepareInputFiles:
 		
 	def create_all_files(self):
 		self.plot_parser_obj = self.plot_parser()
-		self.embl_filename = self.create_embl_file()
+		
+		# use the annotation and add 3/5 prime blocks to each gene
+		if self.use_annotation:
+			self.embl_filename = self.embl_file_expand_genes()
+		else:			
+			# Use sliding windows only
+			self.embl_filename = self.create_embl_file()
 		
 		self.forward_plot_filename = self.create_split_plot_file(self.plot_parser_obj.forward, [])
 		self.reverse_plot_filename = self.create_split_plot_file([], self.plot_parser_obj.reverse)

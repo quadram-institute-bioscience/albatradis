@@ -111,3 +111,9 @@ ENV/
 # mypy
 .mypy_cache/
 
+.output.csv
+scattertest_absscatter.png
+scattertest_linear.png
+scattertest_scatter.png
+testoutput/
+tmp*

@@ -28,6 +28,8 @@ class AlbaTraDIS:
 		self.emblfile          = options.emblfile
 		self.minimum_proportion_insertions = options.minimum_proportion_insertions
 		self.strict_signal     = options.strict_signal
+		self.use_annotation    = options.use_annotation
+		self.prime_feature_size = options.prime_feature_size
 		
 		self.genome_length = 0
 		
@@ -47,7 +49,7 @@ class AlbaTraDIS:
 			report_decreased_insertions = n.decreased_insertion_reporting()
 		
 		for i in range(1,self.iterations+1):
-			bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.prefix + "_" +str(i), self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions,self.strict_signal)
+			bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.prefix + "_" +str(i), self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions,self.strict_signal,self.use_annotation, self.prime_feature_size)
 			bi.run()
 			self.blocks = bi.blocks
 			plotfiles = bi.output_plots.values()

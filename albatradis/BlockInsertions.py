@@ -28,7 +28,7 @@ class PlotAllEssentiality:
 		self.combined = combined
 
 class BlockInsertions:
-	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm, minimum_block,span_gaps, emblfile, report_decreased_insertions, strict_signal):
+	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm, minimum_block,span_gaps, emblfile, report_decreased_insertions, strict_signal, use_annotation, prime_feature_size):
 		self.logger            = logger
 		self.plotfiles         = plotfiles
 		self.minimum_threshold = minimum_threshold
@@ -43,7 +43,9 @@ class BlockInsertions:
 		self.span_gaps         = span_gaps
 		self.emblfile          = emblfile  
 		self.report_decreased_insertions = report_decreased_insertions
-		self.strict_signal = strict_signal
+		self.strict_signal     = strict_signal
+		self.use_annotation    = use_annotation
+		self.prime_feature_size = prime_feature_size
 		
 		self.genome_length = 0
 		self.forward_plotfile = ""
@@ -74,7 +76,7 @@ class BlockInsertions:
 	def prepare_input_files(self):
 		plotfile_objects = {}
 		for plotfile in self.plotfiles:
-			p = PrepareInputFiles(plotfile, self.minimum_threshold, self.window_size, self.window_interval )
+			p = PrepareInputFiles(plotfile, self.minimum_threshold, self.window_size, self.window_interval, self.use_annotation, self.prime_feature_size,self.emblfile)
 			p.create_all_files()
 			plotfile_objects[plotfile] = p
 			
