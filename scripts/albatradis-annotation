@@ -18,7 +18,7 @@ parser = argparse.ArgumentParser(
 	usage = 'albatradis-annotation [options] EMBLfile', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('emblfile', help='Annotation file in EMBL format', type=str)
 
-parser.add_argument('--feature_size',             '-s', help='Feature size', type=int, default=100)
+parser.add_argument('--feature_size',             '-s', help='Feature size', type=int, default=200)
 parser.add_argument('--outputfile',                '-o',  help='Output file', type=str, default='output.embl')
 parser.add_argument('--verbose',               '-v', action='store_true', help='Print out more information about the analysis while it runs', default = False)
 parser.add_argument('--debug', action='store_true', help='Turn on debugging', default = False)

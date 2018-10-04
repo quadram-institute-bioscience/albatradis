@@ -28,7 +28,7 @@ class PlotAllEssentiality:
 		self.combined = combined
 
 class BlockInsertions:
-	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm, minimum_block,span_gaps, emblfile, report_decreased_insertions):
+	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm, minimum_block,span_gaps, emblfile, report_decreased_insertions, strict_signal):
 		self.logger            = logger
 		self.plotfiles         = plotfiles
 		self.minimum_threshold = minimum_threshold
@@ -43,6 +43,7 @@ class BlockInsertions:
 		self.span_gaps         = span_gaps
 		self.emblfile          = emblfile  
 		self.report_decreased_insertions = report_decreased_insertions
+		self.strict_signal = strict_signal
 		
 		self.genome_length = 0
 		self.forward_plotfile = ""
@@ -165,7 +166,7 @@ class BlockInsertions:
 		return genes
 		
 	def mask_plots(self):
-		pm = PlotMasking(self.plotfiles, self.combined_plotfile )
+		pm = PlotMasking(self.plotfiles, self.combined_plotfile, self.strict_signal )
 		renamed_plot_files = {}
 		
 		for pfile in pm.output_plot_files:

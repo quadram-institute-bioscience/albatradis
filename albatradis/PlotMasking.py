@@ -3,9 +3,10 @@ from albatradis.PlotGenerator import PlotGenerator
 from tempfile import mkstemp
 
 class PlotMasking:
-	def __init__(self, insertion_plot_files, masking_plot_file):
+	def __init__(self, insertion_plot_files, masking_plot_file, strict_signal):
 		self.insertion_plot_files   = insertion_plot_files
 		self.masking_plot_file 		= masking_plot_file
+		self.strict_signal          = strict_signal
 		self.output_plot_files      = self.mask_plot_files()
 
 	'''Take in a logfc plot file and apply it as a mask to the insertion plot files'''
@@ -17,7 +18,7 @@ class PlotMasking:
 			insertion_plot = PlotParser(insertion_filename)
 			
 			for i, mask in enumerate(masking_plot.combined):
-				if mask == 0:
+				if mask == 0 and self.strict_signal:
 					insertion_plot.forward[i] = 0
 					insertion_plot.reverse[i] = 0
 					
