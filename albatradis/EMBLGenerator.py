@@ -1,3 +1,4 @@
+from albatradis.EMBLSequence import EMBLSequence
 class EMBLGenerator:
 	def __init__(self, windows, genome_length):
 		self.windows = windows
@@ -9,6 +10,9 @@ class EMBLGenerator:
 			
 			for w in self.windows:
 				emblfile.write(self.window_feature(w))
+				
+			# add a dummy sequence so that the Seq.IO API is happy
+			emblfile.write(EMBLSequence(  "N" * self.genome_length  ).format())
 				
 		return self
 		

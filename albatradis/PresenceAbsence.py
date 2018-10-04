@@ -28,7 +28,7 @@ class PresenceAbsence:
 		self.run()
 		
 	def run(self):
-		self.features   = EMBLReader(self.emblfile).read_annotation_features()
+		self.features   = EMBLReader(self.emblfile).features
 		self.gene_names = self.generate_gene_names()
 		self.reports_to_gene_logfc = self.create_reports_to_gene_logfc(self.gene_names)
 		

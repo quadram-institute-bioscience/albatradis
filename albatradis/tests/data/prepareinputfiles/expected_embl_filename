@@ -16,3 +16,7 @@ FT   CDS             5..8
 FT                   /gene="5_8"
 FT                   /locus_tag="5_8"
 FT                   /product="product"
+XX
+SQ   Sequence 8 BP; 0 A; 0 C; 0 G; 0 T; 8 other;
+     nnnnnnnn                                                                  8
+//

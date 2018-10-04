@@ -60,6 +60,17 @@ class TestAlbaTraDIS(unittest.TestCase):
 
 		t = AlbaTraDIS(TestOptions([case, control], 3, 100, 100, False, 'testoutputx', 1, 1, 1, 1, False,1,0, emblfile, 0.9999, False, False, 100))
 		self.assertTrue(t.run())
+		
 		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_no_decrease.plot'), os.path.join('testoutputx_1', 'combined.plot') ))
 		shutil.rmtree("testoutputx_1")
+		
+	def test_small_use_annotation(self):
+		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
+		control = os.path.join(data_dir, 'small_control.insert_site_plot.gz')
+		emblfile = os.path.join(data_dir, 'annotation.embl')
+    
+		t = AlbaTraDIS(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 1, True,1,0, emblfile, 0.1, False, True, 100))
+		self.assertTrue(t.run())
+		self.assertTrue(os.path.exists('testoutput_1'))
+		shutil.rmtree("testoutput_1")
 		

@@ -1,35 +1,2843 @@
-ID   ABC; SV 1; circular; genomic DNA; STD; PRO; 600 BP.
+ID   ABC; SV 1; circular; genomic DNA; STD; PRO; 50000 BP.
 XX
 FH   Key             Location/Qualifiers
 FH
-FT   source          1..600
+FT   source          1..50000
 FT                   /organism="Bacteria"
 FT   CDS             1..100
 FT                   /gene="1_100"
 FT                   /locus_tag="1_100"
 FT                   /product="product"
-FT   CDS             150..200
-FT                   /gene="150_200"
-FT                   /locus_tag="150_200"
+FT   CDS             101..200
+FT                   /gene="101_200"
+FT                   /locus_tag="101_200"
 FT                   /product="product"
-FT   CDS             180..350
-FT                   /gene="180_350"
-FT                   /locus_tag="180_350"
+FT   CDS             201..300
+FT                   /gene="201_300"
+FT                   /locus_tag="201_300"
 FT                   /product="product"
-FT   CDS             500..600
-FT                   /gene="500_600"
-FT                   /locus_tag="500_600"
+FT   CDS             301..400
+FT                   /gene="301_400"
+FT                   /locus_tag="301_400"
+FT                   /product="product"
+FT   CDS             401..500
+FT                   /gene="401_500"
+FT                   /locus_tag="401_500"
+FT                   /product="product"
+FT   CDS             501..600
+FT                   /gene="501_600"
+FT                   /locus_tag="501_600"
+FT                   /product="product"
+FT   CDS             601..700
+FT                   /gene="601_700"
+FT                   /locus_tag="601_700"
+FT                   /product="product"
+FT   CDS             701..800
+FT                   /gene="701_800"
+FT                   /locus_tag="701_800"
+FT                   /product="product"
+FT   CDS             801..900
+FT                   /gene="801_900"
+FT                   /locus_tag="801_900"
+FT                   /product="product"
+FT   CDS             901..1000
+FT                   /gene="901_1000"
+FT                   /locus_tag="901_1000"
+FT                   /product="product"
+FT   CDS             1001..1100
+FT                   /gene="1001_1100"
+FT                   /locus_tag="1001_1100"
+FT                   /product="product"
+FT   CDS             1101..1200
+FT                   /gene="1101_1200"
+FT                   /locus_tag="1101_1200"
+FT                   /product="product"
+FT   CDS             1201..1300
+FT                   /gene="1201_1300"
+FT                   /locus_tag="1201_1300"
+FT                   /product="product"
+FT   CDS             1301..1400
+FT                   /gene="1301_1400"
+FT                   /locus_tag="1301_1400"
+FT                   /product="product"
+FT   CDS             1401..1500
+FT                   /gene="1401_1500"
+FT                   /locus_tag="1401_1500"
+FT                   /product="product"
+FT   CDS             1501..1600
+FT                   /gene="1501_1600"
+FT                   /locus_tag="1501_1600"
+FT                   /product="product"
+FT   CDS             1601..1700
+FT                   /gene="1601_1700"
+FT                   /locus_tag="1601_1700"
+FT                   /product="product"
+FT   CDS             1701..1800
+FT                   /gene="1701_1800"
+FT                   /locus_tag="1701_1800"
+FT                   /product="product"
+FT   CDS             1801..1900
+FT                   /gene="1801_1900"
+FT                   /locus_tag="1801_1900"
+FT                   /product="product"
+FT   CDS             1901..2000
+FT                   /gene="1901_2000"
+FT                   /locus_tag="1901_2000"
+FT                   /product="product"
+FT   CDS             2001..2100
+FT                   /gene="2001_2100"
+FT                   /locus_tag="2001_2100"
+FT                   /product="product"
+FT   CDS             2101..2200
+FT                   /gene="2101_2200"
+FT                   /locus_tag="2101_2200"
+FT                   /product="product"
+FT   CDS             2201..2300
+FT                   /gene="2201_2300"
+FT                   /locus_tag="2201_2300"
+FT                   /product="product"
+FT   CDS             2301..2400
+FT                   /gene="2301_2400"
+FT                   /locus_tag="2301_2400"
+FT                   /product="product"
+FT   CDS             2401..2500
+FT                   /gene="2401_2500"
+FT                   /locus_tag="2401_2500"
+FT                   /product="product"
+FT   CDS             2501..2600
+FT                   /gene="2501_2600"
+FT                   /locus_tag="2501_2600"
+FT                   /product="product"
+FT   CDS             2601..2700
+FT                   /gene="2601_2700"
+FT                   /locus_tag="2601_2700"
+FT                   /product="product"
+FT   CDS             2701..2800
+FT                   /gene="2701_2800"
+FT                   /locus_tag="2701_2800"
+FT                   /product="product"
+FT   CDS             2801..2900
+FT                   /gene="2801_2900"
+FT                   /locus_tag="2801_2900"
+FT                   /product="product"
+FT   CDS             2901..3000
+FT                   /gene="2901_3000"
+FT                   /locus_tag="2901_3000"
+FT                   /product="product"
+FT   CDS             3001..3100
+FT                   /gene="3001_3100"
+FT                   /locus_tag="3001_3100"
+FT                   /product="product"
+FT   CDS             3101..3200
+FT                   /gene="3101_3200"
+FT                   /locus_tag="3101_3200"
+FT                   /product="product"
+FT   CDS             3201..3300
+FT                   /gene="3201_3300"
+FT                   /locus_tag="3201_3300"
+FT                   /product="product"
+FT   CDS             3301..3400
+FT                   /gene="3301_3400"
+FT                   /locus_tag="3301_3400"
+FT                   /product="product"
+FT   CDS             3401..3500
+FT                   /gene="3401_3500"
+FT                   /locus_tag="3401_3500"
+FT                   /product="product"
+FT   CDS             3501..3600
+FT                   /gene="3501_3600"
+FT                   /locus_tag="3501_3600"
+FT                   /product="product"
+FT   CDS             3601..3700
+FT                   /gene="3601_3700"
+FT                   /locus_tag="3601_3700"
+FT                   /product="product"
+FT   CDS             3701..3800
+FT                   /gene="3701_3800"
+FT                   /locus_tag="3701_3800"
+FT                   /product="product"
+FT   CDS             3801..3900
+FT                   /gene="3801_3900"
+FT                   /locus_tag="3801_3900"
+FT                   /product="product"
+FT   CDS             3901..4000
+FT                   /gene="3901_4000"
+FT                   /locus_tag="3901_4000"
+FT                   /product="product"
+FT   CDS             4001..4100
+FT                   /gene="4001_4100"
+FT                   /locus_tag="4001_4100"
+FT                   /product="product"
+FT   CDS             4101..4200
+FT                   /gene="4101_4200"
+FT                   /locus_tag="4101_4200"
+FT                   /product="product"
+FT   CDS             4201..4300
+FT                   /gene="4201_4300"
+FT                   /locus_tag="4201_4300"
+FT                   /product="product"
+FT   CDS             4301..4400
+FT                   /gene="4301_4400"
+FT                   /locus_tag="4301_4400"
+FT                   /product="product"
+FT   CDS             4401..4500
+FT                   /gene="4401_4500"
+FT                   /locus_tag="4401_4500"
+FT                   /product="product"
+FT   CDS             4501..4600
+FT                   /gene="4501_4600"
+FT                   /locus_tag="4501_4600"
+FT                   /product="product"
+FT   CDS             4601..4700
+FT                   /gene="4601_4700"
+FT                   /locus_tag="4601_4700"
+FT                   /product="product"
+FT   CDS             4701..4800
+FT                   /gene="4701_4800"
+FT                   /locus_tag="4701_4800"
+FT                   /product="product"
+FT   CDS             4801..4900
+FT                   /gene="4801_4900"
+FT                   /locus_tag="4801_4900"
+FT                   /product="product"
+FT   CDS             4901..5000
+FT                   /gene="4901_5000"
+FT                   /locus_tag="4901_5000"
+FT                   /product="product"
+FT   CDS             5001..5100
+FT                   /gene="5001_5100"
+FT                   /locus_tag="5001_5100"
+FT                   /product="product"
+FT   CDS             5101..5200
+FT                   /gene="5101_5200"
+FT                   /locus_tag="5101_5200"
+FT                   /product="product"
+FT   CDS             5201..5300
+FT                   /gene="5201_5300"
+FT                   /locus_tag="5201_5300"
+FT                   /product="product"
+FT   CDS             5301..5400
+FT                   /gene="5301_5400"
+FT                   /locus_tag="5301_5400"
+FT                   /product="product"
+FT   CDS             5401..5500
+FT                   /gene="5401_5500"
+FT                   /locus_tag="5401_5500"
+FT                   /product="product"
+FT   CDS             5501..5600
+FT                   /gene="5501_5600"
+FT                   /locus_tag="5501_5600"
+FT                   /product="product"
+FT   CDS             5601..5700
+FT                   /gene="5601_5700"
+FT                   /locus_tag="5601_5700"
+FT                   /product="product"
+FT   CDS             5701..5800
+FT                   /gene="5701_5800"
+FT                   /locus_tag="5701_5800"
+FT                   /product="product"
+FT   CDS             5801..5900
+FT                   /gene="5801_5900"
+FT                   /locus_tag="5801_5900"
+FT                   /product="product"
+FT   CDS             5901..6000
+FT                   /gene="5901_6000"
+FT                   /locus_tag="5901_6000"
+FT                   /product="product"
+FT   CDS             6001..6100
+FT                   /gene="6001_6100"
+FT                   /locus_tag="6001_6100"
+FT                   /product="product"
+FT   CDS             6101..6200
+FT                   /gene="6101_6200"
+FT                   /locus_tag="6101_6200"
+FT                   /product="product"
+FT   CDS             6201..6300
+FT                   /gene="6201_6300"
+FT                   /locus_tag="6201_6300"
+FT                   /product="product"
+FT   CDS             6301..6400
+FT                   /gene="6301_6400"
+FT                   /locus_tag="6301_6400"
+FT                   /product="product"
+FT   CDS             6401..6500
+FT                   /gene="6401_6500"
+FT                   /locus_tag="6401_6500"
+FT                   /product="product"
+FT   CDS             6501..6600
+FT                   /gene="6501_6600"
+FT                   /locus_tag="6501_6600"
+FT                   /product="product"
+FT   CDS             6601..6700
+FT                   /gene="6601_6700"
+FT                   /locus_tag="6601_6700"
+FT                   /product="product"
+FT   CDS             6701..6800
+FT                   /gene="6701_6800"
+FT                   /locus_tag="6701_6800"
+FT                   /product="product"
+FT   CDS             6801..6900
+FT                   /gene="6801_6900"
+FT                   /locus_tag="6801_6900"
+FT                   /product="product"
+FT   CDS             6901..7000
+FT                   /gene="6901_7000"
+FT                   /locus_tag="6901_7000"
+FT                   /product="product"
+FT   CDS             7001..7100
+FT                   /gene="7001_7100"
+FT                   /locus_tag="7001_7100"
+FT                   /product="product"
+FT   CDS             7101..7200
+FT                   /gene="7101_7200"
+FT                   /locus_tag="7101_7200"
+FT                   /product="product"
+FT   CDS             7201..7300
+FT                   /gene="7201_7300"
+FT                   /locus_tag="7201_7300"
+FT                   /product="product"
+FT   CDS             7301..7400
+FT                   /gene="7301_7400"
+FT                   /locus_tag="7301_7400"
+FT                   /product="product"
+FT   CDS             7401..7500
+FT                   /gene="7401_7500"
+FT                   /locus_tag="7401_7500"
+FT                   /product="product"
+FT   CDS             7501..7600
+FT                   /gene="7501_7600"
+FT                   /locus_tag="7501_7600"
+FT                   /product="product"
+FT   CDS             7601..7700
+FT                   /gene="7601_7700"
+FT                   /locus_tag="7601_7700"
+FT                   /product="product"
+FT   CDS             7701..7800
+FT                   /gene="7701_7800"
+FT                   /locus_tag="7701_7800"
+FT                   /product="product"
+FT   CDS             7801..7900
+FT                   /gene="7801_7900"
+FT                   /locus_tag="7801_7900"
+FT                   /product="product"
+FT   CDS             7901..8000
+FT                   /gene="7901_8000"
+FT                   /locus_tag="7901_8000"
+FT                   /product="product"
+FT   CDS             8001..8100
+FT                   /gene="8001_8100"
+FT                   /locus_tag="8001_8100"
+FT                   /product="product"
+FT   CDS             8101..8200
+FT                   /gene="8101_8200"
+FT                   /locus_tag="8101_8200"
+FT                   /product="product"
+FT   CDS             8201..8300
+FT                   /gene="8201_8300"
+FT                   /locus_tag="8201_8300"
+FT                   /product="product"
+FT   CDS             8301..8400
+FT                   /gene="8301_8400"
+FT                   /locus_tag="8301_8400"
+FT                   /product="product"
+FT   CDS             8401..8500
+FT                   /gene="8401_8500"
+FT                   /locus_tag="8401_8500"
+FT                   /product="product"
+FT   CDS             8501..8600
+FT                   /gene="8501_8600"
+FT                   /locus_tag="8501_8600"
+FT                   /product="product"
+FT   CDS             8601..8700
+FT                   /gene="8601_8700"
+FT                   /locus_tag="8601_8700"
+FT                   /product="product"
+FT   CDS             8701..8800
+FT                   /gene="8701_8800"
+FT                   /locus_tag="8701_8800"
+FT                   /product="product"
+FT   CDS             8801..8900
+FT                   /gene="8801_8900"
+FT                   /locus_tag="8801_8900"
+FT                   /product="product"
+FT   CDS             8901..9000
+FT                   /gene="8901_9000"
+FT                   /locus_tag="8901_9000"
+FT                   /product="product"
+FT   CDS             9001..9100
+FT                   /gene="9001_9100"
+FT                   /locus_tag="9001_9100"
+FT                   /product="product"
+FT   CDS             9101..9200
+FT                   /gene="9101_9200"
+FT                   /locus_tag="9101_9200"
+FT                   /product="product"
+FT   CDS             9201..9300
+FT                   /gene="9201_9300"
+FT                   /locus_tag="9201_9300"
+FT                   /product="product"
+FT   CDS             9301..9400
+FT                   /gene="9301_9400"
+FT                   /locus_tag="9301_9400"
+FT                   /product="product"
+FT   CDS             9401..9500
+FT                   /gene="9401_9500"
+FT                   /locus_tag="9401_9500"
+FT                   /product="product"
+FT   CDS             9501..9600
+FT                   /gene="9501_9600"
+FT                   /locus_tag="9501_9600"
+FT                   /product="product"
+FT   CDS             9601..9700
+FT                   /gene="9601_9700"
+FT                   /locus_tag="9601_9700"
+FT                   /product="product"
+FT   CDS             9701..9800
+FT                   /gene="9701_9800"
+FT                   /locus_tag="9701_9800"
+FT                   /product="product"
+FT   CDS             9801..9900
+FT                   /gene="9801_9900"
+FT                   /locus_tag="9801_9900"
+FT                   /product="product"
+FT   CDS             9901..10000
+FT                   /gene="9901_10000"
+FT                   /locus_tag="9901_10000"
+FT                   /product="product"
+FT   CDS             10001..10100
+FT                   /gene="10001_10100"
+FT                   /locus_tag="10001_10100"
+FT                   /product="product"
+FT   CDS             10101..10200
+FT                   /gene="10101_10200"
+FT                   /locus_tag="10101_10200"
+FT                   /product="product"
+FT   CDS             10201..10300
+FT                   /gene="10201_10300"
+FT                   /locus_tag="10201_10300"
+FT                   /product="product"
+FT   CDS             10301..10400
+FT                   /gene="10301_10400"
+FT                   /locus_tag="10301_10400"
+FT                   /product="product"
+FT   CDS             10401..10500
+FT                   /gene="10401_10500"
+FT                   /locus_tag="10401_10500"
+FT                   /product="product"
+FT   CDS             10501..10600
+FT                   /gene="10501_10600"
+FT                   /locus_tag="10501_10600"
+FT                   /product="product"
+FT   CDS             10601..10700
+FT                   /gene="10601_10700"
+FT                   /locus_tag="10601_10700"
+FT                   /product="product"
+FT   CDS             10701..10800
+FT                   /gene="10701_10800"
+FT                   /locus_tag="10701_10800"
+FT                   /product="product"
+FT   CDS             10801..10900
+FT                   /gene="10801_10900"
+FT                   /locus_tag="10801_10900"
+FT                   /product="product"
+FT   CDS             10901..11000
+FT                   /gene="10901_11000"
+FT                   /locus_tag="10901_11000"
+FT                   /product="product"
+FT   CDS             11001..11100
+FT                   /gene="11001_11100"
+FT                   /locus_tag="11001_11100"
+FT                   /product="product"
+FT   CDS             11101..11200
+FT                   /gene="11101_11200"
+FT                   /locus_tag="11101_11200"
+FT                   /product="product"
+FT   CDS             11201..11300
+FT                   /gene="11201_11300"
+FT                   /locus_tag="11201_11300"
+FT                   /product="product"
+FT   CDS             11301..11400
+FT                   /gene="11301_11400"
+FT                   /locus_tag="11301_11400"
+FT                   /product="product"
+FT   CDS             11401..11500
+FT                   /gene="11401_11500"
+FT                   /locus_tag="11401_11500"
+FT                   /product="product"
+FT   CDS             11501..11600
+FT                   /gene="11501_11600"
+FT                   /locus_tag="11501_11600"
+FT                   /product="product"
+FT   CDS             11601..11700
+FT                   /gene="11601_11700"
+FT                   /locus_tag="11601_11700"
+FT                   /product="product"
+FT   CDS             11701..11800
+FT                   /gene="11701_11800"
+FT                   /locus_tag="11701_11800"
+FT                   /product="product"
+FT   CDS             11801..11900
+FT                   /gene="11801_11900"
+FT                   /locus_tag="11801_11900"
+FT                   /product="product"
+FT   CDS             11901..12000
+FT                   /gene="11901_12000"
+FT                   /locus_tag="11901_12000"
+FT                   /product="product"
+FT   CDS             12001..12100
+FT                   /gene="12001_12100"
+FT                   /locus_tag="12001_12100"
+FT                   /product="product"
+FT   CDS             12101..12200
+FT                   /gene="12101_12200"
+FT                   /locus_tag="12101_12200"
+FT                   /product="product"
+FT   CDS             12201..12300
+FT                   /gene="12201_12300"
+FT                   /locus_tag="12201_12300"
+FT                   /product="product"
+FT   CDS             12301..12400
+FT                   /gene="12301_12400"
+FT                   /locus_tag="12301_12400"
+FT                   /product="product"
+FT   CDS             12401..12500
+FT                   /gene="12401_12500"
+FT                   /locus_tag="12401_12500"
+FT                   /product="product"
+FT   CDS             12501..12600
+FT                   /gene="12501_12600"
+FT                   /locus_tag="12501_12600"
+FT                   /product="product"
+FT   CDS             12601..12700
+FT                   /gene="12601_12700"
+FT                   /locus_tag="12601_12700"
+FT                   /product="product"
+FT   CDS             12701..12800
+FT                   /gene="12701_12800"
+FT                   /locus_tag="12701_12800"
+FT                   /product="product"
+FT   CDS             12801..12900
+FT                   /gene="12801_12900"
+FT                   /locus_tag="12801_12900"
+FT                   /product="product"
+FT   CDS             12901..13000
+FT                   /gene="12901_13000"
+FT                   /locus_tag="12901_13000"
+FT                   /product="product"
+FT   CDS             13001..13100
+FT                   /gene="13001_13100"
+FT                   /locus_tag="13001_13100"
+FT                   /product="product"
+FT   CDS             13101..13200
+FT                   /gene="13101_13200"
+FT                   /locus_tag="13101_13200"
+FT                   /product="product"
+FT   CDS             13201..13300
+FT                   /gene="13201_13300"
+FT                   /locus_tag="13201_13300"
+FT                   /product="product"
+FT   CDS             13301..13400
+FT                   /gene="13301_13400"
+FT                   /locus_tag="13301_13400"
+FT                   /product="product"
+FT   CDS             13401..13500
+FT                   /gene="13401_13500"
+FT                   /locus_tag="13401_13500"
+FT                   /product="product"
+FT   CDS             13501..13600
+FT                   /gene="13501_13600"
+FT                   /locus_tag="13501_13600"
+FT                   /product="product"
+FT   CDS             13601..13700
+FT                   /gene="13601_13700"
+FT                   /locus_tag="13601_13700"
+FT                   /product="product"
+FT   CDS             13701..13800
+FT                   /gene="13701_13800"
+FT                   /locus_tag="13701_13800"
+FT                   /product="product"
+FT   CDS             13801..13900
+FT                   /gene="13801_13900"
+FT                   /locus_tag="13801_13900"
+FT                   /product="product"
+FT   CDS             13901..14000
+FT                   /gene="13901_14000"
+FT                   /locus_tag="13901_14000"
+FT                   /product="product"
+FT   CDS             14001..14100
+FT                   /gene="14001_14100"
+FT                   /locus_tag="14001_14100"
+FT                   /product="product"
+FT   CDS             14101..14200
+FT                   /gene="14101_14200"
+FT                   /locus_tag="14101_14200"
+FT                   /product="product"
+FT   CDS             14201..14300
+FT                   /gene="14201_14300"
+FT                   /locus_tag="14201_14300"
+FT                   /product="product"
+FT   CDS             14301..14400
+FT                   /gene="14301_14400"
+FT                   /locus_tag="14301_14400"
+FT                   /product="product"
+FT   CDS             14401..14500
+FT                   /gene="14401_14500"
+FT                   /locus_tag="14401_14500"
+FT                   /product="product"
+FT   CDS             14501..14600
+FT                   /gene="14501_14600"
+FT                   /locus_tag="14501_14600"
+FT                   /product="product"
+FT   CDS             14601..14700
+FT                   /gene="14601_14700"
+FT                   /locus_tag="14601_14700"
+FT                   /product="product"
+FT   CDS             14701..14800
+FT                   /gene="14701_14800"
+FT                   /locus_tag="14701_14800"
+FT                   /product="product"
+FT   CDS             14801..14900
+FT                   /gene="14801_14900"
+FT                   /locus_tag="14801_14900"
+FT                   /product="product"
+FT   CDS             14901..15000
+FT                   /gene="14901_15000"
+FT                   /locus_tag="14901_15000"
+FT                   /product="product"
+FT   CDS             15001..15100
+FT                   /gene="15001_15100"
+FT                   /locus_tag="15001_15100"
+FT                   /product="product"
+FT   CDS             15101..15200
+FT                   /gene="15101_15200"
+FT                   /locus_tag="15101_15200"
+FT                   /product="product"
+FT   CDS             15201..15300
+FT                   /gene="15201_15300"
+FT                   /locus_tag="15201_15300"
+FT                   /product="product"
+FT   CDS             15301..15400
+FT                   /gene="15301_15400"
+FT                   /locus_tag="15301_15400"
+FT                   /product="product"
+FT   CDS             15401..15500
+FT                   /gene="15401_15500"
+FT                   /locus_tag="15401_15500"
+FT                   /product="product"
+FT   CDS             15501..15600
+FT                   /gene="15501_15600"
+FT                   /locus_tag="15501_15600"
+FT                   /product="product"
+FT   CDS             15601..15700
+FT                   /gene="15601_15700"
+FT                   /locus_tag="15601_15700"
+FT                   /product="product"
+FT   CDS             15701..15800
+FT                   /gene="15701_15800"
+FT                   /locus_tag="15701_15800"
+FT                   /product="product"
+FT   CDS             15801..15900
+FT                   /gene="15801_15900"
+FT                   /locus_tag="15801_15900"
+FT                   /product="product"
+FT   CDS             15901..16000
+FT                   /gene="15901_16000"
+FT                   /locus_tag="15901_16000"
+FT                   /product="product"
+FT   CDS             16001..16100
+FT                   /gene="16001_16100"
+FT                   /locus_tag="16001_16100"
+FT                   /product="product"
+FT   CDS             16101..16200
+FT                   /gene="16101_16200"
+FT                   /locus_tag="16101_16200"
+FT                   /product="product"
+FT   CDS             16201..16300
+FT                   /gene="16201_16300"
+FT                   /locus_tag="16201_16300"
+FT                   /product="product"
+FT   CDS             16301..16400
+FT                   /gene="16301_16400"
+FT                   /locus_tag="16301_16400"
+FT                   /product="product"
+FT   CDS             16401..16500
+FT                   /gene="16401_16500"
+FT                   /locus_tag="16401_16500"
+FT                   /product="product"
+FT   CDS             16501..16600
+FT                   /gene="16501_16600"
+FT                   /locus_tag="16501_16600"
+FT                   /product="product"
+FT   CDS             16601..16700
+FT                   /gene="16601_16700"
+FT                   /locus_tag="16601_16700"
+FT                   /product="product"
+FT   CDS             16701..16800
+FT                   /gene="16701_16800"
+FT                   /locus_tag="16701_16800"
+FT                   /product="product"
+FT   CDS             16801..16900
+FT                   /gene="16801_16900"
+FT                   /locus_tag="16801_16900"
+FT                   /product="product"
+FT   CDS             16901..17000
+FT                   /gene="16901_17000"
+FT                   /locus_tag="16901_17000"
+FT                   /product="product"
+FT   CDS             17001..17100
+FT                   /gene="17001_17100"
+FT                   /locus_tag="17001_17100"
+FT                   /product="product"
+FT   CDS             17101..17200
+FT                   /gene="17101_17200"
+FT                   /locus_tag="17101_17200"
+FT                   /product="product"
+FT   CDS             17201..17300
+FT                   /gene="17201_17300"
+FT                   /locus_tag="17201_17300"
+FT                   /product="product"
+FT   CDS             17301..17400
+FT                   /gene="17301_17400"
+FT                   /locus_tag="17301_17400"
+FT                   /product="product"
+FT   CDS             17401..17500
+FT                   /gene="17401_17500"
+FT                   /locus_tag="17401_17500"
+FT                   /product="product"
+FT   CDS             17501..17600
+FT                   /gene="17501_17600"
+FT                   /locus_tag="17501_17600"
+FT                   /product="product"
+FT   CDS             17601..17700
+FT                   /gene="17601_17700"
+FT                   /locus_tag="17601_17700"
+FT                   /product="product"
+FT   CDS             17701..17800
+FT                   /gene="17701_17800"
+FT                   /locus_tag="17701_17800"
+FT                   /product="product"
+FT   CDS             17801..17900
+FT                   /gene="17801_17900"
+FT                   /locus_tag="17801_17900"
+FT                   /product="product"
+FT   CDS             17901..18000
+FT                   /gene="17901_18000"
+FT                   /locus_tag="17901_18000"
+FT                   /product="product"
+FT   CDS             18001..18100
+FT                   /gene="18001_18100"
+FT                   /locus_tag="18001_18100"
+FT                   /product="product"
+FT   CDS             18101..18200
+FT                   /gene="18101_18200"
+FT                   /locus_tag="18101_18200"
+FT                   /product="product"
+FT   CDS             18201..18300
+FT                   /gene="18201_18300"
+FT                   /locus_tag="18201_18300"
+FT                   /product="product"
+FT   CDS             18301..18400
+FT                   /gene="18301_18400"
+FT                   /locus_tag="18301_18400"
+FT                   /product="product"
+FT   CDS             18401..18500
+FT                   /gene="18401_18500"
+FT                   /locus_tag="18401_18500"
+FT                   /product="product"
+FT   CDS             18501..18600
+FT                   /gene="18501_18600"
+FT                   /locus_tag="18501_18600"
+FT                   /product="product"
+FT   CDS             18601..18700
+FT                   /gene="18601_18700"
+FT                   /locus_tag="18601_18700"
+FT                   /product="product"
+FT   CDS             18701..18800
+FT                   /gene="18701_18800"
+FT                   /locus_tag="18701_18800"
+FT                   /product="product"
+FT   CDS             18801..18900
+FT                   /gene="18801_18900"
+FT                   /locus_tag="18801_18900"
+FT                   /product="product"
+FT   CDS             18901..19000
+FT                   /gene="18901_19000"
+FT                   /locus_tag="18901_19000"
+FT                   /product="product"
+FT   CDS             19001..19100
+FT                   /gene="19001_19100"
+FT                   /locus_tag="19001_19100"
+FT                   /product="product"
+FT   CDS             19101..19200
+FT                   /gene="19101_19200"
+FT                   /locus_tag="19101_19200"
+FT                   /product="product"
+FT   CDS             19201..19300
+FT                   /gene="19201_19300"
+FT                   /locus_tag="19201_19300"
+FT                   /product="product"
+FT   CDS             19301..19400
+FT                   /gene="19301_19400"
+FT                   /locus_tag="19301_19400"
+FT                   /product="product"
+FT   CDS             19401..19500
+FT                   /gene="19401_19500"
+FT                   /locus_tag="19401_19500"
+FT                   /product="product"
+FT   CDS             19501..19600
+FT                   /gene="19501_19600"
+FT                   /locus_tag="19501_19600"
+FT                   /product="product"
+FT   CDS             19601..19700
+FT                   /gene="19601_19700"
+FT                   /locus_tag="19601_19700"
+FT                   /product="product"
+FT   CDS             19701..19800
+FT                   /gene="19701_19800"
+FT                   /locus_tag="19701_19800"
+FT                   /product="product"
+FT   CDS             19801..19900
+FT                   /gene="19801_19900"
+FT                   /locus_tag="19801_19900"
+FT                   /product="product"
+FT   CDS             19901..20000
+FT                   /gene="19901_20000"
+FT                   /locus_tag="19901_20000"
+FT                   /product="product"
+FT   CDS             20001..20100
+FT                   /gene="20001_20100"
+FT                   /locus_tag="20001_20100"
+FT                   /product="product"
+FT   CDS             20101..20200
+FT                   /gene="20101_20200"
+FT                   /locus_tag="20101_20200"
+FT                   /product="product"
+FT   CDS             20201..20300
+FT                   /gene="20201_20300"
+FT                   /locus_tag="20201_20300"
+FT                   /product="product"
+FT   CDS             20301..20400
+FT                   /gene="20301_20400"
+FT                   /locus_tag="20301_20400"
+FT                   /product="product"
+FT   CDS             20401..20500
+FT                   /gene="20401_20500"
+FT                   /locus_tag="20401_20500"
+FT                   /product="product"
+FT   CDS             20501..20600
+FT                   /gene="20501_20600"
+FT                   /locus_tag="20501_20600"
+FT                   /product="product"
+FT   CDS             20601..20700
+FT                   /gene="20601_20700"
+FT                   /locus_tag="20601_20700"
+FT                   /product="product"
+FT   CDS             20701..20800
+FT                   /gene="20701_20800"
+FT                   /locus_tag="20701_20800"
+FT                   /product="product"
+FT   CDS             20801..20900
+FT                   /gene="20801_20900"
+FT                   /locus_tag="20801_20900"
+FT                   /product="product"
+FT   CDS             20901..21000
+FT                   /gene="20901_21000"
+FT                   /locus_tag="20901_21000"
+FT                   /product="product"
+FT   CDS             21001..21100
+FT                   /gene="21001_21100"
+FT                   /locus_tag="21001_21100"
+FT                   /product="product"
+FT   CDS             21101..21200
+FT                   /gene="21101_21200"
+FT                   /locus_tag="21101_21200"
+FT                   /product="product"
+FT   CDS             21201..21300
+FT                   /gene="21201_21300"
+FT                   /locus_tag="21201_21300"
+FT                   /product="product"
+FT   CDS             21301..21400
+FT                   /gene="21301_21400"
+FT                   /locus_tag="21301_21400"
+FT                   /product="product"
+FT   CDS             21401..21500
+FT                   /gene="21401_21500"
+FT                   /locus_tag="21401_21500"
+FT                   /product="product"
+FT   CDS             21501..21600
+FT                   /gene="21501_21600"
+FT                   /locus_tag="21501_21600"
+FT                   /product="product"
+FT   CDS             21601..21700
+FT                   /gene="21601_21700"
+FT                   /locus_tag="21601_21700"
+FT                   /product="product"
+FT   CDS             21701..21800
+FT                   /gene="21701_21800"
+FT                   /locus_tag="21701_21800"
+FT                   /product="product"
+FT   CDS             21801..21900
+FT                   /gene="21801_21900"
+FT                   /locus_tag="21801_21900"
+FT                   /product="product"
+FT   CDS             21901..22000
+FT                   /gene="21901_22000"
+FT                   /locus_tag="21901_22000"
+FT                   /product="product"
+FT   CDS             22001..22100
+FT                   /gene="22001_22100"
+FT                   /locus_tag="22001_22100"
+FT                   /product="product"
+FT   CDS             22101..22200
+FT                   /gene="22101_22200"
+FT                   /locus_tag="22101_22200"
+FT                   /product="product"
+FT   CDS             22201..22300
+FT                   /gene="22201_22300"
+FT                   /locus_tag="22201_22300"
+FT                   /product="product"
+FT   CDS             22301..22400
+FT                   /gene="22301_22400"
+FT                   /locus_tag="22301_22400"
+FT                   /product="product"
+FT   CDS             22401..22500
+FT                   /gene="22401_22500"
+FT                   /locus_tag="22401_22500"
+FT                   /product="product"
+FT   CDS             22501..22600
+FT                   /gene="22501_22600"
+FT                   /locus_tag="22501_22600"
+FT                   /product="product"
+FT   CDS             22601..22700
+FT                   /gene="22601_22700"
+FT                   /locus_tag="22601_22700"
+FT                   /product="product"
+FT   CDS             22701..22800
+FT                   /gene="22701_22800"
+FT                   /locus_tag="22701_22800"
+FT                   /product="product"
+FT   CDS             22801..22900
+FT                   /gene="22801_22900"
+FT                   /locus_tag="22801_22900"
+FT                   /product="product"
+FT   CDS             22901..23000
+FT                   /gene="22901_23000"
+FT                   /locus_tag="22901_23000"
+FT                   /product="product"
+FT   CDS             23001..23100
+FT                   /gene="23001_23100"
+FT                   /locus_tag="23001_23100"
+FT                   /product="product"
+FT   CDS             23101..23200
+FT                   /gene="23101_23200"
+FT                   /locus_tag="23101_23200"
+FT                   /product="product"
+FT   CDS             23201..23300
+FT                   /gene="23201_23300"
+FT                   /locus_tag="23201_23300"
+FT                   /product="product"
+FT   CDS             23301..23400
+FT                   /gene="23301_23400"
+FT                   /locus_tag="23301_23400"
+FT                   /product="product"
+FT   CDS             23401..23500
+FT                   /gene="23401_23500"
+FT                   /locus_tag="23401_23500"
+FT                   /product="product"
+FT   CDS             23501..23600
+FT                   /gene="23501_23600"
+FT                   /locus_tag="23501_23600"
+FT                   /product="product"
+FT   CDS             23601..23700
+FT                   /gene="23601_23700"
+FT                   /locus_tag="23601_23700"
+FT                   /product="product"
+FT   CDS             23701..23800
+FT                   /gene="23701_23800"
+FT                   /locus_tag="23701_23800"
+FT                   /product="product"
+FT   CDS             23801..23900
+FT                   /gene="23801_23900"
+FT                   /locus_tag="23801_23900"
+FT                   /product="product"
+FT   CDS             23901..24000
+FT                   /gene="23901_24000"
+FT                   /locus_tag="23901_24000"
+FT                   /product="product"
+FT   CDS             24001..24100
+FT                   /gene="24001_24100"
+FT                   /locus_tag="24001_24100"
+FT                   /product="product"
+FT   CDS             24101..24200
+FT                   /gene="24101_24200"
+FT                   /locus_tag="24101_24200"
+FT                   /product="product"
+FT   CDS             24201..24300
+FT                   /gene="24201_24300"
+FT                   /locus_tag="24201_24300"
+FT                   /product="product"
+FT   CDS             24301..24400
+FT                   /gene="24301_24400"
+FT                   /locus_tag="24301_24400"
+FT                   /product="product"
+FT   CDS             24401..24500
+FT                   /gene="24401_24500"
+FT                   /locus_tag="24401_24500"
+FT                   /product="product"
+FT   CDS             24501..24600
+FT                   /gene="24501_24600"
+FT                   /locus_tag="24501_24600"
+FT                   /product="product"
+FT   CDS             24601..24700
+FT                   /gene="24601_24700"
+FT                   /locus_tag="24601_24700"
+FT                   /product="product"
+FT   CDS             24701..24800
+FT                   /gene="24701_24800"
+FT                   /locus_tag="24701_24800"
+FT                   /product="product"
+FT   CDS             24801..24900
+FT                   /gene="24801_24900"
+FT                   /locus_tag="24801_24900"
+FT                   /product="product"
+FT   CDS             24901..25000
+FT                   /gene="24901_25000"
+FT                   /locus_tag="24901_25000"
+FT                   /product="product"
+FT   CDS             25001..25100
+FT                   /gene="25001_25100"
+FT                   /locus_tag="25001_25100"
+FT                   /product="product"
+FT   CDS             25101..25200
+FT                   /gene="25101_25200"
+FT                   /locus_tag="25101_25200"
+FT                   /product="product"
+FT   CDS             25201..25300
+FT                   /gene="25201_25300"
+FT                   /locus_tag="25201_25300"
+FT                   /product="product"
+FT   CDS             25301..25400
+FT                   /gene="25301_25400"
+FT                   /locus_tag="25301_25400"
+FT                   /product="product"
+FT   CDS             25401..25500
+FT                   /gene="25401_25500"
+FT                   /locus_tag="25401_25500"
+FT                   /product="product"
+FT   CDS             25501..25600
+FT                   /gene="25501_25600"
+FT                   /locus_tag="25501_25600"
+FT                   /product="product"
+FT   CDS             25601..25700
+FT                   /gene="25601_25700"
+FT                   /locus_tag="25601_25700"
+FT                   /product="product"
+FT   CDS             25701..25800
+FT                   /gene="25701_25800"
+FT                   /locus_tag="25701_25800"
+FT                   /product="product"
+FT   CDS             25801..25900
+FT                   /gene="25801_25900"
+FT                   /locus_tag="25801_25900"
+FT                   /product="product"
+FT   CDS             25901..26000
+FT                   /gene="25901_26000"
+FT                   /locus_tag="25901_26000"
+FT                   /product="product"
+FT   CDS             26001..26100
+FT                   /gene="26001_26100"
+FT                   /locus_tag="26001_26100"
+FT                   /product="product"
+FT   CDS             26101..26200
+FT                   /gene="26101_26200"
+FT                   /locus_tag="26101_26200"
+FT                   /product="product"
+FT   CDS             26201..26300
+FT                   /gene="26201_26300"
+FT                   /locus_tag="26201_26300"
+FT                   /product="product"
+FT   CDS             26301..26400
+FT                   /gene="26301_26400"
+FT                   /locus_tag="26301_26400"
+FT                   /product="product"
+FT   CDS             26401..26500
+FT                   /gene="26401_26500"
+FT                   /locus_tag="26401_26500"
+FT                   /product="product"
+FT   CDS             26501..26600
+FT                   /gene="26501_26600"
+FT                   /locus_tag="26501_26600"
+FT                   /product="product"
+FT   CDS             26601..26700
+FT                   /gene="26601_26700"
+FT                   /locus_tag="26601_26700"
+FT                   /product="product"
+FT   CDS             26701..26800
+FT                   /gene="26701_26800"
+FT                   /locus_tag="26701_26800"
+FT                   /product="product"
+FT   CDS             26801..26900
+FT                   /gene="26801_26900"
+FT                   /locus_tag="26801_26900"
+FT                   /product="product"
+FT   CDS             26901..27000
+FT                   /gene="26901_27000"
+FT                   /locus_tag="26901_27000"
+FT                   /product="product"
+FT   CDS             27001..27100
+FT                   /gene="27001_27100"
+FT                   /locus_tag="27001_27100"
+FT                   /product="product"
+FT   CDS             27101..27200
+FT                   /gene="27101_27200"
+FT                   /locus_tag="27101_27200"
+FT                   /product="product"
+FT   CDS             27201..27300
+FT                   /gene="27201_27300"
+FT                   /locus_tag="27201_27300"
+FT                   /product="product"
+FT   CDS             27301..27400
+FT                   /gene="27301_27400"
+FT                   /locus_tag="27301_27400"
+FT                   /product="product"
+FT   CDS             27401..27500
+FT                   /gene="27401_27500"
+FT                   /locus_tag="27401_27500"
+FT                   /product="product"
+FT   CDS             27501..27600
+FT                   /gene="27501_27600"
+FT                   /locus_tag="27501_27600"
+FT                   /product="product"
+FT   CDS             27601..27700
+FT                   /gene="27601_27700"
+FT                   /locus_tag="27601_27700"
+FT                   /product="product"
+FT   CDS             27701..27800
+FT                   /gene="27701_27800"
+FT                   /locus_tag="27701_27800"
+FT                   /product="product"
+FT   CDS             27801..27900
+FT                   /gene="27801_27900"
+FT                   /locus_tag="27801_27900"
+FT                   /product="product"
+FT   CDS             27901..28000
+FT                   /gene="27901_28000"
+FT                   /locus_tag="27901_28000"
+FT                   /product="product"
+FT   CDS             28001..28100
+FT                   /gene="28001_28100"
+FT                   /locus_tag="28001_28100"
+FT                   /product="product"
+FT   CDS             28101..28200
+FT                   /gene="28101_28200"
+FT                   /locus_tag="28101_28200"
+FT                   /product="product"
+FT   CDS             28201..28300
+FT                   /gene="28201_28300"
+FT                   /locus_tag="28201_28300"
+FT                   /product="product"
+FT   CDS             28301..28400
+FT                   /gene="28301_28400"
+FT                   /locus_tag="28301_28400"
+FT                   /product="product"
+FT   CDS             28401..28500
+FT                   /gene="28401_28500"
+FT                   /locus_tag="28401_28500"
+FT                   /product="product"
+FT   CDS             28501..28600
+FT                   /gene="28501_28600"
+FT                   /locus_tag="28501_28600"
+FT                   /product="product"
+FT   CDS             28601..28700
+FT                   /gene="28601_28700"
+FT                   /locus_tag="28601_28700"
+FT                   /product="product"
+FT   CDS             28701..28800
+FT                   /gene="28701_28800"
+FT                   /locus_tag="28701_28800"
+FT                   /product="product"
+FT   CDS             28801..28900
+FT                   /gene="28801_28900"
+FT                   /locus_tag="28801_28900"
+FT                   /product="product"
+FT   CDS             28901..29000
+FT                   /gene="28901_29000"
+FT                   /locus_tag="28901_29000"
+FT                   /product="product"
+FT   CDS             29001..29100
+FT                   /gene="29001_29100"
+FT                   /locus_tag="29001_29100"
+FT                   /product="product"
+FT   CDS             29101..29200
+FT                   /gene="29101_29200"
+FT                   /locus_tag="29101_29200"
+FT                   /product="product"
+FT   CDS             29201..29300
+FT                   /gene="29201_29300"
+FT                   /locus_tag="29201_29300"
+FT                   /product="product"
+FT   CDS             29301..29400
+FT                   /gene="29301_29400"
+FT                   /locus_tag="29301_29400"
+FT                   /product="product"
+FT   CDS             29401..29500
+FT                   /gene="29401_29500"
+FT                   /locus_tag="29401_29500"
+FT                   /product="product"
+FT   CDS             29501..29600
+FT                   /gene="29501_29600"
+FT                   /locus_tag="29501_29600"
+FT                   /product="product"
+FT   CDS             29601..29700
+FT                   /gene="29601_29700"
+FT                   /locus_tag="29601_29700"
+FT                   /product="product"
+FT   CDS             29701..29800
+FT                   /gene="29701_29800"
+FT                   /locus_tag="29701_29800"
+FT                   /product="product"
+FT   CDS             29801..29900
+FT                   /gene="29801_29900"
+FT                   /locus_tag="29801_29900"
+FT                   /product="product"
+FT   CDS             29901..30000
+FT                   /gene="29901_30000"
+FT                   /locus_tag="29901_30000"
+FT                   /product="product"
+FT   CDS             30001..30100
+FT                   /gene="30001_30100"
+FT                   /locus_tag="30001_30100"
+FT                   /product="product"
+FT   CDS             30101..30200
+FT                   /gene="30101_30200"
+FT                   /locus_tag="30101_30200"
+FT                   /product="product"
+FT   CDS             30201..30300
+FT                   /gene="30201_30300"
+FT                   /locus_tag="30201_30300"
+FT                   /product="product"
+FT   CDS             30301..30400
+FT                   /gene="30301_30400"
+FT                   /locus_tag="30301_30400"
+FT                   /product="product"
+FT   CDS             30401..30500
+FT                   /gene="30401_30500"
+FT                   /locus_tag="30401_30500"
+FT                   /product="product"
+FT   CDS             30501..30600
+FT                   /gene="30501_30600"
+FT                   /locus_tag="30501_30600"
+FT                   /product="product"
+FT   CDS             30601..30700
+FT                   /gene="30601_30700"
+FT                   /locus_tag="30601_30700"
+FT                   /product="product"
+FT   CDS             30701..30800
+FT                   /gene="30701_30800"
+FT                   /locus_tag="30701_30800"
+FT                   /product="product"
+FT   CDS             30801..30900
+FT                   /gene="30801_30900"
+FT                   /locus_tag="30801_30900"
+FT                   /product="product"
+FT   CDS             30901..31000
+FT                   /gene="30901_31000"
+FT                   /locus_tag="30901_31000"
+FT                   /product="product"
+FT   CDS             31001..31100
+FT                   /gene="31001_31100"
+FT                   /locus_tag="31001_31100"
+FT                   /product="product"
+FT   CDS             31101..31200
+FT                   /gene="31101_31200"
+FT                   /locus_tag="31101_31200"
+FT                   /product="product"
+FT   CDS             31201..31300
+FT                   /gene="31201_31300"
+FT                   /locus_tag="31201_31300"
+FT                   /product="product"
+FT   CDS             31301..31400
+FT                   /gene="31301_31400"
+FT                   /locus_tag="31301_31400"
+FT                   /product="product"
+FT   CDS             31401..31500
+FT                   /gene="31401_31500"
+FT                   /locus_tag="31401_31500"
+FT                   /product="product"
+FT   CDS             31501..31600
+FT                   /gene="31501_31600"
+FT                   /locus_tag="31501_31600"
+FT                   /product="product"
+FT   CDS             31601..31700
+FT                   /gene="31601_31700"
+FT                   /locus_tag="31601_31700"
+FT                   /product="product"
+FT   CDS             31701..31800
+FT                   /gene="31701_31800"
+FT                   /locus_tag="31701_31800"
+FT                   /product="product"
+FT   CDS             31801..31900
+FT                   /gene="31801_31900"
+FT                   /locus_tag="31801_31900"
+FT                   /product="product"
+FT   CDS             31901..32000
+FT                   /gene="31901_32000"
+FT                   /locus_tag="31901_32000"
+FT                   /product="product"
+FT   CDS             32001..32100
+FT                   /gene="32001_32100"
+FT                   /locus_tag="32001_32100"
+FT                   /product="product"
+FT   CDS             32101..32200
+FT                   /gene="32101_32200"
+FT                   /locus_tag="32101_32200"
+FT                   /product="product"
+FT   CDS             32201..32300
+FT                   /gene="32201_32300"
+FT                   /locus_tag="32201_32300"
+FT                   /product="product"
+FT   CDS             32301..32400
+FT                   /gene="32301_32400"
+FT                   /locus_tag="32301_32400"
+FT                   /product="product"
+FT   CDS             32401..32500
+FT                   /gene="32401_32500"
+FT                   /locus_tag="32401_32500"
+FT                   /product="product"
+FT   CDS             32501..32600
+FT                   /gene="32501_32600"
+FT                   /locus_tag="32501_32600"
+FT                   /product="product"
+FT   CDS             32601..32700
+FT                   /gene="32601_32700"
+FT                   /locus_tag="32601_32700"
+FT                   /product="product"
+FT   CDS             32701..32800
+FT                   /gene="32701_32800"
+FT                   /locus_tag="32701_32800"
+FT                   /product="product"
+FT   CDS             32801..32900
+FT                   /gene="32801_32900"
+FT                   /locus_tag="32801_32900"
+FT                   /product="product"
+FT   CDS             32901..33000
+FT                   /gene="32901_33000"
+FT                   /locus_tag="32901_33000"
+FT                   /product="product"
+FT   CDS             33001..33100
+FT                   /gene="33001_33100"
+FT                   /locus_tag="33001_33100"
+FT                   /product="product"
+FT   CDS             33101..33200
+FT                   /gene="33101_33200"
+FT                   /locus_tag="33101_33200"
+FT                   /product="product"
+FT   CDS             33201..33300
+FT                   /gene="33201_33300"
+FT                   /locus_tag="33201_33300"
+FT                   /product="product"
+FT   CDS             33301..33400
+FT                   /gene="33301_33400"
+FT                   /locus_tag="33301_33400"
+FT                   /product="product"
+FT   CDS             33401..33500
+FT                   /gene="33401_33500"
+FT                   /locus_tag="33401_33500"
+FT                   /product="product"
+FT   CDS             33501..33600
+FT                   /gene="33501_33600"
+FT                   /locus_tag="33501_33600"
+FT                   /product="product"
+FT   CDS             33601..33700
+FT                   /gene="33601_33700"
+FT                   /locus_tag="33601_33700"
+FT                   /product="product"
+FT   CDS             33701..33800
+FT                   /gene="33701_33800"
+FT                   /locus_tag="33701_33800"
+FT                   /product="product"
+FT   CDS             33801..33900
+FT                   /gene="33801_33900"
+FT                   /locus_tag="33801_33900"
+FT                   /product="product"
+FT   CDS             33901..34000
+FT                   /gene="33901_34000"
+FT                   /locus_tag="33901_34000"
+FT                   /product="product"
+FT   CDS             34001..34100
+FT                   /gene="34001_34100"
+FT                   /locus_tag="34001_34100"
+FT                   /product="product"
+FT   CDS             34101..34200
+FT                   /gene="34101_34200"
+FT                   /locus_tag="34101_34200"
+FT                   /product="product"
+FT   CDS             34201..34300
+FT                   /gene="34201_34300"
+FT                   /locus_tag="34201_34300"
+FT                   /product="product"
+FT   CDS             34301..34400
+FT                   /gene="34301_34400"
+FT                   /locus_tag="34301_34400"
+FT                   /product="product"
+FT   CDS             34401..34500
+FT                   /gene="34401_34500"
+FT                   /locus_tag="34401_34500"
+FT                   /product="product"
+FT   CDS             34501..34600
+FT                   /gene="34501_34600"
+FT                   /locus_tag="34501_34600"
+FT                   /product="product"
+FT   CDS             34601..34700
+FT                   /gene="34601_34700"
+FT                   /locus_tag="34601_34700"
+FT                   /product="product"
+FT   CDS             34701..34800
+FT                   /gene="34701_34800"
+FT                   /locus_tag="34701_34800"
+FT                   /product="product"
+FT   CDS             34801..34900
+FT                   /gene="34801_34900"
+FT                   /locus_tag="34801_34900"
+FT                   /product="product"
+FT   CDS             34901..35000
+FT                   /gene="34901_35000"
+FT                   /locus_tag="34901_35000"
+FT                   /product="product"
+FT   CDS             35001..35100
+FT                   /gene="35001_35100"
+FT                   /locus_tag="35001_35100"
+FT                   /product="product"
+FT   CDS             35101..35200
+FT                   /gene="35101_35200"
+FT                   /locus_tag="35101_35200"
+FT                   /product="product"
+FT   CDS             35201..35300
+FT                   /gene="35201_35300"
+FT                   /locus_tag="35201_35300"
+FT                   /product="product"
+FT   CDS             35301..35400
+FT                   /gene="35301_35400"
+FT                   /locus_tag="35301_35400"
+FT                   /product="product"
+FT   CDS             35401..35500
+FT                   /gene="35401_35500"
+FT                   /locus_tag="35401_35500"
+FT                   /product="product"
+FT   CDS             35501..35600
+FT                   /gene="35501_35600"
+FT                   /locus_tag="35501_35600"
+FT                   /product="product"
+FT   CDS             35601..35700
+FT                   /gene="35601_35700"
+FT                   /locus_tag="35601_35700"
+FT                   /product="product"
+FT   CDS             35701..35800
+FT                   /gene="35701_35800"
+FT                   /locus_tag="35701_35800"
+FT                   /product="product"
+FT   CDS             35801..35900
+FT                   /gene="35801_35900"
+FT                   /locus_tag="35801_35900"
+FT                   /product="product"
+FT   CDS             35901..36000
+FT                   /gene="35901_36000"
+FT                   /locus_tag="35901_36000"
+FT                   /product="product"
+FT   CDS             36001..36100
+FT                   /gene="36001_36100"
+FT                   /locus_tag="36001_36100"
+FT                   /product="product"
+FT   CDS             36101..36200
+FT                   /gene="36101_36200"
+FT                   /locus_tag="36101_36200"
+FT                   /product="product"
+FT   CDS             36201..36300
+FT                   /gene="36201_36300"
+FT                   /locus_tag="36201_36300"
+FT                   /product="product"
+FT   CDS             36301..36400
+FT                   /gene="36301_36400"
+FT                   /locus_tag="36301_36400"
+FT                   /product="product"
+FT   CDS             36401..36500
+FT                   /gene="36401_36500"
+FT                   /locus_tag="36401_36500"
+FT                   /product="product"
+FT   CDS             36501..36600
+FT                   /gene="36501_36600"
+FT                   /locus_tag="36501_36600"
+FT                   /product="product"
+FT   CDS             36601..36700
+FT                   /gene="36601_36700"
+FT                   /locus_tag="36601_36700"
+FT                   /product="product"
+FT   CDS             36701..36800
+FT                   /gene="36701_36800"
+FT                   /locus_tag="36701_36800"
+FT                   /product="product"
+FT   CDS             36801..36900
+FT                   /gene="36801_36900"
+FT                   /locus_tag="36801_36900"
+FT                   /product="product"
+FT   CDS             36901..37000
+FT                   /gene="36901_37000"
+FT                   /locus_tag="36901_37000"
+FT                   /product="product"
+FT   CDS             37001..37100
+FT                   /gene="37001_37100"
+FT                   /locus_tag="37001_37100"
+FT                   /product="product"
+FT   CDS             37101..37200
+FT                   /gene="37101_37200"
+FT                   /locus_tag="37101_37200"
+FT                   /product="product"
+FT   CDS             37201..37300
+FT                   /gene="37201_37300"
+FT                   /locus_tag="37201_37300"
+FT                   /product="product"
+FT   CDS             37301..37400
+FT                   /gene="37301_37400"
+FT                   /locus_tag="37301_37400"
+FT                   /product="product"
+FT   CDS             37401..37500
+FT                   /gene="37401_37500"
+FT                   /locus_tag="37401_37500"
+FT                   /product="product"
+FT   CDS             37501..37600
+FT                   /gene="37501_37600"
+FT                   /locus_tag="37501_37600"
+FT                   /product="product"
+FT   CDS             37601..37700
+FT                   /gene="37601_37700"
+FT                   /locus_tag="37601_37700"
+FT                   /product="product"
+FT   CDS             37701..37800
+FT                   /gene="37701_37800"
+FT                   /locus_tag="37701_37800"
+FT                   /product="product"
+FT   CDS             37801..37900
+FT                   /gene="37801_37900"
+FT                   /locus_tag="37801_37900"
+FT                   /product="product"
+FT   CDS             37901..38000
+FT                   /gene="37901_38000"
+FT                   /locus_tag="37901_38000"
+FT                   /product="product"
+FT   CDS             38001..38100
+FT                   /gene="38001_38100"
+FT                   /locus_tag="38001_38100"
+FT                   /product="product"
+FT   CDS             38101..38200
+FT                   /gene="38101_38200"
+FT                   /locus_tag="38101_38200"
+FT                   /product="product"
+FT   CDS             38201..38300
+FT                   /gene="38201_38300"
+FT                   /locus_tag="38201_38300"
+FT                   /product="product"
+FT   CDS             38301..38400
+FT                   /gene="38301_38400"
+FT                   /locus_tag="38301_38400"
+FT                   /product="product"
+FT   CDS             38401..38500
+FT                   /gene="38401_38500"
+FT                   /locus_tag="38401_38500"
+FT                   /product="product"
+FT   CDS             38501..38600
+FT                   /gene="38501_38600"
+FT                   /locus_tag="38501_38600"
+FT                   /product="product"
+FT   CDS             38601..38700
+FT                   /gene="38601_38700"
+FT                   /locus_tag="38601_38700"
+FT                   /product="product"
+FT   CDS             38701..38800
+FT                   /gene="38701_38800"
+FT                   /locus_tag="38701_38800"
+FT                   /product="product"
+FT   CDS             38801..38900
+FT                   /gene="38801_38900"
+FT                   /locus_tag="38801_38900"
+FT                   /product="product"
+FT   CDS             38901..39000
+FT                   /gene="38901_39000"
+FT                   /locus_tag="38901_39000"
+FT                   /product="product"
+FT   CDS             39001..39100
+FT                   /gene="39001_39100"
+FT                   /locus_tag="39001_39100"
+FT                   /product="product"
+FT   CDS             39101..39200
+FT                   /gene="39101_39200"
+FT                   /locus_tag="39101_39200"
+FT                   /product="product"
+FT   CDS             39201..39300
+FT                   /gene="39201_39300"
+FT                   /locus_tag="39201_39300"
+FT                   /product="product"
+FT   CDS             39301..39400
+FT                   /gene="39301_39400"
+FT                   /locus_tag="39301_39400"
+FT                   /product="product"
+FT   CDS             39401..39500
+FT                   /gene="39401_39500"
+FT                   /locus_tag="39401_39500"
+FT                   /product="product"
+FT   CDS             39501..39600
+FT                   /gene="39501_39600"
+FT                   /locus_tag="39501_39600"
+FT                   /product="product"
+FT   CDS             39601..39700
+FT                   /gene="39601_39700"
+FT                   /locus_tag="39601_39700"
+FT                   /product="product"
+FT   CDS             39701..39800
+FT                   /gene="39701_39800"
+FT                   /locus_tag="39701_39800"
+FT                   /product="product"
+FT   CDS             39801..39900
+FT                   /gene="39801_39900"
+FT                   /locus_tag="39801_39900"
+FT                   /product="product"
+FT   CDS             39901..40000
+FT                   /gene="39901_40000"
+FT                   /locus_tag="39901_40000"
+FT                   /product="product"
+FT   CDS             40001..40100
+FT                   /gene="40001_40100"
+FT                   /locus_tag="40001_40100"
+FT                   /product="product"
+FT   CDS             40101..40200
+FT                   /gene="40101_40200"
+FT                   /locus_tag="40101_40200"
+FT                   /product="product"
+FT   CDS             40201..40300
+FT                   /gene="40201_40300"
+FT                   /locus_tag="40201_40300"
+FT                   /product="product"
+FT   CDS             40301..40400
+FT                   /gene="40301_40400"
+FT                   /locus_tag="40301_40400"
+FT                   /product="product"
+FT   CDS             40401..40500
+FT                   /gene="40401_40500"
+FT                   /locus_tag="40401_40500"
+FT                   /product="product"
+FT   CDS             40501..40600
+FT                   /gene="40501_40600"
+FT                   /locus_tag="40501_40600"
+FT                   /product="product"
+FT   CDS             40601..40700
+FT                   /gene="40601_40700"
+FT                   /locus_tag="40601_40700"
+FT                   /product="product"
+FT   CDS             40701..40800
+FT                   /gene="40701_40800"
+FT                   /locus_tag="40701_40800"
+FT                   /product="product"
+FT   CDS             40801..40900
+FT                   /gene="40801_40900"
+FT                   /locus_tag="40801_40900"
+FT                   /product="product"
+FT   CDS             40901..41000
+FT                   /gene="40901_41000"
+FT                   /locus_tag="40901_41000"
+FT                   /product="product"
+FT   CDS             41001..41100
+FT                   /gene="41001_41100"
+FT                   /locus_tag="41001_41100"
+FT                   /product="product"
+FT   CDS             41101..41200
+FT                   /gene="41101_41200"
+FT                   /locus_tag="41101_41200"
+FT                   /product="product"
+FT   CDS             41201..41300
+FT                   /gene="41201_41300"
+FT                   /locus_tag="41201_41300"
+FT                   /product="product"
+FT   CDS             41301..41400
+FT                   /gene="41301_41400"
+FT                   /locus_tag="41301_41400"
+FT                   /product="product"
+FT   CDS             41401..41500
+FT                   /gene="41401_41500"
+FT                   /locus_tag="41401_41500"
+FT                   /product="product"
+FT   CDS             41501..41600
+FT                   /gene="41501_41600"
+FT                   /locus_tag="41501_41600"
+FT                   /product="product"
+FT   CDS             41601..41700
+FT                   /gene="41601_41700"
+FT                   /locus_tag="41601_41700"
+FT                   /product="product"
+FT   CDS             41701..41800
+FT                   /gene="41701_41800"
+FT                   /locus_tag="41701_41800"
+FT                   /product="product"
+FT   CDS             41801..41900
+FT                   /gene="41801_41900"
+FT                   /locus_tag="41801_41900"
+FT                   /product="product"
+FT   CDS             41901..42000
+FT                   /gene="41901_42000"
+FT                   /locus_tag="41901_42000"
+FT                   /product="product"
+FT   CDS             42001..42100
+FT                   /gene="42001_42100"
+FT                   /locus_tag="42001_42100"
+FT                   /product="product"
+FT   CDS             42101..42200
+FT                   /gene="42101_42200"
+FT                   /locus_tag="42101_42200"
+FT                   /product="product"
+FT   CDS             42201..42300
+FT                   /gene="42201_42300"
+FT                   /locus_tag="42201_42300"
+FT                   /product="product"
+FT   CDS             42301..42400
+FT                   /gene="42301_42400"
+FT                   /locus_tag="42301_42400"
+FT                   /product="product"
+FT   CDS             42401..42500
+FT                   /gene="42401_42500"
+FT                   /locus_tag="42401_42500"
+FT                   /product="product"
+FT   CDS             42501..42600
+FT                   /gene="42501_42600"
+FT                   /locus_tag="42501_42600"
+FT                   /product="product"
+FT   CDS             42601..42700
+FT                   /gene="42601_42700"
+FT                   /locus_tag="42601_42700"
+FT                   /product="product"
+FT   CDS             42701..42800
+FT                   /gene="42701_42800"
+FT                   /locus_tag="42701_42800"
+FT                   /product="product"
+FT   CDS             42801..42900
+FT                   /gene="42801_42900"
+FT                   /locus_tag="42801_42900"
+FT                   /product="product"
+FT   CDS             42901..43000
+FT                   /gene="42901_43000"
+FT                   /locus_tag="42901_43000"
+FT                   /product="product"
+FT   CDS             43001..43100
+FT                   /gene="43001_43100"
+FT                   /locus_tag="43001_43100"
+FT                   /product="product"
+FT   CDS             43101..43200
+FT                   /gene="43101_43200"
+FT                   /locus_tag="43101_43200"
+FT                   /product="product"
+FT   CDS             43201..43300
+FT                   /gene="43201_43300"
+FT                   /locus_tag="43201_43300"
+FT                   /product="product"
+FT   CDS             43301..43400
+FT                   /gene="43301_43400"
+FT                   /locus_tag="43301_43400"
+FT                   /product="product"
+FT   CDS             43401..43500
+FT                   /gene="43401_43500"
+FT                   /locus_tag="43401_43500"
+FT                   /product="product"
+FT   CDS             43501..43600
+FT                   /gene="43501_43600"
+FT                   /locus_tag="43501_43600"
+FT                   /product="product"
+FT   CDS             43601..43700
+FT                   /gene="43601_43700"
+FT                   /locus_tag="43601_43700"
+FT                   /product="product"
+FT   CDS             43701..43800
+FT                   /gene="43701_43800"
+FT                   /locus_tag="43701_43800"
+FT                   /product="product"
+FT   CDS             43801..43900
+FT                   /gene="43801_43900"
+FT                   /locus_tag="43801_43900"
+FT                   /product="product"
+FT   CDS             43901..44000
+FT                   /gene="43901_44000"
+FT                   /locus_tag="43901_44000"
+FT                   /product="product"
+FT   CDS             44001..44100
+FT                   /gene="44001_44100"
+FT                   /locus_tag="44001_44100"
+FT                   /product="product"
+FT   CDS             44101..44200
+FT                   /gene="44101_44200"
+FT                   /locus_tag="44101_44200"
+FT                   /product="product"
+FT   CDS             44201..44300
+FT                   /gene="44201_44300"
+FT                   /locus_tag="44201_44300"
+FT                   /product="product"
+FT   CDS             44301..44400
+FT                   /gene="44301_44400"
+FT                   /locus_tag="44301_44400"
+FT                   /product="product"
+FT   CDS             44401..44500
+FT                   /gene="44401_44500"
+FT                   /locus_tag="44401_44500"
+FT                   /product="product"
+FT   CDS             44501..44600
+FT                   /gene="44501_44600"
+FT                   /locus_tag="44501_44600"
+FT                   /product="product"
+FT   CDS             44601..44700
+FT                   /gene="44601_44700"
+FT                   /locus_tag="44601_44700"
+FT                   /product="product"
+FT   CDS             44701..44800
+FT                   /gene="44701_44800"
+FT                   /locus_tag="44701_44800"
+FT                   /product="product"
+FT   CDS             44801..44900
+FT                   /gene="44801_44900"
+FT                   /locus_tag="44801_44900"
+FT                   /product="product"
+FT   CDS             44901..45000
+FT                   /gene="44901_45000"
+FT                   /locus_tag="44901_45000"
+FT                   /product="product"
+FT   CDS             45001..45100
+FT                   /gene="45001_45100"
+FT                   /locus_tag="45001_45100"
+FT                   /product="product"
+FT   CDS             45101..45200
+FT                   /gene="45101_45200"
+FT                   /locus_tag="45101_45200"
+FT                   /product="product"
+FT   CDS             45201..45300
+FT                   /gene="45201_45300"
+FT                   /locus_tag="45201_45300"
+FT                   /product="product"
+FT   CDS             45301..45400
+FT                   /gene="45301_45400"
+FT                   /locus_tag="45301_45400"
+FT                   /product="product"
+FT   CDS             45401..45500
+FT                   /gene="45401_45500"
+FT                   /locus_tag="45401_45500"
+FT                   /product="product"
+FT   CDS             45501..45600
+FT                   /gene="45501_45600"
+FT                   /locus_tag="45501_45600"
+FT                   /product="product"
+FT   CDS             45601..45700
+FT                   /gene="45601_45700"
+FT                   /locus_tag="45601_45700"
+FT                   /product="product"
+FT   CDS             45701..45800
+FT                   /gene="45701_45800"
+FT                   /locus_tag="45701_45800"
+FT                   /product="product"
+FT   CDS             45801..45900
+FT                   /gene="45801_45900"
+FT                   /locus_tag="45801_45900"
+FT                   /product="product"
+FT   CDS             45901..46000
+FT                   /gene="45901_46000"
+FT                   /locus_tag="45901_46000"
+FT                   /product="product"
+FT   CDS             46001..46100
+FT                   /gene="46001_46100"
+FT                   /locus_tag="46001_46100"
+FT                   /product="product"
+FT   CDS             46101..46200
+FT                   /gene="46101_46200"
+FT                   /locus_tag="46101_46200"
+FT                   /product="product"
+FT   CDS             46201..46300
+FT                   /gene="46201_46300"
+FT                   /locus_tag="46201_46300"
+FT                   /product="product"
+FT   CDS             46301..46400
+FT                   /gene="46301_46400"
+FT                   /locus_tag="46301_46400"
+FT                   /product="product"
+FT   CDS             46401..46500
+FT                   /gene="46401_46500"
+FT                   /locus_tag="46401_46500"
+FT                   /product="product"
+FT   CDS             46501..46600
+FT                   /gene="46501_46600"
+FT                   /locus_tag="46501_46600"
+FT                   /product="product"
+FT   CDS             46601..46700
+FT                   /gene="46601_46700"
+FT                   /locus_tag="46601_46700"
+FT                   /product="product"
+FT   CDS             46701..46800
+FT                   /gene="46701_46800"
+FT                   /locus_tag="46701_46800"
+FT                   /product="product"
+FT   CDS             46801..46900
+FT                   /gene="46801_46900"
+FT                   /locus_tag="46801_46900"
+FT                   /product="product"
+FT   CDS             46901..47000
+FT                   /gene="46901_47000"
+FT                   /locus_tag="46901_47000"
+FT                   /product="product"
+FT   CDS             47001..47100
+FT                   /gene="47001_47100"
+FT                   /locus_tag="47001_47100"
+FT                   /product="product"
+FT   CDS             47101..47200
+FT                   /gene="47101_47200"
+FT                   /locus_tag="47101_47200"
+FT                   /product="product"
+FT   CDS             47201..47300
+FT                   /gene="47201_47300"
+FT                   /locus_tag="47201_47300"
+FT                   /product="product"
+FT   CDS             47301..47400
+FT                   /gene="47301_47400"
+FT                   /locus_tag="47301_47400"
+FT                   /product="product"
+FT   CDS             47401..47500
+FT                   /gene="47401_47500"
+FT                   /locus_tag="47401_47500"
+FT                   /product="product"
+FT   CDS             47501..47600
+FT                   /gene="47501_47600"
+FT                   /locus_tag="47501_47600"
+FT                   /product="product"
+FT   CDS             47601..47700
+FT                   /gene="47601_47700"
+FT                   /locus_tag="47601_47700"
+FT                   /product="product"
+FT   CDS             47701..47800
+FT                   /gene="47701_47800"
+FT                   /locus_tag="47701_47800"
+FT                   /product="product"
+FT   CDS             47801..47900
+FT                   /gene="47801_47900"
+FT                   /locus_tag="47801_47900"
+FT                   /product="product"
+FT   CDS             47901..48000
+FT                   /gene="47901_48000"
+FT                   /locus_tag="47901_48000"
+FT                   /product="product"
+FT   CDS             48001..48100
+FT                   /gene="48001_48100"
+FT                   /locus_tag="48001_48100"
+FT                   /product="product"
+FT   CDS             48101..48200
+FT                   /gene="48101_48200"
+FT                   /locus_tag="48101_48200"
+FT                   /product="product"
+FT   CDS             48201..48300
+FT                   /gene="48201_48300"
+FT                   /locus_tag="48201_48300"
+FT                   /product="product"
+FT   CDS             48301..48400
+FT                   /gene="48301_48400"
+FT                   /locus_tag="48301_48400"
+FT                   /product="product"
+FT   CDS             48401..48500
+FT                   /gene="48401_48500"
+FT                   /locus_tag="48401_48500"
+FT                   /product="product"
+FT   CDS             48501..48600
+FT                   /gene="48501_48600"
+FT                   /locus_tag="48501_48600"
+FT                   /product="product"
+FT   CDS             48601..48700
+FT                   /gene="48601_48700"
+FT                   /locus_tag="48601_48700"
+FT                   /product="product"
+FT   CDS             48701..48800
+FT                   /gene="48701_48800"
+FT                   /locus_tag="48701_48800"
+FT                   /product="product"
+FT   CDS             48801..48900
+FT                   /gene="48801_48900"
+FT                   /locus_tag="48801_48900"
+FT                   /product="product"
+FT   CDS             48901..49000
+FT                   /gene="48901_49000"
+FT                   /locus_tag="48901_49000"
+FT                   /product="product"
+FT   CDS             49001..49100
+FT                   /gene="49001_49100"
+FT                   /locus_tag="49001_49100"
+FT                   /product="product"
+FT   CDS             49101..49200
+FT                   /gene="49101_49200"
+FT                   /locus_tag="49101_49200"
+FT                   /product="product"
+FT   CDS             49201..49300
+FT                   /gene="49201_49300"
+FT                   /locus_tag="49201_49300"
+FT                   /product="product"
+FT   CDS             49301..49400
+FT                   /gene="49301_49400"
+FT                   /locus_tag="49301_49400"
+FT                   /product="product"
+FT   CDS             49401..49500
+FT                   /gene="49401_49500"
+FT                   /locus_tag="49401_49500"
+FT                   /product="product"
+FT   CDS             49501..49600
+FT                   /gene="49501_49600"
+FT                   /locus_tag="49501_49600"
+FT                   /product="product"
+FT   CDS             49601..49700
+FT                   /gene="49601_49700"
+FT                   /locus_tag="49601_49700"
+FT                   /product="product"
+FT   CDS             49701..49800
+FT                   /gene="49701_49800"
+FT                   /locus_tag="49701_49800"
+FT                   /product="product"
+FT   CDS             49801..49900
+FT                   /gene="49801_49900"
+FT                   /locus_tag="49801_49900"
+FT                   /product="product"
+FT   CDS             49901..50000
+FT                   /gene="49901_50000"
+FT                   /locus_tag="49901_50000"
 FT                   /product="product"
 XX
-SQ   Sequence 600 BP; 150 A; 150 C; 150 G; 150 T; 0 other;
-     agcttttcat tctgactgca acgggcaata tgtctctgtg tggattaaaa aaagagtgtc        60
-     tgatagcagc ttctgaactg gttacctgcc gtgagtaaat taaaatttta ttgacttagg       120
-     tcactaaata ctttaaccaa tataggcata gcgcacagac agataaaaat tacagagtac       180
-     acaacatcca tgaaacgcat tagcaccacc attaccacca ccatcaccat taccacaggt       240
-     aacggtgcgg gctgacgcgt acaggaaaca cagaaaaaag cccgcacctg acagtgcggg       300
-     cttttttttt cgaccaaagg taacgaggta acaaccatgc gagtgttgaa gttcggcggt       360
-     acatcagtgg caaatgcaga acgttttctg cgtgttgccg atattctgga aagcaatgcc       420
-     aggcaggggc aggtggccac cgtcctctct gcccccgcca aaatcaccaa ccacctggtg       480
-     gcgatgattg aaaaaaccat tagcggccag gatgctttac ccaatatcag cgatgccgaa       540
-     cgtatttttg ccgaactttt gacgggactc gccgccgccc agccggggtt cccgctggcg       600
+SQ   Sequence 50000 BP; 0 A; 0 C; 0 G; 0 T; 50000 other;
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn        60
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn       960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      1980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      2940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      3960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      4980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      5940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      6960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      7980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      8940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn      9960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     10980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     11940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     12960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     13980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     14940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     15960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     16980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     17940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     18960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     19980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     20940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     21960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     22980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     23940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     24960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     25980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     26940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     27960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     28980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     29940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     30960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     31980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     32940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     33960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     34980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     35940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     36960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     37980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     38940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     39960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     40980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     41940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     42960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     43980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     44940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     45960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     46980
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47040
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47100
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47160
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47220
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47280
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47340
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47400
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47460
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47520
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47580
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47640
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47700
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47760
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47820
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47880
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     47940
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48000
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48060
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48120
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48180
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48240
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48300
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48360
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48420
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48480
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48540
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48600
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48660
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48720
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48780
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48840
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48900
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     48960
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49020
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49080
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49140
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49200
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49260
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49320
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49380
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49440
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49500
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49560
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49620
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49680
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49740
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49800
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49860
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49920
+     nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn     49980
+     nnnnnnnnnn nnnnnnnnnn                                                 50000
 //

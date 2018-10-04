@@ -3,6 +3,7 @@ import numpy
 import pandas
 from tempfile import mkstemp
 from albatradis.Block import Block
+from albatradis.EMBLReader import EMBLReader
 
 
 class LogFC:
@@ -12,7 +13,7 @@ class LogFC:
 		self.logfc_value = logfc_value
 
 class PlotLog:
-	def __init__(self, comparison_filename, genome_length, minimum_logfc, pvalue, minimum_logcpm, window_size, span_gaps, report_decreased_insertions):
+	def __init__(self, comparison_filename, genome_length, minimum_logfc, pvalue, minimum_logcpm, window_size, span_gaps, report_decreased_insertions, embl_file):
 		self.comparison_filename = comparison_filename
 		self.genome_length  = genome_length
 		self.minimum_logfc  = minimum_logfc
@@ -21,13 +22,13 @@ class PlotLog:
 		self.window_size    = window_size
 		self.span_gaps      = span_gaps
 		self.report_decreased_insertions = report_decreased_insertions
+		self.embl_file      = embl_file
 		
 		fd, self.output_filename = mkstemp()
 
 	def construct_plot_file(self):
 		logfc_coord_values = self.read_comparison_file()
 		logfc_to_bases = self.genome_wide_logfc(logfc_coord_values)
-		
 		
 		forward_logfc = [i if i >= 0 else 0 for i in logfc_to_bases]
 		reverse_logfc = [i if i < 0 else 0 for i in logfc_to_bases]
@@ -121,6 +122,8 @@ class PlotLog:
 	def read_comparison_file(self):
 		logfc_coord_values = []
 		
+		genes_to_features = EMBLReader(self.embl_file).genes_to_features
+		
 		with open(self.comparison_filename, newline='') as csvfile:
 			comparison_reader = csv.reader(csvfile, delimiter=',')
 			for row in comparison_reader:
@@ -139,11 +142,16 @@ class PlotLog:
 				if numpy.absolute(int(float(row[4]))) < self.minimum_logcpm:
 					logfc = 0
 					
-				# encodes coordinates
+				# Get coordinates
 				gene_name = row[0]
-				start, end = gene_name.split("_")
 				
-				logfc_coord_values.append(LogFC(int(start), int(end), logfc))
-				
+				# else annotation encodes the coordinates
+				if gene_name in genes_to_features:
+					start = genes_to_features[gene_name].location.start +1
+					end = genes_to_features[gene_name].location.end
+					#print(gene_name+ "\t"+str(start)+ "\t"+str(end))
+					logfc_coord_values.append(LogFC(int(start), int(end), logfc))
+				else:
+					print("Couldnt find gene coordinates for "+ str(gene_name))
 		return logfc_coord_values
 		

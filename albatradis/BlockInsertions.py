@@ -22,10 +22,11 @@ class PlotEssentiality:
 		self.type = type
 		
 class PlotAllEssentiality:
-	def __init__(self, forward, reverse, combined):
+	def __init__(self, forward, reverse, combined, embl_filename):
 		self.forward = forward
 		self.reverse = reverse
 		self.combined = combined
+		self.embl_filename = embl_filename
 
 class BlockInsertions:
 	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm, minimum_block,span_gaps, emblfile, report_decreased_insertions, strict_signal, use_annotation, prime_feature_size):
@@ -106,7 +107,8 @@ class BlockInsertions:
 			f = self.essentiality(plotfile_objects, plotfile, 'forward')
 			r = self.essentiality(plotfile_objects, plotfile, 'reverse')
 			c = self.essentiality(plotfile_objects, plotfile, 'combined')
-			essentiality_files[plotfile] = PlotAllEssentiality(f,r,c)
+			e = plotfile_objects[plotfile].embl_filename	
+			essentiality_files[plotfile] = PlotAllEssentiality(f,r,c,e)
 
 		return essentiality_files
 		
@@ -120,11 +122,12 @@ class BlockInsertions:
 		
 		only_ess_files = [getattr(essentiality_files[plotfile], analysis_type).only_essential_filename for plotfile in self.plotfiles]
 		
+		annotation_files = [essentiality_files[plotfile].embl_filename for plotfile in self.plotfiles]
 		mid = int(len(files)  / 2)
 		
 		t = TradisComparison(files[:mid],files[mid:], self.verbose, self.minimum_block, only_ess_files[:mid], only_ess_files[mid:])
 		t.run()
-		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm, self.window_size, self.span_gaps, self.report_decreased_insertions)
+		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm, self.window_size, self.span_gaps, self.report_decreased_insertions, annotation_files[0])
 		p.construct_plot_file()
 		renamed_csv_file  = os.path.join(self.prefix, analysis_type + ".csv")
 		renamed_plot_file = os.path.join(self.prefix, analysis_type + ".plot")

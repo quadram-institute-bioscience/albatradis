@@ -22,6 +22,7 @@ class TestPrepareInputFiles(unittest.TestCase):
 		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_forward_plot_filename'), p.forward_plot_filename))
 		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_reverse_plot_filename'), p.reverse_plot_filename))
 		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_combined_plot_filename'), p.combined_plot_filename))
+		
 		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_embl_filename'), p.embl_filename))
 		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_forward_plot_filename'), p.forward_plot_filename))
 		

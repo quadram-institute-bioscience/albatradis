@@ -20,3 +20,7 @@ FT   CDS             16..20
 FT                   /gene="16_20"
 FT                   /locus_tag="16_20"
 FT                   /product="product"
+XX
+SQ   Sequence 20 BP; 0 A; 0 C; 0 G; 0 T; 20 other;
+     nnnnnnnnnn nnnnnnnnnn                                                    20
+//

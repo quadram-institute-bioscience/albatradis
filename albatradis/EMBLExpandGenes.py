@@ -14,7 +14,7 @@ class EMBLExpandGenes:
 		self.embl_file = embl_file
 		self.feature_size = feature_size
 		self.er = EMBLReader(self.embl_file)
-		self.features = self.er.read_annotation_features()
+		self.features = self.er.features
 		self.genome_length = self.er.genome_length
 	
 	def create_3_5_prime_features(self):
