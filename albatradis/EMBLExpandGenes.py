@@ -27,11 +27,11 @@ class EMBLExpandGenes:
 			
 			# forward direction
 			if feature.strand == 1:
-				new_features.append(self.construct_start_feature(feature, gene_name, "__3prime"))
-				new_features.append(self.construct_end_feature(feature, gene_name, "__5prime"))
-			else:
-				new_features.append(self.construct_end_feature(feature, gene_name, "__3prime"))
 				new_features.append(self.construct_start_feature(feature, gene_name, "__5prime"))
+				new_features.append(self.construct_end_feature(feature, gene_name, "__3prime"))
+			else:
+				new_features.append(self.construct_end_feature(feature, gene_name, "__5prime"))
+				new_features.append(self.construct_start_feature(feature, gene_name, "__3prime"))
 					
 		return new_features
 		
