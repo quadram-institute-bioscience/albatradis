@@ -2,7 +2,7 @@ import os
 import shutil
 import sys
 import glob
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Extension
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
@@ -11,6 +11,14 @@ version = 'x.y.z'
 if os.path.exists('VERSION'):
   version = open('VERSION').read().strip()
 
+USE_CYTHON = False
+ext = '.pyx' if USE_CYTHON else '.c'
+extensions = [Extension("file_manipulation", ["file_manipulation"+ext])]
+
+if USE_CYTHON:
+    from Cython.Build import cythonize
+    extensions = cythonize(extensions)
+	
 setup(
     name='albatradis',
     version=version,
@@ -20,6 +28,7 @@ setup(
     author='Andrew J. Page',
     author_email='andrew.page@quadram.ac.uk',
     url='xxxx',
+	ext_modules = extensions,
     scripts=glob.glob('scripts/*'),
     test_suite='nose.collector',
     tests_require=['nose >= 1.3'],
@@ -31,7 +40,8 @@ setup(
 		   'dendropy',
 		   'seaborn',
 		   'pandas',
-		   'graphviz'
+		   'graphviz',
+		   'cython'
        ],
     license='GPLv3',
     classifiers=[

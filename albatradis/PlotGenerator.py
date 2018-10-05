@@ -1,3 +1,8 @@
+import pyximport
+pyximport.install()
+
+from file_manipulation import write_plot_file
+
 import numpy
 import pandas
 
@@ -12,16 +17,16 @@ class PlotGenerator:
 		self.reverse_length = len(self.reverse)
 		
 	def construct_file(self):
+
 		p_len = self.plot_length()
 		if len(self.forward) == 0:
 			self.forward = numpy.zeros( p_len, dtype=int )
 
 		if len(self.reverse) == 0:
 			self.reverse = numpy.zeros( p_len, dtype=int )
+			
+		write_plot_file(self.filename, self.forward, self.reverse, p_len)	
 
-		df = pandas.DataFrame({'forward': self.forward, 'reverse': self.reverse}, dtype = int)
-		
-		df.to_csv(self.filename, header=None, index = False, sep = ' ', chunksize=100000)
 		return self
 		
 	def plot_length(self):
