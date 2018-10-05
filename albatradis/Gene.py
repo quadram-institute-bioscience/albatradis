@@ -7,7 +7,7 @@ class Gene:
 		self.upstream = []
 
 	def gene_name(self):
-		gene_name_val = 'unknown'
+		gene_name_val = str(self.feature.location.start) + "_" + str(self.feature.location.end)
 		if "gene" in self.feature.qualifiers:
 			gene_name_val = self.feature.qualifiers["gene"][0]
 		return gene_name_val

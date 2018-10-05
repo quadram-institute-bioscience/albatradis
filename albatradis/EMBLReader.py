@@ -22,7 +22,7 @@ class EMBLReader:
 		return genes_to_features
 			
 	def feature_to_gene_name(self, feature):
-		gene_name_val = 'unknown'
+		gene_name_val = str(feature.location.start) + "_" + str(feature.location.end)
 		if "gene" in feature.qualifiers:
 			gene_name_val = feature.qualifiers["gene"][0]
 		return gene_name_val

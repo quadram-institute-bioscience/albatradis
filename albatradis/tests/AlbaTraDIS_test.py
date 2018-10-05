@@ -42,17 +42,6 @@ class TestAlbaTraDIS(unittest.TestCase):
 		self.assertTrue(os.path.exists('testoutput_1'))
 		shutil.rmtree("testoutput_1")
 		
-	def test_small_2iterations(self):
-		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
-		control = os.path.join(data_dir, 'small_control.insert_site_plot.gz')
-		emblfile = os.path.join(data_dir, 'annotation.embl')
-		t = AlbaTraDIS(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 2, False,1,0, emblfile, 0.1,True, False, 100))
-		self.assertTrue(t.run())
-		self.assertTrue(os.path.exists('testoutput_1'))
-		shutil.rmtree("testoutput_1")
-		self.assertTrue(os.path.exists('testoutput_2'))
-		shutil.rmtree("testoutput_2")
-		
 	def test_ignore_decreased_insertions(self):
 		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
 		control = os.path.join(data_dir, 'small_control_high_insertions.insert_site_plot.gz')
