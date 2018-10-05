@@ -150,6 +150,11 @@ class BlockInsertions:
 	def gene_statistics(self,forward_plotfile, reverse_plotfile, combined_plotfile, window_size):
 		b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile, window_size)
 		blocks = b.block_generator()
+		
+		annotationfile = self.emblfile 
+		if self.use_annotation:
+			annotationfile = self.annotation_file 
+		
 		genes = GeneAnnotator(self.annotation_file , blocks).annotate_genes()
 		intergenic_blocks = [block for block in blocks if block.intergenic]
 		
