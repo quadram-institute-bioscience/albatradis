@@ -79,7 +79,6 @@ class BlockInsertions:
 		plotfile_objects = {}
 		
 		annotation_file = PrepareEMBLFile(self.plotfiles[0], self.minimum_threshold, self.window_size, self.window_interval, self.use_annotation, self.prime_feature_size, self.emblfile).create_file()
-		print(annotation_file)
 		
 		for plotfile in self.plotfiles:
 			p = PrepareInputFiles(plotfile, self.minimum_threshold)
@@ -200,5 +199,5 @@ class BlockInsertions:
 			os.remove(p.reverse_plot_filename)
 			os.remove(p.combined_plot_filename)
 			if os.path.exists(p.embl_filename):
-				os.remove(p.embl_filename)
+				shutil.move(p.embl_filename, os.path.join(self.prefix, "annotation.embl") )
 		
