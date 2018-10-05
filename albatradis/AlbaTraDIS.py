@@ -1,5 +1,4 @@
 '''Driver class'''
-from albatradis.PrepareInputFiles import PrepareInputFiles
 import logging
 import os
 import sys

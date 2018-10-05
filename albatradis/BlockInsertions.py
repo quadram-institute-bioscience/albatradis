@@ -6,6 +6,7 @@ import time
 import shutil
 from albatradis.TradisGeneInsertSites import TradisGeneInsertSites
 from albatradis.PrepareInputFiles     import PrepareInputFiles
+from albatradis.PrepareEMBLFile       import PrepareEMBLFile
 from albatradis.TradisEssentiality    import TradisEssentiality
 from albatradis.TradisComparison      import TradisComparison
 from albatradis.PlotLog               import PlotLog
@@ -76,16 +77,21 @@ class BlockInsertions:
 		
 	def prepare_input_files(self):
 		plotfile_objects = {}
+		
+		annotation_file = PrepareEMBLFile(self.plotfiles[0], self.minimum_threshold, self.window_size, self.window_interval, self.use_annotation, self.prime_feature_size, self.emblfile).create_file()
+		print(annotation_file)
+		
 		for plotfile in self.plotfiles:
-			p = PrepareInputFiles(plotfile, self.minimum_threshold, self.window_size, self.window_interval, self.use_annotation, self.prime_feature_size,self.emblfile)
+			p = PrepareInputFiles(plotfile, self.minimum_threshold)
 			p.create_all_files()
+			p.embl_filename = annotation_file
 			plotfile_objects[plotfile] = p
 			
 			if self.verbose:
 				print("Forward plot:\t" + p.forward_plot_filename)
 				print("reverse plot:\t" + p.reverse_plot_filename)
 				print("combined plot:\t" + p.combined_plot_filename)
-				print("Embl:\t" + p.embl_filename)
+				print("Embl:\t" + annotation_file)
 			
 			self.genome_length = p.genome_length()
 		return plotfile_objects
@@ -193,5 +199,6 @@ class BlockInsertions:
 			os.remove(p.forward_plot_filename)
 			os.remove(p.reverse_plot_filename)
 			os.remove(p.combined_plot_filename)
-			os.remove(p.embl_filename)
+			if os.path.exists(p.embl_filename):
+				os.remove(p.embl_filename)
 		
