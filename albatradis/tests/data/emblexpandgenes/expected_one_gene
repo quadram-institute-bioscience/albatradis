@@ -9,28 +9,28 @@ FT                   /gene="1_100"
 FT                   /locus_tag="1_100"
 FT                   /product="product"
 FT   CDS             101..115
-FT                   /gene="1_100__5prime"
-FT                   /locus_tag="1_100__5prime"
+FT                   /gene="1_100__3prime"
+FT                   /locus_tag="1_100__3prime"
 FT                   /product="product"
 FT   CDS             complement(180..350)
 FT                   /gene="180_350"
 FT                   /locus_tag="180_350"
 FT                   /product="product"
 FT   CDS             complement(351..365)
-FT                   /gene="180_350__3prime"
-FT                   /locus_tag="180_350__3prime"
-FT                   /product="product"
-FT   CDS             complement(165..179)
 FT                   /gene="180_350__5prime"
 FT                   /locus_tag="180_350__5prime"
+FT                   /product="product"
+FT   CDS             complement(165..179)
+FT                   /gene="180_350__3prime"
+FT                   /locus_tag="180_350__3prime"
 FT                   /product="product"
 FT   CDS             500..600
 FT                   /gene="500_600"
 FT                   /locus_tag="500_600"
 FT                   /product="product"
 FT   CDS             485..499
-FT                   /gene="500_600__3prime"
-FT                   /locus_tag="500_600__3prime"
+FT                   /gene="500_600__5prime"
+FT                   /locus_tag="500_600__5prime"
 FT                   /product="product"
 XX
 SQ   Sequence 600 BP; 171 A; 153 C; 140 G; 136 T; 0 other;

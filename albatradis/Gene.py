@@ -5,12 +5,19 @@ class Gene:
 		self.blocks = blocks
 		self.categories = []
 		self.upstream = []
+		self.five_prime = None
+		self.three_prime = None
+		
+		self.gene_name = self.calc_gene_name()
 
-	def gene_name(self):
-		gene_name_val = str(self.feature.location.start) + "_" + str(self.feature.location.end)
-		if "gene" in self.feature.qualifiers:
-			gene_name_val = self.feature.qualifiers["gene"][0]
-		return gene_name_val
+	def calc_gene_name(self):
+		if self.feature:
+			gene_name_val = str(self.feature.location.start) + "_" + str(self.feature.location.end)
+			if "gene" in self.feature.qualifiers:
+				gene_name_val = self.feature.qualifiers["gene"][0]
+				return gene_name_val
+		else:
+			return "unknown"
 		
 	def category(self):
 		if 'total_inactivation' in self.categories:
@@ -19,20 +26,29 @@ class Gene:
 			return "/".join(list(set(self.categories)))
 			
 	def upstream_gene(self):
-			return "/".join(list(set(self.upstream)))
+		return "/".join(list(set(self.upstream)))
 
 	def max_logfc_from_blocks(self):
-		all_logfc = [b.max_logfc for b in self.blocks]
-		return numpy.max(numpy.absolute(all_logfc))
+		if self.blocks:
+			all_logfc = [b.max_logfc for b in self.blocks]
+			return numpy.max(numpy.absolute(all_logfc))
+		else:
+			return 0
 
 	def expression_from_blocks(self):
-		return "/".join(list(set([b.expression for b in self.blocks])))
+		if self.blocks:
+			return "/".join(list(set([b.expression for b in self.blocks])))
+		else:
+			return ""
 		
 	def direction_from_blocks(self):
-		return "/".join(list(set([b.direction for b in self.blocks])))
+		if self.blocks:
+			return "/".join(list(set([b.direction for b in self.blocks])))
+		else:
+			return ""
 
 	def __str__(self):
-		return "\t".join([str(self.gene_name()), str(self.category()), str(self.feature.location.start), str(self.feature.location.end), str(self.max_logfc_from_blocks()),  str(self.expression_from_blocks()), str(self.direction_from_blocks()), str(self.upstream_gene())] )
+		return "\t".join([str(self.gene_name), str(self.category()), str(self.feature.location.start), str(self.feature.location.end), str(self.max_logfc_from_blocks()),  str(self.expression_from_blocks()), str(self.direction_from_blocks()), str(self.upstream_gene())] )
 		
 	def header(self):
 		return "\t".join(['Gene', 'Category', 'Start', 'End', 'MaxLogFC', 'Expression', 'Direction', 'Upstream'])

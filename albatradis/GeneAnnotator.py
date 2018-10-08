@@ -1,4 +1,5 @@
 from Bio import SeqIO
+import re
 from albatradis.Gene import Gene
 from albatradis.EMBLReader import EMBLReader
 
@@ -9,7 +10,8 @@ class GeneAnnotator:
 		self.knockout_proportion_start = 0.5
 		self.increased_expression_proportion_end= 0.3
 		
-		self.features = EMBLReader(self.annotation_file).features
+		self.embl_reader =  EMBLReader(self.annotation_file)
+		self.features = self.embl_reader.features
 		
 	def sort_blocks_by_start_coord(self, blocks):
 		return sorted((b for b in blocks ), key=lambda x: x.start)
@@ -64,7 +66,9 @@ class GeneAnnotator:
 			block.upstream  = self.find_nearest_upstream_gene(block)
 			block.intergenic = True
 
-		return genes 
+		reannotate_with_5_3_prime = self.reannotate_5_3_prime(genes)
+
+		return reannotate_with_5_3_prime 
 		
 	def feature_to_gene_name(self, feature):
 		gene_name_val = str(feature.location.start) + "_" + str(feature.location.end)
@@ -170,8 +174,55 @@ class GeneAnnotator:
 		return False
 		
 		
+	def reannotate_5_3_prime(self,genes):
+		name_to_genes = { g.gene_name: g for g in genes}
 		
+		filtered_names_to_genes = {}
 		
-		
-		
-		
+		# 5 prime
+		for name, gene in name_to_genes.items():
+			if 'nodirection' in [b.direction for b in gene.blocks]:
+				continue
+			
+			res = re.search("^(.+)__5prime$", name)
+			if res:
+				found_gene_name = res.group(1)
+				if found_gene_name not in name_to_genes:
+					filtered_names_to_genes[found_gene_name] = Gene(self.embl_reader.genes_to_features[found_gene_name], [])
+				else:
+					filtered_names_to_genes[found_gene_name] = name_to_genes[found_gene_name]
+				filtered_names_to_genes[found_gene_name].five_prime = gene
+
+				if filtered_names_to_genes[found_gene_name].feature.strand == 1 and 'forward' in gene.blocks:
+					filtered_names_to_genes[found_gene_name].categories.append('upregulated')
+				elif filtered_names_to_genes[found_gene_name].feature.strand == -1 and 'reverse' in gene.blocks:
+					filtered_names_to_genes[found_gene_name].categories.append('upregulated')
+				
+		# 3 prime
+		for name, gene in name_to_genes.items():
+			if 'nodirection' in [b.direction for b in gene.blocks]:
+				continue
+				
+			res = re.search("^(.+)__3prime$", name)
+			if res:
+				found_gene_name = res.group(1)
+				if found_gene_name not in name_to_genes:
+					filtered_names_to_genes[found_gene_name] = Gene(self.embl_reader.genes_to_features[found_gene_name], [])
+				else:
+					filtered_names_to_genes[found_gene_name] = name_to_genes[found_gene_name]
+				filtered_names_to_genes[found_gene_name].three_prime = gene
+				
+				if filtered_names_to_genes[found_gene_name].feature.strand == 1 and 'reverse' in gene.blocks:
+					filtered_names_to_genes[found_gene_name].categories.append('downregulated')
+				elif filtered_names_to_genes[found_gene_name].feature.strand == -1 and 'forward' in gene.blocks:
+					filtered_names_to_genes[found_gene_name].categories.append('downregulated')
+				
+		# carry over non prime genes
+		for name, gene in name_to_genes.items():
+			res = re.search("^(.+)__[35]prime$", name)
+			if not res:
+				if name not in filtered_names_to_genes:
+					filtered_names_to_genes[name] = gene
+			
+
+		return [g for g in filtered_names_to_genes.values()]

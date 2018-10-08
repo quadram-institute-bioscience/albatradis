@@ -19,4 +19,3 @@ class TestEMBLExpandGenes(unittest.TestCase):
 		
 		os.remove(output_file)	
 		
-		

@@ -63,5 +63,4 @@ class TestGeneAnnotator(unittest.TestCase):
 		genes = a.annotate_genes()
 		self.assertEqual(1, len(genes))
 		self.assertEqual('decreased_mutants_at_end_of_gene', genes[0].category())
-		self.assertEqual('1_100', genes[0].gene_name())
-	
+		self.assertEqual('1_100', genes[0].gene_name)
