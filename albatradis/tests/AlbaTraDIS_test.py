@@ -39,8 +39,8 @@ class TestAlbaTraDIS(unittest.TestCase):
     
 		t = AlbaTraDIS(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 1, True,1,0, emblfile, 0.1, False, False, 100))
 		self.assertTrue(t.run())
-		self.assertTrue(os.path.exists('testoutput_1'))
-		shutil.rmtree("testoutput_1")
+		self.assertTrue(os.path.exists('testoutput'))
+		shutil.rmtree("testoutput")
 		
 	def test_ignore_decreased_insertions(self):
 		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
@@ -49,9 +49,11 @@ class TestAlbaTraDIS(unittest.TestCase):
 
 		t = AlbaTraDIS(TestOptions([case, control], 3, 100, 100, False, 'testoutputx', 1, 1, 1, 1, False,1,0, emblfile, 0.9999, False, False, 100))
 		self.assertTrue(t.run())
+		self.assertFalse(os.path.exists('.output.pdf'))
+		self.assertFalse(os.path.exists('.output.csv'))
 		
-		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_no_decrease.plot'), os.path.join('testoutputx_1', 'combined.plot') ))
-		shutil.rmtree("testoutputx_1")
+		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_no_decrease.plot'), os.path.join('testoutputx', 'combined.plot') ))
+		shutil.rmtree("testoutputx")
 		
 	def test_small_use_annotation(self):
 		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
@@ -60,6 +62,6 @@ class TestAlbaTraDIS(unittest.TestCase):
     
 		t = AlbaTraDIS(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 1, True,1,0, emblfile, 0.1, False, True, 100))
 		self.assertTrue(t.run())
-		self.assertTrue(os.path.exists('testoutput_1'))
-		shutil.rmtree("testoutput_1")
+		self.assertTrue(os.path.exists('testoutput'))
+		shutil.rmtree("testoutput")
 		

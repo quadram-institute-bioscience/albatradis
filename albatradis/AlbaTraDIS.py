@@ -3,6 +3,7 @@ import logging
 import os
 import sys
 import time
+import re
 
 from albatradis.BlockInsertions import BlockInsertions
 from albatradis.NormalisePlots import NormalisePlots
@@ -47,10 +48,34 @@ class AlbaTraDIS:
 			plotfiles = n.create_normalised_files()
 			report_decreased_insertions = n.decreased_insertion_reporting()
 		
-		for i in range(1,self.iterations+1):
-			bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.prefix + "_" +str(i), self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions,self.strict_signal,self.use_annotation, self.prime_feature_size)
+		if self.iterations == 1:
+			bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.prefix, self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions,self.strict_signal,self.use_annotation, self.prime_feature_size)
 			bi.run()
 			self.blocks = bi.blocks
 			plotfiles = bi.output_plots.values()
+		else:
 		
+			for i in range(1,self.iterations+1):
+				bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.prefix + "_" +str(i), self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions,self.strict_signal,self.use_annotation, self.prime_feature_size)
+				bi.run()
+				self.blocks = bi.blocks
+				plotfiles = bi.output_plots.values()
+		
+		self.cleanup()
 		return self
+		
+	def cleanup(self):
+		for f in ['.output.pdf', '.output.csv']:
+			if os.path.exists(f):
+				os.remove(f)
+				
+		# remove any tmp files left over
+		for dirname, dirnames, filenames in os.walk(self.prefix):
+			for filename in filenames:
+				deletion_regex = "^tmp........$"
+				full_path_of_file_for_deletion = os.path.join(self.prefix, filename)
+				if(re.match(str(deletion_regex), filename) != None and os.path.exists(full_path_of_file_for_deletion)):
+					if self.verbose > 0:
+						print("Deleting file: "+ os.path.join(directory_to_search, filename) + " regex:"+deletion_regex)
+					os.remove(full_path_of_file_for_deletion)
+		
