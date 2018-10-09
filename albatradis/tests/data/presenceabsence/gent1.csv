@@ -22,7 +22,7 @@ tsaA	unclassified	215373	216081	11	increased_insertions	forward
 rcsF	increased_mutants_at_end_of_gene	216077	216482	11	increased_insertions	forward
 rrsH	unclassified	220257	221799	12	increased_insertions	forward
 ileV	over_50_perc_inactivation	221867	221944	11	increased_insertions	forward
-alaV	total_inactivation	221986	222062	11	increased_insertions	forward
+alaV	knockout	221986	222062	11	increased_insertions	forward
 rrlH	increased_mutants_at_start_of_gene	222245	225149	13	increased_insertions	forward
 lfhA	increased_mutants_at_end_of_gene	244844	246557	10	increased_insertions	nodirection
 pepD	unclassified	250745	252203	10	increased_insertions	forward
@@ -60,9 +60,9 @@ kdpD	unclassified	717185	719870	10	increased_insertions	reverse
 kdpB	unclassified	720443	722492	10	increased_insertions	forward
 rhsC	unclassified	725038	729232	10	increased_insertions	forward
 gltA	unclassified	748640	749924	10	increased_insertions	nodirection
-cydA	total_inactivation	766913	768482	18	increased_insertions	reverse
-cydB	total_inactivation	768497	769637	18	increased_insertions	reverse
-cydX	total_inactivation	769651	769765	18	increased_insertions	reverse
+cydA	knockout	766913	768482	18	increased_insertions	reverse
+cydB	knockout	768497	769637	18	increased_insertions	reverse
+cydX	knockout	769651	769765	18	increased_insertions	reverse
 ybgE	unclassified	769764	770058	18	increased_insertions	reverse
 galK	increased_mutants_at_end_of_gene	784286	785435	10	increased_insertions	nodirection
 moaE	increased_mutants_at_start_of_gene	814750	815203	10	increased_insertions	nodirection
@@ -70,7 +70,7 @@ glnH	increased_mutants_at_end_of_gene	842713	843460	10	increased_insertions	forw
 moeB	unclassified	859835	860585	10	increased_insertions	nodirection
 ybjL	increased_mutants_at_end_of_gene	883589	885275	11	increased_insertions	forward
 hcr	increased_mutants_at_start_of_gene	906637	907606	10	increased_insertions	reverse
-cydC	total_inactivation	922929	924651	13	increased_insertions	nodirection
+cydC	knockout	922929	924651	13	increased_insertions	nodirection
 cydD	over_70_perc_inactivation	924651	926418	13	increased_insertions	nodirection
 lrp	unclassified	928050	928545	10	increased_insertions	forward
 ftsK	unclassified	928679	932669	11	increased_insertions	forward

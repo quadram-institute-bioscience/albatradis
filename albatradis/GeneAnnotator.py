@@ -31,7 +31,7 @@ class GeneAnnotator:
 			for b in overlapping_blocks:
 				g.upstream.append(self.find_upstream_gene(b,gene_number))
 				if self.is_feature_contained_within_block(b, f):
-					g.categories.append('total_inactivation')
+					g.categories.append('knockout')
 				elif self.is_block_near_end_of_feature(b, f):
 					if b.max_logfc > 0 :
 						g.categories.append('increased_mutants_at_end_of_gene')
@@ -174,48 +174,50 @@ class GeneAnnotator:
 		return False
 		
 		
+	def regulation(self,strand, prime, directions):
+		if prime == '5' and strand == 1 and 'forward' in directions:
+			return 'upregulated'
+		elif prime == '5' and strand == -1 and 'reverse' in directions:
+			return 'upregulated'
+		elif prime == '3' and strand == 1 and 'reverse' in directions:
+			return 'downregulated'
+		elif prime == '3' and strand == -1 and 'forward' in directions:
+			return 'downregulated'
+		else:
+			return None
+		
 	def reannotate_5_3_prime(self,genes):
 		name_to_genes = { g.gene_name: g for g in genes}
 		
 		filtered_names_to_genes = {}
-		
-		# 5 prime
-		for name, gene in name_to_genes.items():
-			if 'nodirection' in [b.direction for b in gene.blocks]:
-				continue
-			
-			res = re.search("^(.+)__5prime$", name)
-			if res:
-				found_gene_name = res.group(1)
-				if found_gene_name not in name_to_genes:
-					filtered_names_to_genes[found_gene_name] = Gene(self.embl_reader.genes_to_features[found_gene_name], [])
-				else:
-					filtered_names_to_genes[found_gene_name] = name_to_genes[found_gene_name]
-				filtered_names_to_genes[found_gene_name].five_prime = gene
 
-				if filtered_names_to_genes[found_gene_name].feature.strand == 1 and 'forward' in gene.blocks:
-					filtered_names_to_genes[found_gene_name].categories.append('upregulated')
-				elif filtered_names_to_genes[found_gene_name].feature.strand == -1 and 'reverse' in gene.blocks:
-					filtered_names_to_genes[found_gene_name].categories.append('upregulated')
-				
-		# 3 prime
 		for name, gene in name_to_genes.items():
-			if 'nodirection' in [b.direction for b in gene.blocks]:
-				continue
-				
-			res = re.search("^(.+)__3prime$", name)
+			directions = list(set([b.direction for b in gene.blocks]))
+			
+			if 'nodirection' in directions:
+				continue	
+			# 5 prime
+			res = re.search("^(.+)__([35])prime$", name)
 			if res:
 				found_gene_name = res.group(1)
+				prime_end = res.group(2)
 				if found_gene_name not in name_to_genes:
 					filtered_names_to_genes[found_gene_name] = Gene(self.embl_reader.genes_to_features[found_gene_name], [])
+					filtered_names_to_genes[found_gene_name].blocks = gene.blocks
+					
+					
+					regulation_category = self.regulation(filtered_names_to_genes[found_gene_name].feature.strand,prime_end, directions)
+					if regulation_category:
+						filtered_names_to_genes[found_gene_name].categories.append(regulation_category)
+					else:
+						del filtered_names_to_genes[found_gene_name]
+					
 				else:
 					filtered_names_to_genes[found_gene_name] = name_to_genes[found_gene_name]
-				filtered_names_to_genes[found_gene_name].three_prime = gene
-				
-				if filtered_names_to_genes[found_gene_name].feature.strand == 1 and 'reverse' in gene.blocks:
-					filtered_names_to_genes[found_gene_name].categories.append('downregulated')
-				elif filtered_names_to_genes[found_gene_name].feature.strand == -1 and 'forward' in gene.blocks:
-					filtered_names_to_genes[found_gene_name].categories.append('downregulated')
+					regulation_category = self.regulation(filtered_names_to_genes[found_gene_name].feature.strand,prime_end, directions)
+					if regulation_category:
+						filtered_names_to_genes[found_gene_name].categories.append(regulation_category)
+
 				
 		# carry over non prime genes
 		for name, gene in name_to_genes.items():

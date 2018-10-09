@@ -20,8 +20,12 @@ class Gene:
 			return "unknown"
 		
 	def category(self):
-		if 'total_inactivation' in self.categories:
-			return 'total_inactivation'
+		if 'knockout' in self.categories:
+			return 'knockout'
+		elif 'upregulated' in self.categories:
+			return 'upregulated'
+		elif 'downregulated' in self.categories:
+			return 'downregulated'
 		else:
 			return "/".join(list(set(self.categories)))
 			

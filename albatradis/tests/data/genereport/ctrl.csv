@@ -34,7 +34,7 @@ ushA	unclassified	500369	502022	10	increased_insertions	reverse
 glsA	unclassified	507096	508029	10	increased_insertions	forward
 qmcA	unclassified	510311	511229	10	increased_insertions	nodirection
 fetB	increased_mutants_at_end_of_gene	512038	512818	10	increased_insertions	reverse
-unknown	total_inactivation	512824	512850	10	increased_insertions	reverse
+unknown	knockout	512824	512850	10	increased_insertions	reverse
 ybbN	increased_mutants_at_start_of_gene	512880	513735	10	increased_insertions	reverse
 ybbP	unclassified	515871	518286	10	increased_insertions	forward
 fdrA	increased_mutants_at_end_of_gene	542135	543803	10	increased_insertions	nodirection
@@ -43,7 +43,7 @@ entF	unclassified	609612	613494	10	increased_insertions	reverse
 dsbG	unclassified	633282	634029	10	increased_insertions	forward
 citG	unclassified	642086	642965	10	increased_insertions	reverse
 citX	increased_mutants_at_start_of_gene	642939	643491	10	increased_insertions	reverse
-unknown	total_inactivation	650007	650030	10	increased_insertions	nodirection
+unknown	knockout	650007	650030	10	increased_insertions	nodirection
 dcuC	increased_mutants_at_end_of_gene	650038	651424	10	increased_insertions	nodirection
 ybeU	unclassified	674963	675671	10	increased_insertions	forward
 djlC	unclassified	675667	677119	10	increased_insertions	forward
