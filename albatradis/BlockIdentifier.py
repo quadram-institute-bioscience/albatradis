@@ -9,7 +9,7 @@ class BlockIdentifier:
 		self.forward_mask_file = forward_mask_file
 		self.reverse_mask_file = reverse_mask_file
 		self.window_size = window_size
-		self.logfc_direction_change = 2
+		self.logfc_direction_change = 1
 	
 	def increased_insertions_blocks(self, masking_plot):
 		blocks = []
@@ -78,14 +78,14 @@ class BlockIdentifier:
 		if forward_max_logfc > reverse_max_logfc:
 			if reverse_max_logfc == 0:
 				return 'forward'
-			elif forward_max_logfc > reverse_max_logfc + self.logfc_direction_change:
+			elif forward_max_logfc >= reverse_max_logfc + self.logfc_direction_change:
 				return 'forward'
 			else:
 				return 'nodirection'
 		else:
 			if forward_max_logfc == 0:
 				return 'reverse'
-			elif reverse_max_logfc > forward_max_logfc + self.logfc_direction_change:
+			elif reverse_max_logfc >= forward_max_logfc + self.logfc_direction_change:
 				return 'reverse'
 			else:
 				return 'nodirection'
