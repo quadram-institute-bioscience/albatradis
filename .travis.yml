@@ -1,16 +1,24 @@
-language: perl
+language: python
+python:
+  - "3.5"
+  - "3.6"
+sudo: false
 addons:
   apt:
     packages:
-    - zlib1g-dev
-perl:
-  - "5.18"
-sudo: false
+    - cython
+	- zlib1g-dev
+cache:
+  directories:
+  - "build"
+  - "$HOME/.cache/pip"
 install:
-  - "source ./install_dependencies.sh"
+  - source ./install_dependencies.sh
+  - pip3 install cython
+  - python3 setup.py install
 before_script:
-  - cpanm --quiet --notest Dist::Zilla::App::Command::cover
-  - cpanm --quiet --notest --skip-satisfied Devel::Cover::Report::Codecov
-script: "dzil test"
+  - pip3 install codecov
+script:
+  - coverage run setup.py test
 after_success:
-  - dzil cover -test -report codecov
+  - codecov
