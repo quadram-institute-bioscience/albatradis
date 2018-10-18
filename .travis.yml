@@ -1,0 +1,16 @@
+language: perl
+addons:
+  apt:
+    packages:
+    - zlib1g-dev
+perl:
+  - "5.18"
+sudo: false
+install:
+  - "source ./install_dependencies.sh"
+before_script:
+  - cpanm --quiet --notest Dist::Zilla::App::Command::cover
+  - cpanm --quiet --notest --skip-satisfied Devel::Cover::Report::Codecov
+script: "dzil test"
+after_success:
+  - dzil cover -test -report codecov
