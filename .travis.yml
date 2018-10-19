@@ -7,7 +7,7 @@ addons:
   apt:
     packages:
     - cython
-	- zlib1g-dev
+    - zlib1g-dev
 cache:
   directories:
   - "build"
