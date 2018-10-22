@@ -104,5 +104,10 @@ cd $start_dir
 # Install Bio-TraDIS
 cpanm -f Bio::Tradis
 
+echo $PATH
+which tradis_gene_insert_sites
+which tradis_essentiality.R
+which tradis_comparison.R
+
 set +x
 set +e
