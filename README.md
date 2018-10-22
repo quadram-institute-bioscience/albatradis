@@ -23,12 +23,12 @@ pip3 install git+git://github.com/quadram-institute-bioscience/albatradis.git
 Install [Docker](https://www.docker.com/).  There is a docker container which gets automatically built from the latest version of AlbaTraDIS. To install it:
 
 ```
-docker pull andrewjpage/tiptoft
+docker pull quadraminstitute/albatradis
 ```
 
 To use it you would use a command such as this (substituting in your filename/directories), using the example file in this respository:
 ```
-docker run --rm -it -v /path/to/example_data:/example_data andrewjpage/tiptoft tiptoft /example_data/ERS654932_plasmids.fastq.gz
+docker run --rm -it -v /path/to/example_data:/example_data quadraminstitute/albatradis albatradis xxxxx
 ```
 
 
