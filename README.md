@@ -1,3 +1,10 @@
+# AlbaTraDIS
+[![Build Status](https://travis-ci.org/quadram-institute-bioscience/albatradis.svg?branch=master)](https://travis-ci.org/quadram-institute-bioscience/albatradis)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-brightgreen.svg)](https://github.com/quadram-institute-bioscience/albatradis/blob/master/LICENSE)
+[![codecov](https://codecov.io/gh/quadram-institute-bioscience/albatradis/branch/master/graph/badge.svg)](https://codecov.io/gh/quadram-institute-bioscience/albatradis)
+[![Docker Build Status](https://img.shields.io/docker/build/quadraminstitutebioscience/albatradis.svg)](https://hub.docker.com/r/quadraminstitutebioscience/albatradis)
+[![Docker Pulls](https://img.shields.io/docker/pulls/quadraminstitutebioscience/albatradis.svg)](https://hub.docker.com/r/quadraminstitutebioscience/albatradis)  
+
 # Usage
 
 ## albatradis

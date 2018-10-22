@@ -8,6 +8,7 @@ addons:
     packages:
     - cython
     - zlib1g-dev
+    - perl
 cache:
   directories:
   - "build"
