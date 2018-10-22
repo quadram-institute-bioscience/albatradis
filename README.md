@@ -5,6 +5,34 @@
 [![Docker Build Status](https://img.shields.io/docker/build/quadraminstitutebioscience/albatradis.svg)](https://hub.docker.com/r/quadraminstitutebioscience/albatradis)
 [![Docker Pulls](https://img.shields.io/docker/pulls/quadraminstitutebioscience/albatradis.svg)](https://hub.docker.com/r/quadraminstitutebioscience/albatradis)  
 
+# Installation
+## Ubuntu/Debian
+To install AlbaTraDIS on a recent version of Ubuntu or Debian run:
+```
+sudo apt-get update -qq
+sudo apt-get install -y sudo smalt samtools tabix make wget unzip zlib1g-dev cpanminus gcc bzip2 libncurses5-dev libncursesw5-dev libssl-dev r-base git python3 python3-setuptools python3-biopython python3-pip 
+
+cpanm -f Bio::Tradis
+Rscript -e "source('http://bioconductor.org/biocLite.R')" -e "biocLite(c('edgeR','getopt', 'MASS'))"
+
+pip3 install cython
+pip3 install git+git://github.com/quadram-institute-bioscience/albatradis.git
+```
+
+## Docker
+Install [Docker](https://www.docker.com/).  There is a docker container which gets automatically built from the latest version of AlbaTraDIS. To install it:
+
+```
+docker pull andrewjpage/tiptoft
+```
+
+To use it you would use a command such as this (substituting in your filename/directories), using the example file in this respository:
+```
+docker run --rm -it -v /path/to/example_data:/example_data andrewjpage/tiptoft tiptoft /example_data/ERS654932_plasmids.fastq.gz
+```
+
+
+
 # Usage
 
 ## albatradis
