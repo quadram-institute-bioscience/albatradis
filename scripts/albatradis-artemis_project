@@ -16,7 +16,7 @@ except pkg_resources.DistributionNotFound:
 
 parser = argparse.ArgumentParser(
 	description = 'Create an artemis project file',
-	usage = 'albatradis [options] reference experiments_metadata.csv', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+	usage = 'albatradis-artemis_project [options] reference experiments_metadata.csv', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('reference', help='reference EMBL file', type=str)	
 parser.add_argument('experiments_metadata', help='experiments metadata spreadsheet', type=str)
 

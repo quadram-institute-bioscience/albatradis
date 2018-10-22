@@ -16,7 +16,7 @@ except pkg_resources.DistributionNotFound:
 
 parser = argparse.ArgumentParser(
 	description = 'Create scatter plot of controls vs conditions',
-	usage = 'albatradis [options] --control control1.plot --control control2.plot --condition condition1.plot --condition condition2.plot', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+	usage = 'albatradis-scatterplot [options] --control control1.plot --control control2.plot --condition condition1.plot --condition condition2.plot', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
 parser.add_argument('--control', '-c',  help='control files (use 2 or more)', type=str, action='append')
 parser.add_argument('--condition', '-d',  help='condition files (use 2 or more)', type=str, action='append')
