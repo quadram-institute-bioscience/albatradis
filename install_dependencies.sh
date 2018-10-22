@@ -105,9 +105,9 @@ cd $start_dir
 cpanm -f Bio::Tradis
 
 echo $PATH
-which tradis_gene_insert_sites
-which tradis_essentiality.R
-which tradis_comparison.R
+
+find /home/travis -name 'tradis_gene_insert_sites'
+
 
 set +x
 set +e
