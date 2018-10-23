@@ -5,8 +5,21 @@
 [![Docker Build Status](https://img.shields.io/docker/build/andrewjpage/albatradis.svg)](https://hub.docker.com/r/andrewjpage/albatradis)
 [![Docker Pulls](https://img.shields.io/docker/pulls/andrewjpage/albatradis.svg)](https://hub.docker.com/r/andrewjpage/albatradis)  
 
-# Installation
-## Ubuntu/Debian
+## Contents
+  * [Introduction](#introduction)
+  * [Installation](#installation)
+    * [Ubuntu/Debian](#ubuntudebian)
+    * [Docker](#docker)
+  * [Usage](#usage)
+  * [License](#license)
+  * [Feedback/Issues](#feedbackissues)
+  * [Citation](#citation)
+
+## Introduction
+AlbaTraDIS is a software application for performing rapid large-scale comparative analysis of TraDIS experiments whilst also predicting the impact of inserts on nearby genes.
+
+## Installation
+### Ubuntu/Debian
 To install AlbaTraDIS on a recent version of Ubuntu ('artful' or newer) or Debian run:
 ```
 sudo apt-get update -qq
@@ -28,7 +41,7 @@ pip3 install cython
 pip3 install git+git://github.com/quadram-institute-bioscience/albatradis.git
 ```
 
-## Docker
+### Docker
 Install [Docker](https://www.docker.com/).  There is a docker container which gets automatically built from the latest version of AlbaTraDIS. To install it:
 
 ```
@@ -40,9 +53,9 @@ To use it you would use a command such as this (substituting in your filename/di
 docker run --rm -it -v /path/to/example_data:/example_data andrewjpage/albatradis albatradis xxxxx
 ```
 
-# Usage
+## Usage
 
-## albatradis
+### albatradis
 
 This is the main script for the application. 
 
@@ -102,14 +115,14 @@ optional arguments:
   --version             show program's version number and exit
 ```
 
-### Positional arguments
+#### Positional arguments
 
 __emblfile__: This is an annotated reference genome in EMBL format. It can be downloaded from the EBI website.
 
 __plot_files__: These are insert site plot files, generated using ```bacteria_tradis``` script. The same reference genome must be used in all cases and must match the emblfile. 
 Conditions are provided first, followed by controls. The number of conditions must match the number of controls, with a minimum of 1 of each. Ideally you need 2 or more of each.
  
-### Optional arguments
+#### Optional arguments
 
 __span_gaps__: When blocks of significat change in insertions are detected they can be fragmented, possibly being at the start and end of a gene and missing in the middle. This option allows you to span these gaps to form more contigous blocks, giving neater results. If you set this too high, then different distinct mechanisms will be merged together, giving you erroneous results.
 
@@ -142,9 +155,9 @@ __window_interval__: The number of bases to move along when using sliding window
 __window_size__: The size of the sliding window in bases. If you set this too high you will only get very strong signals so will miss quite a bit. If you set this too low you will get a huge amount of false positives due to the natural experimental variation. The window size should be about 10 times the average insertion density, so if there are insertions every 10 bases, the window size should be 100 bases.
 
 
-### Output files
+#### Output files
 
-## albatradis-presence_absence
+### albatradis-presence_absence
 
 After you have run the albatradis script, it produces gene_report files. This script performs comparitive analysis and outputs heatmaps, combined spreadsheets, figures and trees (dendrograms).
 
@@ -167,20 +180,20 @@ optional arguments:
   --version             show program's version number and exit
 ```
 
-### Positional arguments
+#### Positional arguments
 
 __emblfile__: This is an annotated reference genome in EMBL format. It can be downloaded from the EBI website.
 
 __genereports__: One of the outputs of the albatradis script is a gene_report.csv file. You will have 1 of these for each condition, and so providing all of them here will allow for the comparison of conditions. Its probably best to add the name of your condition into the file name to make it easier to identify in the output.
 
-### Optional arguments
+#### Optional arguments
 
 __prefix__: This is the output directory prefix and there are a number of output files.
 
 
-### Output files
+#### Output files
 
-## albatradis-gene_reports
+### albatradis-gene_reports
 This is a helper script that you may never need as the functionality is used within the albatradis-presence_absence script. You can take multiple gene_report.csv files and perform set operations on them. It is useful if you know that a few conditions should be merged together as the mechanisms are identical.
 
 ```
@@ -201,17 +214,17 @@ optional arguments:
   --version             show program's version number and exit
 ```
 
-### Positional arguments
+#### Positional arguments
 
 __genereports__: One of the outputs of the albatradis script is a gene_report.csv file. You will have 1 of these for each condition.
 
-### Optional arguments
+#### Optional arguments
 
 __prefix__: This is the output directory prefix and there are a number of output files.
 
-### Output files
+#### Output files
 
-## albatradis-scatterplot
+### albatradis-scatterplot
 
 This script produces scatterplots of your input data plotted against itself and the controls. It is useful as a QC metric to see if the data is biased. Basically you take sliding windows, count the number of reads in each window, then plot those values against the other condition and against the others. This is on a log scale and the outliers are the interesting points.
 
@@ -237,13 +250,13 @@ optional arguments:
   --version             show program's version number and exit
 ```
 
-### Positional arguments
+#### Positional arguments
 
 __control___: The insert site plots of the controls, where you must have 2 or more.
 
 __condition__: The insert site plots of the conditions, where you must have 2 or more.
 
-### Optional arguments
+#### Optional arguments
 
 __window_size___: The size of the window in bases. The interval is set to the window_size.
 
@@ -252,10 +265,10 @@ __outputfile__: The output file prefix.
 __normalise__: Normalise the input files reads to the input file with the largest number of reads.
 
 
-### Output files
+#### Output files
 
 
-## albatradis-annotation
+### albatradis-annotation
 Take in an EMBL file and add flanking 3 prime and 5 prime annotation. It is used as part of the albatradis --use_annotation feature, so you may not need it, as the annotated file is saved in the output directory.  
 
 ```
@@ -278,23 +291,23 @@ optional arguments:
   --version             show program's version number and exit
 ```
 
-### Positional arguments
+#### Positional arguments
 
 __emblfile__: This is an annotated reference genome in EMBL format. It can be downloaded from the EBI website.
 
-### Optional arguments
+#### Optional arguments
 
 __feature_size__: When you --use_annotation 5' and 3' features are created around each gene. This controls the size of those features in bases.
 
 __outputfile__: The name of the output file
 
-### Output files
+#### Output files
 
 __output.embl__: The original EMBL file, plus annotated 5' and 3' features, to give another EMBL file, including the reference genome sequence.
 
 
 
-## albatradis-artemis_project
+### albatradis-artemis_project
 Sometimes you want to view the insert site plots in Artemis. It can be quite a manual task to open up different replicates and combinations. This script will generate a project.properties file from a spreadsheet which gets automatically loaded by Artemis (from the current working directory). This then makes it quicker to view multiple different insert site plots.
 
 ```
@@ -317,15 +330,24 @@ optional arguments:
   --debug               Turn on debugging (default: False)
   --version             show program's version number and exit
 ```
-### Positional arguments
+#### Positional arguments
 
 __reference__: This is an annotated reference genome in EMBL format. It can be downloaded from the EBI website.
 __experiments_metadata__: A comma separated spreadsheet in the format of "Drug,Pathway,DetailedPathway,Impact,MIC,Induction,Rep1,Rep2".
 
 
-### Optional arguments
+#### Optional arguments
 __control__: Path to the control files.
 
 __outputfile__: The name of the Artemis project file. If you change this, then Artemis wont work.
+
+## License
+AlbaTraDIS is free software, licensed under [GPLv3](https://raw.githubusercontent.com/quadram-institute-bioscience/albatradis/master/VERSION/LICENSE).
+
+## Feedback/Issues
+Please report any issues or to provide feedback please go to the [issues page](https://github.com/quadram-institute-bioscience/albatradis/issues). If you make improvements to the software, please send us the changes though a [pull request](https://github.com/quadram-institute-bioscience/albatradis/pulls) so that the whole community may benefit from your work.
+
+## Citation
+Coming soon
 
 
