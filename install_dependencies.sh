@@ -87,6 +87,19 @@ else
   make prefix=${samtools_dir} install
 fi
 
+# Bio-TraDIS
+cd $build_dir
+BIO_TRADIS_URL="https://github.com/sanger-pathogens/Bio-Tradis.git"
+tradis_dir=$(pwd)/"Bio-Tradis"
+
+git clone $BIO_TRADIS_URL
+cd $tradis_dir
+dzil authordeps --missing | cpanm --notest
+dzil listdeps --missing | cpanm --notest
+
+BT_LIB=$(pwd)/lib
+export PERL5LIB=${BT_LIB}:${PERL5LIB}
+
 # Setup environment variables
 update_path () {
   new_dir=$1
@@ -98,12 +111,10 @@ update_path () {
 update_path ${smalt_dir}
 update_path "${tabix_dir}"
 update_path "${samtools_dir}"
+update_path "${tradis_dir}/bin"
 
 cd $start_dir
 
-# Install Bio-TraDIS
-cpanm -f Bio::Tradis
-update_path "/home/travis/perl5/bin"
 
 set +x
 set +e
