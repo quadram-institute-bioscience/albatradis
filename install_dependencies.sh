@@ -4,12 +4,9 @@ set -x
 set -e
 perlbrew init
 
-
-export PERLBREW_HOME=/home/travis/.perlbrew
-export PERLBREW_MANPATH=/home/travis/perl5/perlbrew/perls/5.14/man
-export PERLBREW_PATH=/home/travis/perl5/perlbrew/bin
-export PERLBREW_ROOT=/home/travis/perl5/perlbrew
-
+source ~/perl5/perlbrew/etc/bashrc
+perlbrew --notest install perl-5.24.4
+perlbrew use 5.24.4
 start_dir=$(pwd)
 
 SMALT_VERSION="0.7.6"
@@ -99,7 +96,9 @@ cd $build_dir
 BIO_TRADIS_URL="https://github.com/sanger-pathogens/Bio-Tradis.git"
 tradis_dir=$(pwd)/"Bio-Tradis"
 
-git clone $BIO_TRADIS_URL
+if [ ! -d $samtools_dir ]; then
+  git clone $BIO_TRADIS_URL
+fi
 cd $tradis_dir
 dzil authordeps --missing | cpanm --notest
 dzil listdeps --missing | cpanm --notest
