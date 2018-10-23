@@ -2,7 +2,13 @@
 
 set -x
 set -e
-perlbrew use 5.14
+perlbrew init
+
+
+export PERLBREW_HOME=/home/travis/.perlbrew
+export PERLBREW_MANPATH=/home/travis/perl5/perlbrew/perls/5.14/man
+export PERLBREW_PATH=/home/travis/perl5/perlbrew/bin
+export PERLBREW_ROOT=/home/travis/perl5/perlbrew
 
 start_dir=$(pwd)
 
