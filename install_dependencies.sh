@@ -104,10 +104,7 @@ cd $start_dir
 # Install Bio-TraDIS
 cpanm -f Bio::Tradis
 
-echo $PATH
-
-find /home/travis -name 'tradis_gene_insert_sites'
-
+tradis_gene_insert_sites
 
 set +x
 set +e

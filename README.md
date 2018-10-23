@@ -2,8 +2,8 @@
 [![Build Status](https://travis-ci.org/quadram-institute-bioscience/albatradis.svg?branch=master)](https://travis-ci.org/quadram-institute-bioscience/albatradis)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-brightgreen.svg)](https://github.com/quadram-institute-bioscience/albatradis/blob/master/LICENSE)
 [![codecov](https://codecov.io/gh/quadram-institute-bioscience/albatradis/branch/master/graph/badge.svg)](https://codecov.io/gh/quadram-institute-bioscience/albatradis)
-[![Docker Build Status](https://img.shields.io/docker/build/quadraminstitutebioscience/albatradis.svg)](https://hub.docker.com/r/quadraminstitutebioscience/albatradis)
-[![Docker Pulls](https://img.shields.io/docker/pulls/quadraminstitutebioscience/albatradis.svg)](https://hub.docker.com/r/quadraminstitutebioscience/albatradis)  
+[![Docker Build Status](https://img.shields.io/docker/build/andrewjpage/albatradis.svg)](https://hub.docker.com/r/andrewjpage/albatradis)
+[![Docker Pulls](https://img.shields.io/docker/pulls/andrewjpage/albatradis.svg)](https://hub.docker.com/r/andrewjpage/albatradis)  
 
 # Installation
 ## Ubuntu/Debian
@@ -23,12 +23,12 @@ pip3 install git+git://github.com/quadram-institute-bioscience/albatradis.git
 Install [Docker](https://www.docker.com/).  There is a docker container which gets automatically built from the latest version of AlbaTraDIS. To install it:
 
 ```
-docker pull quadraminstitute/albatradis
+docker pull andrewjpage/albatradis
 ```
 
 To use it you would use a command such as this (substituting in your filename/directories), using the example file in this respository:
 ```
-docker run --rm -it -v /path/to/example_data:/example_data quadraminstitute/albatradis albatradis xxxxx
+docker run --rm -it -v /path/to/example_data:/example_data andrewjpage/albatradis albatradis xxxxx
 ```
 
 
