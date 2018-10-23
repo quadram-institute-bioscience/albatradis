@@ -2,6 +2,7 @@
 
 set -x
 set -e
+perlbrew use 5.14
 
 start_dir=$(pwd)
 
