@@ -103,6 +103,7 @@ cd $start_dir
 
 # Install Bio-TraDIS
 cpanm -f Bio::Tradis
+update_path "/home/travis/perl5/perlbrew/bin"
 
 tradis_gene_insert_sites
 

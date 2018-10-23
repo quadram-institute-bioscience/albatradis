@@ -7,10 +7,19 @@
 
 # Installation
 ## Ubuntu/Debian
-To install AlbaTraDIS on a recent version of Ubuntu or Debian run:
+To install AlbaTraDIS on a recent version of Ubuntu ('artful' or newer) or Debian run:
 ```
 sudo apt-get update -qq
-sudo apt-get install -y sudo smalt samtools tabix make wget unzip zlib1g-dev cpanminus gcc bzip2 libncurses5-dev libncursesw5-dev libssl-dev r-base git python3 python3-setuptools python3-biopython python3-pip 
+sudo apt-get install -y sudo bio-tradis git python3 python3-setuptools python3-biopython python3-pip 
+
+pip3 install cython
+pip3 install git+git://github.com/quadram-institute-bioscience/albatradis.git
+```
+
+If you have an older version run:
+```
+sudo apt-get update -qq
+sudo apt-get install -y sudo smalt samtools tabix make wget unzip zlib1g-dev cpanminus gcc bzip2 libncurses5-dev libncursesw5-dev libssl-dev r-base git python3 python3-setuptools python3-biopython python3-pip
 
 cpanm -f Bio::Tradis
 Rscript -e "source('http://bioconductor.org/biocLite.R')" -e "biocLite(c('edgeR','getopt', 'MASS'))"
@@ -30,8 +39,6 @@ To use it you would use a command such as this (substituting in your filename/di
 ```
 docker run --rm -it -v /path/to/example_data:/example_data andrewjpage/albatradis albatradis xxxxx
 ```
-
-
 
 # Usage
 
@@ -104,7 +111,7 @@ Conditions are provided first, followed by controls. The number of conditions mu
  
 ### Optional arguments
 
-__span_gaps___: When blocks of significat change in insertions are detected they can be fragmented, possibly being at the start and end of a gene and missing in the middle. This option allows you to span these gaps to form more contigous blocks, giving neater results. If you set this too high, then different distinct mechanisms will be merged together, giving you erroneous results.
+__span_gaps__: When blocks of significat change in insertions are detected they can be fragmented, possibly being at the start and end of a gene and missing in the middle. This option allows you to span these gaps to form more contigous blocks, giving neater results. If you set this too high, then different distinct mechanisms will be merged together, giving you erroneous results.
 
 __iterations__: You can iteratively look for the highest signals, identify them, report them, then mask them out, and start again. This allows you to progressively identify weaker signals which may be overwhelmed ordinarily. There is no automatic stop, so if you do too many iterations, you will increase the number of false positives.
 
