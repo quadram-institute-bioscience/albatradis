@@ -2,11 +2,7 @@
 
 set -x
 set -e
-perlbrew init
 
-source ~/perl5/perlbrew/etc/bashrc
-perlbrew --notest install perl-5.24.4
-perlbrew use 5.24.4
 start_dir=$(pwd)
 
 SMALT_VERSION="0.7.6"
@@ -91,21 +87,6 @@ else
   make prefix=${samtools_dir} install
 fi
 
-# Bio-TraDIS
-cd $build_dir
-BIO_TRADIS_URL="https://github.com/sanger-pathogens/Bio-Tradis.git"
-tradis_dir=$(pwd)/"Bio-Tradis"
-
-if [ ! -d $samtools_dir ]; then
-  git clone $BIO_TRADIS_URL
-fi
-cd $tradis_dir
-dzil authordeps --missing | cpanm --notest
-dzil listdeps --missing | cpanm --notest
-
-BT_LIB=$(pwd)/lib
-export PERL5LIB=${BT_LIB}:${PERL5LIB}
-
 # Setup environment variables
 update_path () {
   new_dir=$1
@@ -120,6 +101,8 @@ update_path "${samtools_dir}"
 update_path "${tradis_dir}/bin"
 
 cd $start_dir
+
+sudo cpanm -f Bio::Tradis
 
 
 set +x
