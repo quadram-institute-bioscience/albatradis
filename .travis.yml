@@ -1,26 +1,7 @@
-language: python
-python:
-  - "3.6"
-addons:
-  apt:
-    packages:
-    - cython
-    - zlib1g-dev
-    - perl
-    - r-base
-cache:
-  directories:
-  - "build"
-  - "$HOME/.cache/pip"
-  - "$HOME/perl5"
-sudo: false
+sudo: required
+services:
+  - docker
 install:
-  - source ./install_dependencies.sh
-  - pip3 install cython
-  - python3 setup.py install
-before_script:
-  - pip3 install codecov
+  - docker pull andrewjpage/albatradis
 script:
-  - coverage run setup.py test
-after_success:
-  - codecov
+  - docker run --rm -it andrewjpage/albatradis /bin/sh -c "git clone https://github.com/andrewjpage/albatradis.git && cd albatradis && python3 setup.py test"
