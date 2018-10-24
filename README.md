@@ -16,26 +16,17 @@
   * [Citation](#citation)
 
 ## Introduction
-AlbaTraDIS is a software application for performing rapid large-scale comparative analysis of TraDIS experiments whilst also predicting the impact of inserts on nearby genes.
+AlbaTraDIS is a software application for performing rapid large-scale comparative analysis of TraDIS experiments whilst also predicting the impact of inserts on nearby genes. It allows for experiements with multiple conditions to be easily analysed using statistical methods developed in the Bio-TraDIS toolkit.
 
 ## Installation
+The software in this repository is straightforward to install, however the Bio-TraDIS toolkit is more complex. If you just want to quickly try out the software please try Docker.
+
 ### Ubuntu/Debian
-To install AlbaTraDIS on a recent version of Ubuntu ('artful' or newer) or Debian run:
+There is a debian package available, however it only partially works, so please dont use it.  To install AlbaTraDIS on Ubuntu or Debian run:
 ```
-sudo apt-get update -qq
-sudo apt-get install -y sudo bio-tradis git python3 python3-setuptools python3-biopython python3-pip 
-
-pip3 install cython
-pip3 install git+git://github.com/quadram-institute-bioscience/albatradis.git
-```
-
-If you have an older version run:
-```
-sudo apt-get update -qq
-sudo apt-get install -y sudo smalt samtools tabix make wget unzip zlib1g-dev cpanminus gcc bzip2 libncurses5-dev libncursesw5-dev libssl-dev r-base git python3 python3-setuptools python3-biopython python3-pip
-
-cpanm -f Bio::Tradis
-Rscript -e "source('http://bioconductor.org/biocLite.R')" -e "biocLite(c('edgeR','getopt', 'MASS'))"
+sudo apt-get update -qq && apt-get install -y sudo bio-tradis git python3 python3-setuptools python3-biopython python3-pip cpanminus libncursesw5-dev libssl-dev
+sudo cpanm -f IPC::System::Simple DateTime::Locale DateTime Bio::Tradis
+sudo Rscript -e "source('http://bioconductor.org/biocLite.R')" -e "biocLite(c('edgeR','getopt', 'MASS'))"
 
 pip3 install cython
 pip3 install git+git://github.com/quadram-institute-bioscience/albatradis.git
@@ -156,6 +147,34 @@ __window_size__: The size of the sliding window in bases. If you set this too hi
 
 
 #### Output files
+
+__annotation.embl__: This file contains a modified version of the input annotation file in EMBL format. For example, it adds 5' and 3' features to each gene. It can be visualised in Artemis.
+
+__gene_report.csv__: This is the main results file in the output of the script. It contains a tab delimited spreadsheet detailing genes identified as being interesting, in the below format. The first column is the gene name derived from the input annotation file. If a signal is identified in an intergenic region, the start and end coordinates are given. The next column is a categorisation of the mechanism, such as up or down regulation, knockout, unclassified etc.... The 3rd and 4th columns are the coordinates of the start and end of the gene, relative to the input annotation file. The MaxLogFC is the maximum log fold change in the signal observed in the gene (or in the 5'/3'). It is rounded to the nearest integer. The expression column indicates if the gene is experiencing an increase or decrease in insertions. The direction column indicates which direction the significant insertions where primarily detected in (or no direction if both apply). Finally the last column gives the upstream gene, which is often implicated in the mechanism.
+
+|Gene|Category|Start|End|MaxLogFC|Expression|Direction|Upstream|
+|____|____|____|____|____|____|____|____|
+|zabC|downregulated|100|500|1|increased_insertions|forward|abc|
+|yxxY|upregulated|135|234|1|decreased_insertions|reverse|efg|
+
+
+__combined.csv__: This comma delimited spreadsheet is the output of the Bio-TraDIS toolkit, with additional essentiality categoristations, and an example is listed below. This is the raw data from which the gene_report.csv is derived. It lists each gene or sliding window, and optionally the corresponding 5' and 3' features for a gene. The first 2 columns list the names of the gene or give the coordinates of the sliding window. The 3rd column lists the annotated function of the gene (if available in the annotation file). The numerical columns are derived from EdgeR. The 4th column gives the log fold change between the conditions and the controls. The 5th column gives the log counts per million, which can be thought of as relative abundance. The final column indicate how the essentiality has changed between the conditions and the controls, so a gene can always be non-essential in both the controls and the conditions or essential in all cases. More interestingly though is where there is a change in essentiality between the control and the conditions, indicating a large mechanistic change. 
+
+|locus_tag|gene_name|function|logFC|logCPM|PValue|q.value|Essentiality|
+|____|____|____|____|____|____|____|____|
+|thrL|thrL|product|-0.4327|4.1269|0.5477|0.8177|always_nonessential|
+|thrL__5prime|thrL__5prime|product|-0.1208|4.5885|0.8555|0.9521|always_nonessential|
+|thrL__3prime|thrL__3prime|product|1.0268|4.9723|0.1227|0.4258|always_nonessential|
+
+__forward.csv__: This is identical to the combined.csv file, except only insertions in the forward direction were considered during the analysis.
+
+__reverse.csv__: This is identical to the combined.csv file, except only insertions in the reverse direction were considered during the analysis.
+
+__combined.plot__: This is the log fold change of each gene or sliding window, in a User plot format suitable for viewing in Artemis. It consists of 2 space delimited integers on each line, where a line corresponds to a base in the reference genome. A positive integer means there has been an increase in insertions, and a negative integer means there has been a decrease in insertions.
+
+__forward.plot__: This is identical to the combined.plot file, except only insertions in the forward direction were considered during the analysis. 
+
+__reverse.plot__: This is identical to the combined.plot file, except only insertions in the reverse direction were considered during the analysis. 
 
 ### albatradis-presence_absence
 
