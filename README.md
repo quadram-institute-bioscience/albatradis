@@ -1,7 +1,6 @@
 # AlbaTraDIS
 [![Build Status](https://travis-ci.org/quadram-institute-bioscience/albatradis.svg?branch=master)](https://travis-ci.org/quadram-institute-bioscience/albatradis)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-brightgreen.svg)](https://github.com/quadram-institute-bioscience/albatradis/blob/master/LICENSE)
-[![codecov](https://codecov.io/gh/quadram-institute-bioscience/albatradis/branch/master/graph/badge.svg)](https://codecov.io/gh/quadram-institute-bioscience/albatradis)
 [![Docker Build Status](https://img.shields.io/docker/build/andrewjpage/albatradis.svg)](https://hub.docker.com/r/andrewjpage/albatradis)
 [![Docker Pulls](https://img.shields.io/docker/pulls/andrewjpage/albatradis.svg)](https://hub.docker.com/r/andrewjpage/albatradis)  
 
@@ -152,19 +151,18 @@ __annotation.embl__: This file contains a modified version of the input annotati
 
 __gene_report.csv__: This is the main results file in the output of the script. It contains a tab delimited spreadsheet detailing genes identified as being interesting, in the below format. The first column is the gene name derived from the input annotation file. If a signal is identified in an intergenic region, the start and end coordinates are given. The next column is a categorisation of the mechanism, such as up or down regulation, knockout, unclassified etc.... The 3rd and 4th columns are the coordinates of the start and end of the gene, relative to the input annotation file. The MaxLogFC is the maximum log fold change in the signal observed in the gene (or in the 5'/3'). It is rounded to the nearest integer. The expression column indicates if the gene is experiencing an increase or decrease in insertions. The direction column indicates which direction the significant insertions where primarily detected in (or no direction if both apply). Finally the last column gives the upstream gene, which is often implicated in the mechanism.
 
-|Gene|Category|Start|End|MaxLogFC|Expression|Direction|Upstream|
-|____|____|____|____|____|____|____|____|
-|zabC|downregulated|100|500|1|increased_insertions|forward|abc|
-|yxxY|upregulated|135|234|1|decreased_insertions|reverse|efg|
-
+|  Gene | Category | Start | End | MaxLogFC | Expression | Direction | Upstream |
+|  --- | --- | --- | --- | --- | --- | --- | --- |
+|  zabC | downregulated | 100 | 500 | 1 | increased_insertions | forward | abc |
+|  yxxY | upregulated | 135 | 234 | 1 | decreased_insertions | reverse | efg |
 
 __combined.csv__: This comma delimited spreadsheet is the output of the Bio-TraDIS toolkit, with additional essentiality categoristations, and an example is listed below. This is the raw data from which the gene_report.csv is derived. It lists each gene or sliding window, and optionally the corresponding 5' and 3' features for a gene. The first 2 columns list the names of the gene or give the coordinates of the sliding window. The 3rd column lists the annotated function of the gene (if available in the annotation file). The numerical columns are derived from EdgeR. The 4th column gives the log fold change between the conditions and the controls. The 5th column gives the log counts per million, which can be thought of as relative abundance. The final column indicate how the essentiality has changed between the conditions and the controls, so a gene can always be non-essential in both the controls and the conditions or essential in all cases. More interestingly though is where there is a change in essentiality between the control and the conditions, indicating a large mechanistic change. 
 
-|locus_tag|gene_name|function|logFC|logCPM|PValue|q.value|Essentiality|
-|____|____|____|____|____|____|____|____|
-|thrL|thrL|product|-0.4327|4.1269|0.5477|0.8177|always_nonessential|
-|thrL__5prime|thrL__5prime|product|-0.1208|4.5885|0.8555|0.9521|always_nonessential|
-|thrL__3prime|thrL__3prime|product|1.0268|4.9723|0.1227|0.4258|always_nonessential|
+| locus_tag | gene_name | function | logFC | logCPM | PValue | q.value | Essentiality |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| thrL | thrL | product | -0.4327 | 4.1269 | 0.5477 | 0.8177 | always_nonessential |
+| thrL__5prime | thrL__5prime | product | -0.1208 | 4.5885 | 0.8555 | 0.9521 | always_nonessential |
+| thrL__3prime | thrL__3prime | product | 1.0268 | 4.9723 | 0.1227 | 0.4258 | always_nonessential |
 
 __forward.csv__: This is identical to the combined.csv file, except only insertions in the forward direction were considered during the analysis.
 
@@ -211,6 +209,30 @@ __prefix__: This is the output directory prefix and there are a number of output
 
 
 #### Output files
+__all_logfc.csv__: A tab delimited spreadsheet containing the log fold change integer value for every gene against every condition. It is usually a huge big sparse matrix, so its best to process it with a script.
+
+| Sample | aaaA | bbbB | cccC | dddD |
+| ------ | ---- | ---- | ---- | ---- |
+| Cond1  | 1    | -1   | 0    | 0    |
+| Cond2  | 0    | 1    | 16   | 0    |
+| Cond3  | 0    | 8    | 0    | 0    |
+| Cond4  | 1    | 0    | 9    | 0    |
+
+__filtered_logfc.csv__: Identical to the all_logfc.csv file, except genes only genes with a significant signal in at least 1 condition are kept. This is much easier to look at manually.
+
+__full_heatmap.png__: A visual representation of the data in all_logfc.csv in PNG format.
+
+__filtered_heatmap.png__: A visual representation of the data in filtered_logfc.csv in PNG format.
+
+__distance_matrix_dendrogram.png__: A simple dendrogram  (tree) figure in PNG format of the relationships between the conditions, based on the number of shared genes with significant signals. 
+
+__nj_newick_tree.tre__: A neighbour joining tree in Newick format, created from a distance matrix, based on the number of shared genes with significant signals. This tree can be visualised in FigTree or any number of different applications.
+
+__logfc.dot__: A graph representation of the shared genes between conditions in DOT format. This is a standard graphing format, with substantial support API supoort. It can be interactively visualised with Gephi. There is 1 node for each condition and signficiatn gene. The edges represent where a gene is found in a condition, linking the two nodes. This then nicely shows the network of shared mechanisms of action.
+
+__union_gene_report.csv__: A comma separated spreadsheet in the same format as the gene_report.csv file, consisting of a union of all of the input files. A gene is represented by 1 row.
+
+__intersection_gene_report.csv__: A comma separated spreadsheet in the same format as the gene_report.csv file, consisting of the intersection of all of the input files. So only genes which are found in every condition (common modes of action) are in the file. A gene is represented by 1 row.
 
 ### albatradis-gene_reports
 This is a helper script that you may never need as the functionality is used within the albatradis-presence_absence script. You can take multiple gene_report.csv files and perform set operations on them. It is useful if you know that a few conditions should be merged together as the mechanisms are identical.
