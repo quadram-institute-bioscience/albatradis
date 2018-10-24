@@ -6,6 +6,7 @@ set -e
 start_dir=$(pwd)
 
 cpanm --local-lib=~/perl5 local::lib && eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
+Rscript -e "source('http://bioconductor.org/biocLite.R')" -e "biocLite(c('edgeR','getopt', 'MASS'))"
 
 SMALT_VERSION="0.7.6"
 TABIX_VERSION="master"

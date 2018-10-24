@@ -7,12 +7,14 @@ addons:
     - cython
     - zlib1g-dev
     - perl
+    - r-base
 cache:
   directories:
   - "build"
   - "$HOME/.cache/pip"
+  - "$HOME/perl5"
+sudo: false
 install:
-  - cpanm Dist::Zilla
   - source ./install_dependencies.sh
   - pip3 install cython
   - python3 setup.py install
