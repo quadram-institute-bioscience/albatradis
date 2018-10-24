@@ -265,6 +265,11 @@ __prefix__: This is the output directory prefix and there are a number of output
 
 #### Output files
 
+__union_gene_report.csv__: A comma separated spreadsheet in the same format as the gene_report.csv file, consisting of a union of all of the input files. A gene is represented by 1 row.
+
+__intersection_gene_report.csv__: A comma separated spreadsheet in the same format as the gene_report.csv file, consisting of the intersection of all of the input files. So only genes which are found in every condition (common modes of action) are in the file. A gene is represented by 1 row.
+
+
 ### albatradis-scatterplot
 
 This script produces scatterplots of your input data plotted against itself and the controls. It is useful as a QC metric to see if the data is biased. Basically you take sliding windows, count the number of reads in each window, then plot those values against the other condition and against the others. This is on a log scale and the outliers are the interesting points.
@@ -308,6 +313,8 @@ __normalise__: Normalise the input files reads to the input file with the larges
 
 #### Output files
 
+__scatter*.png__: Images of the scatterplots on a log scale in PNG format.
+
 
 ### albatradis-annotation
 Take in an EMBL file and add flanking 3 prime and 5 prime annotation. It is used as part of the albatradis --use_annotation feature, so you may not need it, as the annotated file is saved in the output directory.  
@@ -347,7 +354,6 @@ __outputfile__: The name of the output file
 __output.embl__: The original EMBL file, plus annotated 5' and 3' features, to give another EMBL file, including the reference genome sequence.
 
 
-
 ### albatradis-artemis_project
 Sometimes you want to view the insert site plots in Artemis. It can be quite a manual task to open up different replicates and combinations. This script will generate a project.properties file from a spreadsheet which gets automatically loaded by Artemis (from the current working directory). This then makes it quicker to view multiple different insert site plots.
 
@@ -374,13 +380,18 @@ optional arguments:
 #### Positional arguments
 
 __reference__: This is an annotated reference genome in EMBL format. It can be downloaded from the EBI website.
+
 __experiments_metadata__: A comma separated spreadsheet in the format of "Drug,Pathway,DetailedPathway,Impact,MIC,Induction,Rep1,Rep2".
 
-
 #### Optional arguments
+
 __control__: Path to the control files.
 
 __outputfile__: The name of the Artemis project file. If you change this, then Artemis wont work.
+
+#### Output files
+
+__project.properties__: The Artemis project file.
 
 ## License
 AlbaTraDIS is free software, licensed under [GPLv3](https://raw.githubusercontent.com/quadram-institute-bioscience/albatradis/master/VERSION/LICENSE).
