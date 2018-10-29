@@ -34,7 +34,7 @@ class HeatMap:
 	def create_heat_map(self):
 		int_values = [[int(y) for y in x] for x in self.reports_to_gene_logfc.values()]
 		
-		dims = (16.54, 23.4)
+		dims = (8.3, 11.7)
 		fig, ax = plt.subplots(figsize = dims)
 		data = pd.DataFrame(int_values, columns = self.gene_names, index=self.clean_filenames())
 

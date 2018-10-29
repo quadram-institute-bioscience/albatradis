@@ -226,13 +226,11 @@ class GeneAnnotator:
 				if name not in filtered_names_to_genes:
 					filtered_names_to_genes[name] = gene
 					
-		# If theres decreased insertions
-		#for name, gene in filtered_names_to_genes.items():
-		#	increased = [True for g in gene.blocks if g.expression == 'increased_insertions']
-		#	for b in filtered_names_to_genes[name].blocks:
-		#		if b.max_logfc < 0 and True in increased:
-		#			b.max_logfc *= -1
-		#		elif b.max_logfc > 0 and True not in increased:
-		#			b.max_logfc *= -1
+		# If there is downregulation make it negative
+		for name, gene in filtered_names_to_genes.items():
+			downreg = [True for g in gene.blocks if 'downregulated' in g.categories]
+			for b in filtered_names_to_genes[name].blocks:
+				if b.max_logfc >= 0 and True in downreg:
+					b.max_logfc *= -1
 
 		return [g for g in filtered_names_to_genes.values()]
