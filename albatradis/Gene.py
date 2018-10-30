@@ -43,6 +43,34 @@ class Gene:
 					return highest_logfc*-1
 		else:
 			return 0
+			
+			
+	def max_logfc_from_category(self):
+		l = self.max_logfc_from_blocks()
+		if self.category() == 'upregulated':
+			if l < 0:
+				return l*-1
+			else:
+				return l
+		elif self.category() == 'downregulated':
+			if l > 0:
+				return l*-1
+			else:
+				return l
+				
+		if self.expression_from_blocks() == 'increased_insertions':
+			if l < 0:
+				return l*-1
+			else:
+				return l
+		elif self.expression_from_blocks() == 'decreased_insertions':
+			if l > 0:
+				return l*-1
+			else:
+				return l
+				
+		return l
+			
 
 	def expression_from_blocks(self):
 		if self.blocks:
@@ -57,7 +85,7 @@ class Gene:
 			return ""
 
 	def __str__(self):
-		return "\t".join([str(self.gene_name), str(self.category()), str(self.feature.location.start), str(self.feature.location.end), str(self.max_logfc_from_blocks()),  str(self.expression_from_blocks()), str(self.direction_from_blocks()), str(self.upstream_gene())] )
+		return "\t".join([str(self.gene_name), str(self.category()), str(self.feature.location.start), str(self.feature.location.end), str(self.max_logfc_from_category()),  str(self.expression_from_blocks()), str(self.direction_from_blocks()), str(self.upstream_gene())] )
 		
 	def header(self):
 		return "\t".join(['Gene', 'Category', 'Start', 'End', 'MaxLogFC', 'Expression', 'Direction', 'Upstream'])

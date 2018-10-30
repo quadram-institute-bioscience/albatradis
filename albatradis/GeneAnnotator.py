@@ -67,7 +67,7 @@ class GeneAnnotator:
 			block.intergenic = True
 
 		reannotate_with_5_3_prime = self.reannotate_5_3_prime(genes)
-
+			
 		return reannotate_with_5_3_prime 
 		
 	def feature_to_gene_name(self, feature):
@@ -204,8 +204,7 @@ class GeneAnnotator:
 				if found_gene_name not in name_to_genes:
 					filtered_names_to_genes[found_gene_name] = Gene(self.embl_reader.genes_to_features[found_gene_name], [])
 					filtered_names_to_genes[found_gene_name].blocks = gene.blocks
-					
-					
+							
 					regulation_category = self.regulation(filtered_names_to_genes[found_gene_name].feature.strand,prime_end, directions)
 					if regulation_category:
 						filtered_names_to_genes[found_gene_name].categories.append(regulation_category)
@@ -224,26 +223,6 @@ class GeneAnnotator:
 			if not res:
 				if name not in filtered_names_to_genes:
 					filtered_names_to_genes[name] = gene
-					
-		filtered_names_to_genes = self.fix_pos_neg(filtered_names_to_genes)
 
 		return [g for g in filtered_names_to_genes.values()]
 		
-	def fix_pos_neg(self, filtered_names_to_genes):
-		for name, gene in filtered_names_to_genes.items():
-			
-			overall_expression = filtered_names_to_genes[name].expression_from_blocks()
-			for b in filtered_names_to_genes[name].blocks:
-				if b.max_logfc < 0 and overall_expression == 'increased_insertions':
-					b.max_logfc *= -1
-				elif b.max_logfc > 0 and overall_expression == 'decreased_insertions':
-					b.max_logfc *= -1
-			
-			# If there is downregulation make it negative, upregulation make it positive
-			cat = filtered_names_to_genes[name].category()
-			for b in filtered_names_to_genes[name].blocks:
-				if b.max_logfc >= 0 and cat == 'downregulated':
-					b.max_logfc *= -1	
-				elif b.max_logfc < 0 and cat == 'upregulated':
-					b.max_logfc *= -1
-		return filtered_names_to_genes
