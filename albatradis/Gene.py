@@ -35,7 +35,12 @@ class Gene:
 	def max_logfc_from_blocks(self):
 		if self.blocks:
 			all_logfc = [b.max_logfc for b in self.blocks]
-			return numpy.max(numpy.absolute(all_logfc))
+			highest_logfc = numpy.max(numpy.absolute(all_logfc))
+			for a in all_logfc:
+				if a == highest_logfc:
+					return highest_logfc
+				elif a == highest_logfc*-1:
+					return highest_logfc*-1
 		else:
 			return 0
 

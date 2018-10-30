@@ -75,6 +75,15 @@ class TestGeneAnnotator(unittest.TestCase):
 
 		self.assertEqual(1, len(genes))
 		self.assertEqual('fabI	upregulated	1344507	1345296	10	xx	reverse	yciW__3prime',str(genes[0]))
+		
+		
+	def test_downregulated_neg(self):
+		embl_file = os.path.join(data_dir,'annotation.embl')
+		blocks = [Block(90,110, 20, -10, 'decreased_insertions')]
+		blocks[0].direction = 'reverse'
+		a = GeneAnnotator(embl_file, blocks)
+		genes = a.annotate_genes()
+		self.assertEqual("1_100	decreased_mutants_at_end_of_gene	0	100	-10	decreased_insertions	reverse	NA", str(genes[0]))
 	
 	def test_real_annotation_prime(self):
 		blocks = [

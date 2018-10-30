@@ -169,6 +169,15 @@ class BlockInsertions:
 				
 			for b in intergenic_blocks:
 				bf.write(str(b)+"\n")
+			
+		# create a file just with the up and down regulated genes.	
+		regulated_genes = [g for g in genes if g.category == 'upregulated' or g.category == 'downregulated']
+		if len(regulated_genes) > 0:
+			block_filename = os.path.join(self.prefix, "regulated_gene_report.csv")
+			with open(block_filename, 'w') as bf:
+				bf.write(str(genes[0].header())+"\n")
+				for i in genes:
+					bf.write(str(i)+"\n")
 				
 		if self.verbose:
 			print(genes[0].header())		

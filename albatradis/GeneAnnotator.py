@@ -218,7 +218,6 @@ class GeneAnnotator:
 					if regulation_category:
 						filtered_names_to_genes[found_gene_name].categories.append(regulation_category)
 
-				
 		# carry over non prime genes
 		for name, gene in name_to_genes.items():
 			res = re.search("^(.+)__[35]prime$", name)
@@ -226,11 +225,29 @@ class GeneAnnotator:
 				if name not in filtered_names_to_genes:
 					filtered_names_to_genes[name] = gene
 					
-		# If there is downregulation make it negative
+		filtered_names_to_genes = self.fix_pos_neg(filtered_names_to_genes)
+
+		return [g for g in filtered_names_to_genes.values()]
+		
+	def fix_pos_neg(self, filtered_names_to_genes):
 		for name, gene in filtered_names_to_genes.items():
-			downreg = [True for g in gene.blocks if 'downregulated' in g.categories]
+			# If there are increased insertions make it pos, decreased make it neg
+			increased = [True for g in filtered_names_to_genes[name].blocks if g.expression == 'increased_insertions']
+			for b in filtered_names_to_genes[name].blocks:
+				if b.max_logfc < 0 and True in increased:
+					b.max_logfc *= -1
+				elif b.max_logfc > 0 and True not in increased:
+					b.max_logfc *= -1
+			
+			# If there is downregulation make it negative
+			downreg = [True for g in filtered_names_to_genes[name].categories if 'downregulated' == g]
 			for b in filtered_names_to_genes[name].blocks:
 				if b.max_logfc >= 0 and True in downreg:
 					b.max_logfc *= -1
-
-		return [g for g in filtered_names_to_genes.values()]
+					
+			# If there is upregulation make it positive
+			upreg = [True for g in filtered_names_to_genes[name].categories if 'upregulated' == g]
+			for b in filtered_names_to_genes[name].blocks:
+				if b.max_logfc < 0 and True in upreg:
+					b.max_logfc *= -1
+		return filtered_names_to_genes
