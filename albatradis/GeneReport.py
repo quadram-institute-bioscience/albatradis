@@ -13,9 +13,26 @@ class GeneReport:
 			reader = csv.reader(csvfile, delimiter='	')
 			all_data =  [r for r in reader if r[0] != 'Gene']
 		return all_data
+
+	def fix_sign_on_logfc(self,gene_all_data):
+		for r in gene_all_data:
+			r[4] = int(r[4])
+			if r[1] == 'upregulated':
+				if r[4] < 0:
+					r[4] *= -1
+			elif r[1] == 'downregulated':
+				if r[4] > 0:
+					r[4] *= -1
+			elif r[5] == 'increased_insertions':
+				if r[4] < 0:
+					r[4] *= -1
+			elif r[5] == 'decreased_insertions':
+				if r[4] > 0:
+					r[4] *= -1
+		return gene_all_data
 		
 	def read_csv(self, gene_all_data):
-		return {r[0]: r[4] for r in gene_all_data}
+		return {r[0]: r[4] for r in self.fix_sign_on_logfc(gene_all_data)}
 		
 	def genes_to_logfc(self, gene_names):
 		row = []
