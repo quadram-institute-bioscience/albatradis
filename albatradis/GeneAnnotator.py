@@ -236,7 +236,10 @@ class GeneAnnotator:
 			for b in filtered_names_to_genes[name].blocks:
 				if b.max_logfc < 0 and True in increased:
 					b.max_logfc *= -1
-				elif b.max_logfc > 0 and True not in increased:
+					
+			decreased = [True for g in filtered_names_to_genes[name].blocks if g.expression == 'decreased_insertions']
+			for b in filtered_names_to_genes[name].blocks:
+				if b.max_logfc > 0 and True in decreased:
 					b.max_logfc *= -1
 			
 			# If there is downregulation make it negative
