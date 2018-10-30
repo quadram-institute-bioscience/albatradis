@@ -231,26 +231,19 @@ class GeneAnnotator:
 		
 	def fix_pos_neg(self, filtered_names_to_genes):
 		for name, gene in filtered_names_to_genes.items():
-			# If there are increased insertions make it pos, decreased make it neg
-			increased = [True for g in filtered_names_to_genes[name].blocks if g.expression == 'increased_insertions']
+			
+			overall_expression = filtered_names_to_genes[name].expression_from_blocks()
 			for b in filtered_names_to_genes[name].blocks:
-				if b.max_logfc < 0 and True in increased:
+				if b.max_logfc < 0 and overall_expression == 'increased_insertions':
 					b.max_logfc *= -1
-					
-			decreased = [True for g in filtered_names_to_genes[name].blocks if g.expression == 'decreased_insertions']
-			for b in filtered_names_to_genes[name].blocks:
-				if b.max_logfc > 0 and True in decreased:
+				elif b.max_logfc > 0 and overall_expression == 'decreased_insertions':
 					b.max_logfc *= -1
 			
-			# If there is downregulation make it negative
-			downreg = [True for g in filtered_names_to_genes[name].categories if 'downregulated' == g]
+			# If there is downregulation make it negative, upregulation make it positive
+			cat = filtered_names_to_genes[name].category()
 			for b in filtered_names_to_genes[name].blocks:
-				if b.max_logfc >= 0 and True in downreg:
-					b.max_logfc *= -1
-					
-			# If there is upregulation make it positive
-			upreg = [True for g in filtered_names_to_genes[name].categories if 'upregulated' == g]
-			for b in filtered_names_to_genes[name].blocks:
-				if b.max_logfc < 0 and True in upreg:
+				if b.max_logfc >= 0 and cat == 'downregulated':
+					b.max_logfc *= -1	
+				elif b.max_logfc < 0 and cat == 'upregulated':
 					b.max_logfc *= -1
 		return filtered_names_to_genes

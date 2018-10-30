@@ -175,8 +175,8 @@ class BlockInsertions:
 		if len(regulated_genes) > 0:
 			block_filename = os.path.join(self.prefix, "regulated_gene_report.csv")
 			with open(block_filename, 'w') as bf:
-				bf.write(str(genes[0].header())+"\n")
-				for i in genes:
+				bf.write(str(regulated_genes[0].header())+"\n")
+				for i in regulated_genes:
 					bf.write(str(i)+"\n")
 				
 		if self.verbose:
