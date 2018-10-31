@@ -63,6 +63,10 @@ class BlockInsertions:
 			
 		if not os.path.exists(self.prefix ):
 			os.makedirs(self.prefix )
+			
+			
+		if self.use_annotation:
+			self.span_gaps = 0
 		
 	def run(self):
 		plotfile_objects = self.prepare_input_files()
