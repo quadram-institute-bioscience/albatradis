@@ -11,6 +11,8 @@ class TestBlockIdentifier(unittest.TestCase):
 	def test_block_identifier_normal_case(self):
 		b = BlockIdentifier(os.path.join(data_dir, 'normalcase'),os.path.join(data_dir, 'normalcase_forward'),os.path.join(data_dir, 'normalcase_reverse'), 1)
 		blocks = b.block_generator()
+	
+		
 		self.assertEqual(2, len(blocks))
 		
 		self.assertEqual([6, 14], [ x.start for x in blocks] )
@@ -36,4 +38,10 @@ class TestBlockIdentifier(unittest.TestCase):
 		self.assertEqual([3, 6], [ x.block_length for x in blocks] )
 		self.assertEqual(['forward', 'reverse'], [ x.direction for x in blocks] )
 		self.assertEqual(['increased_insertions', 'decreased_insertions'], [ x.expression for x in blocks] )
+		
+	def test_peak_from_array(self):
+		b = BlockIdentifier('','','', 1)
+		self.assertEqual(15, b.peak_from_array([1,5,10,15,0,1]))
+		self.assertEqual(-15, b.peak_from_array([-1,-5,-10,-15,0,-1]))
+		self.assertEqual(-15, b.peak_from_array([1,-5,10,-15,0,1]))
 		

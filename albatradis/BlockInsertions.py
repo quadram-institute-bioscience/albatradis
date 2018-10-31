@@ -161,16 +161,24 @@ class BlockInsertions:
 		if len(genes) == 0:
 			return []
 		
+		self.write_gene_report(genes, intergenic_blocks)
+		self.write_regulated_gene_report(genes, intergenic_blocks)
+				
+		if self.verbose:
+			self.print_genes_intergenic(genes,intergenic_blocks)
+		
+		return genes
+		
+	def write_gene_report(self, genes, intergenic_blocks):
 		block_filename = os.path.join(self.prefix, "gene_report.csv")
 		with open(block_filename, 'w') as bf:
 			bf.write(str(genes[0].header())+"\n")
 			for i in genes:
 				bf.write(str(i)+"\n")
-				
 			for b in intergenic_blocks:
 				bf.write(str(b)+"\n")
-			
-		# create a file just with the up and down regulated genes.	
+				
+	def write_regulated_gene_report(self, genes, intergenic_blocks):	
 		regulated_genes = [g for g in genes if g.category() == 'upregulated' or g.category() == 'downregulated']
 		if len(regulated_genes) > 0:
 			block_filename = os.path.join(self.prefix, "regulated_gene_report.csv")
@@ -179,15 +187,12 @@ class BlockInsertions:
 				for i in regulated_genes:
 					bf.write(str(i)+"\n")
 				
-		if self.verbose:
-			print(genes[0].header())		
-			for i in genes:
-				print(i)
-				
-			for b in intergenic_blocks:
-				print(b)
-		
-		return genes
+	def print_genes_intergenic_blocks(self, genes, intergenic_blocks):
+		print(genes[0].header())		
+		for i in genes:
+			print(i)
+		for b in intergenic_blocks:
+			print(b)
 		
 	def mask_plots(self):
 		pm = PlotMasking(self.plotfiles, self.combined_plotfile, self.strict_signal )
