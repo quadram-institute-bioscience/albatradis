@@ -151,9 +151,17 @@ class PlotLog:
 				if gene_name in genes_to_features:
 					start = genes_to_features[gene_name].location.start +1
 					end = genes_to_features[gene_name].location.end
-					#print(gene_name+ "\t"+str(start)+ "\t"+str(end))
 					logfc_coord_values.append(LogFC(int(start), int(end), logfc))
+					# A gene should only be identified once
+					del genes_to_features[gene_name]
 				else:
 					print("Couldnt find gene coordinates for "+ str(gene_name))
+					
+			# loop over all the remaining gene and give them a value of zero
+			for gene_name,feature in genes_to_features.items():
+				start = feature.location.start +1
+				end = feature.location.end
+				logfc_coord_values.append(LogFC(int(start), int(end), 0))
+			
 		return logfc_coord_values
 		
