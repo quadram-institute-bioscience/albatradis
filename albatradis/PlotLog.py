@@ -78,12 +78,14 @@ class PlotLog:
 	def genome_wide_logfc(self,logfc_coord_values):
 		logfc_to_bases = numpy.zeros(self.genome_length, dtype = int)
 		
+		# start with the largest signals and overwrite with smaller signals.
+		# prevents issues with overlapping blocks/genes
+		sorted_logfc_coord_values = sorted(logfc_coord_values, key = lambda l: (numpy.absolute(l.logfc_value)))
 		for l in logfc_coord_values:
 			abs_logfc_value = numpy.absolute(l.logfc_value)
 			
 			for i in range(l.start -1, l.end):
-				if logfc_to_bases[i] < abs_logfc_value:
-					logfc_to_bases[i] = l.logfc_value
+				logfc_to_bases[i] = l.logfc_value
 			
 		return self.span_block_gaps(self.filter_out_small_blocks(logfc_to_bases))
 			
