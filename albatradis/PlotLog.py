@@ -126,6 +126,7 @@ class PlotLog:
 		
 		genes_to_features = EMBLReader(self.embl_file).genes_to_features
 		
+		genes_seen = {}
 		with open(self.comparison_filename, newline='') as csvfile:
 			comparison_reader = csv.reader(csvfile, delimiter=',')
 			for row in comparison_reader:
@@ -153,15 +154,16 @@ class PlotLog:
 					end = genes_to_features[gene_name].location.end
 					logfc_coord_values.append(LogFC(int(start), int(end), logfc))
 					# A gene should only be identified once
-					del genes_to_features[gene_name]
+					genes_seen[gene_name] = 1
 				else:
 					print("Couldnt find gene coordinates for "+ str(gene_name))
 					
 			# loop over all the remaining gene and give them a value of zero
 			for gene_name,feature in genes_to_features.items():
-				start = feature.location.start +1
-				end = feature.location.end
-				logfc_coord_values.append(LogFC(int(start), int(end), 0))
+				if gene_name not in genes_seen:
+					start = feature.location.start +1
+					end = feature.location.end
+					logfc_coord_values.append(LogFC(int(start), int(end), 0))
 			
 		return logfc_coord_values
 		

@@ -46,13 +46,13 @@ class GeneAnnotator:
 			if len(g.categories) == 0:
 				p = self.proportion_blocks_overlap_with_gene(f, overlapping_blocks)
 				if p > 0.9:
-					g.categories.append('over_90_perc_inactivation')
+					g.categories.append('knockout')
 				elif p > 0.8:
-					g.categories.append('over_80_perc_inactivation')	
+					g.categories.append('knockout')	
 				elif p > 0.7:
-					g.categories.append('over_70_perc_inactivation')
+					g.categories.append('knockout')
 				elif p > 0.6:
-					g.categories.append('over_60_perc_inactivation')
+					g.categories.append('knockout')
 				elif p > 0.5:
 					g.categories.append('over_50_perc_inactivation')	
 			
