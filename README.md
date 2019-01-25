@@ -31,6 +31,14 @@ pip3 install cython
 pip3 install git+git://github.com/quadram-institute-bioscience/albatradis.git
 ```
 
+### Conda
+[![Anaconda-Server Badge](https://anaconda.org/bioconda/albatradis/badges/latest_release_date.svg)](https://anaconda.org/bioconda/albatradis)
+[![Anaconda-Server Badge](https://anaconda.org/bioconda/albatradis/badges/platforms.svg)](https://anaconda.org/bioconda/albatradis)
+[![Anaconda-Server Badge](https://anaconda.org/bioconda/albatradis/badges/downloads.svg)](https://anaconda.org/bioconda/albatradis)
+```
+conda install -c conda-forge -c bioconda albatradis
+```
+
 ### Docker
 Install [Docker](https://www.docker.com/).  There is a docker container which gets automatically built from the latest version of AlbaTraDIS. To install it:
 
