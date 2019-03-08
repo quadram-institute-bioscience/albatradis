@@ -30,6 +30,7 @@ parser.add_argument('--minimum_proportion_insertions', '-d', help='If the propor
 parser.add_argument('--dont_normalise_plots',  '-n', action='store_true', help='Dont normalise input plots', default = False)
 parser.add_argument('--prefix',                '-o',  help='Output directory prefix', type=str, default='output')
 parser.add_argument('--pvalue',                '-p',  help='Dont report anything above this p-value', type=float, default=0.05)
+parser.add_argument('--qvalue',                '-q',  help='Dont report anything above this q-value', type=float, default=0.05)
 parser.add_argument('--strict_signal',         '-g', action='store_true', help='A result must be present in the combined plots to be returned', default = False)
 parser.add_argument('--use_annotation',        '-a',  help='Use the reference annotation rather than a sliding window', action='store_true', default = False)
 parser.add_argument('--prime_feature_size',    '-z', help='Feature size when adding 5/3 prime block when --use_annotation', type=int, default=198)

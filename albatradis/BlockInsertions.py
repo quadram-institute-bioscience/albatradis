@@ -30,7 +30,7 @@ class PlotAllEssentiality:
 		self.embl_filename = embl_filename
 
 class BlockInsertions:
-	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, prefix, minimum_logcpm, minimum_block,span_gaps, emblfile, report_decreased_insertions, strict_signal, use_annotation, prime_feature_size):
+	def __init__(self, logger,plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc, pvalue, qvalue, prefix, minimum_logcpm, minimum_block,span_gaps, emblfile, report_decreased_insertions, strict_signal, use_annotation, prime_feature_size):
 		self.logger            = logger
 		self.plotfiles         = plotfiles
 		self.minimum_threshold = minimum_threshold
@@ -39,6 +39,7 @@ class BlockInsertions:
 		self.verbose           = verbose
 		self.minimum_logfc     = minimum_logfc
 		self.pvalue            = pvalue
+		self.qvalue            = qvalue
 		self.prefix            = prefix
 		self.minimum_logcpm    = minimum_logcpm
 		self.minimum_block     = minimum_block
@@ -132,7 +133,7 @@ class BlockInsertions:
 		
 		t = TradisComparison(files[:mid],files[mid:], self.verbose, self.minimum_block, only_ess_files[:mid], only_ess_files[mid:])
 		t.run()
-		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.minimum_logcpm, self.window_size, self.span_gaps, self.report_decreased_insertions, annotation_files[0])
+		p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.qvalue, self.minimum_logcpm, self.window_size, self.span_gaps, self.report_decreased_insertions, annotation_files[0])
 		p.construct_plot_file()
 		renamed_csv_file  = os.path.join(self.prefix, analysis_type + ".csv")
 		renamed_plot_file = os.path.join(self.prefix, analysis_type + ".plot")

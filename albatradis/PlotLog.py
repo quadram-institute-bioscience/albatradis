@@ -13,11 +13,12 @@ class LogFC:
 		self.logfc_value = logfc_value
 
 class PlotLog:
-	def __init__(self, comparison_filename, genome_length, minimum_logfc, pvalue, minimum_logcpm, window_size, span_gaps, report_decreased_insertions, embl_file):
+	def __init__(self, comparison_filename, genome_length, minimum_logfc, pvalue, qvalue, minimum_logcpm, window_size, span_gaps, report_decreased_insertions, embl_file):
 		self.comparison_filename = comparison_filename
 		self.genome_length  = genome_length
 		self.minimum_logfc  = minimum_logfc
 		self.pvalue         = pvalue
+		self.qvalue         = qvalue
 		self.minimum_logcpm = minimum_logcpm
 		self.window_size    = window_size
 		self.span_gaps      = span_gaps
@@ -132,14 +133,20 @@ class PlotLog:
 					 continue
 					 
 				logfc = int(float(row[3]))
+				temp_pval = int(float(row[5]))
+				temp_minlogpcm = int(float(row[4]))
+				temp_qval = int(float(row[6]))
 				
 				if not self.report_decreased_insertions and logfc < 0:
 					logfc = 0
 				
-				if numpy.absolute(logfc) < self.minimum_logfc or int(float(row[5])) >= self.pvalue:
+				if numpy.absolute(logfc) < self.minimum_logfc or temp_pval >= self.pvalue:
 					logfc = 0
 					
-				if numpy.absolute(int(float(row[4]))) < self.minimum_logcpm:
+				if numpy.absolute(temp_minlogpcm) < self.minimum_logcpm:
+					logfc = 0
+
+				if temp_qval >= self.qvalue:
 					logfc = 0
 					
 				# Get coordinates

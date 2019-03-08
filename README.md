@@ -96,6 +96,9 @@ optional arguments:
   --pvalue PVALUE, -p PVALUE
                         Dont report anything above this p-value (default:
                         0.05)
+  --qvalue QVALUE, -q QVALUE
+                        Dont report anything above this q-value (default:
+                        0.05)
   --strict_signal, -g   A result must be present in the combined plots to be
                         returned (default: False)
   --use_annotation, -a  Use the reference annotation rather than a sliding

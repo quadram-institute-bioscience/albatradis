@@ -6,6 +6,7 @@ import dendropy
 from dendropy.utility.textprocessing import StringIO
 from scipy.cluster.hierarchy import dendrogram, linkage
 from scipy.spatial.distance import squareform
+from scipy.cluster import hierarchy
 
 import matplotlib
 matplotlib.use('agg')
@@ -50,7 +51,7 @@ class PresenceAbsence:
 		
 		self.create_dot_graph_genes(os.path.join(self.prefix, 'logfc.dot'), self.filtered_gene_names, self.filtered_reports_to_gene_logfc)
 		
-		self.plot_distance_matrix(os.path.join(self.prefix, 'distance_matrix_dendrogram.png'))
+		self.plot_distance_matrix(os.path.join(self.prefix, 'distance_matrix_dendrogram.tre'))
 		self.create_nj_newick(os.path.join(self.prefix, 'nj_newick_tree.tre'))
 		
 		HeatMap(self.reports_to_gene_logfc, self.gene_names,os.path.join(self.prefix, 'full_heatmap.png')).create_heat_map()
@@ -141,16 +142,17 @@ class PresenceAbsence:
 				dist_row.append(self.pair_wise_distance(a,b))
 			distances.append(dist_row)
 		return distances
-		
+
 	def plot_distance_matrix(self, outputfile):
 		mat = numpy.array(self.distance_matrix())
 		dists = squareform(mat)
 		linkage_matrix = linkage(dists, "single")
-		dendrogram(linkage_matrix, labels=self.genereports )
 		plt.title("Distance matrix")
-		plt.savefig(outputfile)
-		
-		return self
+		tree = hierarchy.to_tree(linkage_matrix, False)
+		ntree = self.get_newick(tree, "", tree.dist, self.genereports)
+		with open(outputfile, 'w') as fh:
+			fh.write(ntree)
+
 		
 		
 	def nj_distance_matrix_str(self):
@@ -174,5 +176,18 @@ class PresenceAbsence:
 			fh.write(nj_tree.as_string("newick"))
 			
 		return self
-			
-				
+
+
+	def get_newick(self, node, newick, parentdist, leaf_names):
+		if node.is_leaf():
+			return "%s:%.2f%s" % (leaf_names[node.id], parentdist - node.dist, newick)
+		else:
+			if len(newick) > 0:
+				newick = "):%.2f%s" % (parentdist - node.dist, newick)
+			else:
+				newick = ");"
+			newick = self.get_newick(node.get_left(), newick, node.dist, leaf_names)
+			newick = self.get_newick(node.get_right(), ",%s" % (newick), node.dist, leaf_names)
+			newick = "(%s" % (newick)
+			return newick
+
