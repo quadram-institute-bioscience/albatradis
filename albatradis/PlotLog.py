@@ -133,9 +133,9 @@ class PlotLog:
 					 continue
 					 
 				logfc = int(float(row[3]))
-				temp_pval = int(float(row[5]))
+				temp_pval = float(row[5])
 				temp_minlogpcm = int(float(row[4]))
-				temp_qval = int(float(row[6]))
+				temp_qval = float(row[6])
 				
 				if not self.report_decreased_insertions and logfc < 0:
 					logfc = 0
