@@ -77,6 +77,6 @@ class AlbaTraDIS:
 				full_path_of_file_for_deletion = os.path.join(self.prefix, filename)
 				if(re.match(str(deletion_regex), filename) != None and os.path.exists(full_path_of_file_for_deletion)):
 					if self.verbose > 0:
-						print("Deleting file: "+ os.path.join(directory_to_search, filename) + " regex:"+deletion_regex)
+						print("Deleting file: "+ full_path_of_file_for_deletion + " regex:"+deletion_regex)
 					os.remove(full_path_of_file_for_deletion)
 		

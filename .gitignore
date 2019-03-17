@@ -105,6 +105,9 @@ ENV/
 
 .DS_Store
 
+# Idea project settings
+.idea/
+
 # mkdocs documentation
 /site
 

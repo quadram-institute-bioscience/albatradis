@@ -38,4 +38,3 @@ class TestPlotLog(unittest.TestCase):
 		p = PlotLog('x', 20, 2, 0.05, 0.05, 1, 4, 1, True, None)
 		l = p.span_block_gaps([0,0,0,-9,-9,-9,0,0,0,0,0,-8,-8,-8,-8,0,0,-7,-7,-7])
 		self.assertEqual([0,0,0,-9,-9,-9,0,0,0,0,0,-8,-8,-8,-8,-2,-2,-7,-7,-7],l )
-	

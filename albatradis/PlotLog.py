@@ -36,6 +36,7 @@ class PlotLog:
 		
 		self.create_csv(forward_logfc, reverse_logfc)
 
+
 		return self
 		
 	def create_csv(self, forward_logfc, reverse_logfc):
@@ -132,10 +133,12 @@ class PlotLog:
 				if logfc == 'logFC':
 					 continue
 					 
-				logfc = int(float(row[3]))
+				logfc = float(row[3])
 				temp_pval = float(row[5])
-				temp_minlogpcm = int(float(row[4]))
+				temp_logcpm = float(row[4])
 				temp_qval = float(row[6])
+
+
 				
 				if not self.report_decreased_insertions and logfc < 0:
 					logfc = 0
@@ -143,11 +146,13 @@ class PlotLog:
 				if numpy.absolute(logfc) < self.minimum_logfc or temp_pval >= self.pvalue:
 					logfc = 0
 					
-				if numpy.absolute(temp_minlogpcm) < self.minimum_logcpm:
+				if numpy.absolute(temp_logcpm) < self.minimum_logcpm:
 					logfc = 0
 
 				if temp_qval >= self.qvalue:
 					logfc = 0
+
+
 					
 				# Get coordinates
 				gene_name = row[0]
@@ -156,7 +161,8 @@ class PlotLog:
 				if gene_name in genes_to_features:
 					start = genes_to_features[gene_name].location.start +1
 					end = genes_to_features[gene_name].location.end
-					#print(gene_name+ "\t"+str(start)+ "\t"+str(end))
+
+					#print(gene_name+ "\t"+str(start)+ "\t"+str(end)+"\t", logfc)
 					logfc_coord_values.append(LogFC(int(start), int(end), logfc))
 				else:
 					print("Couldnt find gene coordinates for "+ str(gene_name))
