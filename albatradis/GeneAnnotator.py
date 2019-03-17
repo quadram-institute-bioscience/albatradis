@@ -46,13 +46,13 @@ class GeneAnnotator:
 			if len(g.categories) == 0:
 				p = self.proportion_blocks_overlap_with_gene(f, overlapping_blocks)
 				if p > 0.9:
-					g.categories.append('over_90_perc_inactivation')
+					g.categories.append('knockout')
 				elif p > 0.8:
-					g.categories.append('over_80_perc_inactivation')	
+					g.categories.append('knockout')	
 				elif p > 0.7:
-					g.categories.append('over_70_perc_inactivation')
+					g.categories.append('knockout')
 				elif p > 0.6:
-					g.categories.append('over_60_perc_inactivation')
+					g.categories.append('knockout')
 				elif p > 0.5:
 					g.categories.append('over_50_perc_inactivation')	
 			
@@ -67,7 +67,7 @@ class GeneAnnotator:
 			block.intergenic = True
 
 		reannotate_with_5_3_prime = self.reannotate_5_3_prime(genes)
-
+			
 		return reannotate_with_5_3_prime 
 		
 	def feature_to_gene_name(self, feature):
@@ -204,8 +204,7 @@ class GeneAnnotator:
 				if found_gene_name not in name_to_genes:
 					filtered_names_to_genes[found_gene_name] = Gene(self.embl_reader.genes_to_features[found_gene_name], [])
 					filtered_names_to_genes[found_gene_name].blocks = gene.blocks
-					
-					
+							
 					regulation_category = self.regulation(filtered_names_to_genes[found_gene_name].feature.strand,prime_end, directions)
 					if regulation_category:
 						filtered_names_to_genes[found_gene_name].categories.append(regulation_category)
@@ -218,21 +217,12 @@ class GeneAnnotator:
 					if regulation_category:
 						filtered_names_to_genes[found_gene_name].categories.append(regulation_category)
 
-				
 		# carry over non prime genes
 		for name, gene in name_to_genes.items():
 			res = re.search("^(.+)__[35]prime$", name)
 			if not res:
 				if name not in filtered_names_to_genes:
 					filtered_names_to_genes[name] = gene
-					
-		# If theres decreased insertions
-		#for name, gene in filtered_names_to_genes.items():
-		#	increased = [True for g in gene.blocks if g.expression == 'increased_insertions']
-		#	for b in filtered_names_to_genes[name].blocks:
-		#		if b.max_logfc < 0 and True in increased:
-		#			b.max_logfc *= -1
-		#		elif b.max_logfc > 0 and True not in increased:
-		#			b.max_logfc *= -1
 
 		return [g for g in filtered_names_to_genes.values()]
+		

@@ -41,6 +41,7 @@ class TestAlbaTraDIS(unittest.TestCase):
 		t = AlbaTraDIS(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 1, 1, True,1,0, emblfile, 0.1, False, False, 100))
 		self.assertTrue(t.run())
 		self.assertTrue(os.path.exists('testoutput'))
+		self.assertTrue(os.path.exists('testoutput/gene_report.csv'))
 		shutil.rmtree("testoutput")
 		
 	def test_ignore_decreased_insertions(self):

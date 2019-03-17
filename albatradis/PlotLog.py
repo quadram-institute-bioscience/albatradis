@@ -80,12 +80,14 @@ class PlotLog:
 	def genome_wide_logfc(self,logfc_coord_values):
 		logfc_to_bases = numpy.zeros(self.genome_length, dtype = int)
 		
+		# start with the largest signals and overwrite with smaller signals.
+		# prevents issues with overlapping blocks/genes
+		sorted_logfc_coord_values = sorted(logfc_coord_values, key = lambda l: (numpy.absolute(l.logfc_value)))
 		for l in logfc_coord_values:
 			abs_logfc_value = numpy.absolute(l.logfc_value)
 			
 			for i in range(l.start -1, l.end):
-				if logfc_to_bases[i] < abs_logfc_value:
-					logfc_to_bases[i] = l.logfc_value
+				logfc_to_bases[i] = l.logfc_value
 			
 		return self.span_block_gaps(self.filter_out_small_blocks(logfc_to_bases))
 			
@@ -126,6 +128,7 @@ class PlotLog:
 		
 		genes_to_features = EMBLReader(self.embl_file).genes_to_features
 		
+		genes_seen = {}
 		with open(self.comparison_filename, newline='') as csvfile:
 			comparison_reader = csv.reader(csvfile, delimiter=',')
 			for row in comparison_reader:
@@ -161,10 +164,18 @@ class PlotLog:
 				if gene_name in genes_to_features:
 					start = genes_to_features[gene_name].location.start +1
 					end = genes_to_features[gene_name].location.end
-
-					#print(gene_name+ "\t"+str(start)+ "\t"+str(end)+"\t", logfc)
 					logfc_coord_values.append(LogFC(int(start), int(end), logfc))
+					# A gene should only be identified once
+					genes_seen[gene_name] = 1
 				else:
 					print("Couldnt find gene coordinates for "+ str(gene_name))
+					
+			# loop over all the remaining gene and give them a value of zero
+			for gene_name,feature in genes_to_features.items():
+				if gene_name not in genes_seen:
+					start = feature.location.start +1
+					end = feature.location.end
+					logfc_coord_values.append(LogFC(int(start), int(end), 0))
+			
 		return logfc_coord_values
 		
