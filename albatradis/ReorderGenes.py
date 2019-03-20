@@ -16,7 +16,7 @@ class ReorderGenes:
 		for i,g in enumerate(self.gene_names):
 			logfc = []
 			for report_file in self.genereports:
-				logfc.append(int(self.reports_to_gene_logfc[report_file][i]))
+				logfc.append(float(self.reports_to_gene_logfc[report_file][i]))
 
 			gf = GeneToFiles(g, gene_to_files = logfc)
 			if gf.number_of_files > 0:

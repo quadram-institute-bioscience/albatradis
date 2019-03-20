@@ -32,7 +32,7 @@ class HeatMap:
 		return cleaned_names
 
 	def create_heat_map(self):
-		int_values = [[int(y) for y in x] for x in self.reports_to_gene_logfc.values()]
+		int_values = [[float(y) for y in x] for x in self.reports_to_gene_logfc.values()]
 		
 		dims = (8.3, 11.7)
 		fig, ax = plt.subplots(figsize = dims)

@@ -16,7 +16,7 @@ class GeneReport:
 
 	def fix_sign_on_logfc(self,gene_all_data):
 		for r in gene_all_data:
-			r[4] = int(r[4])
+			r[4] = float(r[4])
 			if r[1] == 'upregulated':
 				if r[4] < 0:
 					r[4] *= -1

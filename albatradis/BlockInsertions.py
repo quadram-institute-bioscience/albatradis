@@ -169,8 +169,8 @@ class BlockInsertions:
 		self.write_gene_report(genes, intergenic_blocks)
 		self.write_regulated_gene_report(genes, intergenic_blocks)
 				
-		if self.verbose:
-			self.print_genes_intergenic(genes,intergenic_blocks)
+		#if self.verbose:
+			#self.print_genes_intergenic(genes,intergenic_blocks)
 		
 		return genes
 		

@@ -73,7 +73,7 @@ class PresenceAbsence:
 			
 		for anti in self.genereports:
 			for i,logfc in enumerate(reports_to_gene_logfc[anti]):
-				if numpy.absolute(int(logfc)) > 0:
+				if numpy.absolute(float(logfc)) > 0:
 					dot.edge(anti, gene_names[i])
 				
 		with open(filename, 'w') as fh:
@@ -98,7 +98,7 @@ class PresenceAbsence:
 		gene_to_freq = {}
 		for i,g in enumerate(self.gene_names):
 			for report_file in self.genereports:
-				cell_logfc = numpy.absolute(int(self.reports_to_gene_logfc[report_file][i]))
+				cell_logfc = numpy.absolute(float(self.reports_to_gene_logfc[report_file][i]))
 				if cell_logfc > 0:
 					if g in gene_to_freq:
 						gene_to_freq[g] += 1 
@@ -116,7 +116,7 @@ class PresenceAbsence:
 		for i in sorted_gene_index:
 			g = self.gene_names[i]
 			for report_file in self.genereports:
-				if numpy.absolute(int(self.reports_to_gene_logfc[report_file][i])) > 0:
+				if numpy.absolute(float(self.reports_to_gene_logfc[report_file][i])) > 0:
 					genes_with_changes.append(g)
 					break
 		return genes_with_changes
@@ -125,8 +125,8 @@ class PresenceAbsence:
 	def pair_wise_distance(self, file_a, file_b):
 		distance = 0 
 		for i in range(len(self.filtered_gene_names)):
-			a_abs = numpy.absolute(int(self.filtered_reports_to_gene_logfc[file_a][i]))
-			b_abs = numpy.absolute(int(self.filtered_reports_to_gene_logfc[file_b][i]))
+			a_abs = numpy.absolute(float(self.filtered_reports_to_gene_logfc[file_a][i]))
+			b_abs = numpy.absolute(float(self.filtered_reports_to_gene_logfc[file_b][i]))
 			
 			if (a_abs == 0 and b_abs == 0) or (a_abs > 0 and b_abs > 0):
 				continue
