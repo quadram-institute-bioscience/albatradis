@@ -99,7 +99,7 @@ class PresenceAbsence:
 		for i,g in enumerate(self.gene_names):
 			for report_file in self.genereports:
 				cell_logfc = numpy.absolute(float(self.reports_to_gene_logfc[report_file][i]))
-				if cell_logfc > 0:
+				if cell_logfc > 0.0:
 					if g in gene_to_freq:
 						gene_to_freq[g] += 1 
 					else:
@@ -116,7 +116,7 @@ class PresenceAbsence:
 		for i in sorted_gene_index:
 			g = self.gene_names[i]
 			for report_file in self.genereports:
-				if numpy.absolute(float(self.reports_to_gene_logfc[report_file][i])) > 0:
+				if numpy.absolute(float(self.reports_to_gene_logfc[report_file][i])) > 0.0:
 					genes_with_changes.append(g)
 					break
 		return genes_with_changes
@@ -128,7 +128,7 @@ class PresenceAbsence:
 			a_abs = numpy.absolute(float(self.filtered_reports_to_gene_logfc[file_a][i]))
 			b_abs = numpy.absolute(float(self.filtered_reports_to_gene_logfc[file_b][i]))
 			
-			if (a_abs == 0 and b_abs == 0) or (a_abs > 0 and b_abs > 0):
+			if (a_abs == 0.0 and b_abs == 0.0) or (a_abs > 0.0 and b_abs > 0.0):
 				continue
 			else:
 				distance += 1 
