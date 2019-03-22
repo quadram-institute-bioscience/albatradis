@@ -23,7 +23,7 @@ class PlotParser:
 		self.total_insertions = sum([1 for a in self.combined if a > 0 ])
 		
 	def split_lines(self):
-		insert_site_array = pandas.read_csv(self.filename, delim_whitespace=True, dtype=int, engine='c', header=None).values
+		insert_site_array = pandas.read_csv(self.filename, delim_whitespace=True, dtype=float, engine='c', header=None).values
 
 		self.genome_length =  len(insert_site_array)
 		

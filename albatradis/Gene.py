@@ -36,17 +36,23 @@ class Gene:
 		if self.blocks:
 			all_logfc = [b.max_logfc for b in self.blocks]
 			highest_logfc = numpy.max(numpy.absolute(all_logfc))
+			if highest_logfc == 0:
+				print("zero in maxfc: ", self.gene_name)
 			for a in all_logfc:
 				if a == highest_logfc:
 					return highest_logfc
-				elif a == highest_logfc*-1:
-					return highest_logfc*-1
+				elif a == highest_logfc*-1.0:
+					return highest_logfc*-1.0
 		else:
+			print("zero returned in max_logfc_from_blocks: ", self.gene_name)
 			return 0
 			
 			
 	def max_logfc_from_category(self):
 		l = self.max_logfc_from_blocks()
+		if l == 0:
+			print("Zero found: " + self.calc_gene_name())
+
 		if self.category() == 'upregulated':
 			if l < 0:
 				return l*-1
@@ -68,7 +74,8 @@ class Gene:
 				return l*-1
 			else:
 				return l
-				
+
+		print("L:",  l)
 		return l
 			
 

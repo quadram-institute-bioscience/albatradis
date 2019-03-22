@@ -30,7 +30,7 @@ class PlotLog:
 	def construct_plot_file(self):
 		logfc_coord_values = self.read_comparison_file()
 		logfc_to_bases = self.genome_wide_logfc(logfc_coord_values)
-		
+
 		forward_logfc = [i if i >= 0 else 0 for i in logfc_to_bases]
 		reverse_logfc = [i if i < 0 else 0 for i in logfc_to_bases]
 		
@@ -78,13 +78,13 @@ class PlotLog:
 		return blocks	
 	
 	def genome_wide_logfc(self,logfc_coord_values):
-		logfc_to_bases = numpy.zeros(self.genome_length, dtype = int)
+		logfc_to_bases = numpy.zeros(self.genome_length)
 		
 		# start with the largest signals and overwrite with smaller signals.
 		# prevents issues with overlapping blocks/genes
-		sorted_logfc_coord_values = sorted(logfc_coord_values, key = lambda l: (numpy.absolute(l.logfc_value)))
+		#sorted_logfc_coord_values = sorted(logfc_coord_values, key = lambda l: (numpy.absolute(l.logfc_value)))
 		for l in logfc_coord_values:
-			abs_logfc_value = numpy.absolute(l.logfc_value)
+			#abs_logfc_value = numpy.absolute(l.logfc_value)
 			
 			for i in range(l.start -1, l.end):
 				logfc_to_bases[i] = l.logfc_value
@@ -144,16 +144,16 @@ class PlotLog:
 
 				
 				if not self.report_decreased_insertions and logfc < 0:
-					logfc = 0
+					logfc = 0.0
 				
 				if numpy.absolute(logfc) < self.minimum_logfc or temp_pval >= self.pvalue:
-					logfc = 0
+					logfc = 0.0
 					
 				if numpy.absolute(temp_logcpm) < self.minimum_logcpm:
-					logfc = 0
+					logfc = 0.0
 
 				if temp_qval >= self.qvalue:
-					logfc = 0
+					logfc = 0.0
 
 
 					
