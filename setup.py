@@ -27,7 +27,7 @@ setup(
     packages = find_packages(),
     author='Andrew J. Page',
     author_email='andrew.page@quadram.ac.uk',
-    url='xxxx',
+    url='https://github.com/quadram-institute-bioscience/albatradis',
 	ext_modules = extensions,
     scripts=glob.glob('scripts/*'),
     test_suite='nose.collector',
