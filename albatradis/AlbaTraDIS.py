@@ -19,6 +19,7 @@ class AlbaTraDIS:
 		self.verbose           = options.verbose
 		self.minimum_logfc     = options.minimum_logfc
 		self.pvalue            = options.pvalue
+		self.qvalue            = options.qvalue
 		self.prefix            = options.prefix
 		self.minimum_logcpm    = options.minimum_logcpm
 		self.iterations        = options.iterations
@@ -49,14 +50,14 @@ class AlbaTraDIS:
 			report_decreased_insertions = n.decreased_insertion_reporting()
 		
 		if self.iterations == 1:
-			bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.prefix, self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions,self.strict_signal,self.use_annotation, self.prime_feature_size)
+			bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.qvalue, self.prefix, self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions,self.strict_signal,self.use_annotation, self.prime_feature_size)
 			bi.run()
 			self.blocks = bi.blocks
 			plotfiles = bi.output_plots.values()
 		else:
 		
 			for i in range(1,self.iterations+1):
-				bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.prefix + "_" +str(i), self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions,self.strict_signal,self.use_annotation, self.prime_feature_size)
+				bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.qvalue, self.prefix + "_" +str(i), self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions,self.strict_signal,self.use_annotation, self.prime_feature_size)
 				bi.run()
 				self.blocks = bi.blocks
 				plotfiles = bi.output_plots.values()

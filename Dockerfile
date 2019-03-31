@@ -6,3 +6,4 @@ RUN Rscript -e "source('http://bioconductor.org/biocLite.R')" -e "biocLite(c('ed
 # AlbaTraDIS
 RUN pip3 install cython
 RUN pip3 install git+git://github.com/quadram-institute-bioscience/albatradis.git
+WORKDIR /work
