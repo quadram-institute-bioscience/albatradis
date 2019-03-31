@@ -28,7 +28,7 @@ sudo cpanm -f IPC::System::Simple DateTime::Locale DateTime Bio::Tradis
 sudo Rscript -e "source('http://bioconductor.org/biocLite.R')" -e "biocLite(c('edgeR','getopt', 'MASS'))"
 
 pip3 install cython
-pip3 install git+git://github.com/quadram-institute-bioscience/albatradis.git
+pip3 install albatradis
 ```
 
 ### Conda
