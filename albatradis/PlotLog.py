@@ -78,7 +78,7 @@ class PlotLog:
 		return blocks	
 	
 	def genome_wide_logfc(self,logfc_coord_values):
-		logfc_to_bases = numpy.zeros(self.genome_length)
+		logfc_to_bases = numpy.zeros(self.genome_length, dtype=int)
 		
 		# start with the largest signals and overwrite with smaller signals.
 		# prevents issues with overlapping blocks/genes
@@ -144,16 +144,16 @@ class PlotLog:
 
 				
 				if not self.report_decreased_insertions and logfc < 0:
-					logfc = 0.0
+					logfc = 0
 				
 				if numpy.absolute(logfc) < self.minimum_logfc or temp_pval >= self.pvalue:
-					logfc = 0.0
+					logfc = 0
 					
 				if numpy.absolute(temp_logcpm) < self.minimum_logcpm:
-					logfc = 0.0
+					logfc = 0
 
 				if temp_qval >= self.qvalue:
-					logfc = 0.0
+					logfc = 0
 
 
 					

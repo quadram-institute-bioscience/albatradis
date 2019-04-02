@@ -155,8 +155,6 @@ class BlockInsertions:
 	def gene_statistics(self,forward_plotfile, reverse_plotfile, combined_plotfile, window_size):
 		b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile, window_size)
 		blocks = b.block_generator()
-		for bl in blocks:
-			print("blockFC: ", str(bl.max_logfc))
 		annotationfile = self.emblfile 
 		if self.use_annotation:
 			annotationfile = self.annotation_file 
@@ -164,11 +162,6 @@ class BlockInsertions:
 		genes = GeneAnnotator(self.annotation_file , blocks).annotate_genes()
 		intergenic_blocks = [block for block in blocks if block.intergenic]
 
-		for g in genes:
-			if g.max_logfc_from_blocks() == 0:
-				print("MaxLFC from block is zero for: "+ g.gene_name)
-			if g.max_logfc_from_category() == 0:
-				print("MaxLFC from cat is zero for: " + g.gene_name)
 		
 		if len(genes) == 0:
 			return []

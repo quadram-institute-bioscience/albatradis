@@ -95,7 +95,7 @@ class ScatterPlot:
 		return self
 		
 	def abs_change_axis(self, coords):
-		abs_vals = numpy.array([numpy.absolute(numpy.subtract(coords[:,1],coords[:,0]), dtype = int)])
+		abs_vals = numpy.array([numpy.absolute(numpy.subtract(coords[:,1],coords[:,0]), dtype = float)])
 		index_array = numpy.array([coords[:,0]])
 		return numpy.append(abs_vals,index_array, axis=0).T
 
@@ -104,7 +104,7 @@ class ScatterPlot:
 		all_coordsout = []
 		for plot_obj_pair in itertools.combinations(plot_objs,2):
 			window_counts = [self.windows_count(plot_objs[p]) for p in plot_obj_pair] 
-			range_vals = [numpy.multiply(self.window_size, numpy.arange(0, len(window_counts[0]) ), dtype = int)]
+			range_vals = [numpy.multiply(self.window_size, numpy.arange(0, len(window_counts[0]) ), dtype = float)]
 
 			coords = numpy.array(window_counts )
 			transformed_coords_index = numpy.append(coords, range_vals, axis=0).T

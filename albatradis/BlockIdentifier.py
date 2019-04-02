@@ -75,16 +75,10 @@ class BlockIdentifier:
 		forward_max_logfc = self.peak_from_array(forward_masking_plot.combined[block.start-1:block.end])
 		reverse_max_logfc = self.peak_from_array(reverse_masking_plot.combined[block.start-1:block.end])
 
-		print("forwardfc: " , str(forward_max_logfc))
-		print("reversefc: ", str(reverse_max_logfc))
-
 
 		if numpy.absolute(forward_max_logfc) > numpy.absolute(reverse_max_logfc):
 			if reverse_max_logfc == 0 or forward_max_logfc >= reverse_max_logfc + self.logfc_direction_change:
-				print("dirlogfc: " , str(self.logfc_direction_change))
-				print("oldfc: ", str(block.max_logfc))
 				block.max_logfc = forward_max_logfc
-				print("newfc: ", str(block.max_logfc))
 
 				return 'forward'
 			else:
@@ -93,10 +87,7 @@ class BlockIdentifier:
 			return 'nodirection'
 		else:
 			if forward_max_logfc == 0 or reverse_max_logfc >= forward_max_logfc + self.logfc_direction_change:
-				print("dirlogfc: " , str(self.logfc_direction_change))
-				print("oldfc: ", str(block.max_logfc))
 				block.max_logfc = reverse_max_logfc
-				print("newfc: " ,  str(block.max_logfc))
 				return 'reverse'
 			else:
 				return 'nodirection'
@@ -122,15 +113,12 @@ class BlockIdentifier:
 		
 		masking_plot = self.merge_all_plots_choosing_peak_logfc(combined_plot, forward_masking_plot, reverse_masking_plot)
 		blocks = self.increased_insertions_blocks(masking_plot) + self.decreased_insertions_blocks(masking_plot)
-		for b in blocks:
-			print("LogFC in block generator:   " ,str(b.max_logfc))
 		
 		'''Filter out blocks which are less than the window size'''
 		filtered_blocks = [b for b in blocks if b.block_length >= self.window_size]
 
 		for b in filtered_blocks:
 			b.direction = self.direction_for_block(b, forward_masking_plot, reverse_masking_plot)
-			print("LogFC in filtered block generator: ", b.direction, " ", str(b.max_logfc))
 		
 		return filtered_blocks
 

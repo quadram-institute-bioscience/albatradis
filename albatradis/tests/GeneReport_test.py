@@ -15,9 +15,9 @@ class TestGeneReport(unittest.TestCase):
 		g = GeneReport(os.path.join(data_dir, 'ctrl.csv'))
 		self.assertTrue(g)
 		gene_names  = ['perR','ykfC','ykgH','yaiL','yaiP','unknown']
-		self.assertEqual(['10', '11', '10', '10', '11', '10'], g.genes_to_logfc(gene_names))
+		self.assertEqual(['10.0', '11.0', '10.0', '10.0', '11.0', '10.0'], g.genes_to_logfc(gene_names))
 		
 		# reorder the gene names
 		gene_names  = ['yaiL','ykfC','ykgH','perR','unknown', 'yaiP']
-		self.assertEqual(['10', '11', '10', '10', '10', '11'], g.genes_to_logfc(gene_names))
+		self.assertEqual(['10.0', '11.0', '10.0', '10.0', '10.0', '11.0'], g.genes_to_logfc(gene_names))
 		

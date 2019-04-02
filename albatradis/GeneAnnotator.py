@@ -31,7 +31,6 @@ class GeneAnnotator:
 			 
 			# only consider block at a time
 			for b in overlapping_blocks:
-				print("Overlappinmg blocks: " , str(b.max_logfc))
 				g.upstream.append(self.find_upstream_gene(b,gene_number))
 				if self.is_feature_contained_within_block(b, f):
 					g.categories.append('knockout')
@@ -45,7 +44,6 @@ class GeneAnnotator:
 						g.categories.append('increased_mutants_at_start_of_gene')
 					else:
 						g.categories.append('decreased_mutants_at_start_of_gene')
-				print("Category: ", g.gene_name, g.categories)
 			
 			if len(g.categories) == 0:
 				p = self.proportion_blocks_overlap_with_gene(f, overlapping_blocks)
@@ -59,7 +57,6 @@ class GeneAnnotator:
 					g.categories.append('knockout')
 				elif p > 0.5:
 					g.categories.append('over_50_perc_inactivation')
-			print("Category 2: ", g.gene_name, g.categories)
 			
 			if len(g.categories) == 0:
 				g.categories.append('unclassified')
