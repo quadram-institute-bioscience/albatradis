@@ -413,6 +413,7 @@ AlbaTraDIS is free software, licensed under [GPLv3](https://raw.githubuserconten
 Please report any issues or to provide feedback please go to the [issues page](https://github.com/quadram-institute-bioscience/albatradis/issues). If you make improvements to the software, please send us the changes though a [pull request](https://github.com/quadram-institute-bioscience/albatradis/pulls) so that the whole community may benefit from your work.
 
 ## Citation
-Coming soon
+["AlbaTraDIS: Comparative analysis of large datasets from parallel transposon mutagenesis experiments"](https://doi.org/10.1101/593624), Andrew J. Page, Sarah Bastkowski, Muhammad Yasir, A. Keith Turner, Thanh Le Viet, George M. Savva, Mark A. Webber, Ian G. Charles
+bioRxiv 593624; doi: https://doi.org/10.1101/593624
 
 
