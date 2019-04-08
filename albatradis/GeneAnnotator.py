@@ -14,7 +14,9 @@ class GeneAnnotator:
 		self.features = self.embl_reader.features
 		
 	def sort_blocks_by_start_coord(self, blocks):
-		return sorted((b for b in blocks ), key=lambda x: x.start)
+		sorted_blocks = sorted((b for b in blocks ), key=lambda x: x.start)
+		return sorted_blocks
+
 		
 	def annotate_genes(self):
 		genes = []
@@ -54,7 +56,7 @@ class GeneAnnotator:
 				elif p > 0.6:
 					g.categories.append('knockout')
 				elif p > 0.5:
-					g.categories.append('over_50_perc_inactivation')	
+					g.categories.append('over_50_perc_inactivation')
 			
 			if len(g.categories) == 0:
 				g.categories.append('unclassified')

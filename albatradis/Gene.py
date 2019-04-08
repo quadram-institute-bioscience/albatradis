@@ -39,14 +39,15 @@ class Gene:
 			for a in all_logfc:
 				if a == highest_logfc:
 					return highest_logfc
-				elif a == highest_logfc*-1:
-					return highest_logfc*-1
+				elif a == highest_logfc*-1.0:
+					return highest_logfc*-1.0
 		else:
 			return 0
 			
 			
 	def max_logfc_from_category(self):
 		l = self.max_logfc_from_blocks()
+
 		if self.category() == 'upregulated':
 			if l < 0:
 				return l*-1
@@ -68,7 +69,8 @@ class Gene:
 				return l*-1
 			else:
 				return l
-				
+
+
 		return l
 			
 

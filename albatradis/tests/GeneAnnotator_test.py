@@ -82,7 +82,7 @@ class TestGeneAnnotator(unittest.TestCase):
 		blocks[0].direction = 'reverse'
 		a = GeneAnnotator(embl_file, blocks)
 		genes = a.annotate_genes()
-		self.assertEqual("1_100	decreased_mutants_at_end_of_gene	0	100	10	increased_insertions	reverse	NA", str(genes[0]))	
+		self.assertEqual("1_100	decreased_mutants_at_end_of_gene	0	100	10.0	increased_insertions	reverse	NA", str(genes[0]))
 		
 	def test_downregulated_neg(self):
 		embl_file = os.path.join(data_dir,'annotation.embl')
@@ -90,7 +90,7 @@ class TestGeneAnnotator(unittest.TestCase):
 		blocks[0].direction = 'reverse'
 		a = GeneAnnotator(embl_file, blocks)
 		genes = a.annotate_genes()
-		self.assertEqual("1_100	decreased_mutants_at_end_of_gene	0	100	-10	decreased_insertions	reverse	NA", str(genes[0]))
+		self.assertEqual("1_100	decreased_mutants_at_end_of_gene	0	100	-10.0	decreased_insertions	reverse	NA", str(genes[0]))
 		
 	def test_increased_knockout(self):
 		embl_file = os.path.join(data_dir,'prime.embl')
