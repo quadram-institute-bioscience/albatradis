@@ -3,18 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c24784a5-7846-496f-aa42-aad43138a4fc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albatradis/BlockIdentifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/albatradis/BlockIdentifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albatradis/BlockInsertions.py" beforeDir="false" afterPath="$PROJECT_DIR$/albatradis/BlockInsertions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albatradis/Gene.py" beforeDir="false" afterPath="$PROJECT_DIR$/albatradis/Gene.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albatradis/GeneAnnotator.py" beforeDir="false" afterPath="$PROJECT_DIR$/albatradis/GeneAnnotator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albatradis/PlotLog.py" beforeDir="false" afterPath="$PROJECT_DIR$/albatradis/PlotLog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albatradis/ScatterPlot.py" beforeDir="false" afterPath="$PROJECT_DIR$/albatradis/ScatterPlot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albatradis/tests/GeneAnnotator_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/albatradis/tests/GeneAnnotator_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albatradis/tests/GeneReport_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/albatradis/tests/GeneReport_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albatradis/tests/data/genereportsets/expected_same_file_union_gene_report.csv" beforeDir="false" afterPath="$PROJECT_DIR$/albatradis/tests/data/genereportsets/expected_same_file_union_gene_report.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albatradis/tests/data/genereportsets/expected_two_files_intersection_gene_report.csv" beforeDir="false" afterPath="$PROJECT_DIR$/albatradis/tests/data/genereportsets/expected_two_files_intersection_gene_report.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albatradis/tests/data/genereportsets/expected_two_files_union_gene_report.csv" beforeDir="false" afterPath="$PROJECT_DIR$/albatradis/tests/data/genereportsets/expected_two_files_union_gene_report.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albatradis/tests/data/presenceabsence/expected_logfc.csv" beforeDir="false" afterPath="$PROJECT_DIR$/albatradis/tests/data/presenceabsence/expected_logfc.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/albatradis/tests/data/genereportsets/expected_two_files_union_gene_report.csv" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +39,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/albatradis/tests/GeneReportSets_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
+            <state relative-caret-position="310">
               <caret line="28" selection-start-line="28" selection-end-line="28" />
             </state>
           </provider>
@@ -69,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/albatradis/tests/data/genereportsets/expected_two_files_union_gene_report.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" column="103" selection-start-line="16" selection-start-column="103" selection-end-line="16" selection-end-column="103" />
+              <caret line="16" column="42" lean-forward="true" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -78,7 +67,7 @@
         <entry file="file://$PROJECT_DIR$/albatradis/PlotLog.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-711">
-              <caret line="88" column="46" lean-forward="true" selection-start-line="88" selection-start-column="46" selection-end-line="88" selection-end-column="46" />
+              <caret line="88" column="46" selection-start-line="88" selection-start-column="46" selection-end-line="88" selection-end-column="46" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -160,9 +149,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+    <option name="x" value="217" />
+    <option name="y" value="-1057" />
     <option name="width" value="1440" />
-    <option name="height" value="797" />
+    <option name="height" value="977" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -202,15 +192,6 @@
               <item name="tests" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
               <item name="genereportsets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MyAlbaTradis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyAlbaTradis" type="462c0819:PsiDirectoryNode" />
-              <item name="albatradis" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="genereportsets" type="462c0819:PsiDirectoryNode" />
-              <item name="two_files" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MyAlbaTradis" type="b2602c69:ProjectViewProjectNode" />
@@ -314,12 +295,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Nosetests_for_PresenceAbsence_test - 2019.03.08 at 18h 47m 33s.xml">
-      <configuration name="Nosetests for PresenceAbsence_test" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_in_MyAlbaTradis - 2019.03.08 at 19h 52m 07s.xml">
-      <configuration name="Nosetests in MyAlbaTradis" configurationId="tests" />
-    </history-entry>
     <history-entry file="Nosetests_in_MyAlbaTradis - 2019.04.02 at 16h 48m 03s.xml">
       <configuration name="Nosetests in MyAlbaTradis" configurationId="tests" />
     </history-entry>
@@ -344,17 +319,22 @@
     <history-entry file="Nosetests_in_MyAlbaTradis - 2019.04.02 at 19h 21m 52s.xml">
       <configuration name="Nosetests in MyAlbaTradis" configurationId="tests" />
     </history-entry>
+    <history-entry file="Nosetests_in_MyAlbaTradis - 2019.04.02 at 19h 26m 28s.xml">
+      <configuration name="Nosetests in MyAlbaTradis" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_in_MyAlbaTradis - 2019.04.08 at 10h 35m 36s.xml">
+      <configuration name="Nosetests in MyAlbaTradis" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="797" extended-state="0" />
-    <editor active="true" />
+    <frame x="217" y="-1057" width="1440" height="977" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20648344" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.23164764" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34457478" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2726218" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39976826" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -367,6 +347,9 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -736,7 +719,7 @@
     <entry file="file://$PROJECT_DIR$/albatradis/PlotLog.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-711">
-          <caret line="88" column="46" lean-forward="true" selection-start-line="88" selection-start-column="46" selection-end-line="88" selection-end-column="46" />
+          <caret line="88" column="46" selection-start-line="88" selection-start-column="46" selection-end-line="88" selection-end-column="46" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -759,7 +742,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/albatradis/tests/GeneReportSets_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
+        <state relative-caret-position="310">
           <caret line="28" selection-start-line="28" selection-end-line="28" />
         </state>
       </provider>
@@ -774,7 +757,7 @@
     <entry file="file://$PROJECT_DIR$/albatradis/tests/data/genereportsets/expected_two_files_union_gene_report.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="103" selection-start-line="16" selection-start-column="103" selection-end-line="16" selection-end-column="103" />
+          <caret line="16" column="42" lean-forward="true" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
         </state>
       </provider>
     </entry>
