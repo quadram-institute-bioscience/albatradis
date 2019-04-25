@@ -3,11 +3,13 @@ from albatradis.EMBLReader import EMBLReader
 from albatradis.EMBLSequence import EMBLSequence
 
 class FeatureProperties:
-	def __init__(self, 	start, end, direction, gene_name):
+	def __init__(self, 	start, end, direction, gene_name, locus_tag, product):
 		self.start = start
 		self.end = end
 		self.direction = direction
 		self.gene_name = gene_name
+		self.locus_tag = locus_tag
+		self.product = product
 
 class EMBLExpandGenes:
 	def __init__(self, embl_file, feature_size):
@@ -21,21 +23,23 @@ class EMBLExpandGenes:
 		new_features = []
 		for feature in self.features:
 			gene_name = self.feature_to_gene_name(feature)
+			locus_tag = self.feature_to_locus_tag(feature)
+			product = self.feature_to_product(feature)
 			
 			# The gene itself
-			new_features.append(FeatureProperties(feature.location.start, feature.location.end, feature.strand, gene_name))
+			new_features.append(FeatureProperties(feature.location.start, feature.location.end, feature.strand, gene_name, locus_tag, product))
 			
 			# forward direction
 			if feature.strand == 1:
-				new_features.append(self.construct_start_feature(feature, gene_name, "__5prime"))
-				new_features.append(self.construct_end_feature(feature, gene_name, "__3prime"))
+				new_features.append(self.construct_start_feature(feature, gene_name, "__5prime",locus_tag, product))
+				new_features.append(self.construct_end_feature(feature, gene_name, "__3prime",locus_tag, product))
 			else:
-				new_features.append(self.construct_end_feature(feature, gene_name, "__5prime"))
-				new_features.append(self.construct_start_feature(feature, gene_name, "__3prime"))
+				new_features.append(self.construct_end_feature(feature, gene_name, "__5prime", locus_tag, product))
+				new_features.append(self.construct_start_feature(feature, gene_name, "__3prime",locus_tag, product))
 					
 		return new_features
 		
-	def construct_end_feature(self,feature, gene_name, suffix):
+	def construct_end_feature(self, feature, gene_name, suffix, locus_tag, product):
 		start = feature.location.end
 		end = feature.location.end + self.feature_size
 		
@@ -45,9 +49,9 @@ class EMBLExpandGenes:
 		if start >= end or end-start < 10:
 			return None
 		
-		return FeatureProperties(start, end, feature.strand, gene_name + suffix)
+		return FeatureProperties(start, end, feature.strand, gene_name + suffix, locus_tag + suffix, product)
 		
-	def construct_start_feature(self,feature, gene_name, suffix):
+	def construct_start_feature(self, feature, gene_name, suffix, locus_tag, product):
 		start = feature.location.start - self.feature_size
 		end = feature.location.start
 		
@@ -55,7 +59,7 @@ class EMBLExpandGenes:
 			start = 1
 		if start >= end or end-start < 10:
 			return None
-		return FeatureProperties(start, end, feature.strand, gene_name + suffix)
+		return FeatureProperties(start, end, feature.strand, gene_name + suffix, locus_tag + suffix, product)
 	
 	def construct_file(self, filename):
 		with open(filename, 'w') as emblfile:
@@ -78,6 +82,19 @@ class EMBLExpandGenes:
 			gene_name_val = feature.qualifiers["gene"][0]
 		return gene_name_val
 
+	def feature_to_product(self, feature):
+		product_val = str(feature.location.start) + "_" + str(feature.location.end)
+		if "product" in feature.qualifiers:
+			product_val1 = feature.qualifiers["product"][0]
+			product_val = product_val1.replace(",", " and ")
+		return product_val
+
+	def feature_to_locus_tag(self, feature):
+		locus_tag_val = str(feature.location.start) + "_" + str(feature.location.end)
+		if "locus_tag" in feature.qualifiers:
+			locus_tag_val = feature.qualifiers["locus_tag"][0]
+		return locus_tag_val
+
 	def header(self):
 		return """ID   ABC; SV 1; circular; genomic DNA; STD; PRO; {length} BP.
 XX
@@ -90,16 +107,16 @@ FT                   /organism="Bacteria"
 	def construct_feature_forward(self, feature):
 		return """FT   CDS             {window_start}..{window_end}
 FT                   /gene="{gene_name}"
-FT                   /locus_tag="{gene_name}"
-FT                   /product="product"
-""".format(gene_name=feature.gene_name, window_start=str(feature.start +1), window_end=str(feature.end))
+FT                   /locus_tag="{locus_tag}"
+FT                   /product="{product}"
+""".format(gene_name=feature.gene_name, window_start=str(feature.start +1), window_end=str(feature.end), locus_tag=feature.locus_tag, product=feature.product)
 
 	def construct_feature_reverse(self, feature):
 		return """FT   CDS             complement({window_start}..{window_end})
 FT                   /gene="{gene_name}"
-FT                   /locus_tag="{gene_name}"
-FT                   /product="product"
-""".format(gene_name=feature.gene_name, window_start=str(feature.start +1), window_end=str(feature.end))
+FT                   /locus_tag="{locus_tag}"
+FT                   /product="{product}"
+""".format(gene_name=feature.gene_name, window_start=str(feature.start +1), window_end=str(feature.end), locus_tag=feature.locus_tag, product=feature.product)
 
 
 

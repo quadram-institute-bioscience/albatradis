@@ -158,7 +158,7 @@ class PlotLog:
 
 					
 				# Get coordinates
-				gene_name = row[0]
+				gene_name = row[1]
 				
 				# else annotation encodes the coordinates
 				if gene_name in genes_to_features:
