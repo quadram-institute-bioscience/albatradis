@@ -108,6 +108,9 @@ ENV/
 # Idea project settings
 .idea/
 
+# workspace
+.idea/workspace.xml
+
 # mkdocs documentation
 /site
 
