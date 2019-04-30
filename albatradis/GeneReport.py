@@ -16,19 +16,19 @@ class GeneReport:
 
 	def fix_sign_on_logfc(self,gene_all_data):
 		for r in gene_all_data:
-			r[4] = int(r[4])
+			r[4] = float(r[4])
 			if r[1] == 'upregulated':
-				if r[4] < 0:
-					r[4] *= -1
+				if r[4] < 0.0:
+					r[4] *= -1.0
 			elif r[1] == 'downregulated':
-				if r[4] > 0:
-					r[4] *= -1
+				if r[4] > 0.0:
+					r[4] *= -1.0
 			elif r[5] == 'increased_insertions':
-				if r[4] < 0:
-					r[4] *= -1
+				if r[4] < 0.0:
+					r[4] *= -1.0
 			elif r[5] == 'decreased_insertions':
-				if r[4] > 0:
-					r[4] *= -1
+				if r[4] > 0.0:
+					r[4] *= -1.0
 		return gene_all_data
 		
 	def read_csv(self, gene_all_data):

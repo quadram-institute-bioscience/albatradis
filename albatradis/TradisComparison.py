@@ -92,8 +92,8 @@ class TradisComparison:
 			for i,cells in enumerate(input_content):
 				if i == 0:
 					cells.append("Essentiality")
-				elif cells[0] in genes_ess:
-					cells.append(genes_ess[cells[0]].status())
+				elif cells[1] in genes_ess:
+					cells.append(genes_ess[cells[1]].status())
 				else:
 					cells.append('unknown')
 				output_content.append(cells)
