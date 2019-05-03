@@ -2,7 +2,7 @@ from albatradis.EMBLSequence import EMBLSequence
 class EMBLGenerator:
 	def __init__(self, windows, genome_length):
 		self.windows = windows
-		self.gene= gene
+        #self.gene= gene
 		self.genome_length = genome_length
 		
 	def construct_file(self, filename):
