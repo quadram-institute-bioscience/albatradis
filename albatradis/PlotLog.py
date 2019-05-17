@@ -78,7 +78,7 @@ class PlotLog:
 		return blocks	
 	
 	def genome_wide_logfc(self,logfc_coord_values):
-		logfc_to_bases = numpy.zeros(self.genome_length, dtype=int)
+		logfc_to_bases = numpy.zeros(self.genome_length, dtype=float)
 		
 		# start with the largest signals and overwrite with smaller signals.
 		# prevents issues with overlapping blocks/genes
