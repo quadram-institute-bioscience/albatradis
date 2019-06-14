@@ -1,0 +1,27 @@
+Gene	Category	Start	End	MaxLogFC	Expression	Direction	Upstream
+folK	upregulated	153739	154219	2.8288364539795094	increased_insertions	reverse	yadN__3prime
+skp	upregulated	196968	197454	3.37076635468939	increased_insertions	forward	
+acrA	upregulated	479881	481075	4.86948400733818	increased_insertions	reverse	
+acrR	knockout	481216	481864	4.86948400733818	increased_insertions	reverse	acrA__3prime
+fabI	upregulated	1344507	1345296	7.16910841798951	increased_insertions	reverse	
+ycjD	knockout	1345663	1346017	7.16910841798951	increased_insertions	reverse	fabI__3prime
+fabB	upregulated	2433863	2435084	1.2113505897631598	increased_insertions	reverse	
+fimA	upregulated	4532931	4533480	1.57967220618695	decreased_insertions	forward	
+pcnB	knockout	154215	155613	2.8288364539795094	increased_insertions	reverse	folK__3prime
+acrB	knockout	476709	479859	-2.10358386605219	decreased_insertions	nodirection	NA
+opgG	increased_mutants_at_end_of_gene	1104790	1106326	1.96395720509608	increased_insertions	nodirection	NA
+opgH	knockout	1106318	1108862	1.96395720509608	increased_insertions	nodirection	NA
+fadR	knockout	1230393	1231113	3.45114168287255	increased_insertions	nodirection	NA
+mnmC	knockout	2435242	2437249	1.2113505897631598	increased_insertions	reverse	fabB__3prime
+fadL	knockout	2454784	2456125	1.2283187190340101	increased_insertions	forward	yfdF
+mprA	knockout	2804128	2804659	3.2841924750484703	increased_insertions	forward	mprA__3prime
+ptsN	knockout	3339936	3340428	6.1799177630282305	increased_insertions	nodirection	NA
+yhbJ	knockout	3340473	3341328	6.1799177630282305	increased_insertions	nodirection	NA
+yrdB	unclassified	3423124	3423382	2.5671606897232	increased_insertions	nodirection	NA
+aroE	knockout	3423378	3424197	2.5671606897232	increased_insertions	nodirection	NA
+trkA	knockout	3429876	3431253	3.93821640239054	increased_insertions	nodirection	NA
+aroB	knockout	3510756	3511845	3.80544962556107	increased_insertions	forward	mrcA
+cyaA	knockout	3984512	3987059	2.30580142689189	increased_insertions	reverse	hemC__3prime
+tatC	knockout	4016095	4016872	1.30122413911442	increased_insertions	nodirection	NA
+trkH	knockout	4026504	4027956	1.4784544304176799	increased_insertions	nodirection	NA
+fimE	knockout	4531853	4532450	-1.6956261763943299	decreased_insertions	reverse	nanC__3prime

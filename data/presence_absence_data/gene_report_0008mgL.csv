@@ -1,0 +1,35 @@
+Gene	Category	Start	End	MaxLogFC	Expression	Direction	Upstream
+ecpA	upregulated	305794	306382	1.29139955994718	decreased_insertions	reverse	
+gnd	upregulated	2093342	2094749	1.10894559741047	decreased_insertions	reverse	
+glf	upregulated	2100706	2101810	1.4327539985021498	decreased_insertions	reverse	
+waaL	downregulated	3790307	3791567	-1.0915816102894	decreased_insertions	reverse	
+waaZ	upregulated	3792704	3793556	1.00313912243464	decreased_insertions	reverse	
+rbsB	downregulated	3929637	3930528	-1.06133699408803	increased_insertions	reverse	
+metB	downregulated	4118599	4119760	-1.4449605650261799	increased_insertions	reverse	
+258668_292976	unclassified	258668	292976	-1.2605461795124802	increased_insertions/decreased_insertions	forward	258668_292976__3prime
+yagH	knockout	282499	284110	1.06065626719743	increased_insertions	forward	yagH__3prime
+yagL	knockout	288930	289629	-1.2605461795124802	decreased_insertions	forward	ptwF
+ecpR	knockout	306456	307047	-1.29139955994718	decreased_insertions	reverse	ecpA__3prime
+sfmZ	knockout	559303	559936	-1.00665671530842	decreased_insertions	nodirection	NA
+1406155_1429215	unclassified	1406155	1429215	-1.1439603970979	decreased_insertions	forward	1406155_1429215__3prime
+trkG	knockout	1418038	1419496	-1.1439603970979	decreased_insertions	forward	trkG__3prime
+wbbL	decreased_mutants_at_start_of_gene	2094876	2096870	-1.10894559741047	decreased_insertions	reverse	gnd__3prime
+wbbH	knockout	2099540	2100707	-1.3508122357937398	decreased_insertions	reverse	wbbI__3prime
+wzxB	knockout	2101817	2103065	-1.4327539985021498	decreased_insertions	reverse	glf__3prime
+ypjC	knockout	2776996	2778370	-1.69844598135779	decreased_insertions	nodirection	NA
+ygeH	knockout	2985452	2986829	-1.01908038376509	decreased_insertions	nodirection	NA
+yhiL	knockout	3626211	3627818	-1.16800942491196	decreased_insertions	reverse	yhiJ__3prime
+yhiS	decreased_mutants_at_start_of_gene/decreased_mutants_at_end_of_gene	3644650	3647073	-1.4039651307887802	decreased_insertions	nodirection	NA
+gadE	knockout	3651725	3652253	-1.29844570145213	decreased_insertions	forward	mdtE
+yibA	knockout	3759696	3760539	-1.16757548150744	decreased_insertions	nodirection	NA
+waaU	knockout	3791598	3792672	-1.0915816102894	decreased_insertions	reverse	yibB__3prime
+waaY	knockout	3793626	3794325	-1.00313912243464	decreased_insertions	reverse	waaZ__3prime
+rbsK	knockout	3930653	3931583	1.06133699408803	increased_insertions	reverse	ravA__3prime
+tatC	knockout	4016095	4016872	1.9689641622362	increased_insertions	nodirection	NA
+metL	knockout	4119762	4122195	1.4449605650261799	increased_insertions	reverse	metJ__3prime
+yjbI	knockout	4240630	4242211	-1.05412981810668	decreased_insertions	reverse	malE__3prime
+yjbM	knockout	4250526	4251234	-1.0703717808125202	decreased_insertions	forward	dusA
+yjcF	knockout	4271710	4273003	-1.34030065578706	decreased_insertions	forward	4275229_4275306
+yjgL	knockout	4465253	4467068	-1.01705715854263	decreased_insertions	nodirection	NA
+fimI	knockout	4533544	4534084	1.07559452004709	increased_insertions	forward	fimI__3prime
+mcrC	knockout	4566728	4567775	-1.22282144012462	decreased_insertions	forward	symR

@@ -1,0 +1,22 @@
+Gene	Category	Start	End	MaxLogFC	Expression	Direction	Upstream
+ecpA	upregulated	305794	306382	1.1419397431578	decreased_insertions	reverse	
+glf	upregulated	2100706	2101810	1.13483684823377	decreased_insertions	reverse	
+metB	downregulated	4118599	4119760	-1.31992960914546	increased_insertions	reverse	
+yjjQ	upregulated	4593293	4594019	1.0807635728536802	decreased_insertions	forward	
+258668_292976	unclassified	258668	292976	1.03867875723475	increased_insertions/decreased_insertions	forward	258668_292976__3prime
+yagH	knockout	282499	284110	1.03867875723475	increased_insertions	forward	yagH__3prime
+yagL	knockout	288930	289629	-1.0346120985293898	decreased_insertions	forward	ptwF
+ecpR	knockout	306456	307047	-1.1419397431578	decreased_insertions	reverse	ecpA__3prime
+wbbH	knockout	2099540	2100707	-1.08504027981638	decreased_insertions	reverse	wbbI__3prime
+wzxB	knockout	2101817	2103065	-1.13483684823377	decreased_insertions	reverse	glf__3prime
+purL	knockout	2685014	2688902	1.07008965443912	increased_insertions	forward	mltF
+ypjC	knockout	2776996	2778370	-1.43151794672391	decreased_insertions	nodirection	NA
+yhiS	decreased_mutants_at_end_of_gene/decreased_mutants_at_start_of_gene	3644650	3647073	-1.3836564833441298	decreased_insertions	nodirection	NA
+gadE	knockout	3651725	3652253	-1.1447879991918601	decreased_insertions	forward	mdtE
+yibA	knockout	3759696	3760539	-1.1339943619915802	decreased_insertions	nodirection	NA
+tatC	knockout	4016095	4016872	1.9586452548298503	increased_insertions	nodirection	NA
+metL	knockout	4119762	4122195	1.31992960914546	increased_insertions	reverse	metJ__3prime
+purH	knockout	4195870	4197460	1.12764628634979	increased_insertions	forward	rrsE
+yjbM	knockout	4250526	4251234	-1.1549966339351498	decreased_insertions	forward	dusA
+yjcF	knockout	4271710	4273003	-1.07681248751655	decreased_insertions	forward	4275229_4275306
+fimI	knockout	4533544	4534084	1.03095010152356	increased_insertions	forward	fimI__3prime

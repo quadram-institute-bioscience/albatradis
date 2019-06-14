@@ -1,0 +1,48 @@
+Gene	Category	Start	End	MaxLogFC	Expression	Direction	Upstream
+ecpA	upregulated	305794	306382	1.12481695551387	decreased_insertions	reverse	
+sfmF	downregulated	558785	559301	-1.1077092120846	decreased_insertions	reverse	
+marC	knockout	1612499	1613165	7.26069272884025	increased_insertions	forward	marR__3prime
+marR	upregulated	1613376	1613811	7.26069272884025	increased_insertions	forward	marR__3prime
+gnd	upregulated	2093342	2094749	1.00143627292186	decreased_insertions	reverse	
+wbbJ	upregulated	2097974	2098565	1.0719360615175402	decreased_insertions	reverse	wbbK__3prime
+wbbH	knockout	2099540	2100707	-1.3878714958723501	decreased_insertions	reverse	wbbI__3prime
+glf	knockout	2100706	2101810	-1.00228705113163	decreased_insertions	reverse	wbbH__3prime
+wzxB	knockout	2101817	2103065	-1.31418303124684	decreased_insertions	reverse	glf__3prime
+waaC	downregulated	3789338	3790298	-1.0304742575908301	decreased_insertions	reverse	
+waaL	knockout	3790307	3791567	-1.0304742575908301	decreased_insertions	reverse	yibB__3prime
+waaZ	upregulated	3792704	3793556	1.25170021060493	decreased_insertions	reverse	
+metB	downregulated	4118599	4119760	-1.3782076633357	increased_insertions	reverse	
+ampC	upregulated	4367627	4368761	3.56854513709508	increased_insertions	reverse	
+yjjQ	upregulated	4593293	4594019	1.08049570039377	decreased_insertions	forward	
+258668_292976	unclassified	258668	292976	-1.17928156980486	decreased_insertions	forward	258668_292976__3prime
+yagL	knockout	288930	289629	-1.17928156980486	decreased_insertions	forward	ptwF
+ecpR	knockout	306456	307047	-1.12481695551387	decreased_insertions	reverse	ecpA__3prime
+ykgA	knockout	312196	312880	-1.1721474687414	decreased_insertions	forward	ykgQ
+sfmZ	knockout	559303	559936	-1.1077092120846	decreased_insertions	reverse	folD__3prime
+560257_581559	unclassified	560257	581559	-1.000729701649	decreased_insertions	reverse	sfmZ__3prime
+ybcK	knockout	564357	565884	-1.000729701649	decreased_insertions	reverse	exoD__3prime
+ompF	knockout	981349	982438	2.6771757165750096	increased_insertions	forward	pepN
+wbbL	decreased_mutants_at_start_of_gene	2094876	2096870	-1.00143627292186	decreased_insertions	reverse	gnd__3prime
+wbbI	knockout	2098545	2099538	-1.0719360615175402	decreased_insertions	reverse	wbbJ__3prime
+rfbC	knockout	2103061	2103619	-1.0822310152225099	decreased_insertions	reverse	wzxB__3prime
+ypjC	knockout	2776996	2778370	-1.62726263810524	decreased_insertions	nodirection	NA
+ygeH	knockout	2985452	2986829	-1.13135926857123	decreased_insertions	nodirection	NA
+yhfL	knockout	3492806	3492974	-1.02240594776144	decreased_insertions	reverse	ppiA__3prime
+yhiL	knockout	3626211	3627818	-1.16902989640755	decreased_insertions	reverse	yhiJ__3prime
+yhiS	decreased_mutants_at_end_of_gene/decreased_mutants_at_start_of_gene	3644650	3647073	-1.5794167931552199	decreased_insertions	nodirection	NA
+gadE	knockout	3651725	3652253	-1.2602811276105401	decreased_insertions	forward	mdtE
+yibA	knockout	3759696	3760539	-1.32740042135221	decreased_insertions	nodirection	NA
+yibB	knockout	3786185	3787043	-1.1315658850010701	decreased_insertions	reverse	kbl__3prime
+waaU	knockout	3791598	3792672	-1.1129522897643702	decreased_insertions	reverse	yibB__3prime
+waaY	knockout	3793626	3794325	-1.25170021060493	decreased_insertions	reverse	waaZ__3prime
+rbsB	knockout	3929637	3930528	2.3493726345872203	increased_insertions	forward	rbsB__3prime
+tatC	knockout	4016095	4016872	1.85796461523323	increased_insertions	nodirection	NA
+metL	knockout	4119762	4122195	1.3782076633357	increased_insertions	reverse	metJ__3prime
+purH	knockout	4195870	4197460	1.06397375518159	increased_insertions	forward	rrsE
+yjbI	knockout	4240630	4242211	-1.21869206736424	decreased_insertions	nodirection	NA
+yjbM	knockout	4250526	4251234	-1.37393565921835	decreased_insertions	forward	dusA
+yjcF	knockout	4271710	4273003	-1.50637095619475	decreased_insertions	forward	4275229_4275306
+frdD	unclassified	4368823	4369183	3.56854513709508	increased_insertions	reverse	ampC__3prime
+yjgL	knockout	4465253	4467068	-1.07156152970863	decreased_insertions	forward	yjgL__3prime
+mcrC	knockout	4566728	4567775	-1.4469561907346	decreased_insertions	forward	symR
+creA	knockout	4625337	4625811	3.05409818841448	increased_insertions	reverse	rob__3prime

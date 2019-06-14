@@ -1,0 +1,13 @@
+Gene	Category	Start	End	MaxLogFC	Expression	Direction	Upstream
+fabI	upregulated	1344507	1345296	14.979205035263	increased_insertions	reverse	
+ycjD	knockout	1345663	1346017	14.979205035263	increased_insertions	reverse	fabI__3prime
+zntA	unclassified	3599810	3602009	6.303166726785441	increased_insertions	forward	yhhQ
+tusA	downregulated	3602110	3602356	-6.303166726785441	increased_insertions	forward	
+yjdP	unclassified	4303684	4304014	5.90965208651975	increased_insertions	forward	4307733_4307816
+phnP	downregulated	4304160	4304919	-5.90965208651975	increased_insertions	forward	
+acrR	knockout	481216	481864	2.03242936511317	increased_insertions	nodirection	NA
+yhbJ	knockout	3340473	3341328	5.214630188971929	increased_insertions	forward	yhbJ__3prime
+waaP	knockout	3798512	3799310	2.05954875293146	increased_insertions	nodirection	NA
+waaG	knockout	3799302	3800427	1.7741091386602699	increased_insertions	nodirection	NA
+fimE	knockout	4531853	4532450	-2.58915650421628	decreased_insertions	reverse	nanC__3prime
+fimD	knockout	4534912	4537549	1.76547527562902	increased_insertions	nodirection	NA

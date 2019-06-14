@@ -1,0 +1,8 @@
+Gene	Category	Start	End	MaxLogFC	Expression	Direction	Upstream
+folK	upregulated	153739	154219	1.48936402150547	increased_insertions	reverse	yadN__3prime
+acrA	upregulated	479881	481075	2.5651513151501	increased_insertions	reverse	
+acrR	knockout	481216	481864	2.5651513151501	increased_insertions	reverse	acrA__3prime
+fabI	upregulated	1344507	1345296	4.51662398323086	increased_insertions	reverse	
+ycjD	knockout	1345663	1346017	4.51662398323086	increased_insertions	reverse	fabI__3prime
+pcnB	knockout	154215	155613	1.48936402150547	increased_insertions	reverse	folK__3prime
+acrB	knockout	476709	479859	-1.6736605100105602	decreased_insertions	nodirection	NA

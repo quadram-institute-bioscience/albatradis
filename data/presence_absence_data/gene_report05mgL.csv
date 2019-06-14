@@ -1,0 +1,51 @@
+Gene	Category	Start	End	MaxLogFC	Expression	Direction	Upstream
+skp	upregulated	196968	197454	4.478377529544249	increased_insertions	forward	
+lpxD	unclassified	197457	198483	8.36007166823039	increased_insertions	forward	fabZ__3prime
+fabZ	upregulated	198587	199043	8.36007166823039	increased_insertions	forward	
+paoC	unclassified	294446	296645	3.8318758131310497	increased_insertions	forward	yagU
+acrA	upregulated	479881	481075	5.83454136757336	increased_insertions	reverse	
+acrR	knockout	481216	481864	5.83454136757336	increased_insertions	reverse	acrA__3prime
+mscK	knockout	481991	485354	5.83454136757336	increased_insertions	reverse	acrA__3prime
+opgG	unclassified	1104790	1106326	1.8229797140121	increased_insertions	forward	opgH__3prime
+fabI	upregulated	1344507	1345296	12.343989144549502	increased_insertions	reverse	
+ycjD	knockout	1345663	1346017	12.343989144549502	increased_insertions	reverse	fabI__3prime
+2310312_2310509	downregulated	2310312	2310509	-1.1039916075968998	increased_insertions	reverse	
+lplT	knockout	2966027	2967221	1.0987825722881601	increased_insertions	forward	galR
+infB	upregulated	3306700	3309373	7.68167853120538	increased_insertions	reverse	
+aroB	knockout	3510756	3511845	4.153629966930359	increased_insertions	forward	mrcA
+zntA	unclassified	3599810	3602009	6.491247626420961	increased_insertions	forward	yhhQ
+tusA	downregulated	3602110	3602356	-6.491247626420961	increased_insertions	forward	
+soxS	upregulated	4266987	4267311	3.8585497320928903	increased_insertions	reverse	
+yjdP	unclassified	4303684	4304014	5.23473388765987	increased_insertions	forward	4307733_4307816
+phnP	downregulated	4304160	4304919	-5.23473388765987	increased_insertions	forward	
+hflK	knockout	4391854	4393114	1.4840593528513	increased_insertions	nodirection	NA
+fimI	knockout	4533544	4534084	-1.64621658481551	decreased_insertions	forward	fimC__3prime
+fimC	knockout	4534120	4534846	1.3103012956622	increased_insertions	reverse	nanC__3prime
+folK	unclassified	153739	154219	4.0475544044946	increased_insertions	nodirection	NA
+pcnB	knockout	154215	155613	4.0475544044946	increased_insertions	nodirection	NA
+paoB	knockout	296641	297598	3.8318758131310497	increased_insertions	forward	yagU
+acrB	knockout	476709	479859	-1.51504756233347	decreased_insertions	nodirection	NA
+opgH	knockout	1106318	1108862	1.8229797140121	increased_insertions	forward	opgH__3prime
+fadR	knockout	1230393	1231113	3.6840076937371005	increased_insertions	nodirection	NA
+fadD	knockout	1882317	1884003	3.2045403194703996	increased_insertions	nodirection	NA
+rcsD	knockout	2306966	2309639	1.03116876538959	increased_insertions	reverse	ompC__3prime
+rcsC	knockout	2310505	2313355	1.1039916075968998	increased_insertions	reverse	ompC__3prime
+fadL	knockout	2454784	2456125	1.83074193743065	increased_insertions	nodirection	NA
+mprA	knockout	2804128	2804659	3.5099460039857995	increased_insertions	forward	mprA__3prime
+aas	knockout	2967213	2969373	1.0987825722881601	increased_insertions	forward	galR
+nusA	knockout	3309397	3310885	7.68167853120538	increased_insertions	reverse	infB__3prime
+ptsN	knockout	3339936	3340428	7.72512236849076	increased_insertions	nodirection	NA
+yhbJ	knockout	3340473	3341328	7.72512236849076	increased_insertions	nodirection	NA
+yrdB	unclassified	3423124	3423382	3.3693145324789198	increased_insertions	nodirection	NA
+aroE	knockout	3423378	3424197	3.3693145324789198	increased_insertions	nodirection	NA
+trkA	knockout	3429876	3431253	4.71642044801012	increased_insertions	nodirection	NA
+aroK	knockout	3511901	3512423	7.25922161295867	increased_insertions	forward	mrcA
+mrcA	knockout	3516229	3518782	-1.3103901114848702	decreased_insertions	nodirection	NA
+cyaA	knockout	3984512	3987059	1.52773524435332	increased_insertions	forward	cyaA__3prime
+uvrD	knockout	3991342	3993505	1.46313102	increased_insertions	forward	uvrD__3prime
+trkH	knockout	4026504	4027956	1.80827855475327	increased_insertions	nodirection	NA
+soxR	over_50_perc_inactivation	4267396	4267861	3.8585497320928903	increased_insertions	reverse	soxS__3prime
+hflC	knockout	4393116	4394121	1.27436973547192	increased_insertions	forward	hflC__3prime
+fimB	knockout	4530773	4531376	1.6811249360938898	increased_insertions	nodirection	NA
+fimE	knockout	4531853	4532450	-2.9425712501308197	decreased_insertions	reverse	nanC__3prime
+fimD	knockout	4534912	4537549	1.32543528675977	increased_insertions	nodirection	NA
