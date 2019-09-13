@@ -1,9 +1,12 @@
 '''Driver class'''
 import logging
 import os
+import re
 import sys
 import time
 import shutil
+
+from albatradis.Gene import Gene
 from albatradis.TradisGeneInsertSites import TradisGeneInsertSites
 from albatradis.PrepareInputFiles     import PrepareInputFiles
 from albatradis.PrepareEMBLFile       import PrepareEMBLFile
@@ -151,7 +154,47 @@ class BlockInsertions:
 			print("Comprison:\t"+ renamed_csv_file)
 			print("Plot log:\t"+ renamed_plot_file)
 		return renamed_plot_file
-		
+
+	def merge_windows(self, windows):
+
+		start_window = windows[0]
+		i = 1
+		merged_windows = []
+		while i < len(windows):
+			next_window = windows[i]
+
+			if (next_window.categories[0] == "increased_mutants_at_end_of_gene" or \
+					next_window.categories[0] == "increased_mutants_at_start_of_gene" or \
+					next_window.categories[0] == "decreased_mutants_at_end_of_gene" or \
+					next_window.categories[0] == "decreased_mutants_at_start_of_gene" ):
+				next_window.categories[0] = "knockout"
+			if (start_window.categories[0] == "increased_mutants_at_end_of_gene" \
+					or start_window.categories[0] == "increased_mutants_at_start_of_gene" or \
+					start_window.categories[0] == "decreased_mutants_at_end_of_gene" or \
+					start_window.categories[0] == "decreased_mutants_at_start_of_gene" ):
+				start_window.categories[0] = "knockout"
+			category_equal = next_window.categories[0] == start_window.categories[0]
+			expression_equal = next_window.expression_from_blocks() == start_window.expression_from_blocks()
+			direction_equal = next_window.direction_from_blocks() == start_window.direction_from_blocks()
+			if next_window.start <= start_window.end and category_equal and expression_equal and direction_equal:
+				start_window.end = next_window.end
+				start_window.max_logfc = max(start_window.max_logfc, next_window.max_logfc)
+			else:
+				copy = Gene(start_window.feature, start_window.blocks)
+				copy.start = start_window.start
+				copy.end = start_window.end
+				copy.max_logfc = start_window.max_logfc
+				copy.gene_name = str(copy.start) + "_" + str(copy.end)
+				copy.categories.append(start_window.categories[0])
+				merged_windows.append(copy)
+				start_window = next_window
+
+			i += 1
+
+		merged_windows.append(start_window)
+		return merged_windows
+
+
 	def gene_statistics(self,forward_plotfile, reverse_plotfile, combined_plotfile, window_size):
 		b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile, window_size)
 		blocks = b.block_generator()
@@ -162,26 +205,37 @@ class BlockInsertions:
 		genes = GeneAnnotator(self.annotation_file , blocks).annotate_genes()
 		intergenic_blocks = [block for block in blocks if block.intergenic]
 
-		
-		if len(genes) == 0:
+		if not self.use_annotation:
+			all_genes = self.merge_windows(genes)
+		else:
+			all_genes = []
+			for g in genes:
+					all_genes.append(g)
+
+		if len(all_genes) == 0 and len(intergenic_blocks) == 0:
 			return []
-		
-		self.write_gene_report(genes, intergenic_blocks)
-		self.write_regulated_gene_report(genes, intergenic_blocks)
+
+		self.write_gene_report(all_genes, intergenic_blocks)
+		self.write_regulated_gene_report(all_genes, intergenic_blocks)
+
 				
 		#if self.verbose:
 			#self.print_genes_intergenic(genes,intergenic_blocks)
 		
 		return genes
-		
+
 	def write_gene_report(self, genes, intergenic_blocks):
 		block_filename = os.path.join(self.prefix, "gene_report.csv")
 		with open(block_filename, 'w') as bf:
-			bf.write(str(genes[0].header())+"\n")
-			for i in genes:
-				bf.write(str(i)+"\n")
+			bf.write(str(genes[0].header()) + "\n")
+			if not self.use_annotation:
+				for i in genes:
+					bf.write(i.window_string() + "\n")
+			else:
+				for i in genes:
+					bf.write(str(i) + "\n")
 			for b in intergenic_blocks:
-				bf.write(str(b)+"\n")
+				bf.write(str(b) + "\n")
 				
 	def write_regulated_gene_report(self, genes, intergenic_blocks):	
 		regulated_genes = [g for g in genes if g.category() == 'upregulated' or g.category() == 'downregulated']
