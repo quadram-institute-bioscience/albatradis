@@ -148,7 +148,7 @@ class BlockInsertions:
 		os.remove(p.output_filename)
 		
 		if self.verbose:
-			print("Comprison:\t"+ renamed_csv_file)
+			print("Comparison:\t"+ renamed_csv_file)
 			print("Plot log:\t"+ renamed_plot_file)
 		return renamed_plot_file
 		
