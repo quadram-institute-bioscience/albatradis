@@ -20,10 +20,10 @@ class PlotGenerator:
 
 		p_len = self.plot_length()
 		if len(self.forward) == 0:
-			self.forward = numpy.zeros( p_len, dtype=int )
+			self.forward = numpy.zeros( p_len, dtype=float )
 
 		if len(self.reverse) == 0:
-			self.reverse = numpy.zeros( p_len, dtype=int )
+			self.reverse = numpy.zeros( p_len, dtype=float )
 			
 		write_plot_file(self.filename, self.forward, self.reverse, p_len)	
 

@@ -1,10 +1,9 @@
-import unittest
-import os
-import logging
-from albatradis.AlbaTraDIS import AlbaTraDIS
-import shutil
-import cProfile, pstats, io
 import filecmp
+import os
+import shutil
+import unittest
+
+from albatradis.AlbaTraDIS import AlbaTraDIS
 
 test_modules_dir = os.path.dirname(os.path.realpath(__file__))
 data_dir = os.path.join(test_modules_dir, 'data','albatradis')

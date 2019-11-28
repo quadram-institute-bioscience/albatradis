@@ -31,8 +31,8 @@ class PlotLog:
 		logfc_coord_values = self.read_comparison_file()
 		logfc_to_bases = self.genome_wide_logfc(logfc_coord_values)
 
-		forward_logfc = [i if i >= 0 else 0 for i in logfc_to_bases]
-		reverse_logfc = [i if i < 0 else 0 for i in logfc_to_bases]
+		forward_logfc = [i if i >= 0 else 0.0 for i in logfc_to_bases]
+		reverse_logfc = [i if i < 0 else 0.0 for i in logfc_to_bases]
 		
 		self.create_csv(forward_logfc, reverse_logfc)
 

@@ -27,14 +27,14 @@ class NormalisePlots:
 		max_plot_reads = self.max_reads(self.plot_objs)
 		for t in self.plot_total_reads(self.plot_objs):
 			if t/max_plot_reads < self.minimum_proportion_insertions:
-				print("No. of reads in file is "+str(t)+ " compared to a maximum of "+str(max_plot_reads) + " so we cant call decreased insertions accurately")
+				print("Number of reads in file is "+str(t)+ " compared to a maximum of "+str(max_plot_reads) + " so we cant call decreased insertions accurately")
 				return False
 				
 		# check number of insertion sites
 		max_plot_insertions = self.max_insertions (self.plot_objs)
 		for t in self.plot_insertions(self.plot_objs):
 			if t/max_plot_insertions < self.minimum_proportion_insertions:
-				print("No. of insertions in file is "+str(t)+ " compared to a maximum of "+str(max_plot_insertions) + " so we cant call decreased insertions accurately")
+				print("Number of insertions in file is "+str(t)+ " compared to a maximum of "+str(max_plot_insertions) + " so we cant call decreased insertions accurately")
 				return False
 		return True
 		

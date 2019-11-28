@@ -9,3 +9,6 @@ albatradis -v -a reference_BW25113.embl 025mgLTricRep1.insert_site_plot.gz 025mg
 
 This runs albatradis script using the annotation and verbose mode using example data. Please run albatradis -h for more options.
 
+Alternatively, there is a small toy dataset that can be run to test functionality.
+
+albatradis -v -a reference_BW25113_short.embl 025mgLTricRep1.insert_site_plot_short.gz  controlLBrep1.insert_site_plot_short.gz 

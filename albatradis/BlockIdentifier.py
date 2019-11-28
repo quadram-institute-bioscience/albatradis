@@ -94,7 +94,7 @@ class BlockIdentifier:
 				
 	def merge_all_plots_choosing_peak_logfc(self, combined_plot, forward_plot, reverse_plot):
 		genome_length = len(combined_plot.combined)
-		masking_plot_combined = numpy.zeros(genome_length, dtype=float)
+		masking_plot_combined = numpy.zeros(genome_length, dtype=int)
 		for i in range(0, genome_length):
 			peak_value_abs = max(numpy.absolute([combined_plot.combined[i], forward_plot.combined[i], reverse_plot.combined[i]]))
 			if peak_value_abs == max([combined_plot.combined[i], forward_plot.combined[i], reverse_plot.combined[i]]):
