@@ -7,9 +7,9 @@
 ## Contents
   * [Introduction](#introduction)
   * [Installation](#installation)
-    * [Ubuntu/Debian](#ubuntudebian)
     * [Conda](#conda)
     * [Docker](#docker)
+	* [Ubuntu/Debian](#ubuntudebian)
   * [Usage](#usage)
   * [License](#license)
   * [Feedback/Issues](#feedbackissues)
@@ -19,18 +19,7 @@
 AlbaTraDIS is a software application for performing rapid large-scale comparative analysis of TraDIS experiments whilst also predicting the impact of inserts on nearby genes. It allows for experiements with multiple conditions to be easily analysed using statistical methods developed in the Bio-TraDIS toolkit.
 
 ## Installation
-The software in this repository is straightforward to install, however the Bio-TraDIS toolkit is more complex. If you just want to quickly try out the software please try Docker.
-
-### Ubuntu/Debian
-There is a debian package available, however it only partially works, so please dont use it.  To install AlbaTraDIS on Ubuntu or Debian run:
-```
-sudo apt-get update -qq && apt-get install -y sudo bio-tradis git python3 python3-setuptools python3-biopython python3-pip cpanminus libncursesw5-dev libssl-dev
-sudo cpanm -f IPC::System::Simple DateTime::Locale DateTime Bio::Tradis
-sudo Rscript -e "source('http://bioconductor.org/biocLite.R')" -e "biocLite(c('edgeR','getopt', 'MASS'))"
-
-pip3 install cython
-pip3 install albatradis
-```
+The software in this repository is straightforward to install, however the Bio-TraDIS toolkit upon which it depends is more complex. If you just want to quickly try out the software please try Docker. If you wish to install it, please use Conda, an finally if you are brave, use the Ubuntu/Debian instructions.
 
 ### Conda
 [![Anaconda-Server Badge](https://anaconda.org/bioconda/albatradis/badges/latest_release_date.svg)](https://anaconda.org/bioconda/albatradis)
@@ -51,6 +40,19 @@ To use it you would use a command such as this (substituting in your filename/di
 ```
 docker run --rm -it -v /path/to/example_data:/example_data quadraminstitute/albatradis albatradis xxxxx
 ```
+
+### Ubuntu/Debian
+To install AlbaTraDIS on Ubuntu or Debian run:
+```
+sudo apt-get update -qq && sudo apt-get install -y bioperl bwa bzip2 cpanminus gcc git libgd-gd2-perl libncurses5-dev libncursesw5-dev libssl-dev libxml-libxml-perl make python3 python3-biopython python3-pip python3-setuptools r-base samtools smalt tabix unzip wget zlib1g-dev
+sudo Rscript -e "install.packages('BiocManager')" -e "BiocManager::install()" -e "BiocManager::install(c('edgeR','getopt', 'MASS'))"
+cpanm Bio::Tradis
+
+pip3 install cython
+pip3 install albatradis
+export PATH=${HOME}/.local/bin:$PATH
+```
+These instructions were tested on Ubuntu 18.04.
 
 ## Usage
 
