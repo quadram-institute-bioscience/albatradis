@@ -2,6 +2,6 @@ sudo: required
 services:
   - docker
 install:
-  - docker pull andrewjpage/albatradis
+  - docker pull quadraminstitute/albatradis
 script:
-  - docker run --rm -it andrewjpage/albatradis /bin/sh -c "git clone https://github.com/andrewjpage/albatradis.git && cd albatradis && python3 setup.py test"
+  - docker run --rm -it quadraminstitute/albatradis /bin/sh -c "git clone https://github.com/quadram-institute-bioscience/albatradis.git && cd albatradis && python3 setup.py test"
