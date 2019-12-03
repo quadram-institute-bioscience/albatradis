@@ -25,20 +25,18 @@ The software in this repository is straightforward to install, however the Bio-T
 [![Anaconda-Server Badge](https://anaconda.org/bioconda/albatradis/badges/latest_release_date.svg)](https://anaconda.org/bioconda/albatradis)
 [![Anaconda-Server Badge](https://anaconda.org/bioconda/albatradis/badges/platforms.svg)](https://anaconda.org/bioconda/albatradis)
 [![Anaconda-Server Badge](https://anaconda.org/bioconda/albatradis/badges/downloads.svg)](https://anaconda.org/bioconda/albatradis)
+
+The easiest way to install bioinformatics software is with [Conda](https://docs.conda.io/en/latest/miniconda.html). Once conda is installed, run this command: 
+
 ```
 conda install -c conda-forge -c bioconda albatradis
 ```
+AlbaTraDIS will be immediately available to use.
 
 ### Docker
-Install [Docker](https://www.docker.com/).  There is a docker container which gets automatically built from the latest version of AlbaTraDIS. To install it:
-
+Install [Docker](https://www.docker.com/) which works on Linux, OSX and Windows.  There is a docker container which gets automatically built from the latest version of AlbaTraDIS. To use it you would use a command such as this (substituting in your filename/directories), using the example file in this respository:
 ```
-docker pull quadraminstitute/albatradis
-```
-
-To use it you would use a command such as this (substituting in your filename/directories), using the example file in this respository:
-```
-docker run --rm -it -v /path/to/example_data:/example_data quadraminstitute/albatradis albatradis xxxxx
+docker run --rm -it -v /path/to/example_data:/example_data quadraminstitute/albatradis:latest albatradis xxxxx
 ```
 
 ### Ubuntu/Debian
