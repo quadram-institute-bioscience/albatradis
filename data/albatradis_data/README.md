@@ -33,7 +33,7 @@ albatradis -v -a reference_BW25113_short.embl 025mgLTricRep1.insert_site_plot_sh
 
 Alternatively if you don't have AlbaTraDIS installed, you can copy and paste the following docker command (must have docker installed), which will download an installation of AlbaTraDIS and run it without any changes.
 ```
-docker run --rm -it -v $PWD/albatradis_output:/work quadraminstitute/albatradis:latest albatradis -v -a /albatradis/data/albatradis_data/reference_BW25113_short.embl /albatradis/data/025mgLTricRep1.insert_site_plot_short.gz  /albatradis/data/controlLBrep1.insert_site_plot_short.gz 
+docker run --rm -it -v $PWD/albatradis_output:/work quadraminstitute/albatradis:latest albatradis -v -a /albatradis/data/albatradis_data/reference_BW25113_short.embl /albatradis/data/albatradis_data/025mgLTricRep1.insert_site_plot_short.gz  /albatradis/data/albatradis_data/controlLBrep1.insert_site_plot_short.gz 
 ```
 
 

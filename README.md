@@ -44,10 +44,10 @@ To install AlbaTraDIS on Ubuntu or Debian run:
 ```
 sudo apt-get update -qq && sudo apt-get install -y bioperl bwa bzip2 cpanminus gcc git libgd-gd2-perl libncurses5-dev libncursesw5-dev libssl-dev libxml-libxml-perl make python3 python3-biopython python3-pip python3-setuptools r-base samtools smalt tabix unzip wget zlib1g-dev
 sudo Rscript -e "install.packages('BiocManager')" -e "BiocManager::install()" -e "BiocManager::install(c('edgeR','getopt', 'MASS'))"
-cpanm Bio::Tradis
+sudo cpanm Bio::Tradis
 
-pip3 install cython
-pip3 install albatradis
+pip3 --user install cython
+pip3 --user install albatradis
 export PATH=${HOME}/.local/bin:$PATH
 ```
 These instructions were tested on Ubuntu 18.04.

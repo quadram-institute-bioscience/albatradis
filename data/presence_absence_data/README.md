@@ -25,5 +25,5 @@ This command only takes a few seconds to run on a standard laptop.
 
 Alternatively if you don't have AlbaTraDIS installed, you can copy and paste the following docker command (must have docker installed), which will download an installation of AlbaTraDIS and run it without any changes.
 ```
-docker run --rm -it -v $PWD/data/presence_absence_data:/work quadraminstitute/albatradis:latest albatradis-presence_absence reference_BW25113.embl gene_report_0008mgL.csv gene_report_0015mgL.csv gene_report_003mgL.csv gene_report_006mgL.csv gene_report_0125mgL.csv gene_report_025mgL.csv gene_report_05mgL.csv gene_report_1mgL.csv
+docker run --rm -it -v $PWD/albatradis_output:/work quadraminstitute/albatradis:latest albatradis-presence_absence albatradis/data/presence_absence_data/reference_BW25113.embl albatradis/data/presence_absence_data/gene_report_0008mgL.csv albatradis/data/presence_absence_data/gene_report_0015mgL.csv albatradis/data/presence_absence_data/gene_report_003mgL.csv albatradis/data/presence_absence_data/gene_report_006mgL.csv albatradis/data/presence_absence_data/gene_report_0125mgL.csv albatradis/data/presence_absence_data/gene_report_025mgL.csv albatradis/data/presence_absence_data/gene_report_05mgL.csv albatradis/data/presence_absence_data/gene_report_1mgL.csv
 ```
