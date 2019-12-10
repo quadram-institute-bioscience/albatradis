@@ -22,6 +22,7 @@ AlbaTraDIS is a software application for performing rapid large-scale comparativ
 The software in this repository is straightforward to install, however the Bio-TraDIS toolkit upon which it depends is more complex. If you just want to quickly try out the software please try Docker. If you wish to install it, please use Conda, an finally if you are brave, use the Ubuntu/Debian instructions.
 
 ### Conda
+![Conda](https://img.shields.io/conda/vn/bioconda/albatradis?color=green&label=Latest%20version%20)
 [![Anaconda-Server Badge](https://anaconda.org/bioconda/albatradis/badges/latest_release_date.svg)](https://anaconda.org/bioconda/albatradis)
 [![Anaconda-Server Badge](https://anaconda.org/bioconda/albatradis/badges/platforms.svg)](https://anaconda.org/bioconda/albatradis)
 [![Anaconda-Server Badge](https://anaconda.org/bioconda/albatradis/badges/downloads.svg)](https://anaconda.org/bioconda/albatradis)
