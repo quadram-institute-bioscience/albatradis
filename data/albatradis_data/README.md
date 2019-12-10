@@ -18,7 +18,7 @@ albatradis -v -a reference_BW25113.embl 025mgLTricRep1.insert_site_plot.gz 025mg
 It takes about 5 minutes to run on a standard laptop, and it is set to output in verbose mode (-v) so that you can see whats happening. 
 
 
-Alternatively if you dont have AlbaTraDIS installed, you can copy and paste the following docker command (must have docker installed), which will download an installation of AlbaTraDIS and run it without any changes.
+Alternatively if you don't have AlbaTraDIS installed, you can copy and paste the following docker command (must have docker installed), which will download an installation of AlbaTraDIS and run it without any changes.
 
 ```
 docker run --rm -it -v $PWD/albatradis_output:/work quadraminstitute/albatradis:latest albatradis -v -a /albatradis/data/albatradis_data/reference_BW25113.embl /albatradis/data/albatradis_data/025mgLTricRep1.insert_site_plot.gz /albatradis/data/albatradis_data/025mgLTricRep2.insert_site_plot.gz /albatradis/data/albatradis_data/controlLBrep1.insert_site_plot.gz /albatradis/data/albatradis_data/controlLBrep2.insert_site_plot.gz
@@ -31,7 +31,7 @@ This is the command to run a minimal toy dataset. It is good for verifying the f
 albatradis -v -a reference_BW25113_short.embl 025mgLTricRep1.insert_site_plot_short.gz  controlLBrep1.insert_site_plot_short.gz 
 ```
 
-Alternatively if you dont have AlbaTraDIS installed, you can copy and paste the following docker command (must have docker installed), which will download an installation of AlbaTraDIS and run it without any changes.
+Alternatively if you don't have AlbaTraDIS installed, you can copy and paste the following docker command (must have docker installed), which will download an installation of AlbaTraDIS and run it without any changes.
 ```
 docker run --rm -it -v $PWD/albatradis_output:/work quadraminstitute/albatradis:latest albatradis -v -a /albatradis/data/albatradis_data/reference_BW25113_short.embl /albatradis/data/025mgLTricRep1.insert_site_plot_short.gz  /albatradis/data/controlLBrep1.insert_site_plot_short.gz 
 ```
