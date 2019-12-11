@@ -2,6 +2,7 @@ import unittest
 import os
 import filecmp
 import shutil
+import subprocess
 
 
 from albatradis.PresenceAbsence import PresenceAbsence
@@ -10,6 +11,9 @@ class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass
 
 data_dir = os.path.join('albatradis','tests', 'data','presenceabsence')
+test_modules_dir = os.path.dirname(os.path.realpath(__file__))
+base_dir = os.path.abspath(os.path.join(test_modules_dir, '..', '..'))
+example_dir = os.path.join('/albatradis', 'data', 'presence_absence_data')
 
 
 class TestPresenceAbsence(unittest.TestCase):
@@ -42,3 +46,16 @@ class TestPresenceAbsence(unittest.TestCase):
 		
 		#shutil.rmtree('testoutput')
 		
+	def test_example_toy(self):
+		files = " ".join([os.path.join(example_dir, 'gene_report_1mgL.csv'), os.path.join(example_dir, 'gene_report_003mgL.csv'), os.path.join(example_dir, 'gene_report_05mgL.csv'), os.path.join(example_dir, 'gene_report_006mgL.csv'), os.path.join(example_dir, 'gene_report_0008mgL.csv'), os.path.join(example_dir, 'gene_report_0015mgL.csv'), os.path.join(example_dir, 'gene_report_025mgL.csv'), os.path.join(example_dir, 'gene_report_0125mgL.csv')])
+		emblfile = os.path.join(example_dir, 'reference_BW25113.embl')
+		out_dir = (os.path.join(base_dir, 'albatradis_output:/work'))
+
+		cmd = " ".join(
+			['docker run --rm  -v', out_dir, 'quadraminstitute/albatradis:latest albatradis-presence_absence ', emblfile, files])
+
+		subprocess.call(cmd, shell=True)
+
+		self.assertTrue(os.path.exists(os.path.join(base_dir, 'albatradis_output/output')))
+		self.assertTrue(os.path.exists(os.path.join(base_dir, 'albatradis_output/output/logfc.dot')))
+		shutil.rmtree(os.path.join(base_dir,'albatradis_output'))

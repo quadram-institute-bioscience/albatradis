@@ -2,11 +2,16 @@ import filecmp
 import os
 import shutil
 import unittest
+import subprocess
+
+
 
 from albatradis.AlbaTraDIS import AlbaTraDIS
 
 test_modules_dir = os.path.dirname(os.path.realpath(__file__))
 data_dir = os.path.join(test_modules_dir, 'data','albatradis')
+base_dir = os.path.abspath(os.path.join(test_modules_dir, '..', '..'))
+example_dir = os.path.join('/albatradis', 'data', 'albatradis_data')
 
 class TestOptions:
 	def __init__(self, plotfiles, minimum_threshold, window_size,window_interval, verbose, prefix, minimum_logcpm, minimum_logfc, pvalue, qvalue, iterations, dont_normalise_plots,minimum_block,span_gaps, emblfile, minimum_proportion_insertions, strict_signal, use_annotation, prime_feature_size):
@@ -36,7 +41,7 @@ class TestAlbaTraDIS(unittest.TestCase):
 		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
 		control = os.path.join(data_dir, 'small_control.insert_site_plot.gz')
 		emblfile = os.path.join(data_dir, 'annotation.embl')
-    
+
 		t = AlbaTraDIS(TestOptions([case, control], 3, 100, 100, False, 'testoutput', 1, 1, 1, 1, 1, True,1,0, emblfile, 0.1, False, False, 100))
 		self.assertTrue(t.run())
 		self.assertTrue(os.path.exists('testoutput'))
@@ -65,4 +70,18 @@ class TestAlbaTraDIS(unittest.TestCase):
 		self.assertTrue(t.run())
 		self.assertTrue(os.path.exists('testoutput'))
 		shutil.rmtree("testoutput")
-		
+
+	def test_example_toy(self):
+		case = os.path.join(example_dir, '025mgLTricRep1.insert_site_plot_short.gz')
+		control = os.path.join(example_dir, 'controlLBrep1.insert_site_plot_short.gz')
+		emblfile = os.path.join(example_dir, 'reference_BW25113_short.embl')
+		out_dir = (os.path.join(base_dir, 'albatradis_output:/work'))
+
+		cmd = " ".join(
+			['docker run --rm  -v', out_dir, 'quadraminstitute/albatradis:latest albatradis -v -a ', emblfile, case, control])
+
+		subprocess.call(cmd, shell=True)
+
+		self.assertTrue(os.path.exists(os.path.join(base_dir, 'albatradis_output/output')))
+		self.assertTrue(os.path.exists(os.path.join(base_dir, 'albatradis_output/output/gene_report.csv')))
+		shutil.rmtree(os.path.join(base_dir,'albatradis_output'))
