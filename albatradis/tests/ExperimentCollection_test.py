@@ -8,7 +8,7 @@ from albatradis.ExperimentMetaData import ExperimentMetaData
 class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass
 
-data_dir = os.path.join('albatradis','tests', 'data','experimentcollection')
+data_dir = os.path.join('data','experimentcollection')
 
 class TestExperimentCollection(unittest.TestCase):
 
@@ -23,8 +23,8 @@ class TestExperimentCollection(unittest.TestCase):
 		self.assertEqual(['mic'], ec.properties_not_in_common())
 		self.assertEqual('drug_0', ec.project_name)
 		
-		expected_output = """project.drug_0.sequence=albatradis/tests/data/experimentcollection/reference
-project.drug_0.userplot=albatradis/tests/data/experimentcollection/control albatradis/tests/data/experimentcollection/condition_0.25_0_rep1 albatradis/tests/data/experimentcollection/condition_0.25_0_rep2 albatradis/tests/data/experimentcollection/condition_0.5_0_rep1 albatradis/tests/data/experimentcollection/condition_0.5_0_rep2 albatradis/tests/data/experimentcollection/condition_1_0_rep1 albatradis/tests/data/experimentcollection/condition_1_0_rep2 albatradis/tests/data/experimentcollection/condition_2_0_rep1 albatradis/tests/data/experimentcollection/condition_2_0_rep2
+		expected_output = """project.drug_0.sequence=data/experimentcollection/reference
+project.drug_0.userplot=data/experimentcollection/control data/experimentcollection/condition_0.25_0_rep1 data/experimentcollection/condition_0.25_0_rep2 data/experimentcollection/condition_0.5_0_rep1 data/experimentcollection/condition_0.5_0_rep2 data/experimentcollection/condition_1_0_rep1 data/experimentcollection/condition_1_0_rep2 data/experimentcollection/condition_2_0_rep1 data/experimentcollection/condition_2_0_rep2
 """
 		self.assertEqual(expected_output, str(ec))
 		

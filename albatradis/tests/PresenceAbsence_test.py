@@ -10,9 +10,11 @@ from albatradis.PresenceAbsence import PresenceAbsence
 class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass
 
-data_dir = os.path.join('albatradis','tests', 'data','presenceabsence')
 test_modules_dir = os.path.dirname(os.path.realpath(__file__))
+data_dir = os.path.join('data','presenceabsence')
+
 base_dir = os.path.abspath(os.path.join(test_modules_dir, '..', '..'))
+
 example_dir = os.path.join('/albatradis', 'data', 'presence_absence_data')
 
 
@@ -25,7 +27,7 @@ class TestPresenceAbsence(unittest.TestCase):
 		
 		genereports = [os.path.join(data_dir, 'ctrl.csv'), os.path.join(data_dir, 'gent1.csv'), os.path.join(data_dir, 'gent5.csv'), os.path.join(data_dir, 'gent25.csv') ]
 		emblfile = os.path.join(data_dir, 'reference.embl')
-		
+
 		all_outputfile = os.path.join('testoutput', 'all_logfc.csv')
 		filtered_outputfile = os.path.join('testoutput', 'filtered_logfc.csv')
 		dendrogram = os.path.join('testoutput', 'distance_matrix_dendrogram.tre')
@@ -44,7 +46,7 @@ class TestPresenceAbsence(unittest.TestCase):
 		self.assertTrue(nj_tree)
 		self.assertTrue(filecmp.cmp(exp_lfc, all_outputfile))
 		
-		#shutil.rmtree('testoutput')
+		#sshutil.rmtree('testoutput')
 		
 	def test_example_toy(self):
 		files = " ".join([os.path.join(example_dir, 'gene_report_1mgL.csv'), os.path.join(example_dir, 'gene_report_003mgL.csv'), os.path.join(example_dir, 'gene_report_05mgL.csv'), os.path.join(example_dir, 'gene_report_006mgL.csv'), os.path.join(example_dir, 'gene_report_0008mgL.csv'), os.path.join(example_dir, 'gene_report_0015mgL.csv'), os.path.join(example_dir, 'gene_report_025mgL.csv'), os.path.join(example_dir, 'gene_report_0125mgL.csv')])

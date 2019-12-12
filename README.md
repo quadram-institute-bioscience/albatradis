@@ -408,6 +408,9 @@ __outputfile__: The name of the Artemis project file. If you change this, then A
 
 __project.properties__: The Artemis project file.
 
+## Example data
+
+
 ## License
 AlbaTraDIS is free software, licensed under [GPLv3](https://raw.githubusercontent.com/quadram-institute-bioscience/albatradis/master/VERSION/LICENSE).
 
