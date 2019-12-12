@@ -7,7 +7,7 @@ from albatradis.ArtemisProject import ArtemisProject
 class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass
 
-data_dir = os.path.join( 'data','experimentcollection')
+data_dir = os.path.join( 'albatradis', 'tests','data','experimentcollection')
 
 class TestArtemisProject(unittest.TestCase):
 
