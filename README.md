@@ -410,6 +410,8 @@ __project.properties__: The Artemis project file.
 
 ## Example data
 
+Some example data to run the albatradis and albatradis-presence_absence workflows are included in the data [folder](https://github.com/quadram-institute-bioscience/albatradis/tree/master/data). The data is from the Triclosan dataset presented in [Yasir et al. 2019](https://www.biorxiv.org/content/10.1101/596833v1). 
+Running commands as well as description of the provided data for the albatradis script can be found [here](https://github.com/quadram-institute-bioscience/albatradis/blob/master/data/albatradis_data/README.md) and for the albatradis-presence_absence script [here](https://github.com/quadram-institute-bioscience/albatradis/blob/master/data/presence_absence_data/README.md).
 
 ## License
 AlbaTraDIS is free software, licensed under [GPLv3](https://raw.githubusercontent.com/quadram-institute-bioscience/albatradis/master/VERSION/LICENSE).
