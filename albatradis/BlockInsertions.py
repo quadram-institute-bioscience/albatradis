@@ -247,6 +247,7 @@ class BlockInsertions:
                 all_genes.append(g)
 
         if len(all_genes) == 0 and len(intergenic_blocks) == 0:
+            print("No significant genes found for chosen parameters.\n")
             return []
 
         self.write_gene_report(all_genes, intergenic_blocks)
@@ -259,6 +260,7 @@ class BlockInsertions:
 
     def write_gene_report(self, genes, intergenic_blocks):
         block_filename = os.path.join(self.prefix, "gene_report.csv")
+
         with open(block_filename, 'w') as bf:
             bf.write(str(genes[0].header()) + "\n")
             if not self.use_annotation:
