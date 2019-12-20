@@ -70,18 +70,3 @@ class TestAlbaTraDIS(unittest.TestCase):
 		self.assertTrue(t.run())
 		self.assertTrue(os.path.exists('testoutput'))
 		shutil.rmtree("testoutput")
-
-	# def test_example_toy(self):
-	# 	case = os.path.join(example_dir, '025mgLTricRep1.insert_site_plot_short.gz')
-	# 	control = os.path.join(example_dir, 'controlLBrep1.insert_site_plot_short.gz')
-	# 	emblfile = os.path.join(example_dir, 'reference_BW25113_short.embl')
-	# 	out_dir = (os.path.join(base_dir, 'albatradis_output:/work'))
-	#
-	# 	cmd = " ".join(
-	# 		['docker run --rm  -v', out_dir, 'quadraminstitute/albatradis:latest albatradis -v -a ', emblfile, case, control])
-	#
-	# 	subprocess.call(cmd, shell=True)
-	#
-	# 	self.assertTrue(os.path.exists(os.path.join(base_dir, 'albatradis_output/output')))
-	# 	self.assertTrue(os.path.exists(os.path.join(base_dir, 'albatradis_output/output/gene_report.csv')))
-	# 	shutil.rmtree(os.path.join(base_dir,'albatradis_output'))

@@ -1,7 +1,5 @@
 import unittest
 import os
-import logging
-import filecmp
 from albatradis.ScatterPlot import ScatterPlot
 
 test_modules_dir = os.path.dirname(os.path.realpath(__file__))
@@ -19,3 +17,6 @@ class TestScatterPlot(unittest.TestCase):
 		self.assertTrue(s.create_linear_plot())
 		self.assertTrue(s.create_abs_scatter_plot())
 
+		os.remove("scattertest_absscatter.png")
+		os.remove("scattertest_linear.png")
+		os.remove("scattertest_scatter.png")

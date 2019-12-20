@@ -128,6 +128,7 @@ class BlockInsertions:
         if self.verbose:
             print("Essentiality:\t" + filetype + "\t" + e.output_filename)
 
+
         return pe
 
     def run_essentiality(self, plotfile_objects):
@@ -171,12 +172,13 @@ class BlockInsertions:
         mid = int(len(files) / 2)
 
         t = TradisComparison(files[:mid], files[mid:], self.verbose, self.minimum_block, only_ess_files[:mid],
-                             only_ess_files[mid:])
+                             only_ess_files[mid:], analysis_type, self.prefix)
         t.run()
         p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.qvalue,
                     self.minimum_logcpm, self.window_size, self.span_gaps, self.report_decreased_insertions,
                     annotation_files[0])
         p.construct_plot_file()
+
         renamed_csv_file = os.path.join(self.prefix, analysis_type + ".csv")
         renamed_plot_file = os.path.join(self.prefix, analysis_type + ".plot")
 
@@ -184,6 +186,7 @@ class BlockInsertions:
         shutil.copy(p.output_filename, renamed_plot_file)
         os.remove(t.output_filename)
         os.remove(p.output_filename)
+
 
         if self.verbose:
             print("Comparison:\t" + renamed_csv_file)

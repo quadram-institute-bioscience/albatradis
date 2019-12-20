@@ -2,6 +2,7 @@ import subprocess
 from tempfile import mkstemp
 import os
 import csv
+import shutil
 
 
 class GeneEssentiality:
@@ -24,7 +25,7 @@ class GeneEssentiality:
 
 class TradisComparison:
     def __init__(self, condition_files, control_files, verbose, minimum_block, only_ess_files_condition,
-                 only_ess_files_control, exec="tradis_comparison.R"):
+                 only_ess_files_control, analysis_type, prefix,  exec="tradis_comparison.R"):
         self.condition_files = condition_files
         self.control_files = control_files
         self.exec = exec
@@ -32,6 +33,8 @@ class TradisComparison:
         self.minimum_block = minimum_block
         self.only_ess_files_condition = only_ess_files_condition
         self.only_ess_files_control = only_ess_files_control
+        self.analysis_type = analysis_type
+        self.prefix = prefix
 
         fd, self.output_filename = mkstemp()
         fd, self.conditions_fofn = mkstemp()
@@ -65,6 +68,12 @@ class TradisComparison:
             for e in ess_gene_names:
                 if e in genes_ess:
                     genes_ess[e].control += 1
+
+        condition_name = os.path.join(self.prefix, self.analysis_type + "_condition_essen.ess")
+        shutil.copy(self.only_ess_files_condition[0], condition_name)
+        control_name = os.path.join(self.prefix, self.analysis_type + "_control_essen.ess")
+        shutil.copy(self.only_ess_files_control[0], control_name)
+
         return genes_ess
 
     def create_fofn(self):

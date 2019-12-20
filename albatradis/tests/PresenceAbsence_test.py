@@ -40,5 +40,5 @@ class TestPresenceAbsence(unittest.TestCase):
 		self.assertTrue(nj_tree)
 		self.assertTrue(filecmp.cmp(exp_lfc, all_outputfile))
 		
-		#sshutil.rmtree('testoutput')
+		shutil.rmtree('testoutput')
 		
