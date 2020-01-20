@@ -26,7 +26,7 @@ parser.add_argument('--minimum_block',         '-b', help='Minimum number of rea
 parser.add_argument('--minimum_logfc',         '-f', help='Minimum log fold change +/-', type=float, default=1)
 parser.add_argument('--minimum_logcpm',        '-c', help='Minimum log counts per million +/-', type=float, default=8.0)
 parser.add_argument('--minimum_threshold',     '-m', help='Only include insert sites with this number or greater insertions', type=int, default=5)
-parser.add_argument('--minimum_proportion_insertions', '-d', help='If the proportion of insertions is too low compared to control, dont call decreased insertions below this level', type=int, default=0.1)
+parser.add_argument('--minimum_proportion_insertions', '-d', help='If the proportion of insertions is too low compared to control, dont call decreased insertions below this level', type=float, default=0.1)
 parser.add_argument('--dont_normalise_plots',  '-n', action='store_true', help='Dont normalise input plots', default = False)
 parser.add_argument('--prefix',                '-o',  help='Output directory prefix', type=str, default='output')
 parser.add_argument('--pvalue',                '-p',  help='Dont report anything above this p-value', type=float, default=0.05)
