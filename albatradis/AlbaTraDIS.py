@@ -43,6 +43,8 @@ class AlbaTraDIS:
 	
 	def run(self):
 		plotfiles = self.plotfiles
+		plotnames = self.plotfiles
+		print("Plotfiles1; "+plotfiles[0])
 		report_decreased_insertions = True
 		if not self.dont_normalise_plots:
 			n = NormalisePlots(self.plotfiles, self.minimum_proportion_insertions)
@@ -50,7 +52,7 @@ class AlbaTraDIS:
 			report_decreased_insertions = n.decreased_insertion_reporting()
 		
 		if self.iterations == 1:
-			bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.qvalue, self.prefix, self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions,self.strict_signal,self.use_annotation, self.prime_feature_size)
+			bi = BlockInsertions(self.logger, plotfiles, plotnames, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.qvalue, self.prefix, self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions,self.strict_signal,self.use_annotation, self.prime_feature_size)
 			bi.run()
 			self.blocks = bi.blocks
 			plotfiles = bi.output_plots.values()

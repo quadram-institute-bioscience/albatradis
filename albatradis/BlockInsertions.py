@@ -29,19 +29,21 @@ class PlotEssentiality:
 
 
 class PlotAllEssentiality:
-    def __init__(self, forward, reverse, combined, embl_filename):
+    def __init__(self, forward, reverse, combined, original, embl_filename):
         self.forward = forward
         self.reverse = reverse
         self.combined = combined
+        self.original = original
         self.embl_filename = embl_filename
 
 
 class BlockInsertions:
-    def __init__(self, logger, plotfiles, minimum_threshold, window_size, window_interval, verbose, minimum_logfc,
+    def __init__(self, logger, plotfiles, plotnames, minimum_threshold, window_size, window_interval, verbose, minimum_logfc,
                  pvalue, qvalue, prefix, minimum_logcpm, minimum_block, span_gaps, emblfile,
                  report_decreased_insertions, strict_signal, use_annotation, prime_feature_size):
         self.logger = logger
         self.plotfiles = plotfiles
+        self.plotnames = plotnames
         self.minimum_threshold = minimum_threshold
         self.window_size = window_size
         self.window_interval = window_interval
@@ -79,7 +81,7 @@ class BlockInsertions:
 
     def run(self):
         plotfile_objects = self.prepare_input_files()
-        essentiality_files = self.run_essentiality(plotfile_objects)
+        essentiality_files = self.run_essentiality(plotfile_objects, self.plotnames)
 
         self.run_comparisons(essentiality_files)
         self.output_plots = self.mask_plots()
@@ -102,6 +104,8 @@ class BlockInsertions:
         n = len(self.plotfiles)
 
         for plotfile in self.plotfiles:
+            filename = plotfile
+            print("Plotfile: " + plotfile)
             p = PrepareInputFiles(plotfile, self.minimum_threshold)
             p.create_all_files()
             p.embl_filename = self.annotation_file
@@ -112,17 +116,19 @@ class BlockInsertions:
                 print("Forward plot:\t" + p.forward_plot_filename)
                 print("reverse plot:\t" + p.reverse_plot_filename)
                 print("combined plot:\t" + p.combined_plot_filename)
+                print("original plot:\t" + p.original_plot_filename)
                 print("Embl:\t" + self.annotation_file)
             print("\t" + str(i) + " of " + str(n) + " files processed.\n")
             i = i + 1
             self.genome_length = p.genome_length()
         return plotfile_objects
 
-    def essentiality(self, plotfile_objects, plotfile, filetype):
-        g = TradisGeneInsertSites(plotfile_objects[plotfile].embl_filename, getattr(plotfile_objects[plotfile], filetype + "_plot_filename"), self.verbose)
+    def essentiality(self, embl_filename, plotfile_objects, plotfile, plotname, filetype):
+        g = TradisGeneInsertSites(embl_filename, getattr(plotfile_objects[plotfile], filetype + "_plot_filename"), self.verbose)
         g.run()
-        e = TradisEssentiality(g.output_filename, self.verbose)
-        e.run()
+
+        e = TradisEssentiality(g.output_filename, self.verbose, prefix=self.prefix, plotnames=self.plotnames, analysis_type=filetype)
+        e.run(plotname)
         pe = PlotEssentiality(plotfile, g.output_filename, e.output_filename, filetype, e.essential_filename)
 
         if self.verbose:
@@ -131,22 +137,25 @@ class BlockInsertions:
 
         return pe
 
-    def run_essentiality(self, plotfile_objects):
+    def run_essentiality(self, plotfile_objects, plotnames):
         essentiality_files = {}
 
         n = 3 * len(plotfile_objects)
         i = 3
+        j = 0
 
         print("2. Find essential genes for each split file.\n")
 
         for plotfile in plotfile_objects:
-            f = self.essentiality(plotfile_objects, plotfile, 'forward')
-            r = self.essentiality(plotfile_objects, plotfile, 'reverse')
-            c = self.essentiality(plotfile_objects, plotfile, 'combined')
-            e = plotfile_objects[plotfile].embl_filename
-            essentiality_files[plotfile] = PlotAllEssentiality(f, r, c, e)
+            f = self.essentiality(plotfile_objects[plotfile].embl_filename, plotfile_objects,  plotfile, plotnames[j], 'forward')
+            r = self.essentiality(plotfile_objects[plotfile].embl_filename, plotfile_objects, plotfile, plotnames[j], 'reverse')
+            c = self.essentiality(plotfile_objects[plotfile].embl_filename, plotfile_objects, plotfile, plotnames[j], 'combined')
+            o = self.essentiality(self.emblfile, plotfile_objects, plotfile, plotnames[j], 'original')
+            k = plotfile_objects[plotfile].embl_filename
+            essentiality_files[plotfile] = PlotAllEssentiality(f, r, c, o, k)
             print("\t" + str(i) + " of " + str(n) + " files processed.\n")
             i = i + 3
+            j = j + 1
 
         return essentiality_files
 
@@ -160,6 +169,8 @@ class BlockInsertions:
         print("Reverse insertions have been compared.\n")
         self.combined_plotfile = self.generate_logfc_plot('combined', essentiality_files)
         print("Combined insertions have been compared.\n")
+        self.combined_plotfile = self.generate_logfc_plot('original', essentiality_files)
+        print("Original insertions have been compared.\n")
 
     def generate_logfc_plot(self, analysis_type, essentiality_files):
         files = [getattr(essentiality_files[plotfile], analysis_type).tradis_essentiality_filename for plotfile in
@@ -313,5 +324,6 @@ class BlockInsertions:
             os.remove(p.forward_plot_filename)
             os.remove(p.reverse_plot_filename)
             os.remove(p.combined_plot_filename)
+            os.remove(p.original_plot_filename)
             if os.path.exists(p.embl_filename):
                 shutil.move(p.embl_filename, os.path.join(self.prefix, "annotation.embl"))

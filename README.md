@@ -173,11 +173,11 @@ __regulated_gene_report.csv__: This is a filtered version of the gene_report.csv
 
 __combined.csv__: This comma delimited spreadsheet is the output of the Bio-TraDIS toolkit, with additional essentiality categoristations, and an example is listed below. This is the raw data from which the gene_report.csv is derived. It lists each gene or sliding window, and optionally the corresponding 5' and 3' features for a gene. The first 2 columns list the names of the gene or give the coordinates of the sliding window. The 3rd column lists the annotated function of the gene (if available in the annotation file). The numerical columns are derived from EdgeR. The 4th column gives the log fold change between the conditions and the controls. The 5th column gives the log counts per million, which can be thought of as relative abundance. The final column indicate how the essentiality has changed between the conditions and the controls, so a gene can always be non-essential in both the controls and the conditions or essential in all cases. More interestingly though is where there is a change in essentiality between the control and the conditions, indicating a large mechanistic change. 
 
-| locus_tag | gene_name | function | logFC | logCPM | PValue | q.value | Essentiality |
+| locus_tag | gene_name | function | logFC | logCPM | PValue | q.value |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| thrL | thrL | product | -0.4327 | 4.1269 | 0.5477 | 0.8177 | always_nonessential |
-| thrL__5prime | thrL__5prime | product | -0.1208 | 4.5885 | 0.8555 | 0.9521 | always_nonessential |
-| thrL__3prime | thrL__3prime | product | 1.0268 | 4.9723 | 0.1227 | 0.4258 | always_nonessential |
+| thrL | thrL | product | -0.4327 | 4.1269 | 0.5477 | 0.8177 |
+| thrL__5prime | thrL__5prime | product | -0.1208 | 4.5885 | 0.8555 | 0.9521 |
+| thrL__3prime | thrL__3prime | product | 1.0268 | 4.9723 | 0.1227 | 0.4258 |
 
 __forward.csv__: This is identical to the combined.csv file, except only insertions in the forward direction were considered during the analysis.
 
@@ -188,6 +188,14 @@ __combined.plot__: This is the log fold change of each gene or sliding window, i
 __forward.plot__: This is identical to the combined.plot file, except only insertions in the forward direction were considered during the analysis. 
 
 __reverse.plot__: This is identical to the combined.plot file, except only insertions in the reverse direction were considered during the analysis. 
+
+__Essentiality.txt__: This file is a comma delimited spreadsheet, which contains information on gene essentiality. The first column states the gene name, second column states its essentiality status (always essential, probably always essential, conditionally essential, probably conditionally essential, essential in control, probably essential in control, always non-essential , probably always non-essential, inconsistent replicates). A gene is classified as "always essential", if it is essential in all condition and all control replicates. It is classified as "probably always essential" if the gene was essential in more than 50% of the replicates in control and condition. A gene is classified as "conditionally essential" if it is essential in all replicates of the condition but in none of the replicates in the control. A gene is classified as "probably conditionally essential" if it is essential in more than 50% of replicates in the condition but in less than 50% of the replicates in the control. A gene is classified as "essential in the control" if it is essential in all replicates of the control but in none of the replicates in the condition. A gene is classified as "probably essential in the control" if it is essential in more than 50% of replicates in the control but in less than 50% of the replicates in the condition. A gene is classified as "always non-essential" if it is non-essential in all replicates in the condition and all the replicates in the control. A gene is classified as "probably always non-essential" if it is non-essential in less than 50% of replicates in the condition and in less than 50% of the replicates in the control. In any other case (e.g. 50% of replicates indicate essentiality and 50% do not) the gene gets the tag "inconsistent replicates" assigned. The third column gives the number of replicates in control in which the gene was classified as essential. The fourth column gives the number of replicates in the condition in which the gene was classified as essential. And the fifth column gives the number of replicates in control and condition (they must be the same as per input requirement).
+
+| Gene | Essentiality | Control | Condition | Replicates |
+| --- | --- | --- | --- | --- | 
+| lpxD | always essential | 2 | 2 | 2 |
+| ybhK | always nonessential | 0 | 0 | 2 |
+| pstC | inconsistent data | 0 | 1 | 2 |
 
 ### albatradis-presence_absence
 

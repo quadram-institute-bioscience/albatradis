@@ -5,18 +5,25 @@ import shutil
 import csv
 
 class TradisEssentiality:
-	def __init__(self, tabfile, verbose, exec="tradis_essentiality.R"):
+	def __init__(self, tabfile, verbose, exec="tradis_essentiality.R", prefix="", plotnames="", analysis_type=""):
 		self.tabfile = tabfile
 		self.exec     = exec
 		self.verbose = verbose
+		self.prefix = prefix
+		self.plotnames = plotnames
+		self.analysis_type = analysis_type
+
 		
 		fd, self.output_filename = mkstemp()
 		fd, self.essential_filename = mkstemp()
 
 	def construct_command(self):
+		print("Tabfile: "+ self.tabfile)
 		return " ".join([self.exec,  self.tabfile])
+
+
 		
-	def run(self):
+	def run(self, plotname):
 		if self.verbose:
 			print(self.construct_command())
 		subprocess.check_output(self.construct_command(), shell=True)
@@ -27,7 +34,11 @@ class TradisEssentiality:
 		if self.verbose:
 			print("all.csv\t" + self.output_filename)
 			print("essen.csv\t" + self.essential_filename)
-		
+
+		if self.analysis_type == "original":
+			condition_name = os.path.join(self.prefix, plotname + self.analysis_type + ".ess")
+			shutil.copy(self.tabfile + ".essen.csv", condition_name)
+
 		os.remove(self.tabfile +".all.csv")
 		os.remove(self.tabfile +".essen.csv")
 		os.remove(self.tabfile +".ambig.csv")

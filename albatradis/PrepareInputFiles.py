@@ -14,6 +14,7 @@ class PrepareInputFiles:
 		self.forward_plot_filename = ""
 		self.reverse_plot_filename = ""
 		self.combined_plot_filename = ""
+		self.original_plot_filename = plotfile
 		self.embl_filename = ""
 		
 	def genome_length(self):
@@ -30,6 +31,7 @@ class PrepareInputFiles:
 		
 	def create_all_files(self):
 		self.plot_parser_obj = self.plot_parser()
+
 		
 		self.forward_plot_filename = self.create_split_plot_file(self.plot_parser_obj.forward, [])
 		self.reverse_plot_filename = self.create_split_plot_file([], self.plot_parser_obj.reverse)
