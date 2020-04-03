@@ -324,6 +324,6 @@ class BlockInsertions:
             os.remove(p.forward_plot_filename)
             os.remove(p.reverse_plot_filename)
             os.remove(p.combined_plot_filename)
-            os.remove(p.original_plot_filename)
+            # os.remove(p.original_plot_filename)
             if os.path.exists(p.embl_filename):
                 shutil.move(p.embl_filename, os.path.join(self.prefix, "annotation.embl"))

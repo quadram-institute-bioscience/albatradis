@@ -47,7 +47,9 @@ class TestAlbaTraDIS(unittest.TestCase):
 		self.assertTrue(os.path.exists('testoutput'))
 		self.assertTrue(os.path.exists('testoutput/gene_report.csv'))
 		shutil.rmtree("testoutput")
-		
+		os.remove(os.path.join(data_dir,"small_case.insert_site_plot.gzoriginal.ess"))
+		os.remove(os.path.join(data_dir,"small_control.insert_site_plot.gzoriginal.ess"))
+
 	def test_ignore_decreased_insertions(self):
 		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
 		control = os.path.join(data_dir, 'small_control_high_insertions.insert_site_plot.gz')
@@ -60,6 +62,8 @@ class TestAlbaTraDIS(unittest.TestCase):
 		
 		self.assertTrue(filecmp.cmp(os.path.join(data_dir, 'expected_no_decrease.plot'), os.path.join('testoutputx', 'combined.plot') ))
 		shutil.rmtree("testoutputx")
+		os.remove(os.path.join(data_dir,"small_case.insert_site_plot.gzoriginal.ess"))
+		os.remove(os.path.join(data_dir,"small_control_high_insertions.insert_site_plot.gzoriginal.ess"))
 		
 	def test_small_use_annotation(self):
 		case = os.path.join(data_dir, 'small_case.insert_site_plot.gz')
@@ -70,3 +74,6 @@ class TestAlbaTraDIS(unittest.TestCase):
 		self.assertTrue(t.run())
 		self.assertTrue(os.path.exists('testoutput'))
 		shutil.rmtree("testoutput")
+		os.remove(os.path.join(data_dir,"small_control.insert_site_plot.gzoriginal.ess"))
+		os.remove(os.path.join(data_dir, "small_case.insert_site_plot.gzoriginal.ess"))
+

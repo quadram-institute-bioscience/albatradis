@@ -19,11 +19,9 @@ class TradisGeneInsertSites:
 		if self.verbose:
 			print(self.construct_command())
 		subprocess.check_output(self.construct_command(), shell=True)
-		file = os.path.basename(self.plotfile)
-		file1 = file.split(sep =  ".")[0]
-		print(file1 +".tradis_gene_insert_sites.csv")
-		print(os.getcwd())
-		shutil.copy(file1 +".tradis_gene_insert_sites.csv", self.output_filename)
-		os.remove(file1 +".tradis_gene_insert_sites.csv")
+		plotfile_prefix = os.path.basename(self.plotfile)
+		plotfile_prefix = plotfile_prefix.split(sep =  ".")[0]
+		shutil.copy(plotfile_prefix +".tradis_gene_insert_sites.csv", self.output_filename)
+		os.remove(plotfile_prefix +".tradis_gene_insert_sites.csv")
 		return self
 		
