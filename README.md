@@ -43,15 +43,35 @@ docker run --rm -it -v /path/to/example_data:/example_data quadraminstitute/alba
 ### Ubuntu/Debian
 To install AlbaTraDIS on Ubuntu or Debian run:
 ```
-sudo apt-get update -qq && sudo apt-get install -y bioperl bwa bzip2 cpanminus gcc git libgd-gd2-perl libncurses5-dev libncursesw5-dev libssl-dev libxml-libxml-perl make python3 python3-biopython python3-pip python3-setuptools r-base samtools smalt tabix unzip wget zlib1g-dev
-sudo Rscript -e "install.packages('BiocManager')" -e "BiocManager::install()" -e "BiocManager::install(c('edgeR','getopt', 'MASS'))"
+sudo apt-get update -qq && sudo apt-get install -y bioperl bwa bzip2 cpanminus gcc gfortran git libblas-dev libgd-gd2-perl liblapack-dev libncurses5-dev libncursesw5-dev libssl-dev libxml-libxml-perl make python3 python3-biopython python3-dev python3-pip python3-setuptools r-base samtools smalt tabix unzip wget zlib1g-dev
+sudo Rscript -e "install.packages('BiocManager')" -e "BiocManager::install()" -e "BiocManager::install(c('Rcpp', 'edgeR', 'getopt', 'MASS'))"
 sudo cpanm Bio::Tradis
 
-pip3 --user install cython
-pip3 --user install albatradis
+pip3 install --user cython wheel albatradis
 export PATH=${HOME}/.local/bin:$PATH
 ```
-These instructions were tested on Ubuntu 18.04.
+These instructions were tested on Ubuntu 19. Ubuntu 18 or previous may install a version of R < 3.6.  We need R 3.6 for this to work.
+
+To install R 3.6 on ubuntu < 19:
+
+```
+# Add R debian repo to package list file /etc/apt/sources.list (replace 'bionic' with your distro version if necessary)
+sudo sh -c "echo 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' >> /etc/apt/sources.list"
+
+# Add keys for R repo
+gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+gpg -a --export E298A3A825C0D65DFD57CBB651716619E084DAB9 | sudo apt-key add -
+
+# Remove the old version of R
+sudo apt-get remove r-base r-base-core
+
+# Update packages and install new version
+sudo apt-get update
+sudo apt-get install r-base
+
+# Confirm R version is 3.6
+R --version
+```
 
 ## Usage
 
