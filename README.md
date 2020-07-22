@@ -267,7 +267,7 @@ __full_heatmap.png__: A visual representation of the data in all_logfc.csv in PN
 
 __filtered_heatmap.png__: A visual representation of the data in filtered_logfc.csv in PNG format.
 
-__distance_matrix_dendrogram.png__: A simple dendrogram  (tree) figure in PNG format of the relationships between the conditions, based on the number of shared genes with significant signals. 
+__distance_matrix_dendrogram.tre__: A simple dendrogram  (tree) in Newick format of the relationships between the conditions, based on the number of shared genes with significant signals. This tree can be visualised in FigTree or any number of different applications.
 
 __nj_newick_tree.tre__: A neighbour joining tree in Newick format, created from a distance matrix, based on the number of shared genes with significant signals. This tree can be visualised in FigTree or any number of different applications.
 
