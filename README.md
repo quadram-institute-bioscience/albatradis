@@ -194,7 +194,7 @@ __regulated_gene_report.csv__: This is a filtered version of the gene_report.csv
 __combined.csv__: This comma delimited spreadsheet is the output of the Bio-TraDIS toolkit, with additional essentiality categoristations, and an example is listed below. This is the raw data from which the gene_report.csv is derived. It lists each gene or sliding window, and optionally the corresponding 5' and 3' features for a gene. The first 2 columns list the names of the gene or give the coordinates of the sliding window. The 3rd column lists the annotated function of the gene (if available in the annotation file). The numerical columns are derived from EdgeR. The 4th column gives the log fold change between the conditions and the controls. The 5th column gives the log counts per million, which can be thought of as relative abundance. The final column indicate how the essentiality has changed between the conditions and the controls, so a gene can always be non-essential in both the controls and the conditions or essential in all cases. More interestingly though is where there is a change in essentiality between the control and the conditions, indicating a large mechanistic change. 
 
 | locus_tag | gene_name | function | logFC | logCPM | PValue | q.value |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | thrL | thrL | product | -0.4327 | 4.1269 | 0.5477 | 0.8177 |
 | thrL__5prime | thrL__5prime | product | -0.1208 | 4.5885 | 0.8555 | 0.9521 |
 | thrL__3prime | thrL__3prime | product | 1.0268 | 4.9723 | 0.1227 | 0.4258 |
