@@ -39,13 +39,13 @@ class GeneReportSets:
 					candidate_genes[gene] += 1
 		
 		# Extract only the genes which occur in every file and map to their rows in the spreadsheet
-		genes_found_in_all  = [genename for genename,count in candidate_genes.items() if count ==  len(self.filenames)]
+		genes_found_in_all = [genename for genename, count in candidate_genes.items() if count == len(self.filenames)]
 		filtered_gene_rows = {}
 		for g in genes_found_in_all:
 			filtered_gene_rows[g] = combined[g]
 		return filtered_gene_rows
 	
-	def row_to_gene_name(self,row):
+	def row_to_gene_name(self, row):
 		gene = row[0]
 		# use the start and end coords for unnamed features
 		if gene == 'unknown' or gene == 'NA':

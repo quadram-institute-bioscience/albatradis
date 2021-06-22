@@ -9,7 +9,7 @@ class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass
 
 test_modules_dir = os.path.dirname(os.path.realpath(__file__))
-data_dir = os.path.join(test_modules_dir, 'data','genereportsets')
+data_dir = os.path.join(test_modules_dir, 'data', 'genereportsets')
 
 class TestGeneReportSets(unittest.TestCase):
 

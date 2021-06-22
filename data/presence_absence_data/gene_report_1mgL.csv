@@ -1,4 +1,4 @@
-Gene	Category	Start	End	MaxLogFC	Expression	Direction	Upstream
+`Gene	Category	Start	End	MaxLogFC	Expression	Direction	Upstream
 fabI	upregulated	1344507	1345296	14.979205035263	increased_insertions	reverse	
 ycjD	knockout	1345663	1346017	14.979205035263	increased_insertions	reverse	fabI__3prime
 zntA	unclassified	3599810	3602009	6.303166726785441	increased_insertions	forward	yhhQ

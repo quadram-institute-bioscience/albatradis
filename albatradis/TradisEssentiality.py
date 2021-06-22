@@ -7,26 +7,24 @@ import csv
 class TradisEssentiality:
 	def __init__(self, tabfile, verbose, exec="tradis_essentiality.R", prefix="", plotnames="", analysis_type=""):
 		self.tabfile = tabfile
-		self.exec     = exec
+		self.exec = exec
 		self.verbose = verbose
 		self.prefix = prefix
 		self.plotnames = plotnames
 		self.analysis_type = analysis_type
 
-		
 		fd, self.output_filename = mkstemp()
 		fd, self.essential_filename = mkstemp()
 
 	def construct_command(self):
-		print("Tabfile: "+ self.tabfile)
+		# print("Tabfile: "+ self.tabfile)
 		return " ".join([self.exec,  self.tabfile])
 
-
-		
 	def run(self, plotname):
+		cmd = self.construct_command()
 		if self.verbose:
-			print(self.construct_command())
-		subprocess.check_output(self.construct_command(), shell=True)
+			print(cmd)
+		subprocess.check_output(cmd, shell=True)
 		
 		self.replace_comma_tabs(self.tabfile +".all.csv", self.output_filename)
 		shutil.copy(self.tabfile +".essen.csv", self.essential_filename)

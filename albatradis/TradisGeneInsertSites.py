@@ -16,11 +16,12 @@ class TradisGeneInsertSites:
 		return " ".join([self.exec,  self.emblfile, self.plotfile ])
 		
 	def run(self):
+		cmd = self.construct_command()
 		if self.verbose:
-			print(self.construct_command())
-		subprocess.check_output(self.construct_command(), shell=True)
+			print(cmd)
+		subprocess.check_output(cmd, shell=True)
 		plotfile_prefix = os.path.basename(self.plotfile)
-		plotfile_prefix = plotfile_prefix.split(sep =  ".")[0]
+		plotfile_prefix = plotfile_prefix.split(sep=".")[0]
 		shutil.copy(plotfile_prefix +".tradis_gene_insert_sites.csv", self.output_filename)
 		os.remove(plotfile_prefix +".tradis_gene_insert_sites.csv")
 		return self

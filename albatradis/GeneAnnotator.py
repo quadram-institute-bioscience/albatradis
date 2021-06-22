@@ -10,14 +10,13 @@ class GeneAnnotator:
 		self.knockout_proportion_start = 0.5
 		self.increased_expression_proportion_end= 0.3
 		
-		self.embl_reader =  EMBLReader(self.annotation_file)
+		self.embl_reader = EMBLReader(self.annotation_file)
 		self.features = self.embl_reader.features
 		
 	def sort_blocks_by_start_coord(self, blocks):
-		sorted_blocks = sorted((b for b in blocks ), key=lambda x: x.start)
+		sorted_blocks = sorted((b for b in blocks), key=lambda x: x.start)
 		return sorted_blocks
 
-		
 	def annotate_genes(self):
 		genes = []
 		for gene_number, f in enumerate(self.features):
@@ -28,19 +27,19 @@ class GeneAnnotator:
 				continue
 
 			g = Gene(f, overlapping_blocks)
-			 
+
 			# only consider block at a time
 			for b in overlapping_blocks:
-				g.upstream.append(self.find_upstream_gene(b,gene_number))
+				g.upstream.append(self.find_upstream_gene(b, gene_number))
 				if self.is_feature_contained_within_block(b, f):
 					g.categories.append('knockout')
 				elif self.is_block_near_end_of_feature(b, f):
-					if b.max_logfc > 0 :
+					if b.max_logfc > 0.0:
 						g.categories.append('increased_mutants_at_end_of_gene')
 					else:
 						g.categories.append('decreased_mutants_at_end_of_gene')
 				elif self.is_block_near_start_of_feature(b,f):
-					if b.max_logfc > 0 :
+					if b.max_logfc > 0.0:
 						g.categories.append('increased_mutants_at_start_of_gene')
 					else:
 						g.categories.append('decreased_mutants_at_start_of_gene')
@@ -60,6 +59,7 @@ class GeneAnnotator:
 			
 			if len(g.categories) == 0:
 				g.categories.append('unclassified')
+
 			g.max_logfc_from_category()
 			g.start = g.feature.location.start
 			g.end = g.feature.location.end
@@ -68,7 +68,7 @@ class GeneAnnotator:
 		# intergenic test
 		intergenic_blocks = [block for block in self.blocks if block.num_genes == 0]
 		for block in intergenic_blocks:
-			block.upstream  = self.find_nearest_upstream_gene(block)
+			block.upstream = self.find_nearest_upstream_gene(block)
 			block.intergenic = True
 
 		reannotate_with_5_3_prime = self.reannotate_5_3_prime(genes)
@@ -84,7 +84,7 @@ class GeneAnnotator:
 	def find_nearest_upstream_gene(self, block):
 		if block.direction == 'forward':
 			for f in self.features:
-				if f.location.start -1 > block.end and f.strand == 1:
+				if f.location.start - 1 > block.end and f.strand == 1:
 					return self.feature_to_gene_name(f)
 		elif block.direction == 'reverse':
 			for f in reversed(self.features):

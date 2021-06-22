@@ -11,10 +11,10 @@ class GeneReport:
 		all_data = []
 		with open(self.filename) as csvfile:
 			reader = csv.reader(csvfile, delimiter='	')
-			all_data =  [r for r in reader if r[0] != 'Gene']
+			all_data = [r for r in reader if r[0] != 'Gene']
 		return all_data
 
-	def fix_sign_on_logfc(self,gene_all_data):
+	def fix_sign_on_logfc(self, gene_all_data):
 		for r in gene_all_data:
 			r[4] = float(r[4])
 			if r[1] == 'upregulated':
@@ -42,4 +42,4 @@ class GeneReport:
 			else:
 				row.append(str(0))
 		return row
-		
+

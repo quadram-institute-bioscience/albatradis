@@ -1,4 +1,4 @@
-Gene	Category	Start	End	MaxLogFC	Expression	Direction	Upstream
+Gene	Category	Start	End	MaxLogFC	Expression	Direction	Upstream	P-Value	Q-Value
 aaa	increased_mutants_at_end_of_gene	3733	5020	10	increased_insertions	nodirection	zzz
 bbb	unclassified	6528	7959	10	increased_insertions	forward	zzz
 unknown	increased_mutants_at_end_of_gene	381259	382590	10	increased_insertions	reverse	zzz
