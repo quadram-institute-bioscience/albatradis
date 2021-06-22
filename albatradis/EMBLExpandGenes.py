@@ -3,7 +3,7 @@ from albatradis.EMBLReader import EMBLReader
 from albatradis.EMBLSequence import EMBLSequence
 
 class FeatureProperties:
-	def __init__(self, 	start, end, direction, gene_name, locus_tag, product):
+	def __init__(self, start=0, end=0, direction="", gene_name="", locus_tag="", product=""):
 		self.start = start
 		self.end = end
 		self.direction = direction

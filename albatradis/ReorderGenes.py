@@ -4,21 +4,21 @@ import numpy
 from albatradis.GeneToFiles import GeneToFiles
 
 class ReorderGenes:
-	def __init__(self, gene_names, genereports, reports_to_gene_logfc):
-		self.gene_names            = gene_names
-		self.genereports           = genereports
-		self.reports_to_gene_logfc = reports_to_gene_logfc
+	def __init__(self, gene_names, gene_reports, gene_list):
+		self.gene_names = gene_names
+		self.gene_reports = gene_reports
+		self.gene_list = gene_list
 		
 		self.genes_to_files = self.create_gene_file_objects()
 		
 	def create_gene_file_objects(self):
 		genes_to_files = {}
-		for i,g in enumerate(self.gene_names):
+		for i, g in enumerate(self.gene_names):
 			logfc = []
-			for report_file in self.genereports:
-				logfc.append(float(self.reports_to_gene_logfc[report_file][i]))
+			for report_file in self.gene_reports:
+				logfc.append(self.gene_list[report_file][i].max_logfc if self.gene_list[report_file][i] is not None else 0.0)
 
-			gf = GeneToFiles(g, gene_to_files = logfc)
+			gf = GeneToFiles(g, gene_to_files=logfc)
 			if gf.number_of_files > 0:
 				genes_to_files[g] = gf
 				
@@ -74,4 +74,4 @@ class ReorderGenes:
 				return []
 			
 		return [r.gene_name for r in reordered_genes]
-		
+
