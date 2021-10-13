@@ -140,6 +140,12 @@ class Gene:
                                 str(self.upstream_gene()), str(self.min_pvalue),
                                 str(self.min_qvalue)])
 
+    def report_set_string(self, conflict=False):
+        return "\t".join([str(self.gene_name), str(self.category()) if not conflict else "conflict", str(self.feature.location.start),
+                                str(self.feature.location.end),
+                                str(self.direction),
+                                str(self.upstream_gene())])
+
     def __str__(self):
         try:
             teststring = "\t".join([str(self.gene_name), str(self.category()), str(self.feature.location.start),
@@ -154,3 +160,7 @@ class Gene:
     @staticmethod
     def header():
         return "\t".join(['Gene', 'Category', 'Start', 'End', 'MaxLogFC', 'Expression', 'Direction', 'Upstream', 'P-Value', 'Q-Value'])
+
+    @staticmethod
+    def report_set_header():
+        return "\t".join(['Gene', 'Category', 'Start', 'End', 'Direction', 'Upstream'])
