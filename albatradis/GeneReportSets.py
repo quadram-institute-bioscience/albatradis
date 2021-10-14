@@ -30,7 +30,7 @@ class GeneReportSets:
 			gene_categories = set()
 			for gene in self.gene_reports[f].gene_all_data:
 				genes.add(gene.gene_name)
-				gene_categories.add(gene.gene_name + gene.category())
+				gene_categories.add(gene.gene_name + '~' + gene.category())
 
 			gene_sets.append(genes)
 			gene_category_sets.append(gene_categories)
@@ -99,7 +99,7 @@ class GeneReportSets:
 			for gene in self.gene_reports[f].gene_all_data:
 				if gene.gene_name not in combined:
 					combined[gene.gene_name] = gene
-				combined_with_categories[gene.gene_name + gene.category()] = gene
+				combined_with_categories[gene.gene_name + '~' + gene.category()] = gene
 					
 		return combined, combined_with_categories
 					
@@ -107,10 +107,17 @@ class GeneReportSets:
 		union_filename = os.path.join(self.prefix, "union_gene_report.csv")
 
 		union, union_categories = self.union()
+		is_conflict = []
+
+		for i in union_categories:
+			is_conflict.append(i.split("~")[0])
+
+
 		with open(union_filename, 'w') as bf:
 			bf.write(Gene.report_set_header() + "\n")
 			for gene in sorted(union.values(), key=lambda x: x.feature.location.start):
-				conflict = str(gene.gene_name + gene.category()) not in union_categories
+				num_conflict = is_conflict.count(str(gene.gene_name)) 
+				conflict = num_conflict > 1
 				bf.write(str(gene.report_set_string(conflict=conflict)) + "\n")
 				
 		return self
@@ -122,7 +129,7 @@ class GeneReportSets:
 			with open(intersection_filename, 'w') as bf:
 				bf.write(str(Gene.report_set_header()) + "\n")
 				for gene in sorted(intersection.values(), key=lambda x: x.feature.location.start):
-					conflict = str(gene.gene_name + gene.category()) not in intersection_categories
+					conflict = str(gene.gene_name + '~' + gene.category()) not in intersection_categories
 					bf.write(str(gene.report_set_string(conflict=conflict)) + "\n")
 		else:
 			print("No intersecting genes")
