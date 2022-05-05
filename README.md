@@ -271,7 +271,7 @@ __distance_matrix_dendrogram.tre__: A simple dendrogram  (tree) in Newick format
 
 __nj_newick_tree.tre__: A neighbour joining tree in Newick format, created from a distance matrix, based on the number of shared genes with significant signals. This tree can be visualised in FigTree or any number of different applications.
 
-__logfc.dot__: A graph representation of the shared genes between conditions in DOT format. This is a standard graphing format, with substantial support API supoort. It can be interactively visualised with Gephi. There is 1 node for each condition and signficiatn gene. The edges represent where a gene is found in a condition, linking the two nodes. This then nicely shows the network of shared mechanisms of action.
+__network.csv__: A graph representation of the shared genes between conditions in csv format. It can be interactively visualised with Cytoscape. There is 1 node for each condition. It is connected to one node for each gene that shows a value above 0 in logFC in this condition. One gene node can be connected to musltiple conditions but never to other gene nodes. 
 
 __union_gene_report.csv__: A comma separated spreadsheet in the same format as the gene_report.csv file, consisting of a union of all of the input files. A gene is represented by 1 row.
 
