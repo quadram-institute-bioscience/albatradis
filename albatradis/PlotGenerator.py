@@ -4,11 +4,10 @@ pyximport.install()
 from file_manipulation import write_plot_file
 
 import numpy
-import pandas
 
 '''Takes in arrays for forward and reverse integers and creates a new file'''
 class PlotGenerator:
-	def __init__(self, forward,reverse, filename):
+	def __init__(self, forward, reverse, filename):
 		self.forward = forward
 		self.reverse = reverse
 		self.filename = filename

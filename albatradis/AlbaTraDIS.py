@@ -58,7 +58,7 @@ class AlbaTraDIS:
 			plotfiles = bi.output_plots.values()
 		else:
 		
-			for i in range(1,self.iterations+1):
+			for i in range(1, self.iterations+1):
 				bi = BlockInsertions(self.logger, plotfiles, self.minimum_threshold, self.window_size, self.window_interval, self.verbose, self.minimum_logfc, self.pvalue, self.qvalue, self.prefix + "_" +str(i), self.minimum_logcpm, self.minimum_block, self.span_gaps, self.emblfile, report_decreased_insertions,self.strict_signal,self.use_annotation, self.prime_feature_size)
 				bi.run()
 				self.blocks = bi.blocks

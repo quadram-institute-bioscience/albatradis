@@ -7,18 +7,18 @@ import pandas as pd
 import os
 
 class HeatMap:
-	def __init__(self, reports_to_gene_logfc, gene_names, outputfile):
-		self.reports_to_gene_logfc       = reports_to_gene_logfc
+	def __init__(self, reports_to_genes, gene_names, outputfile):
+		self.reports_to_genes = reports_to_genes
 		self.gene_names = gene_names
 		self.outputfile = outputfile
 		
 	def clean_filenames(self):
 		cleaned_names = []
 		
-		filenames = self.reports_to_gene_logfc.keys()
+		filenames = self.reports_to_genes.keys()
 		common_prefix = os.path.commonpath(filenames)
 		
-		for n in self.reports_to_gene_logfc.keys():
+		for n in self.reports_to_genes.keys():
 			updated_name = n
 			if len(common_prefix) > 1:
 				updated_name = updated_name.replace(common_prefix,"")
@@ -32,10 +32,10 @@ class HeatMap:
 		return cleaned_names
 
 	def create_heat_map(self):
-		int_values = [[float(y) for y in x] for x in self.reports_to_gene_logfc.values()]
+		int_values = [[y.max_logfc if y is not None else 0.0 for y in x] for x in self.reports_to_genes.values()]
 		
 		dims = (8.3, 11.7)
-		fig, ax = plt.subplots(figsize = dims)
+		fig, ax = plt.subplots(figsize=dims)
 		data = pd.DataFrame(int_values, columns = self.gene_names, index=self.clean_filenames())
 
 		heatmap = sns.heatmap(data.T,ax = ax, cmap="RdBu_r", center=0, yticklabels= False)

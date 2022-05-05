@@ -7,17 +7,17 @@ class ErrorReadingFile (Exception): pass
 class InvalidFileFormat (Exception): pass
 
 test_modules_dir = os.path.dirname(os.path.realpath(__file__))
-data_dir = os.path.join(test_modules_dir, 'data','genereport')
+data_dir = os.path.join(test_modules_dir, 'data', 'genereport')
 
 class TestGeneReport(unittest.TestCase):
 
 	def test_valid_file(self):
 		g = GeneReport(os.path.join(data_dir, 'ctrl.csv'))
 		self.assertTrue(g)
-		gene_names  = ['perR','ykfC','ykgH','yaiL','yaiP','unknown']
+		gene_names = ['perR','ykfC','ykgH','yaiL','yaiP','unknown']
 		self.assertEqual(['10.0', '11.0', '10.0', '10.0', '11.0', '10.0'], g.genes_to_logfc(gene_names))
 		
 		# reorder the gene names
-		gene_names  = ['yaiL','ykfC','ykgH','perR','unknown', 'yaiP']
+		gene_names = ['yaiL','ykfC','ykgH','perR','unknown', 'yaiP']
 		self.assertEqual(['10.0', '11.0', '10.0', '10.0', '10.0', '11.0'], g.genes_to_logfc(gene_names))
-		
+

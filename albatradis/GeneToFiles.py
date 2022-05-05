@@ -1,6 +1,6 @@
 import numpy
 class GeneToFiles:
-	def __init__(self, gene_name, gene_to_files = []):
+	def __init__(self, gene_name, gene_to_files=[]):
 		self.gene_name = gene_name
 		self.gene_to_files = gene_to_files
 		self.number_of_files = self.calc_number_of_files()

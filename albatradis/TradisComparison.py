@@ -57,6 +57,7 @@ class TradisComparison:
             print("Number of all genes:" + str(len(gene_names)))
 
         return gene_names
+
     def get_all_gene_names(self):
 
         all_gene_names = []
@@ -163,17 +164,19 @@ class TradisComparison:
 
     def run(self):
         self.create_fofn()
-
+        cmd = self.construct_command()
         if self.verbose:
-            print(self.construct_command())
+            print(cmd)
         if self.analysis_type != "original":
-            subprocess.check_output(self.construct_command(), shell=True)
+            subprocess.check_output(cmd, shell=True)
         genes_ess = self.all_gene_essentiality(".output.csv")
+
         ess = open(os.path.join(self.prefix, "Essentiality.txt"), "w+")
         ess.write("Gene, Essentiality, Control, Condition, Replicates\n")
         for e in genes_ess:
             ess.write(e + ", " + str(genes_ess[e].status()) + ", " + str(genes_ess[e].control) + ", " + str(genes_ess[e].condition) + ", " + str(genes_ess[e].number_of_reps) + "\n")
         ess.close()
+
         self.add_gene_essentiality_to_file(".output.csv", self.output_filename, genes_ess)
 
         self.cleanup()

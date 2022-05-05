@@ -39,7 +39,7 @@ class PlotAllEssentiality:
 
 class BlockInsertions:
     def __init__(self, logger, plotfiles, plotnames, minimum_threshold, window_size, window_interval, verbose, minimum_logfc,
-                 pvalue, qvalue, prefix, minimum_logcpm, minimum_block, span_gaps, emblfile,
+                 maximum_pvalue, maximum_qvalue, prefix, minimum_logcpm, minimum_block, span_gaps, emblfile,
                  report_decreased_insertions, strict_signal, use_annotation, prime_feature_size):
         self.logger = logger
         self.plotfiles = plotfiles
@@ -49,8 +49,8 @@ class BlockInsertions:
         self.window_interval = window_interval
         self.verbose = verbose
         self.minimum_logfc = minimum_logfc
-        self.pvalue = pvalue
-        self.qvalue = qvalue
+        self.maximum_pvalue = maximum_pvalue
+        self.maximum_qvalue = maximum_qvalue
         self.prefix = prefix
         self.minimum_logcpm = minimum_logcpm
         self.minimum_block = minimum_block
@@ -62,11 +62,10 @@ class BlockInsertions:
         self.prime_feature_size = prime_feature_size
 
         self.genome_length = 0
-        self.forward_plotfile = ""
-        self.reverse_plotfile = ""
-        self.combined_plotfile = ""
+        self.annotation_file = ""
         self.output_plots = {}
         self.blocks = []
+        self.genes = []
 
         if self.verbose:
             self.logger.setLevel(logging.DEBUG)
@@ -83,10 +82,11 @@ class BlockInsertions:
         plotfile_objects = self.prepare_input_files()
         essentiality_files = self.run_essentiality(plotfile_objects, self.plotnames)
 
-        self.run_comparisons(essentiality_files)
-        self.output_plots = self.mask_plots()
-        self.genes = self.gene_statistics(self.forward_plotfile, self.reverse_plotfile, self.combined_plotfile,
-                                          self.window_size)
+        forward_plotfile, reverse_plotfile, combined_plotfile, original_plotfile,\
+            forward_scoresfile, reverse_scoresfile, combined_scoresfile, original_scoresfile = self.run_comparisons(essentiality_files)
+        self.output_plots = self.mask_plots(combined_plotfile)
+        self.genes = self.gene_statistics(forward_plotfile, reverse_plotfile, combined_plotfile,
+                                          combined_scoresfile, self.window_size)
         self.cleanup(plotfile_objects, essentiality_files)
 
         return self
@@ -94,30 +94,34 @@ class BlockInsertions:
     def prepare_input_files(self):
         plotfile_objects = {}
 
+        print("1. Preparing input files.\n")
+        if self.verbose:
+            print("1.1. Preparing EMBL file.\n")
+
         self.annotation_file = PrepareEMBLFile(self.plotfiles[0], self.minimum_threshold, self.window_size,
                                                self.window_interval, self.use_annotation, self.prime_feature_size,
                                                self.emblfile).create_file()
 
-        print("1. Split input plot files into forward and reverse.\n")
+        if self.verbose:
+            print(" Embl:\t" + self.annotation_file + "\n")
+            print("1.2. Split input plot files into forward, reverse, combined and original.\n")
 
         i = 1
         n = len(self.plotfiles)
 
         for plotfile in self.plotfiles:
-            filename = plotfile
-            print("Plotfile: " + plotfile)
             p = PrepareInputFiles(plotfile, self.minimum_threshold)
             p.create_all_files()
             p.embl_filename = self.annotation_file
             plotfile_objects[plotfile] = p
 
             if self.verbose:
-                print("Split input plot " + plotfile + " into forward and reverse.\n")
+                print("Split input plot " + plotfile + ".\n")
                 print("Forward plot:\t" + p.forward_plot_filename)
                 print("reverse plot:\t" + p.reverse_plot_filename)
                 print("combined plot:\t" + p.combined_plot_filename)
                 print("original plot:\t" + p.original_plot_filename)
-                print("Embl:\t" + self.annotation_file)
+
             print("\t" + str(i) + " of " + str(n) + " files processed.\n")
             i = i + 1
             self.genome_length = p.genome_length()
@@ -134,27 +138,26 @@ class BlockInsertions:
         if self.verbose:
             print("Essentiality:\t" + filetype + "\t" + e.output_filename)
 
-
         return pe
 
     def run_essentiality(self, plotfile_objects, plotnames):
         essentiality_files = {}
 
-        n = 3 * len(plotfile_objects)
-        i = 3
+        n = 4 * len(plotfile_objects)
+        i = 4
         j = 0
 
         print("2. Find essential genes for each split file.\n")
 
         for plotfile in plotfile_objects:
-            f = self.essentiality(plotfile_objects[plotfile].embl_filename, plotfile_objects,  plotfile, plotnames[j], 'forward')
+            f = self.essentiality(plotfile_objects[plotfile].embl_filename, plotfile_objects, plotfile, plotnames[j], 'forward')
             r = self.essentiality(plotfile_objects[plotfile].embl_filename, plotfile_objects, plotfile, plotnames[j], 'reverse')
             c = self.essentiality(plotfile_objects[plotfile].embl_filename, plotfile_objects, plotfile, plotnames[j], 'combined')
             o = self.essentiality(self.emblfile, plotfile_objects, plotfile, plotnames[j], 'original')
             k = plotfile_objects[plotfile].embl_filename
             essentiality_files[plotfile] = PlotAllEssentiality(f, r, c, o, k)
             print("\t" + str(i) + " of " + str(n) + " files processed.\n")
-            i = i + 3
+            i = i + 4
             j = j + 1
 
         return essentiality_files
@@ -163,14 +166,17 @@ class BlockInsertions:
 
         print("3. Run comparison between condition and control and write plot files and gene report.\n")
 
-        self.forward_plotfile = self.generate_logfc_plot('forward', essentiality_files)
+        forward_plotfile, forward_scoresfile = self.generate_logfc_plot('forward', essentiality_files)
         print("Forward insertions have been compared.\n")
-        self.reverse_plotfile = self.generate_logfc_plot('reverse', essentiality_files)
+        reverse_plotfile, reverse_scoresfile = self.generate_logfc_plot('reverse', essentiality_files)
         print("Reverse insertions have been compared.\n")
-        self.combined_plotfile = self.generate_logfc_plot('combined', essentiality_files)
+        combined_plotfile, combined_scoresfile = self.generate_logfc_plot('combined', essentiality_files)
         print("Combined insertions have been compared.\n")
-        self.combined_plotfile = self.generate_logfc_plot('original', essentiality_files)
+        original_plotfile, original_scoresfile = self.generate_logfc_plot('original', essentiality_files)
         print("Original insertions have been compared.\n")
+
+        return forward_plotfile, reverse_plotfile, combined_plotfile, original_plotfile, \
+               forward_scoresfile, reverse_scoresfile, combined_scoresfile, original_scoresfile
 
     def generate_logfc_plot(self, analysis_type, essentiality_files):
         files = [getattr(essentiality_files[plotfile], analysis_type).tradis_essentiality_filename for plotfile in
@@ -185,24 +191,23 @@ class BlockInsertions:
         t = TradisComparison(files[:mid], files[mid:], self.verbose, self.minimum_block, only_ess_files[:mid],
                              only_ess_files[mid:], analysis_type, self.prefix)
         t.run()
-        p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.pvalue, self.qvalue,
+        p = PlotLog(t.output_filename, self.genome_length, self.minimum_logfc, self.maximum_pvalue, self.maximum_qvalue,
                     self.minimum_logcpm, self.window_size, self.span_gaps, self.report_decreased_insertions,
                     annotation_files[0])
         p.construct_plot_file()
 
+        # Move temp files to output dir
         renamed_csv_file = os.path.join(self.prefix, analysis_type + ".csv")
-        renamed_plot_file = os.path.join(self.prefix, analysis_type + ".plot")
-
-        shutil.copy(t.output_filename, renamed_csv_file)
-        shutil.copy(p.output_filename, renamed_plot_file)
-        os.remove(t.output_filename)
-        os.remove(p.output_filename)
-
+        renamed_plot_file = os.path.join(self.prefix, analysis_type + ".logfc.plot")
+        renamed_scores_file = os.path.join(self.prefix, analysis_type + ".pqvals.plot")
+        shutil.move(t.output_filename, renamed_csv_file)
+        shutil.move(p.plot_filename, renamed_plot_file)
+        shutil.move(p.scores_filename, renamed_scores_file)
 
         if self.verbose:
             print("Comparison:\t" + renamed_csv_file)
             print("Plot log:\t" + renamed_plot_file)
-        return renamed_plot_file
+        return renamed_plot_file, renamed_scores_file
 
     def merge_windows(self, windows):
 
@@ -228,11 +233,15 @@ class BlockInsertions:
             if next_window.start <= start_window.end and category_equal and expression_equal and direction_equal:
                 start_window.end = next_window.end
                 start_window.max_logfc = max(start_window.max_logfc, next_window.max_logfc)
+                start_window.min_pvalue = min(start_window.min_pvalue, next_window.min_pvalue)
+                start_window.min_qvalue = min(start_window.min_qvalue, next_window.min_qvalue)
             else:
                 copy = Gene(start_window.feature, start_window.blocks)
                 copy.start = start_window.start
                 copy.end = start_window.end
                 copy.max_logfc = start_window.max_logfc
+                copy.min_pvalue = start_window.min_pvalue
+                copy.min_qvalue = start_window.min_qvalue
                 copy.gene_name = str(copy.start) + "_" + str(copy.end)
                 copy.categories.append(start_window.categories[0])
                 merged_windows.append(copy)
@@ -243,8 +252,8 @@ class BlockInsertions:
         merged_windows.append(start_window)
         return merged_windows
 
-    def gene_statistics(self, forward_plotfile, reverse_plotfile, combined_plotfile, window_size):
-        b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile, window_size)
+    def gene_statistics(self, forward_plotfile, reverse_plotfile, combined_plotfile, combined_scorefile, window_size):
+        b = BlockIdentifier(combined_plotfile, forward_plotfile, reverse_plotfile, combined_scorefile, window_size)
         blocks = b.block_generator()
         annotationfile = self.emblfile
         if self.use_annotation:
@@ -302,8 +311,8 @@ class BlockInsertions:
         for b in intergenic_blocks:
             print(b)
 
-    def mask_plots(self):
-        pm = PlotMasking(self.plotfiles, self.combined_plotfile, self.strict_signal)
+    def mask_plots(self, combined_plotfile):
+        pm = PlotMasking(self.plotfiles, combined_plotfile, self.strict_signal)
         renamed_plot_files = {}
 
         for pfile in pm.output_plot_files:

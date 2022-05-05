@@ -21,6 +21,6 @@ class AlbaTraDISGeneReports:
 			os.makedirs(self.prefix )
 
 	def run(self):
-		p = GeneReportSets(self.genereports, self.prefix )
+		p = GeneReportSets(self.genereports, self.prefix)
 		p.write_union_file()
 		return self
