@@ -16,10 +16,13 @@
   * [Citation](#citation)
 
 ## Introduction
-AlbaTraDIS is a software application for performing rapid large-scale comparative analysis of TraDIS experiments whilst also predicting the impact of inserts on nearby genes. It allows for experiements with multiple conditions to be easily analysed using statistical methods developed in the Bio-TraDIS toolkit.
+AlbaTraDIS is a software application for performing rapid large-scale comparative analysis of TraDIS experiments whilst also predicting the impact of inserts on nearby genes. It allows for experiements with multiple conditions to be easily analysed using statistical methods developed in the QuaTraDIS toolkit.
 
 ## Installation
-The software in this repository is straightforward to install, however the Bio-TraDIS toolkit upon which it depends is more complex. If you just want to quickly try out the software please try Docker. If you wish to install it, please use Conda, an finally if you are brave, use the Ubuntu/Debian instructions.
+The software in this repository is straightforward to install, however the QuaTraDIS toolkit upon which it depends is more complex.  
+We recommend using docker as this should guarantee portability, however this is a little trickier to run.  
+Alternatively use conda.  Finally if you are brave and running a debian based linux distro (e.g. Ubuntu) then follow the 
+instructions to install from source.
 
 ### Conda
 ![Conda](https://img.shields.io/conda/vn/bioconda/albatradis?color=green&label=Latest%20version%20)
@@ -35,22 +38,32 @@ conda install -c conda-forge -c bioconda albatradis
 AlbaTraDIS will be immediately available to use.
 
 ### Docker
-Install [Docker](https://www.docker.com/) which works on Linux, OSX and Windows.  There is a docker container which gets automatically built from the latest version of AlbaTraDIS. To use it you would use a command such as this (substituting in your filename/directories), using the example file in this respository:
+Install [Docker](https://www.docker.com/) which works on Linux, OSX and Windows.  There is a docker container which gets 
+automatically built from the latest version of AlbaTraDIS. To use it you would use a command such as this 
+(substituting in your filename/directories), using the example file in this repository:
 ```
-docker run --rm -it -v /path/to/example_data:/example_data quadraminstitute/albatradis:latest albatradis xxxxx
+docker run --rm -it -u $(id -u ${USER}):$(id -g ${USER}) -v /path/to/data:/data quadraminstitute/albatradis:latest albatradis <program arguments>
 ```
 
-### Ubuntu/Debian
-To install AlbaTraDIS on Ubuntu or Debian run:
+### From source on Ubuntu/Debian
+To install AlbaTraDIS on Ubuntu or Debian first install Quatradis:
 ```
-sudo apt-get update -qq && sudo apt-get install -y bioperl bwa bzip2 cpanminus gcc gfortran git libblas-dev libgd-gd2-perl liblapack-dev libncurses5-dev libncursesw5-dev libssl-dev libxml-libxml-perl make python3 python3-biopython python3-dev python3-pip python3-setuptools r-base samtools smalt tabix unzip wget zlib1g-dev
-sudo Rscript -e "install.packages('BiocManager')" -e "BiocManager::install()" -e "BiocManager::install(c('Rcpp', 'edgeR', 'getopt', 'MASS'))"
-sudo cpanm Bio::Tradis
+sudo apt-get update -qq && \
+sudo apt-get install -y bzip2 default-jre gcc locales make python3-pip r-base unzip wget && \
+sudo apt-get install -y bwa minimap2 smalt
+pip3 install Bio cython pysam numpy pytest-cov semantic-version snakeviz
+sudo Rscript -e "install.packages('BiocManager')" -e "BiocManager::install()" -e "BiocManager::install(c('edgeR','getopt', 'MASS'))"
+git clone https://github.com/quadram-institute-bioscience/QuaTradis.git
+cd QuaTradis
+make dev
+```
 
+Next install albatradis
+```
+git clone https://github.com/quadram-institute-bioscience/albatradis.git
 pip3 install --user cython wheel albatradis
-export PATH=${HOME}/.local/bin:$PATH
 ```
-These instructions were tested on Ubuntu 19. Ubuntu 18 or previous may install a version of R < 3.6.  We need R 3.6 for this to work.
+These instructions were tested on Ubuntu 20. Ubuntu 18 or previous may install a version of R < 3.6.  We need R 3.6 for this to work.
 
 To install R 3.6 on ubuntu < 19:
 

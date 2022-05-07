@@ -1,5 +1,6 @@
 import subprocess
 from tempfile import mkstemp
+from pathlib import Path
 import os
 import shutil
 import csv
@@ -17,7 +18,6 @@ class TradisEssentiality:
 		fd, self.essential_filename = mkstemp()
 
 	def construct_command(self):
-		# print("Tabfile: "+ self.tabfile)
 		return " ".join([self.exec,  self.tabfile])
 
 	def run(self, plotname):
@@ -35,6 +35,7 @@ class TradisEssentiality:
 
 		if self.analysis_type == "original":
 			condition_name = os.path.join(self.prefix, plotname + self.analysis_type + ".ess")
+			os.makedirs(Path(condition_name).parent.absolute(), exist_ok=True)
 			shutil.copy(self.tabfile + ".essen.csv", condition_name)
 
 		os.remove(self.tabfile +".all.csv")

@@ -10,23 +10,14 @@ class GeneReport:
 		
 	def read_all_data_csv(self):
 		with open(self.filename) as genereportfile:
-			all_data = [Gene.parseLine(r.strip()) for r in genereportfile if not r.strip().startswith('Gene')]
+			all_data = [Gene.parse_line(r.strip()) for r in genereportfile if not r.strip().startswith('Gene')]
 		return all_data
 
 	def fix_sign_on_logfc(self, gene_all_data):
 		for r in gene_all_data:
-			if r.categories[0] == 'upregulated':
-				if r.max_logfc < 0.0:
-					r.max_logfc *= -1.0
-			elif r.categories[0] == 'downregulated':
-				if r.max_logfc > 0.0:
-					r.max_logfc *= -1.0
-			elif r.expression == 'increased_insertions':
-				if r.max_logfc < 0.0:
-					r.max_logfc *= -1.0
-			elif r.expression == 'decreased_insertions':
-				if r.max_logfc > 0.0:
-					r.max_logfc *= -1.0
+			if (r.max_logfc < 0.0 and (r.categories[0] == 'upregulated' or r.expression == 'increased_insertions')) or \
+					(r.max_logfc > 0.0 and (r.categories[0] == 'downregulated' or r.expression == 'decreased_insertions')):
+				r.max_logfc *= -1.0
 		return gene_all_data
 		
 	def read_csv(self, gene_all_data):

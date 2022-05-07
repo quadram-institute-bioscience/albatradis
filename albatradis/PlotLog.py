@@ -111,27 +111,30 @@ class PlotLog:
 
     def span_block_gaps(self, logfc_to_bases, pval_to_bases, qval_to_bases):
         blocks = self.blocks_create(logfc_to_bases, pval_to_bases, qval_to_bases)
+
+        if self.span_gaps <= 0:
+            return logfc_to_bases, pval_to_bases, qval_to_bases
+
         # span blocks if they are close together
-        if self.span_gaps > 0:
-            for b in blocks:
-                span_index = b.end + (self.window_size * self.span_gaps)
-                if span_index >= self.genome_length:
-                    continue
+        for b in blocks:
+            span_index = b.end + (self.window_size * self.span_gaps)
+            if span_index >= self.genome_length:
+                continue
 
-                span_value = numpy.absolute(logfc_to_bases[span_index])
-                if span_value >= self.minimum_logfc:
-                    for a in range(b.end, span_index):
-                        if numpy.absolute(logfc_to_bases[a]) > self.minimum_logfc:
-                            continue
+            span_value = numpy.absolute(logfc_to_bases[span_index])
+            if span_value >= self.minimum_logfc:
+                for a in range(b.end, span_index):
+                    if numpy.absolute(logfc_to_bases[a]) > self.minimum_logfc:
+                        continue
 
-                        if logfc_to_bases[b.end - 1] < 0:
-                            logfc_to_bases[a] = -1 * self.minimum_logfc
-                            pval_to_bases[a] = self.maximum_pvalue
-                            qval_to_bases[a] = self.maximum_qvalue
-                        elif logfc_to_bases[b.end - 1] > 0:
-                            logfc_to_bases[a] = self.minimum_logfc
-                            pval_to_bases[a] = self.maximum_pvalue
-                            qval_to_bases[a] = self.maximum_qvalue
+                    if logfc_to_bases[b.end - 1] < 0:
+                        logfc_to_bases[a] = -1 * self.minimum_logfc
+                        pval_to_bases[a] = self.maximum_pvalue
+                        qval_to_bases[a] = self.maximum_qvalue
+                    elif logfc_to_bases[b.end - 1] > 0:
+                        logfc_to_bases[a] = self.minimum_logfc
+                        pval_to_bases[a] = self.maximum_pvalue
+                        qval_to_bases[a] = self.maximum_qvalue
 
         return logfc_to_bases, pval_to_bases, qval_to_bases
 

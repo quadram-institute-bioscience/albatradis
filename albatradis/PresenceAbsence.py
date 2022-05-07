@@ -18,7 +18,7 @@ from albatradis.HeatMap import HeatMap
 from albatradis.ReorderGenes import ReorderGenes
 
 
-def saneLogFC(gene):
+def sane_logfc(gene):
     return gene.max_logfc if gene is not None else 0.0
 
 
@@ -83,7 +83,7 @@ class PresenceAbsence:
 
         for anti in self.genereports:
             for i, gene in enumerate(reports_to_genes[anti]):
-                if numpy.absolute(saneLogFC(gene)) > 0:
+                if numpy.absolute(sane_logfc(gene)) > 0:
                     dot.edge(anti, gene_names[i])
 
         with open(filename, 'w') as fh:
@@ -97,19 +97,11 @@ class PresenceAbsence:
             ["Source", "Target", "Type", "Id", "Label", "timeset", "Weight", "concentration", "antibiotic",
              "qvals", "logFC"])
 
-        # Antibiotics
-        # for g in self.genereports:
-        #    dot.node(g, g)
-
-        # gene names
-        # for g in gene_names:
-        #    dot.node(g, g)
-
         edges = []
 
         for anti in self.genereports:
             for i, gene in enumerate(reports_to_genes[anti]):
-                if numpy.absolute(saneLogFC(gene)) > 0.0:
+                if numpy.absolute(sane_logfc(gene)) > 0.0:
                     edges.append([anti, gene_names[i], "Directed", "0", "NA", "NA", "1", "?", "?", str(gene.min_qvalue),
                                   str(gene.max_logfc)])
 
@@ -127,19 +119,18 @@ class PresenceAbsence:
 
             # Body
             for report in self.genereports:
-                logfcs = [str(saneLogFC(g)) for g in reports_to_genes[report]]
+                logfcs = [str(sane_logfc(g)) for g in reports_to_genes[report]]
                 fh.write("\t".join([report] + logfcs) + "\n")
 
         return self
 
 
     def filter_genes_with_no_changes(self):
-        genes_with_changes = []
 
         gene_to_freq = {}
         for i, g in enumerate(self.gene_names):
             for report_file in self.genereports:
-                cell_logfc = numpy.absolute(saneLogFC(self.reports_to_genes[report_file][i]))
+                cell_logfc = numpy.absolute(sane_logfc(self.reports_to_genes[report_file][i]))
                 if cell_logfc > 0.0:
                     if g in gene_to_freq:
                         gene_to_freq[g] += 1
@@ -154,21 +145,21 @@ class PresenceAbsence:
             ordered_gene = s[0]
             sorted_gene_index.append(gene_name_index[ordered_gene])
 
+        genes_with_changes = []
         for i in sorted_gene_index:
             g = self.gene_names[i]
             for report_file in self.genereports:
-                if numpy.absolute(saneLogFC(self.reports_to_genes[report_file][i])) > 0.0:
+                if numpy.absolute(sane_logfc(self.reports_to_genes[report_file][i])) > 0.0:
                     genes_with_changes.append(g)
                     break
         return genes_with_changes
-
 
     # assumption is that any changes (+-) on a gene is counted the same.
     def pair_wise_distance(self, file_a, file_b):
         distance = 0
         for i in range(len(self.filtered_gene_names)):
-            a_abs = numpy.absolute(saneLogFC(self.filtered_reports_to_genes[file_a][i]))
-            b_abs = numpy.absolute(saneLogFC(self.filtered_reports_to_genes[file_b][i]))
+            a_abs = numpy.absolute(sane_logfc(self.filtered_reports_to_genes[file_a][i]))
+            b_abs = numpy.absolute(sane_logfc(self.filtered_reports_to_genes[file_b][i]))
 
             if (a_abs == 0.0 and b_abs == 0.0) or (a_abs > 0.0 and b_abs > 0.0):
                 continue

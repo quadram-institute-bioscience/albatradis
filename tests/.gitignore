@@ -1,0 +1,7 @@
+testoutput/
+testoutputx/
+
+.coverage
+coverage.xml
+
+project_file

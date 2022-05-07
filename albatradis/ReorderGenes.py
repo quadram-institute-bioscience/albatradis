@@ -1,7 +1,5 @@
-import os
-import numpy
-
 from albatradis.GeneToFiles import GeneToFiles
+
 
 class ReorderGenes:
 	def __init__(self, gene_names, gene_reports, gene_list):

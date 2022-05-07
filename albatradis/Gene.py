@@ -18,7 +18,7 @@ class Gene:
         self.gene_name = self.calc_gene_name() if not self.feature is None else ""
 
     @staticmethod
-    def parseLine(line):
+    def parse_line(line):
         parts = line.split('\t')
         g = Gene()
         g.gene_name = parts[0]
@@ -27,20 +27,24 @@ class Gene:
         g.max_logfc = float(parts[4])
         g.expression = parts[5]
         g.direction = parts[6]
-        g.upstream = [parts[7]]
-        g.min_pvalue = float(parts[8])
-        g.min_qvalue = float(parts[9])
+        if len(parts) > 7:
+            g.upstream = [parts[7]]
+            if len(parts) > 8:
+                g.min_pvalue = float(parts[8])
+                g.min_qvalue = float(parts[9])
 
         return g
 
     def calc_gene_name(self):
-        if self.feature:
-            gene_name_val = str(self.feature.location.start) + "_" + str(self.feature.location.end)
-            if "gene" in self.feature.qualifiers:
-                gene_name_val = self.feature.qualifiers["gene"][0]
-                return gene_name_val
-        else:
+
+        if not self.feature:
             return "unknown"
+
+        gene_name_val = str(self.feature.location.start) + "_" + str(self.feature.location.end)
+        if "gene" in self.feature.qualifiers:
+            gene_name_val = self.feature.qualifiers["gene"][0]
+        return gene_name_val
+
 
     def category(self):
         if 'knockout' in self.categories:
@@ -82,31 +86,13 @@ class Gene:
             return 0.0
 
     def max_logfc_from_category(self):
-        l = self.max_logfc_from_blocks()
+        max_logfc = self.max_logfc_from_blocks()
 
-        if self.category() == 'upregulated':
-            if l < 0:
-                return l * -1
-            else:
-                return l
-        elif self.category() == 'downregulated':
-            if l > 0:
-                return l * -1
-            else:
-                return l
+        if (max_logfc < 0 and (self.category() == 'upregulated' or self.expression_from_blocks() == 'increased_insertions')) or \
+                (max_logfc > 0 and (self.category() == 'downregulated' or self.expression_from_blocks() == 'decreased_insertions')):
+            return max_logfc * -1
 
-        if self.expression_from_blocks() == 'increased_insertions':
-            if l < 0:
-                return l * -1
-            else:
-                return l
-        elif self.expression_from_blocks() == 'decreased_insertions':
-            if l > 0:
-                return l * -1
-            else:
-                return l
-
-        return l
+        return max_logfc
 
     def expression_from_blocks(self):
         if self.blocks:
@@ -142,9 +128,10 @@ class Gene:
 
     def report_set_string(self, conflict=False):
         return "\t".join([str(self.gene_name), str(self.category()) if not conflict else "conflict", str(self.feature.location.start),
-                                str(self.feature.location.end),
-                                str(self.direction),
-                                str(self.upstream_gene())])
+                          str(self.feature.location.end), str(self.max_logfc),
+                          str(self.expression), str(self.direction),
+                          str(self.upstream_gene()), str(self.min_pvalue),
+                          str(self.min_qvalue)])
 
     def __str__(self):
         try:
