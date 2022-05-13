@@ -1,21 +1,20 @@
 '''Driver class'''
 import logging
 import os
-import re
-import sys
-import time
 import shutil
+from tempfile import mkstemp
 
+import quatradis.isp_analyse
+
+from albatradis.BlockIdentifier import BlockIdentifier
 from albatradis.Gene import Gene
-from albatradis.TradisGeneInsertSites import TradisGeneInsertSites
-from albatradis.PrepareInputFiles import PrepareInputFiles
-from albatradis.PrepareEMBLFile import PrepareEMBLFile
-from albatradis.TradisEssentiality import TradisEssentiality
-from albatradis.TradisComparison import TradisComparison
+from albatradis.GeneAnnotator import GeneAnnotator
 from albatradis.PlotLog import PlotLog
 from albatradis.PlotMasking import PlotMasking
-from albatradis.BlockIdentifier import BlockIdentifier
-from albatradis.GeneAnnotator import GeneAnnotator
+from albatradis.PrepareEMBLFile import PrepareEMBLFile
+from albatradis.PrepareInputFiles import PrepareInputFiles
+from albatradis.TradisComparison import TradisComparison
+from albatradis.TradisEssentiality import TradisEssentiality
 
 
 class PlotEssentiality:
@@ -127,13 +126,22 @@ class BlockInsertions:
             self.genome_length = p.genome_length()
         return plotfile_objects
 
-    def essentiality(self, embl_filename, plotfile_objects, plotfile, plotname, filetype):
-        g = TradisGeneInsertSites(embl_filename, getattr(plotfile_objects[plotfile], filetype + "_plot_filename"), self.verbose)
-        g.run()
+    def analyse_insert_sites(self, embl_filename, plotfile):
+        fd, output_filename = mkstemp()
+        quatradis.isp_analyse.analyse_insert_sites(embl_filename, [plotfile])
+        plotfile_prefix = os.path.basename(plotfile)
+        plotfile_prefix = plotfile_prefix.split(sep=".")[0]
+        shutil.copy(plotfile_prefix + ".tradis_gene_insert_sites.csv", output_filename)
+        os.remove(plotfile_prefix + ".tradis_gene_insert_sites.csv")
+        return output_filename
 
-        e = TradisEssentiality(g.output_filename, self.verbose, prefix=self.prefix, plotnames=self.plotnames, analysis_type=filetype)
+    def essentiality(self, embl_filename, plotfile_objects, plotfile, plotname, filetype):
+
+        analysis_file = self.analyse_insert_sites(embl_filename, getattr(plotfile_objects[plotfile], filetype + "_plot_filename"))
+
+        e = TradisEssentiality(analysis_file, self.verbose, prefix=self.prefix, plotnames=self.plotnames, analysis_type=filetype)
         e.run(plotname)
-        pe = PlotEssentiality(plotfile, g.output_filename, e.output_filename, filetype, e.essential_filename)
+        pe = PlotEssentiality(plotfile, analysis_file, e.output_filename, filetype, e.essential_filename)
 
         if self.verbose:
             print("Essentiality:\t" + filetype + "\t" + e.output_filename)

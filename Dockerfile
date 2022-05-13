@@ -1,8 +1,9 @@
-FROM sangerpathogens/bio-tradis:latest
+FROM sbastkowski/quatradis:0.8.2
 
-RUN apt-get update -qq && apt-get install -y sudo python3 python3-setuptools python3-biopython python3-pip gcc
-
-RUN pip3 install cython
 ADD . /albatradis
-RUN pip3 install /albatradis
+WORKDIR /albatradis
+RUN pip3 install -r /albatradis/requirements.txt
+RUN pip3 install .[dev]
+RUN pip3 install .
+
 WORKDIR /work

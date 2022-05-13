@@ -1,0 +1,9 @@
+biopython >= 1.68
+pyfastaq >= 3.12.0
+scipy
+numpy
+dendropy
+seaborn
+pandas
+graphviz
+cython

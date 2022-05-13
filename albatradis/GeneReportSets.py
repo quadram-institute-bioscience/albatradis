@@ -55,36 +55,9 @@ class GeneReportSets:
 				filtered_categories[gene_category] = combined_with_categories[gene_category]
 
 		return filtered_combined, filtered_categories
-		'''
-		combined = {}
-		candidate_genes = {}
-		first_filename = self.filenames[0]
-		# get all the gene names that are present in the 1st file
-		for gene in self.gene_reports[first_filename].gene_all_data:
-			combined[gene.gene_name] = gene
-			candidate_genes[gene.gene_name] = 1
 
-		gene_count=len(combined)
-		print("gene count=", gene_count)
-
-		# Count the number of times each of the 1st set of genes occurs
-		for f in self.filenames:
-			if f == first_filename:
-				continue
-			for gene in self.gene_reports[f].gene_all_data:
-				if gene.gene_name in combined:
-					candidate_genes[gene.gene_name] += 1
-		
-		# Extract only the genes which occur in every file and map to their rows in the spreadsheet
-		genes_found_in_all = [genename for genename, count in candidate_genes.items() if count == len(self.filenames)]
-		filtered_gene_rows = {}
-		for g in genes_found_in_all:
-			filtered_gene_rows[g] = combined[g]
-		return filtered_gene_rows
-		'''
-
-
-	def row_to_gene_name(self, row):
+	@staticmethod
+	def row_to_gene_name(row):
 		gene = row[0]
 		# use the start and end coords for unnamed features
 		if gene == 'unknown' or gene == 'NA':
@@ -114,7 +87,7 @@ class GeneReportSets:
 
 
 		with open(union_filename, 'w') as bf:
-			bf.write(Gene.report_set_header() + "\n")
+			bf.write(Gene.header() + "\n")
 			for gene in sorted(union.values(), key=lambda x: x.feature.location.start):
 				num_conflict = is_conflict.count(str(gene.gene_name)) 
 				conflict = num_conflict > 1
@@ -127,7 +100,7 @@ class GeneReportSets:
 		intersection, intersection_categories = self.intersection()
 		if len(intersection) > 0:
 			with open(intersection_filename, 'w') as bf:
-				bf.write(str(Gene.report_set_header()) + "\n")
+				bf.write(str(Gene.header()) + "\n")
 				for gene in sorted(intersection.values(), key=lambda x: x.feature.location.start):
 					conflict = str(gene.gene_name + '~' + gene.category()) not in intersection_categories
 					bf.write(str(gene.report_set_string(conflict=conflict)) + "\n")
