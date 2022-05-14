@@ -36,9 +36,9 @@ class HeatMap:
 		
 		dims = (8.3, 11.7)
 		fig, ax = plt.subplots(figsize=dims)
-		data = pd.DataFrame(int_values, columns = self.gene_names, index=self.clean_filenames())
+		data = pd.DataFrame(int_values, columns=self.gene_names, index=self.clean_filenames())
 
-		heatmap = sns.heatmap(data.T,ax = ax, cmap="RdBu_r", center=0, yticklabels= False)
+		heatmap = sns.heatmap(data.T, ax=ax, cmap="RdBu_r", center=0, yticklabels= False)
 		
 		ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
 		plt.tight_layout()

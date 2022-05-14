@@ -1,6 +1,7 @@
 import os
 import shutil
 import unittest
+import filecmp
 
 from albatradis.PresenceAbsence import PresenceAbsence
 
@@ -11,8 +12,7 @@ class ErrorReadingFile(Exception): pass
 class InvalidFileFormat(Exception): pass
 
 
-test_modules_dir = os.path.dirname(os.path.realpath(__file__))
-data_dir = os.path.join(test_modules_dir, 'data', 'presenceabsence')
+data_dir = os.path.join('data', 'presenceabsence')
 
 
 class TestPresenceAbsence(unittest.TestCase):
@@ -41,7 +41,6 @@ class TestPresenceAbsence(unittest.TestCase):
         self.assertTrue(filtered_outputfile)
         self.assertTrue(dendrogram)
         self.assertTrue(nj_tree)
-        # TODO fix formatting problems with files
-        # self.assertTrue(filecmp.cmp(exp_lfc, all_outputfile))
+        self.assertTrue(filecmp.cmp(exp_lfc, all_outputfile))
 
         shutil.rmtree('testoutput')

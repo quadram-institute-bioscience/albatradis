@@ -5,7 +5,7 @@ import matplotlib
 import numpy
 from dendropy.utility.textprocessing import StringIO
 from scipy.cluster import hierarchy
-from scipy.cluster.hierarchy import linkage
+from scipy.cluster.hierarchy import dendrogram, linkage
 from scipy.spatial.distance import squareform
 
 matplotlib.use('agg')
@@ -63,10 +63,13 @@ class PresenceAbsence:
         self.plot_distance_matrix(os.path.join(self.prefix, 'distance_matrix_dendrogram.tre'))
         self.create_nj_newick(os.path.join(self.prefix, 'nj_newick_tree.tre'))
 
+
         HeatMap(self.reports_to_genes, self.gene_names,
                 os.path.join(self.prefix, 'full_heatmap.png')).create_heat_map()
         HeatMap(self.filtered_reports_to_genes, self.filtered_gene_names,
                 os.path.join(self.prefix, 'filtered_heatmap.png')).create_heat_map()
+
+        self.logfc_matrix(os.path.join(self.prefix, 'logfc_clustering_tree_filtered.tre'))
 
         return self
 
@@ -178,6 +181,32 @@ class PresenceAbsence:
         return distances
 
 
+    def logfc_matrix(self, outputfile):
+
+        X = numpy.zeros((len(self.genereports), len(self.filtered_gene_names)))
+
+        for i, report in enumerate(self.genereports):
+            for j in range(len(self.filtered_gene_names)):
+                X[i, j] = sane_logfc(self.reports_to_genes[report][j])
+
+        linked = linkage(X, 'single')
+        xlabels = [os.path.basename(x) for x in self.genereports]
+
+        plt.figure(figsize=(10, 7))
+        dendrogram(linked,
+                   orientation='top',
+                   labels=xlabels,
+                   distance_sort='descending',
+                   show_leaf_counts=True)
+        plt.ylabel("LogFC Distance")
+        plt.savefig(outputfile + ".png")
+
+        tree = hierarchy.to_tree(linked, False)
+        ntree = self.get_newick(tree, "", tree.dist, xlabels)
+        with open(outputfile, 'w') as fh:
+            fh.write(ntree)
+
+
     def plot_distance_matrix(self, outputfile):
         mat = numpy.array(self.distance_matrix())
         dists = squareform(mat)
@@ -223,3 +252,4 @@ class PresenceAbsence:
             newick = self.get_newick(node.get_right(), ",%s" % (newick), node.dist, leaf_names)
             newick = "(%s" % (newick)
             return newick
+
