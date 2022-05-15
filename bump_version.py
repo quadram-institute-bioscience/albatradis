@@ -25,7 +25,7 @@ def main():
         newsemver = oldsemver.next_patch()
     else:
         raise ValueError("Unrecognised semantic version mode")
-    print("Updating QuaTradis version from", oldsemver, "to", newsemver)
+    print("Updating Albatradis version from", oldsemver, "to", newsemver)
     open('VERSION', 'w').write(str(newsemver))
 
 
