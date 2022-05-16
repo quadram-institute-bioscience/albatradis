@@ -190,19 +190,18 @@ class PresenceAbsence:
                 X[i, j] = sane_logfc(self.reports_to_genes[report][j])
 
         linked = linkage(X, 'single')
-        xlabels = [os.path.basename(x) for x in self.genereports]
 
         plt.figure(figsize=(10, 7))
         dendrogram(linked,
                    orientation='top',
-                   labels=xlabels,
+                   labels=self.genereports,
                    distance_sort='descending',
                    show_leaf_counts=True)
         plt.ylabel("LogFC Distance")
         plt.savefig(outputfile + ".png")
 
         tree = hierarchy.to_tree(linked, False)
-        ntree = self.get_newick(tree, "", tree.dist, xlabels)
+        ntree = self.get_newick(tree, "", tree.dist, self.genereports)
         with open(outputfile, 'w') as fh:
             fh.write(ntree)
 
