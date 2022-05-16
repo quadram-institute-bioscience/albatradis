@@ -5,7 +5,7 @@ services:
 install:
   - make docker-build
 script:
-  - docker run --rm -it quadraminstitute/albatradis:dev /bin/sh -c "cd /albatradis && make test"
+  - docker run --rm -it sbastkowski/albatradis:dev /bin/sh -c "cd /albatradis && make test"
 deploy:
   skip_cleanup: true
   provider: script

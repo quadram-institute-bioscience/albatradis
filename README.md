@@ -42,7 +42,7 @@ Install [Docker](https://www.docker.com/) which works on Linux, OSX and Windows.
 automatically built from the latest version of AlbaTraDIS. To use it you would use a command such as this 
 (substituting in your filename/directories), using the example file in this repository:
 ```
-docker run --rm -it -u $(id -u ${USER}):$(id -g ${USER}) -v /path/to/data:/data quadraminstitute/albatradis:latest albatradis <program arguments>
+docker run --rm -it -u $(id -u ${USER}):$(id -g ${USER}) -v /path/to/data:/data sbastkowski/albatradis:latest albatradis <program arguments>
 ```
 
 ### From source on Ubuntu/Debian

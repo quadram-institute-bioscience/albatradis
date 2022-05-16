@@ -1,6 +1,6 @@
 
 VERSION := $(shell cat VERSION)
-DOCKER_USERNAME := quadraminstitute
+DOCKER_USERNAME := sbastkowski
 DOCKER_IMAGENAME := albatradis
 DOCKER_PATH := ${DOCKER_USERNAME}/${DOCKER_IMAGENAME}
 
