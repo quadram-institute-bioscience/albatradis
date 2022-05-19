@@ -6,7 +6,7 @@ import numpy
 from dendropy.utility.textprocessing import StringIO
 from scipy.cluster import hierarchy
 from scipy.cluster.hierarchy import dendrogram, linkage
-from scipy.spatial.distance import squareform
+from scipy.spatial.distance import squareform, euclidean
 
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
@@ -60,16 +60,19 @@ class PresenceAbsence:
         self.create_network(os.path.join(self.prefix, 'network.csv'), self.filtered_gene_names,
                             self.filtered_reports_to_genes)
 
-        self.plot_distance_matrix(os.path.join(self.prefix, 'distance_matrix_dendrogram.tre'))
-        self.create_nj_newick(os.path.join(self.prefix, 'nj_newick_tree.tre'))
+        dm = self.distance_matrix(euclidean=False)
+        euclidean_dm = self.distance_matrix(euclidean=True)
 
+        self.plot_distance_matrix(os.path.join(self.prefix, 'distance_matrix_dendrogram.tre'), dm)
+        self.plot_distance_matrix(os.path.join(self.prefix, 'distance_matrix_dendrogram_euclidean.tre'), euclidean_dm)
+
+        self.create_nj_newick(os.path.join(self.prefix, 'nj_newick_tree.tre'), dm)
+        self.create_nj_newick(os.path.join(self.prefix, 'nj_newick_tree_euclidean.tre'), euclidean_dm)
 
         HeatMap(self.reports_to_genes, self.gene_names,
                 os.path.join(self.prefix, 'full_heatmap.png')).create_heat_map()
         HeatMap(self.filtered_reports_to_genes, self.filtered_gene_names,
                 os.path.join(self.prefix, 'filtered_heatmap.png')).create_heat_map()
-
-        self.logfc_matrix(os.path.join(self.prefix, 'logfc_clustering_tree_filtered.tre'))
 
         return self
 
@@ -158,7 +161,7 @@ class PresenceAbsence:
         return genes_with_changes
 
     # assumption is that any changes (+-) on a gene is counted the same.
-    def pair_wise_distance(self, file_a, file_b):
+    def simple_pair_wise_distance(self, file_a, file_b):
         distance = 0
         for i in range(len(self.filtered_gene_names)):
             a_abs = numpy.absolute(sane_logfc(self.filtered_reports_to_genes[file_a][i]))
@@ -170,45 +173,51 @@ class PresenceAbsence:
                 distance += 1
         return distance
 
+    # assumption is that any changes (+-) on a gene is counted the same.
+    def euclidean_pair_wise_distance(self, file_a, file_b):
+        lfc_a = [sane_logfc(i) for i in self.filtered_reports_to_genes[file_a]]
+        lfc_b = [sane_logfc(i) for i in self.filtered_reports_to_genes[file_b]]
+        return euclidean(lfc_a, lfc_b)
 
-    def distance_matrix(self):
+
+    def distance_matrix(self, euclidean=False):
         distances = []
         for a in self.genereports:
             dist_row = []
             for b in self.genereports:
-                dist_row.append(self.pair_wise_distance(a, b))
+                distance = self.euclidean_pair_wise_distance(a, b) if euclidean else self.simple_pair_wise_distance(a, b)
+                dist_row.append(distance)
             distances.append(dist_row)
         return distances
 
 
-    def logfc_matrix(self, outputfile):
+    # def logfc_matrix(self, outputfile):
+    #
+    #     X = numpy.zeros((len(self.genereports), len(self.filtered_gene_names)))
+    #
+    #     for i, report in enumerate(self.genereports):
+    #         for j in range(len(self.filtered_gene_names)):
+    #             X[i, j] = sane_logfc(self.reports_to_genes[report][j])
+    #
+    #     linked = linkage(X, 'single')
+    #
+    #     plt.figure(figsize=(10, 7))
+    #     dendrogram(linked,
+    #                orientation='top',
+    #                labels=self.genereports,
+    #                distance_sort='descending',
+    #                show_leaf_counts=True)
+    #     plt.ylabel("LogFC Distance")
+    #     plt.savefig(outputfile + ".png")
+    #
+    #     tree = hierarchy.to_tree(linked, False)
+    #     ntree = self.get_newick(tree, "", tree.dist, self.genereports)
+    #     with open(outputfile, 'w') as fh:
+    #         fh.write(ntree)
 
-        X = numpy.zeros((len(self.genereports), len(self.filtered_gene_names)))
 
-        for i, report in enumerate(self.genereports):
-            for j in range(len(self.filtered_gene_names)):
-                X[i, j] = sane_logfc(self.reports_to_genes[report][j])
-
-        linked = linkage(X, 'single')
-
-        plt.figure(figsize=(10, 7))
-        dendrogram(linked,
-                   orientation='top',
-                   labels=self.genereports,
-                   distance_sort='descending',
-                   show_leaf_counts=True)
-        plt.ylabel("LogFC Distance")
-        plt.savefig(outputfile + ".png")
-
-        tree = hierarchy.to_tree(linked, False)
-        ntree = self.get_newick(tree, "", tree.dist, self.genereports)
-        with open(outputfile, 'w') as fh:
-            fh.write(ntree)
-
-
-    def plot_distance_matrix(self, outputfile):
-        mat = numpy.array(self.distance_matrix())
-        dists = squareform(mat)
+    def plot_distance_matrix(self, outputfile, distance_matrix):
+        dists = squareform(distance_matrix)
         linkage_matrix = linkage(dists, "single")
         plt.title("Distance matrix")
         tree = hierarchy.to_tree(linkage_matrix, False)
@@ -216,20 +225,28 @@ class PresenceAbsence:
         with open(outputfile, 'w') as fh:
             fh.write(ntree)
 
+        plt.figure(figsize=(10, 7))
+        dendrogram(linkage_matrix,
+                   orientation='top',
+                   labels=self.genereports,
+                   distance_sort='descending',
+                   show_leaf_counts=True)
+        plt.ylabel("LogFC Distance")
+        plt.savefig(outputfile + ".png")
 
-    def nj_distance_matrix_str(self):
+
+    def nj_distance_matrix_str(self, distance_matrix):
         output = "\t".join(['.'] + self.genereports) + "\n"
 
-        dm = self.distance_matrix()
         for i, g in enumerate(self.genereports):
-            output += "\t".join([g] + [str(d) for d in dm[i]]) + "\n"
+            output += "\t".join([g] + [str(d) for d in distance_matrix[i]]) + "\n"
 
         return output
 
 
-    def create_nj_newick(self, outputfile):
+    def create_nj_newick(self, outputfile, distance_matrix):
         pdm = dendropy.PhylogeneticDistanceMatrix.from_csv(
-            src=StringIO(self.nj_distance_matrix_str()),
+            src=StringIO(self.nj_distance_matrix_str(distance_matrix)),
             delimiter="\t")
         nj_tree = pdm.nj_tree()
 
