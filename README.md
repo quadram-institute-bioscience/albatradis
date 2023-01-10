@@ -462,6 +462,6 @@ Please report any issues or to provide feedback please go to the [issues page](h
 
 ## Citation
 ["AlbaTraDIS: Comparative analysis of large datasets from parallel transposon mutagenesis experiments"](https://doi.org/10.1101/593624), Andrew J. Page, Sarah Bastkowski, Muhammad Yasir, A. Keith Turner, Thanh Le Viet, George M. Savva, Mark A. Webber, Ian G. Charles
-bioRxiv 593624; doi: https://doi.org/10.1101/593624
+PLOS Comp Bio; doi: [https://doi.org/10.1101/593624](https://doi.org/10.1371/journal.pcbi.1007980)
 
 
